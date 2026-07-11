@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>米国株：狙うべき業界 — モザイク思考リサーチ</title>
+<style>
+  :root{--bg:#ffffff;--soft:#f5f7fb;--soft2:#eef2f8;--line:#e2e8f0;--text:#1f2a3d;--muted:#64748b;
+        --accent:#2563eb;--ind:#0d9488;--rep:#7c3aed;--up:#0f9d6e}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic UI",Meiryo,sans-serif;
+       background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;overflow:hidden}
+  header{padding:14px 22px 10px;border-bottom:1px solid var(--line)}
+  h1{font-size:18px;font-weight:800}
+  .sub{font-size:11.5px;color:var(--muted);margin-top:3px;max-width:900px}
+  /* row 1: industries */
+  .rowlabel{font-size:10px;font-weight:800;letter-spacing:.6px;color:var(--muted);text-transform:uppercase;margin:10px 0 5px}
+  .inds{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+  .ind{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:8px 13px;cursor:pointer;min-width:150px}
+  .ind .nm{font-size:13px;font-weight:700;color:#0f1b33;display:flex;align-items:center;gap:7px}
+  .ind .nm .dot{width:8px;height:8px;border-radius:50%;background:var(--ind)}
+  .ind .tg{font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.3}
+  .ind.on{background:#fff;border-color:var(--ind);box-shadow:0 0 0 1px var(--ind) inset}
+  .ind.add{border-style:dashed;background:#fff;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:12px}
+  /* row 2: reports */
+  .reps{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;border-bottom:1px solid var(--line)}
+  .rep{border:1px solid var(--line);border-bottom:0;background:var(--soft);border-radius:8px 8px 0 0;padding:8px 13px;font-size:12px;cursor:pointer;color:#475569;display:flex;align-items:center;gap:6px}
+  .rep .n{font-size:9.5px;font-weight:800;color:#fff;border-radius:5px;padding:1px 6px;background:var(--rep)}
+  .rep[data-n="S1"] .n{background:var(--ind)} .rep[data-n="v1"] .n{background:#94a3b8}
+  .rep.on{background:#fff;color:#0f1b33;font-weight:700;box-shadow:0 -2px 0 var(--accent) inset}
+  .body{flex:1;display:flex;min-height:0}
+  .side{width:255px;min-width:255px;border-right:1px solid var(--line);background:var(--soft);overflow-y:auto;padding:14px}
+  .side h3{font-size:12.5px;color:#0f1b33;margin-bottom:8px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px;margin-bottom:8px}
+  .kpi .l{font-size:10px;color:var(--muted)}
+  .kpi .v{font-size:15px;font-weight:800;color:#0f1b33;margin-top:2px}
+  .kpi .v small{font-size:10.5px;font-weight:600;color:#475569}
+  .tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:999px;background:var(--soft2);border:1px solid var(--line);color:#334155;margin:2px 3px 2px 0}
+  .concl{font-size:11.5px;color:#33415a;line-height:1.65;background:#fff;border:1px solid var(--line);border-left:3px solid var(--up);border-radius:8px;padding:9px 11px;margin-bottom:8px}
+  .concl b{color:#0f5132}
+  .note{font-size:10.5px;color:var(--muted);margin-top:8px;line-height:1.55}
+  .stage{flex:1;display:flex;flex-direction:column;min-width:0}
+  .toolbar{display:flex;align-items:center;gap:12px;padding:7px 16px;border-bottom:1px solid var(--line);font-size:11.5px;color:var(--muted);background:#fff}
+  .toolbar a{color:var(--accent);text-decoration:none;font-weight:600}
+  iframe{flex:1;width:100%;border:0;background:#525659}
+  /* add-industry help panel */
+  .help{flex:1;display:none;padding:34px;overflow:auto}
+  .help .card{max-width:640px;margin:0 auto;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:24px 26px}
+  .help h2{font-size:17px;margin-bottom:10px;color:#0f1b33}
+  .help p,.help li{font-size:13px;color:#33415a;line-height:1.8}
+  .help code{background:#eef2f8;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px}
+  .help ol{margin:8px 0 0 20px}
+</style>
+</head>
+<body>
+  <header>
+    <h1>📈 米国株：狙うべき業界 — モザイク思考リサーチ</h1>
+    <div class="sub">凡人が気づく前に業界の構造変化を捉える「モザイク思考」ベースの上場株リサーチ。業界を選ぶと、その業界の「業界スクリーニング(Stage1)」と「個別企業ディープダイブ(Stage2)」が開きます。業界は今後追加していけます。</div>
+    <div class="rowlabel">業界（Industry）</div>
+    <div class="inds" id="inds"></div>
+    <div class="reps" id="reps"></div>
+  </header>
+  <div class="body">
+    <aside class="side" id="side"></aside>
+    <div class="stage">
+      <div class="toolbar" id="toolbar">
+        <span id="meta"></span>
+        <a id="open" href="#" target="_blank">↗ 新しいタブで開く / ダウンロード</a>
+      </div>
+      <iframe id="pdf" title="report"></iframe>
+      <div class="help" id="help">
+        <div class="card">
+          <h2>＋ 新しい業界を追加する方法</h2>
+          <p>この画面はデータ駆動です。新しい業界（例：半導体・AIインフラ、ヘルスケア）を足すには：</p>
+          <ol>
+            <li>PDFを <code>contents/weekly/us_stock_analysis/&lt;業界ID&gt;/</code> に置く（例 <code>semis/stage1_screening.pdf</code>）。</li>
+            <li>本ファイルの <code>INDUSTRIES</code> に業界を1件追加し、<code>ORDER</code> にIDを足す。</li>
+            <li>各レポートに <code>file</code>（PDFパス）・<code>meta</code>・<code>side</code>（要点カード）を記述。</li>
+          </ol>
+          <p class="note">＝ 既存の <code>power</code> のブロックをコピーして中身を差し替えるのが最速です。ハブ側の変更は不要（このタブ内で完結）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ============ 業界データ（ここに業界を足していく）============ */
+const INDUSTRIES = {
+  power: {
+    name:"電力インフラ",
+    tagline:"AIデータセンターの発電・送配電ボトルネック",
+    reports:[
+      { k:"scr", n:"S1", label:"業界スクリーニング", file:"us_stock_analysis/power/stage1_screening.html", pdf:"us_stock_analysis/power/stage1_screening.pdf",
+        meta:"MOSAIC SCREENING · Stage 1 of 2 ｜ 2026-07-08 ｜ HTML版",
+        side:`<h3>Stage 1：業界スクリーニング</h3>
+          <div class="concl"><b>選定結論：</b>電力インフラ供給網。市場はAI＝半導体・クラウドに資金集中する一方、AIが物理的に動くには電力・系統が必要。供給が許認可・系統接続待ちで硬直し、価格決定権が供給側へ移動。</div>
+          <div class="kpi"><div class="l">DCが占める米電力消費比</div><div class="v">4.3% → 11.7% <small>(2024→2030予測)</small></div></div>
+          <div class="kpi"><div class="l">GE Vernova 受注残(Q1'26)</div><div class="v">$163B</div></div>
+          <div><span class="tag">構造変化</span><span class="tag">定量</span><span class="tag">資本フロー</span><span class="tag">Red Team</span></div>
+          <div class="note">対象：米国(S&P500/上場全体)。IPP・電力機器に業績モメンタム対比でマルチプル見直し余地。</div>`},
+      { k:"ceg2", n:"S2", label:"CEG ディープダイブ v2", file:"us_stock_analysis/power/ceg_stage2.html", pdf:"us_stock_analysis/power/ceg_stage2_v2_verified.pdf",
+        meta:"MOSAIC DEEP-DIVE V2 · 一次情報検証版 ｜ 2026-07-09 ｜ HTML版",
+        side:`<h3>Stage 2：Constellation Energy (CEG) v2</h3>
+          <div class="concl"><b>結論：</b>BUY（Quality Pick）維持。現値$244→目標<b>$300–340</b>（+23〜39%／12–24ヶ月、Street平均$358）。「割安株買い」でなく「質の高い資産のROE回復に賭ける」投資。</div>
+          <div class="kpi"><div class="l">株価(7/8)／目標</div><div class="v">$244 → <small>$300–340</small></div></div>
+          <div class="kpi"><div class="l">EV/2026E調整EBITDA(狭義/広義)</div><div class="v">13.1x / 9.6x</div></div>
+          <div class="kpi"><div class="l">FY26 調整後EPSガイダンス</div><div class="v">$11.00–12.00</div></div>
+          <div><span class="tag">SEC 8-K/10-K検証</span><span class="tag">PBR-ROE分析</span><span class="tag">投資カレンダー</span></div>
+          <div class="note">EV/EBITDAは核燃料償却の扱いで13.1x⇔9.6xに割れる。PBR2.58xは足元ROE12.2%では正当化されず、統合後ROE16〜18%への拡張が株価前提に織り込み済み。</div>`},
+    ]
+  },
+  /* 例）次に足す業界（PDFを semis/ に置いてコメントを外す）
+  semis: { name:"半導体・AIインフラ", tagline:"推論需要とメモリ", reports:[
+    { k:"scr", n:"S1", label:"業界スクリーニング", file:"us_stock_analysis/semis/stage1_screening.pdf", meta:"...", side:"..." },
+  ]},
+  */
+};
+const ORDER = ["power"];
+/* ============================================================ */
+
+const inds=document.getElementById('inds'), reps=document.getElementById('reps'),
+      side=document.getElementById('side'), pdf=document.getElementById('pdf'),
+      meta=document.getElementById('meta'), open=document.getElementById('open'),
+      help=document.getElementById('help'), toolbar=document.getElementById('toolbar');
+let curInd=ORDER[0], curRep=0;
+
+function renderInds(){
+  inds.innerHTML='';
+  ORDER.forEach(id=>{
+    const d=INDUSTRIES[id];
+    const el=document.createElement('div');el.className='ind'+(id===curInd?' on':'');
+    el.innerHTML=`<div class="nm"><span class="dot"></span>${d.name}</div><div class="tg">${d.tagline}</div>`;
+    el.onclick=()=>{curInd=id;curRep=0;renderInds();renderReps();showReport();};
+    inds.appendChild(el);
+  });
+  const add=document.createElement('div');add.className='ind add';add.innerHTML='＋ 業界を追加';
+  add.onclick=showHelp; inds.appendChild(add);
+}
+function renderReps(){
+  reps.innerHTML='';
+  INDUSTRIES[curInd].reports.forEach((r,i)=>{
+    const el=document.createElement('div');el.className='rep'+(i===curRep?' on':'');el.dataset.n=r.n;
+    el.innerHTML=`<span class="n">${r.n}</span>${r.label}`;
+    el.onclick=()=>{curRep=i;renderReps();showReport();};
+    reps.appendChild(el);
+  });
+}
+function showReport(){
+  help.style.display='none';pdf.style.display='block';toolbar.style.display='flex';side.style.display='block';
+  const r=INDUSTRIES[curInd].reports[curRep];
+  const isPdf=/\.pdf$/i.test(r.file);
+  pdf.src=r.file+(isPdf?"#view=FitH":""); meta.textContent=r.meta; side.innerHTML=r.side;
+  if(r.pdf){ open.href=r.pdf; open.textContent="↗ 元PDFをダウンロード"; }
+  else { open.href=r.file; open.textContent="↗ 新しいタブで開く"; }
+}
+function showHelp(){
+  pdf.style.display='none';toolbar.style.display='none';side.style.display='none';help.style.display='block';
+  document.querySelectorAll('.ind').forEach(x=>x.classList.remove('on'));
+}
+renderInds();renderReps();showReport();
+</script>
+</body>
+</html>
