@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage 1｜米国株式市場 業界スクリーニング</title>
+<style>
+  :root{--bg:#ffffff;--ink:#16233b;--soft:#f4f7fb;--soft2:#e9eef6;--line:#dbe3ee;--muted:#5f708a;
+        --teal:#0d9488;--blue:#2563eb;--amber:#d97706;--red:#dc2626;--green:#0f9d6e}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo","Noto Sans JP",sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.85;font-feature-settings:"palt";
+       max-width:940px;margin:0 auto;padding:26px 30px 70px}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--teal);text-transform:uppercase}
+  h1{font-size:24px;font-weight:800;margin:4px 0 2px}
+  .dek{font-size:13px;color:var(--muted)}
+  .meta{font-size:11.5px;color:var(--muted);margin-top:8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0}
+  h2{font-size:17px;margin:30px 0 6px;padding-bottom:7px;border-bottom:2px solid var(--ink)}
+  h2 .ag{font-size:10.5px;font-weight:800;color:#fff;background:var(--teal);border-radius:5px;padding:2px 8px;margin-right:8px;letter-spacing:.5px}
+  h3{font-size:14px;margin:16px 0 6px}
+  p{font-size:13.5px;margin:8px 0}
+  .concl{background:#ecfdf6;border:1px solid #b6ecd7;border-left:4px solid var(--green);border-radius:12px;padding:16px 18px;margin:16px 0}
+  .concl .t{font-size:12px;color:var(--green);font-weight:800;letter-spacing:1px}
+  .concl h3{margin:2px 0 6px;font-size:18px;color:#0b3b2c}
+  .concl p{font-size:13px;color:#245}
+  .hero{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+  .stat{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .stat .v{font-size:24px;font-weight:800;color:var(--teal)}
+  .stat .l{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
+  .thesis{counter-reset:t;margin:10px 0}
+  .thesis .row{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .thesis .row:before{counter-increment:t;content:counter(t);flex:none;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+  .thesis p{margin:0;font-size:13px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--soft2);font-weight:700}
+  td .sig{font-weight:800}
+  .g{color:var(--green)} .a{color:var(--amber)} .r{color:var(--red)} .b{color:var(--blue)}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 8px;border-radius:999px;margin-left:6px}
+  .p-strong{background:#dcfce7;color:#166534}.p-mid{background:#fef3c7;color:#92400e}.p-tail{background:#e0edff;color:#1e40af}
+  .cards2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  .card{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:12.5px}
+  .card h4{font-size:12.5px;margin-bottom:4px;color:var(--ink)}
+  .bear{background:#fff5f5;border:1px solid #fbd0d0;border-left:4px solid var(--red);border-radius:10px;padding:12px 15px;margin:10px 0}
+  .bear h4{color:#b91c1c;font-size:13px;margin-bottom:3px}
+  .verdict{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .v-ok{background:#ecfdf6;border:1px solid #b6ecd7;border-radius:10px;padding:11px 13px}
+  .v-cond{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:11px 13px}
+  .v-no{background:#fef2f2;border:1px solid #fbd0d0;border-radius:10px;padding:11px 13px}
+  .verdict .h{font-size:12px;font-weight:800;margin-bottom:3px}
+  .verdict p{font-size:11.5px;margin:0;color:#334}
+  .kpimon{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin:10px 0;font-size:12.5px}
+  .kpimon li{margin:5px 0 5px 18px}
+  .src{font-size:10.5px;color:var(--muted);line-height:1.7;margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+  .disc{font-size:10.5px;color:var(--muted);margin-top:8px}
+  @media(max-width:680px){.hero,.verdict{grid-template-columns:1fr}.cards2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="eyebrow">MOSAIC SCREENING · Stage 1 of 2</div>
+  <h1>米国株式市場 業界スクリーニング</h1>
+  <div class="dek">最も魅力的な投資機会の構造的特定</div>
+  <div class="meta">対象市場：米国（S&P 500／上場全体）　｜　作成日：2026年7月8日　｜　分析エンジン：4並列エージェント（構造変化・定量・資本フロー・Red Team）＋統合</div>
+
+  <div class="concl">
+    <div class="t">選定結論</div>
+    <h3>電力インフラ供給網（Electric Power Infrastructure）</h3>
+    <p>—— AIデータセンターの「発電・送配電ボトルネック」。市場は「AI＝半導体・クラウド」に資金を集中させているが、そのAIが物理的に動くには電力と送配電網が要る。この供給側は、①需要が構造的・不可逆的に増加し、②供給が許認可・系統接続待ちで硬直しているため、価格決定権が供給者に移動している。半導体の織り込み度が飽和する一方、電力機器・独立発電（IPP）は業績モメンタムに対しマルチプルの見直し余地が残る局面がある。</p>
+  </div>
+
+  <h3>◆ MOSAIC INSIGHT（単独では弱く、統合で強くなるシグナル）</h3>
+  <p>ハイパースケーラーが「電力購入契約」から「発電資産の直接保有・共同開発」へ移行している事実は、単独では一報道に過ぎない。だがこれを (a) GEVの受注残 <b>$163B</b>・ガス受注枠 100→110GW、(b) M&Aの焦点が「将来性」から "deliverable capacity＝steel-in-the-ground" へ移った事実、(c) 系統接続待ち4–5年という供給制約 と重ねると、<b>「電力は今後5年カネの匂いがする場所（利益プールの移動先）」</b>という一枚の絵になる。市場はまだ川下（チップ）を見ている。</p>
+
+  <div class="hero">
+    <div class="stat"><div class="v">+43%</div><div class="l">Q2'26 テクノロジー大型株の四半期上昇（＝織り込み進行）</div></div>
+    <div class="stat"><div class="v">4.3→11.7%</div><div class="l">データセンターが占める米電力消費比率（2024→2030予測）</div></div>
+    <div class="stat"><div class="v">$163B</div><div class="l">GE Vernova 受注残（Q1'26時点）</div></div>
+  </div>
+
+  <h3>投資仮説（3行）</h3>
+  <div class="thesis">
+    <div class="row"><p>AI計算需要は電力需要へ不可逆に変換され、その供給は物理・規制制約でタイトなまま向こう数年推移する。</p></div>
+    <div class="row"><p>利益プールはチップ／クラウドから発電・送配電・電力機器へ再配分されつつあり、価格決定権が供給者側へ移動している。</p></div>
+    <div class="row"><p>相対的に、業績上方修正モメンタムに対してマルチプルの見直し余地が残る「電力機器・独立発電」に妙味。</p></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--muted)">確信度：<b class="g">中〜高</b>　｜　タイムホライズン：12〜36ヶ月　｜　主要リスク：バリュエーション過熱・ハイパースケーラーのCAPEX一時停止（後述）</p>
+
+  <h2><span class="ag">AGENT A</span>構造変化の解剖 —— 5レンズによる不可逆性の検証</h2>
+  <p>2つ以上のレンズで同方向シグナルが確認された業界のみを候補化するモザイク条件を適用。電力インフラは5レンズ中<b>4レンズ</b>で強い同方向シグナルを示した。</p>
+  <table>
+    <tr><th>レンズ</th><th>判定</th><th>要点</th></tr>
+    <tr><td>①政策・規制</td><td class="sig g">強い追い風</td><td>2026年の連邦政策の中心が「電力の手頃さと系統負荷増」へ。原子力が戦略資産として連邦融資で後押し、重要鉱物が産業戦略化。石油・ガス・原子力・AIは規制緩和側、再エネはOBBBAの"use-it-or-lose-it"で選別。施行はこれからで織り込み度が低い。</td></tr>
+    <tr><td>②技術・コストカーブ</td><td class="sig a">中立〜追い風</td><td>SMRは商用化2027〜28年で関心は炉本体から燃料・製造・供給網へ拡散。ガスタービンは即納性で優位、GEVは新規受注価格が2025年比10〜20%上昇。「今あるものを速く繋ぐ」ことに価値。</td></tr>
+    <tr><td>③需給・キャパシティ</td><td class="sig g">最強シグナル</td><td>需要が供給追加ペースを上回る単純な制約。PJM/MISO/CAISOの系統接続待ちは4〜5年。買い手は「特定技術」より「確実に容量を届ける資産」へ。GEVのガス受注枠は1四半期で83→100GW。</td></tr>
+    <tr><td>④需要・行動変容</td><td class="sig g">追い風</td><td>ハイパースケーラーがvPPAから発電資産の直接保有・寿命延長支援へ移行。Three Mile Island 1号機再稼働→Microsoftへ専用原子力供給、Chevronが20年電力契約をMicrosoftと締結。行動が「ヘッジ」から「所有」へ＝確信の表明。</td></tr>
+    <tr><td>⑤バリューチェーン再配分</td><td class="sig b">核心</td><td>利益プールの移動先を追うのがモザイク思考の要。儲かる場所がチップ（NVDA等・既に高評価）→発電・送配電・電力機器へ移動。M&Aで「AI」に言及する割合は2025年の約1/3から2026上期に17%へ低下したが、その17%はテック・製造・電力/ユーティリティに集中。「漠然としたAIテーマ買い」から「AIを物理的に可能にするインフラ買い」へ。</td></tr>
+  </table>
+  <p style="font-size:12.5px"><b>業績変換のタイムラグ（Agent A推計）：</b>電力機器（タービン・変圧器）＝即時〜1年／独立発電・IPP（稼働資産）＝1〜2年／送配電インフラ・系統＝2〜3年／SMR・次世代原子力＝3〜5年+。<span class="a">示唆：</span>変換が最速の「電力機器」は既に株価反応済み。むしろ変換ラグ2〜3年の系統・送配電に、織り込み度と業績確度のギャップが残りやすい。</p>
+
+  <h2><span class="ag">AGENT B</span>定量エビデンス —— 業績モメンタム × バリュエーション</h2>
+  <p>狙いは「業績・リビジョンは上向いたが、マルチプルがまだ歴史レンジ下半分」（変曲点型）と「ROIC-WACCスプレッド拡大なのにディレーティング」（持続過小評価型）。S&P500予想PERは20.9倍で5年平均19.9を上回り市場全体は割高のため、<b>業界内の分散</b>に着目する。</p>
+  <table>
+    <tr><th>セクター</th><th>EPSリビジョン</th><th>バリュエーション(対歴史)</th><th>業績分散</th><th>総合スクリーン</th></tr>
+    <tr><td>エネルギー（電力隣接）</td><td class="g">最大の上方修正</td><td>相対的に低位</td><td>拡大</td><td><b>◎ Type1候補</b></td></tr>
+    <tr><td>電力機器/資本財</td><td class="g">力強い（GEV等）</td><td class="a">高位（再評価済）</td><td>拡大</td><td>○ 選別必須</td></tr>
+    <tr><td>情報技術（半導体）</td><td>上方修正</td><td class="a">高位・集中</td><td>やや拡大</td><td>△ 織込進行</td></tr>
+    <tr><td>金融</td><td>改善</td><td>市場比で低位</td><td>中立</td><td>○ 別テーマ</td></tr>
+    <tr><td>ヘルスケア</td><td class="r">下方修正</td><td>低位</td><td>拡大</td><td>△ 別掘</td></tr>
+  </table>
+  <div class="cards2">
+    <div class="card"><h4>変曲点の根拠①：エネルギー＝リビジョン最大</h4>Q2'26中にエネルギーは全11セクターで最大（+61.5%）のEPS上方修正。Exxon・Chevronが牽引。一方Q2'26に大型株が−13%と株価は逆行＝業績と株価の乖離＝変曲点型シグナル。</div>
+    <div class="card"><h4>変曲点の根拠②：電力機器＝業績は本物だが株価も走った</h4>GEVはAdj.EBITDAマージンが11.1%→17.8%へ改善、通期を売上$44.5–45.5B/EBITDAマージン12–14%へ上方修正。ただしVertivは1年で+300%超、多くが目標株価に接近。選別が生死を分ける。</div>
+  </div>
+  <p style="font-size:12.5px"><b>S&P500セクター別 増益率（CY2026予想）：</b>情報技術 +30.4%／一般消費財 +11.5%／通信サービス +10.4%／S&P500全体 +24.1%。<span class="a">注意：</span>電力/エネルギーの増益はIT対比では控えめだが、Type1の妙味は「上方修正の勢い」と「株価の出遅れ」の差分であり、絶対成長率の高さそのものではない。</p>
+
+  <h2><span class="ag">AGENT C</span>資本フローの確証 —— 「賢い資金」は電力へ動いているか</h2>
+  <p>株価より先に動くのは事業会社と経営者の資本配分。M&A・CAPEX・ハイパースケーラーの直接投資から、電力仮説を「支持／中立／矛盾」で判定する。</p>
+  <h3>① M&A：プライベート市場の先行評価 <span class="pill p-strong">支持</span></h3>
+  <table>
+    <tr><th>案件</th><th>金額</th><th>示唆</th></tr>
+    <tr><td>NextEra Energy × Dominion Energy（提案）</td><td>$67B</td><td>世界最大の規制ユーティリティ創出＝電力需要増への「プラットフォーム化」</td></tr>
+    <tr><td>Engie × UK Power Networks</td><td>—</td><td>送配電（電力流通）資産の獲得競争</td></tr>
+    <tr><td>Leidos × ENTRUST Solutions</td><td>$2.4B</td><td>系統インフラ・ユーティリティ・エンジニアリング能力への需要</td></tr>
+    <tr><td>ESCO Technologies × Megger Group</td><td>$2.35B</td><td>電化・電力インフラ・プラットフォームへの買い手意欲</td></tr>
+    <tr><td>GE Vernova × Prolec GE（クローズ）</td><td>—</td><td>変圧器（グリッド機器）の内製強化＝供給制約の裏返し</td></tr>
+  </table>
+  <p style="font-size:12.5px">2026上期のメガディールは前年比+40%ペースで、well-capitalizedな買い手が規模・強靭性を追求。「K字型M&A市場」の"上"に電力が位置する。戦略的買い手が支払う価格は上場マルチプルの先行指標になり得る。</p>
+  <h3>② CAPEX・受注ガイダンス：経営者の確信 <span class="pill p-strong">支持</span></h3>
+  <div class="hero">
+    <div class="stat"><div class="v">+71%</div><div class="l">GEV Q1'26受注 前年比（オーガニック）</div></div>
+    <div class="stat"><div class="v">2.5x</div><div class="l">GEV電化部門 book-to-bill</div></div>
+    <div class="stat"><div class="v">2.9x</div><div class="l">Vertiv受注 book-to-bill（受注残$15B）</div></div>
+  </div>
+  <p style="font-size:12.5px">book-to-bill&gt;1が続くのは、需要の継続性を経営者が確信し供給が追いつかない直接証拠。GEVの新規受注価格が前年比10〜20%上昇していることは、価格決定権が供給者に移ったという仮説の最強の裏付け。</p>
+  <h3>③ ハイパースケーラーの直接投資 <span class="pill p-strong">支持</span></h3>
+  <p style="font-size:12.5px">電力の「所有」への移行が加速：Three Mile Island 1号機再稼働→Microsoftへ専用原子力供給、Chevron 20年電力契約×Microsoft（西テキサスDC）、National GridがJoulentへ$1.75B戦略投資。稼働中DC・発電資産を積極取得し、次世代firm powerに開発資本を提供。</p>
+  <p style="font-size:12.5px"><b>Agent C総合判定：支持（Strong）。</b>M&A・CAPEX・直接投資の3系統すべてが電力インフラ仮説を支持。矛盾シグナル（供給過剰・IPO急増の天井）は電力機器の高バリュエーション以外に顕著なものなし。ソフト/IT系M&Aは2025年比で冷却し、「AI＝物理インフラ」への資金シフトを側面支持。</p>
+
+  <h2><span class="ag">AGENT D</span>RED TEAM・BEAR CASE・反証条件 —— この仮説はどこで壊れるか</h2>
+  <div class="bear"><h4>反証1：織り込み済みリスク（最重要）</h4>「電力＝見落とされている」は電力機器には既に当てはまらない。Vertivは1年で+300%超・S&P500採用、多くの銘柄が目標株価に接近、GEV/Vertivは「成長の多くが織り込み済み」と明示的に指摘。テック大型株はQ2'26に+43%上昇。<b>→対策：</b>機器ではなく、相対的に出遅れた独立発電（Constellation等、約35%の上値余地との指摘）・送配電・系統エンジニアリングに軸足。エントリーを機器の押し目に限定。</div>
+  <div class="bear"><h4>反証2：因果の切断 —— ハイパースケーラーCAPEX一時停止</h4>強気論の全体が「ハイパースケーラーの設備投資が続く」に依存。5社の設備投資は2026年に約6,020億ドル（前年比36%増）だが、市場は「投資に見合う収益」を厳しく問い始めており、四半期決算がガイダンスで期待を下回れば成長懸念でハイテク売り→電力関連にも波及。<b>先行指標：</b>CAPEXガイダンスの減額、GEV/Vertivのbook-to-billが1.5x割れ、新規受注価格上昇率の鈍化。</div>
+  <div class="bear"><h4>反証3：マクロ感応度＆ベースレート</h4>金利：2026年利下げ期待は年央までに大幅後退、関税起因のインフレ再燃なら利下げゼロの可能性。資本集約的な電力・IPPは高金利で借換コスト増→マージン圧迫。ベースレート：CAPEXサイクル高揚局面の「今回は違う」は過去も繰り返された。エネルギー大型株がQ2'26に−13%と実際に下落した事実は、テーマの正しさが個別リターンを保証しない好例。</div>
+
+  <h3>生存判定と次点業界</h3>
+  <div class="verdict">
+    <div class="v-ok"><div class="h g">◎ SURVIVE</div><p>電力インフラ（発電・送配電・系統）。4レンズ＋資本フロー3系統が支持。ただし機器サブセクターは条件付き。</p></div>
+    <div class="v-cond"><div class="h a">○ 条件付き生存</div><p>ヘルスケア／CDMO（BIOSECURE Act）。構造変化は本物だが執行が2028年以降で遅く、上場受益者の特定が難しい。Stage 2の別掘り候補。</p></div>
+    <div class="v-no"><div class="h r">✕ 見送り</div><p>純粋な半導体テーマ買い。バリュエーションZスコア高位・集中リスク（上位3銘柄で約60%）・織り込み進行。</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">除外の透明性：再生可能エネルギー（OBBBAの補助金期限・選別で不確実性）、商業用不動産（オフィス空室・借換リスク）、一般消費財（FCF・収益トレンド軟化）は除外。各々のディレーティングに構造的裏付けがあり「安いには安い理由がある」ため。</p>
+
+  <div class="kpimon">
+    <b>モニタリングKPI（撤退・見直しの先行指標）</b>
+    <ul>
+      <li>ハイパースケーラーCAPEXガイダンス：4社合計で減額修正が出たら仮説の根幹が揺らぐ（1月下旬〜2月上旬の決算集中期が最初の試金石）</li>
+      <li>book-to-bill：GEV/Vertivが1.5x割れ→供給制約の緩和サイン</li>
+      <li>新規受注価格：GEVの前年比+10〜20%上昇が鈍化→価格決定権の後退</li>
+      <li>系統接続待ち期間：4〜5年の短縮→供給側の希少性低下</li>
+      <li>金利：10年UST急騰／利下げ観測の完全消滅→IPO・IPPのバリュエーション逆風</li>
+    </ul>
+  </div>
+
+  <p style="font-size:12.5px"><b>Stage 2への引き継ぎ：</b>「電力インフラ」の中から、織り込み度が相対的に低く・業績確度が高く・ROIC-WACCスプレッドが構造的に拡大している個別企業を選定する。第一候補群＝独立発電（Constellation Energy等）と系統/電力機器（GE Vernova, Vertiv, Eaton, Quanta）。全12〜17指標（EV/EBITDA・PBR-ROEマップ・WACC・SGR・CAPEX/売上・Dep/売上等）で比較し、"高評価だが正当化できるMoat"と"単なる過熱"を切り分ける。</p>
+
+  <div class="src"><b>データソース（取得日：2026年7月8日）：</b>三井住友DSアセットマネジメント（市川レポート 2025/12/25）／フランクリン・テンプルトン米国株見通し／PwC Global M&A trends: Energy/Utilities 2026 mid-year／PwC US Energy Deals 2026／FTI Power/Renewables 2026 Outlook／IG証券 米国株2026見通し／GE Vernova Form 8-K・Q1'26決算（SEC, 4/22/2026）／ML Strategies 2026 Policy Outlook／Charles Schwab Sector Views（6/26/2026）／FactSet Earnings Insight（6/30/2026）／S&P DJI U.S. Sector Dashboard（6/30/2026）／PwC Global M&A industry trends 2026／Dealroom M&A tracker 2026／BIOSECURE Act解説（Latham等）／AI Power関連株分析（BigGo/Yahoo Finance）／StockTitan Data Center Stocks 2026。</div>
+  <div class="disc">免責：本資料は情報整理を目的とし、投資助言ではない。数値は各出所の公表値・推計であり、マーケットデータは日次で陳腐化する。個別企業倍率はStage 2で検証。</div>
+</body>
+</html>
