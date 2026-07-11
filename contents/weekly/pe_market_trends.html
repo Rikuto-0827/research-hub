@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEマーケット動向 リサーチメモ</title>
+<style>
+  :root{--bg:#ffffff;--soft:#f5f7fb;--soft2:#eef2f8;--line:#e2e8f0;--text:#1f2a3d;--muted:#64748b;
+        --accent:#2563eb;--jp:#e11d48;--us:#2563eb;--imp:#0f9d6e;--jpbg:#fef2f4;--usbg:#eff5ff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic UI",Meiryo,sans-serif;
+       background:var(--bg);color:var(--text);padding:26px 32px 72px;line-height:1.8;max-width:1020px;margin:0 auto}
+  header{border-bottom:2px solid var(--text);padding-bottom:12px;margin-bottom:6px}
+  h1{font-size:23px;font-weight:800}
+  .datebar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:12px;color:var(--muted);margin-top:8px}
+  .datebar .pill{background:var(--soft2);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-weight:600;color:#334155}
+  .datebar .live{background:#ecfdf5;border-color:#a7f3d0;color:#047857}
+  h2{font-size:17px;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px}
+  h2 .no{font-size:12px;font-weight:800;color:#fff;background:var(--accent);border-radius:6px;padding:2px 9px}
+  h3{font-size:14px;margin:16px 0 6px;color:#334155}
+  p{font-size:13.5px;color:#334155;margin:7px 0}
+  /* Exec split */
+  .exec-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .exec-col{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .exec-col.jp{background:var(--jpbg);border-color:#fbcfe0}
+  .exec-col.us{background:var(--usbg);border-color:#c7ddff}
+  .exec-col h3{margin-top:0;font-size:14.5px;display:flex;align-items:center;gap:8px}
+  .flag{font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:6px;color:#fff}
+  .f-jp{background:var(--jp)} .f-us{background:var(--us)}
+  .exec-col ol{margin:8px 0 0 18px}.exec-col li{font-size:13px;margin:9px 0;color:#3b4a63}
+  .exec-col b{color:#0f1b33}
+  .layer{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px}
+  .badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:999px}
+  .b-macro{background:#e0f0fe;color:#0369a1;border:1px solid #bae0fd}
+  .b-micro{background:#fce7ef;color:#be123c;border:1px solid #fbcfe0}
+  .b-imp{background:#e7f7f0;color:#047857;border:1px solid #b6ecd7}
+  /* Fund cards */
+  .fcard{border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin:10px 0;background:var(--soft)}
+  .fcard .ft{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .fcard h3{margin:0;font-size:14.5px;color:#0f1b33}
+  .fcard .amt{font-weight:800;color:var(--accent);white-space:nowrap;font-size:15px}
+  .fcard .kv{font-size:12.5px;color:#475569;margin-top:6px}
+  .fcard .kv b{color:#1f2a3d}
+  /* Case cards */
+  .case{border:1px solid var(--line);border-left:4px solid var(--jp);border-radius:10px;padding:15px 18px;margin:12px 0;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+  .case.us{border-left-color:var(--us)}
+  .case .ch{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+  .case .ch h3{margin:0;font-size:15px;color:#0f1b33}
+  .case .amt{font-weight:800;color:#0f1b33}
+  .case .type{font-size:10.5px;font-weight:700;color:#475569;background:var(--soft2);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+  .case p{font-size:13px;color:#33415a;margin:4px 0 0;line-height:1.85}
+  .case .take{margin-top:8px;font-size:12.5px;color:#0f5132;background:#f0fdf6;border:1px solid #bbf0d3;border-radius:8px;padding:8px 12px}
+  .case .take b{color:#047857}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--soft2);color:#334155}
+  .imp{background:#f0fdf6;border:1px solid #bbf0d3;border-left:3px solid var(--imp);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:13px;color:#0f5132}
+  .imp b{color:#047857}
+  .dd{border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin:10px 0;background:var(--soft)}
+  .dd h3{color:var(--accent);margin-top:0}
+  sup a{color:var(--accent);text-decoration:none;font-size:10px}
+  .repro{background:#faf5ff;border:1px dashed #d8b4fe;border-radius:10px;padding:14px 16px;font-size:12.5px;color:#6b21a8;margin-top:22px}
+  .repro b{color:#7c3aed}
+  .refs{margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+  .refs h2{border:0;margin:0 0 8px}
+  .refs ol{margin-left:18px}.refs li{font-size:11.5px;color:var(--muted);margin:5px 0;word-break:break-all}
+  .refs a{color:var(--accent);text-decoration:none}
+  .note{color:var(--muted);font-size:11.5px}
+  @media(max-width:720px){.exec-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <header>
+    <h1>🔭 PEマーケット動向 リサーチメモ</h1>
+    <div class="datebar">
+      <span class="pill live">レポート更新日：2026-07-10（金）</span>
+      <span class="pill">調査対象週：2026-07-06 〜 07-10（第28週）</span>
+      <span>対象：日本・米国市場中心 ／ シニア・リサーチ・エージェント</span>
+    </div>
+  </header>
+  <p class="note">定量データは末尾の出典で事実検証が可能です。金額は各出典時点の公表値、マルチプル等は概算を含みます。個別案件は情報提供であり投資推奨ではありません。</p>
+
+  <h2><span class="no">1</span>エグゼクティブ・サマリー（日米分割）</h2>
+  <div class="exec-grid">
+    <div class="exec-col jp">
+      <h3><span class="flag f-jp">JAPAN</span>日本市場を象徴する3トレンド</h3>
+      <ol>
+        <li><b>非公開化・カーブアウトの"黄金期"。</b>取引額は2025年に約4.8兆円（$30B）で前年比+約30%、バイアウト比率6割超<sup><a href="#r2">[2]</a></sup>。東証のガバナンス改革（PBR1倍割れ是正・親子上場解消）が供給源。</li>
+        <li><b>外資ビッグ3＋新規参入で担い手が拡大。</b>Carlyle/Bain/KKRに続き外資が続々参入。KKRの日本AUMは約$18B。待機資金は累積10兆円規模<sup><a href="#r6">[6]</a></sup>。</li>
+        <li><b>相対的に割安なエントリー。</b>日本のEV/EBITDA中央値は12.0x（2024）でアジア平均14.4xより低く、10.0x以下も可能<sup><a href="#r3">[3]</a></sup>。</li>
+      </ol>
+    </div>
+    <div class="exec-col us">
+      <h3><span class="flag f-us">US</span>米国市場を象徴する3トレンド</h3>
+      <ol>
+        <li><b>資金はメガファンドへ極端に集中。</b>2025年は上位20バイアウトファンドが計$175B（全体の55%超）、上位3本で$60.4B（23.3%）を吸収<sup><a href="#r7">[7]</a></sup>。KKRは北米特化で過去最大の$23Bをクローズ<sup><a href="#r8">[8]</a></sup>。</li>
+        <li><b>出口はIPO窓が一部再開もCVが主役。</b>Medlineが史上最大のPE系IPO（時価$65B）で出口<sup><a href="#r21">[21]</a></sup>。一方セカンダリーは過去最高$230–240B、CVは$106B（+51%）<sup><a href="#r11">[11]</a></sup><sup><a href="#r12">[12]</a></sup>。</li>
+        <li><b>AIインフラが新たな資本の受け皿。</b>Aligned Data Centersの$40B買収など、事業会社×金融資本の巨大インフラ投資が加速<sup><a href="#r18">[18]</a></sup>。</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2><span class="no">2</span>ファンドレイズの動向</h2>
+  <div class="layer"><span class="badge b-macro">マクロ動向</span></div>
+  <p>グローバル調達額はピーク比で停滞（H1 2026は$287B、前年比 −30%）だが、ドル総額はむしろ大型ファンドへ集約し二極化。2026年も資本の40%超が最大級ファンドへ流れる見通しで、実績のない新興・中堅は逆風<sup><a href="#r9">[9]</a></sup>。世界のドライパウダーは約$1.3兆（推計最大$2.5兆）で高止まりし、デプロイ圧力が強い。以下は各ファンドの性格・投資哲学・注力産業・調達の特徴。</p>
+  <div class="layer"><span class="badge b-micro">ミクロ動向（個別ファンドの特徴）</span></div>
+
+  <div class="fcard"><div class="ft"><h3><span class="flag f-us">US</span> KKR North America Fund XIV</h3><span class="amt">$23B クローズ</span></div>
+    <div class="kv"><b>性格：</b>北米単独では史上最大級のバイアウト旗艦。<b>投資哲学：</b>オペレーショナルな価値創造と、買収先従業員への株式付与（Ownership Works）を通じた利害一致。<b>注力産業：</b>消費・産業財・ヘルスケア・テクノロジーを横断。<b>調達の特徴：</b>逆風下でも記録的規模を集めきり、ブランド力による資金集中を体現。</div></div>
+
+  <div class="fcard"><div class="ft"><h3><span class="flag f-us">US</span> TPG Partners X</h3><span class="amt">$9.1B（1stクローズ／目標$13B）</span></div>
+    <div class="kv"><b>性格：</b>グロース＋バイアウトの複合。<b>投資哲学：</b>セクター特化チームによるテーマ投資、インパクト投資（TPG Rise／気候）も併走。<b>注力産業：</b>ヘルスケア・テック・消費・気候。<b>調達の特徴：</b>初回で目標の約70%に到達し、旗艦の底堅い需要を示す。</div></div>
+
+  <div class="fcard"><div class="ft"><h3><span class="flag f-us">US</span> Francisco Partners VIII</h3><span class="amt">目標 $14B</span></div>
+    <div class="kv"><b>性格：</b>エンタープライズ・ソフトウェア/テック特化。<b>投資哲学：</b>複雑な事業のカーブアウト・非公開化と、運用改善（プロダクト再編・収益性改善）。<b>注力産業：</b>ソフトウェア、ITインフラ、ヘルスケアIT。<b>調達の特徴：</b>前号$13.5Bから増額し、テック特化への継続的な資金流入を示す。</div></div>
+
+  <div class="fcard"><div class="ft"><h3><span class="flag f-jp">JP</span> 在日外資（KKR／Bain／Carlyle／EQT）</h3><span class="amt">KKR日本 約$18B</span></div>
+    <div class="kv"><b>性格：</b>日本の大企業カーブアウトと上場企業の非公開化(TOB)が主戦場。<b>投資哲学：</b>KKR＝経営関与とPMI重視、Bain＝コンサル起点の事業変革、Carlyle＝円建てファンドで為替リスクを抑えた日本特化、EQT＝デジタル化/脱炭素などテーマ主導。<b>調達の特徴：</b>外資26社規模の参入で担い手が急増、待機資金10兆円が今後の案件供給を後押し<sup><a href="#r6">[6]</a></sup>。</div></div>
+
+  <div class="imp"><b>示唆：</b>LP資金の集中はブランド大型GPに有利で、中堅はニッチ特化かCV活用での差別化が必要。日本では"まだ出し切っていない"外資の待機資金が案件供給と価格の下支えになる。</div>
+
+  <h2><span class="no">3</span>注目すべき投資・エグジット事例</h2>
+  <div class="layer"><span class="badge b-micro">ミクロ動向（個別案件の深掘り）</span></div>
+
+  <h3>🇯🇵 日本 ― バイアウト・非公開化・カーブアウト</h3>
+
+  <div class="case">
+    <div class="ch"><span class="type">非公開化 / ディスカウントTOB</span><h3>KKR × 太陽ホールディングス</h3><span class="amt">約¥5,000億</span></div>
+    <p>KKRが約5,000億円で太陽ホールディングスを非公開化。TOB価格1株4,750円は公表前終値を約5%<b>下回る</b>異例の"ディスカウントTOB"で、プレミアムを乗せるM&Aの常識を覆した。太陽HDはプリント基板用ソルダーレジストで世界シェア首位の半導体材料メーカー。狙いは、EUVリソグラフィ・3D NAND・先端パッケージングといった次世代技術対応に年数百億円規模の継続的R&D投資が要る一方、四半期決算に縛られる上場のままでは長期投資への株主理解が得にくいという構造問題の解消にある。香港アクティビストのオアシス・マネジメントが応募を表明し、創業家・DICも賛同。物言う株主から距離を置きつつ長期戦略に専念する構図だ<sup><a href="#r20">[20]</a></sup><sup><a href="#r4">[4]</a></sup>。</p>
+    <div class="take"><b>覚えておくと有意義：</b>①株価以下でも成立し得るディスカウントTOBという交渉力、②アクティビストが"賛同する"非公開化、③半導体素材の長期R&Dと非上場化の親和性。</div>
+  </div>
+
+  <div class="case">
+    <div class="ch"><span class="type">非公開化 / 大型LBO</span><h3>JIP連合 × 東芝</h3><span class="amt">約¥2兆</span></div>
+    <p>JIP主導の国内連合による約2兆円の東芝非公開化は、約74年ぶりの上場廃止となった日本産業史の象徴的案件。買付価格は1株4,620円。資金は中部電力など国内約20社の出資（エクイティ）と邦銀融資（デット）を組み合わせたLBO類似構造で、銀行融資約1.2兆円に加えメザニン約2,000億円、優先株約2,000億円という<b>複層的ファイナンス</b>を積んだ点が特徴的だ。背景には、不正会計問題後の再建過程で多数の"物言う株主"が参画し経営方針が二転三転した迷走がある。非公開化で株主基盤を安定させ、腰を据えた事業再構築を可能にした。買収後は期間利益や保有株売却で負債を約1兆円まで圧縮し、早ければ2028年度の再上場を視野に入れる<sup><a href="#r15">[15]</a></sup><sup><a href="#r16">[16]</a></sup>。</p>
+    <div class="take"><b>覚えておくと有意義：</b>①シニア/メザニン/優先株を積む大型LBOの資本構成、②アクティビスト対応としての非公開化、③"買って終わり"でなく再上場を出口に据えるストーリー設計。</div>
+  </div>
+
+  <div class="case">
+    <div class="ch"><span class="type">救済型リキャップ / 増資＋TOB</span><h3>Apollo × 日本板硝子（NSG）</h3><span class="amt">約$3.7B</span></div>
+    <p>Apolloによる日本板硝子（NSG）の約$3.7B買収は、同社の日本最大投資かつ"救済型リキャップ"の好例。スキームは、NSGがApolloへ第三者割当増資で約1,650億円を調達しつつ、少数株主には1株500円（プレミアム）でTOBを実施して上場廃止。さらに邦銀による約1,400億円のリファイナンスを支援し、実質的に<b>負債を資本へ転換</b>してバランスシートを立て直す。背景は、2006年の英ピルキントン買収に伴う重い負債が20年来の"負債スパイラル"となっていたこと。増資調達金は債務圧縮に充当。狙いは、100年企業を太陽光・EV向けガラスの成長領域へ再ポジションすることで、クレジットとエクイティを組み合わせるApolloのハイブリッド資本の強みが表れた<sup><a href="#r17">[17]</a></sup><sup><a href="#r13">[13]</a></sup>。</p>
+    <div class="take"><b>覚えておくと有意義：</b>①増資＋TOB＋リファイナンスの複合スキーム、②デット・エクイティ・スワップ的な再資本化、③脱炭素テーマでの事業転換ストーリー。</div>
+  </div>
+
+  <h3>🇺🇸 米国 ― エグジット・大型投資</h3>
+
+  <div class="case us">
+    <div class="ch"><span class="type">IPOエグジット</span><h3>Medline IPO（Blackstone・Carlyle・H&F）</h3><span class="amt">$6.26B 調達 / 時価$65B</span></div>
+    <p>Medlineの$6.26B調達IPO（2025年12月、時価総額$65B）は、PE史上・ヘルスケア史上で<b>最大のIPO</b>であり、2021年にBlackstone・Carlyle・Hellman&Friedmanが$34Bで買収した大型LBOの出口。初日は40%超上昇し、狭かったIPOの窓が"優良資産には"開くことを示した。Medlineは約335,000品目の医療・手術用品を製造・流通するディフェンシブな医療物流企業。出口はIPO一括ではなく、上場後に約$3.6Bのセカンダリー売出しを重ねる<b>段階的リアリゼーション</b>方式をとった。約4年保有での大型エグジットは、出口難に苦しむ業界に象徴的な明るさをもたらした<sup><a href="#r21">[21]</a></sup><sup><a href="#r22">[22]</a></sup>。</p>
+    <div class="take"><b>覚えておくと有意義：</b>①メガLBOのIPO出口の実例、②IPO＋セカンダリーの段階的売却、③ディフェンシブなヘルスケア物流のスケールメリット。</div>
+  </div>
+
+  <div class="case us">
+    <div class="ch"><span class="type">AIインフラ / 実物資産</span><h3>BlackRock連合 × Aligned Data Centers</h3><span class="amt">$40B</span></div>
+    <p>BlackRock連合によるAligned Data Centersの$40B買収は、AIインフラとPEが交わる象徴的案件。買い手はBlackRock・MGX・Microsoft・Nvidiaが2024年に設立したAI Infrastructure Partnership(AIP)と、BlackRock傘下のGIP。xAI・クウェート投資庁・Temasekも参加。AIPの初投資であり、$300億のエクイティ展開構想の第一歩だ。Alignedは米・ブラジル・メキシコ・チリで50拠点・5GW超の稼働/計画容量を持つデータセンター事業者。<b>戦略投資家（Nvidia・Microsoft＝需要家）と金融資本（BlackRock・ソブリン）が同じ器で組む</b>点が新しく、AI電力・計算需要の実物インフラ化を映す<sup><a href="#r18">[18]</a></sup><sup><a href="#r19">[19]</a></sup>。</p>
+    <div class="take"><b>覚えておくと有意義：</b>①事業会社と金融資本の共同投資体、②$40Bという実物インフラの巨大化、③AI需要をエクイティ化する新しい資金循環。</div>
+  </div>
+
+  <div class="case us">
+    <div class="ch"><span class="type">スポンサー間売却 / CV</span><h3>New Mountain → Blackstone（Citrin Cooperman）ほか</h3><span class="amt">約$2B / Vista CV $5.6B</span></div>
+    <p>New MountainによるCitrin CoopermanのBlackstoneへの売却（約$2B）は、全米トップ30会計事務所として<b>初めてPEオーナーがスポンサー間で交代</b>した先例。会計事務所は監査の独立性規制からPEが直接保有しにくいため、監査業務と非監査（税務・アドバイザリー）業務を分離する"オルタナティブ・プラクティス・ストラクチャー(APS)"を用いて出資する。並行して、VistaはCloud Software Group（Citrix＋TIBCO統合体）を$5.6Bの継続ファンド(CV)へ移し、LPに現金化の選択肢を提供しつつ保有を継続。出口難時代に"売りたくない優良資産をどう現金化するか"の解としてGP主導セカンダリーが台頭している<sup><a href="#r9">[9]</a></sup><sup><a href="#r12">[12]</a></sup>。</p>
+    <div class="take"><b>覚えておくと有意義：</b>①会計事務所×PEという新領域とAPS規制スキーム、②優良資産を持ち続けるためのCV、③GPが売り手と買い手を兼ねる利益相反の管理（第三者価格・LPの選択権）。</div>
+  </div>
+
+  <h2><span class="no">4</span>今後の深掘り提案</h2>
+  <div class="dd"><h3>① セカンダリー／継続ファンド(CV)市場の構造化</h3>
+    <p>GP主導セカンダリーは総額の約半分（2023年の14%から急拡大）。上位バイアウトGPの83%がCVを利用済み。出口難の"逃げ道"から恒常的な運用戦略へ移行しつつあり、価格妥当性・利益相反管理・LP選択権の実務を追う価値が高い<sup><a href="#r11">[11]</a></sup><sup><a href="#r12">[12]</a></sup>。</p></div>
+  <div class="dd"><h3>② 日本の非公開化・カーブアウト波（ガバナンス改革）</h3>
+    <p>PBR1倍割れ是正要請、親子上場の解消、政策保有株の縮減が、上場企業の非公開化と事業カーブアウトを継続的に生む。外資の参入加速と待機資金10兆円が供給を後押し。素材・化学・ITへのセクター偏在を継続観測すべき<sup><a href="#r4">[4]</a></sup><sup><a href="#r6">[6]</a></sup>。</p></div>
+  <div class="dd"><h3>③ プライベートクレジット／LBOローンの動向</h3>
+    <p>私募クレジットAUMは約$3.5兆で2029年に$5兆へ。銀行の後退を直接融資が埋め、PE各社（Apollo・Ares等）が保険資本と結合。買収ファイナンスの担い手と条件（スプレッド・コベナンツ）の変化がバリュエーションに直結する<sup><a href="#r9">[9]</a></sup>。</p></div>
+
+  <div class="repro">
+    <b>このメモの再現方法（スキル化）：</b> ①対象地域（日本・米国）と調査対象週を指定 → ②「マクロ／ミクロ／示唆」の3層で収集 → ③日米分割サマリー・ファンドレイズ（性格/哲学/産業/調達特徴）・投資/エグジット事例（各300〜500字：ストラクチャ・業種・文脈・背景・狙い・規制・リターン）・深掘り3提案 で出力 → ④定量値に出典リンクを付し事実検証可能に。<b>差し替え引数：</b>地域・調査対象週・セグメント（バイアウト/クレジット/インフラ/セカンダリー）。
+  </div>
+
+  <div class="refs" id="refs">
+    <h2>出典（事実検証用リンク）</h2>
+    <ol>
+      <li id="r1"><a href="https://www.bain.com/ja/about-bain/media-center/press-releases/japan/2025/press-release-20250605/" target="_blank">Bain：4年連続で3兆円超の日本PE市場（2025）</a></li>
+      <li id="r2"><a href="https://www.dealstreetasia.com/stories/japan-pe-us-487247" target="_blank">DealStreetAsia：Japan PE $30b deal value（2025）</a></li>
+      <li id="r3"><a href="https://www.bain.com/insights/asia-pacific-private-equity-report-2026/" target="_blank">Bain：Asia-Pacific Private Equity Report 2026（マルチプル等）</a></li>
+      <li id="r4"><a href="https://www.gip.co.jp/2026/06/12/insights-15/" target="_blank">GIP：2026年1〜3月期 日本M&A動向（非公開化・カーブアウト）</a></li>
+      <li id="r5"><a href="https://www.nikkei.com/article/DGXZQOUC280KX0Y4A820C2000000/" target="_blank">日本経済新聞：上場廃止ラッシュ、外資ファンドが影の主役</a></li>
+      <li id="r6"><a href="https://diamond.jp/articles/-/361541" target="_blank">ダイヤモンド：PEカオスマップ（ビッグ3・待機資金10兆円）</a></li>
+      <li id="r7"><a href="https://www.indexbox.io/blog/private-equity-fundraising-consolidates-sharply-in-2025-top-10-funds-grab-457-of-capital/" target="_blank">IndexBox：2025 PE資金調達の集中</a></li>
+      <li id="r8"><a href="https://pitchbook.com/news/articles/kkrs-23b-haul-provides-light-amid-mega-fund-gloom" target="_blank">PitchBook：KKR $23B 北米ファンドをクローズ</a></li>
+      <li id="r9"><a href="https://www.withintelligence.com/insights/private-equity-outlook-2026/" target="_blank">With Intelligence：Private Equity Outlook 2026</a></li>
+      <li id="r11"><a href="https://www.jefferies.com/insights/the-big-picture/2025-global-secondary-market-review-another-record-breaking-year/" target="_blank">Jefferies：2025 Global Secondary Market Review</a></li>
+      <li id="r12"><a href="https://www.collercapital.com/cvs-beyond-the-chequered-flag/record-volumes/" target="_blank">Coller Capital：Record Continuation Vehicle Volumes（Vista CV 等）</a></li>
+      <li id="r13"><a href="https://www.moonfare.com/blog/asia-pacific-private-equity-2026" target="_blank">Moonfare：APAC PE 2026（Apollo×日本板硝子 等）</a></li>
+      <li id="r15"><a href="https://info.manda.bz/2026/05/03/famous-ma-toshiba-jip-2023/" target="_blank">MANDA：JIPによる東芝非公開化TOBの徹底解説</a></li>
+      <li id="r16"><a href="https://www.bloomberg.co.jp/news/articles/2023-03-23/RRYN1FDWX2PT01" target="_blank">Bloomberg：東芝がJIP案を受入れ、約2兆円</a></li>
+      <li id="r17"><a href="https://www.privateequitywire.co.uk/apollo-to-acquire-nippon-sheet-glass-in-3-7bn-take-private-deal/" target="_blank">Private Equity Wire：Apollo×NSG $3.7bn take-private</a></li>
+      <li id="r18"><a href="https://www.cnbc.com/2025/10/15/nvidia-microsoft-blackrock-aligned-data-centers.html" target="_blank">CNBC：Aligned Data Centers $40B（Nvidia/MS/BlackRock/xAI）</a></li>
+      <li id="r19"><a href="https://www.global-infra.com/news/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/" target="_blank">GIP：AIP/MGX/GIPによるAligned買収プレスリリース</a></li>
+      <li id="r20"><a href="https://www.nikkei.com/article/DGXZQOUC18A2F0Y5A211C2000000/" target="_blank">日本経済新聞：太陽HD、KKRが5,000億円で非公開化へ</a></li>
+      <li id="r21"><a href="https://www.cnbc.com/2025/12/17/medline-debuts-nasdaq-biggest-ipo-2025.html" target="_blank">CNBC：Medline、2025年最大のIPOで初日40%超上昇</a></li>
+      <li id="r22"><a href="https://privatemarketsminute.com/p/blackstone-carlyle-hellman-friedman-medline-ipo-deal-of-year" target="_blank">Medline $7.2B IPO ― Deal of the Year（Blackstone/Carlyle/H&F）</a></li>
+    </ol>
+    <p class="note">※ 定量データは概算・速報を含みます。金額は各出典時点の公表値に基づきます。個別銘柄・案件は情報提供であり投資推奨ではありません。</p>
+  </div>
+</body>
+</html>
