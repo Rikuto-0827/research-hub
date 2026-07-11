@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成果物ハブ | Research & Analysis Hub</title>
+<style>
+  :root{
+    --bg:#0f172a; --sidebar:#111827; --sidebar2:#1e293b;
+    --accent:#38bdf8; --accent2:#0ea5e9; --text:#e2e8f0; --muted:#94a3b8;
+    --line:#334155; --panel:#f8fafc; --pending:#475569;
+    --adhoc:#a78bfa; --weekly:#34d399; --daily:#fbbf24;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic UI",Meiryo,sans-serif;
+       display:flex;height:100vh;overflow:hidden;background:var(--panel);color:#0f172a}
+
+  /* Sidebar */
+  .sidebar{width:288px;min-width:288px;background:var(--sidebar);color:var(--text);
+           display:flex;flex-direction:column;height:100%;border-right:1px solid #000}
+  .brand{padding:20px 20px 16px;border-bottom:1px solid var(--line)}
+  .brand h1{font-size:16px;font-weight:700;letter-spacing:.3px}
+  .brand p{font-size:11px;color:var(--muted);margin-top:4px}
+  .nav{flex:1;overflow-y:auto;padding:12px 10px 24px}
+  .group{margin-top:14px}
+  .group-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;
+               text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:6px 10px}
+  .dot{width:8px;height:8px;border-radius:50%}
+  .dot.adhoc{background:var(--adhoc)} .dot.weekly{background:var(--weekly)} .dot.daily{background:var(--daily)}
+  .item{display:flex;align-items:center;justify-content:space-between;gap:8px;
+        padding:9px 12px;margin:2px 0;border-radius:8px;font-size:13px;cursor:pointer;
+        color:#cbd5e1;transition:.15s;border:1px solid transparent}
+  .item:hover{background:var(--sidebar2);color:#fff}
+  .item.active{background:linear-gradient(90deg,var(--accent2),#2563eb);color:#fff;border-color:#38bdf8}
+  .item .label{flex:1;line-height:1.3}
+  .item.sub{padding-left:26px;font-size:12.5px;color:#a9b6c8}
+  .badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:6px;white-space:nowrap}
+  .badge.ready{background:#064e3b;color:#6ee7b7}
+  .badge.pending{background:#3f3f46;color:#d4d4d8}
+  .subhead{font-size:10px;color:#64748b;padding:8px 12px 2px;letter-spacing:.5px}
+  .foot{padding:12px 16px;border-top:1px solid var(--line);font-size:10.5px;color:var(--muted)}
+  .foot a{color:var(--accent)}
+
+  /* Content */
+  .main{flex:1;display:flex;flex-direction:column;height:100%;background:var(--panel)}
+  .topbar{height:52px;min-height:52px;display:flex;align-items:center;justify-content:space-between;
+          padding:0 22px;border-bottom:1px solid #e2e8f0;background:#fff}
+  .topbar .title{font-size:15px;font-weight:700;color:#0f172a;display:flex;align-items:center;gap:10px}
+  .pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff}
+  .pill.adhoc{background:var(--adhoc)} .pill.weekly{background:var(--weekly)} .pill.daily{background:var(--daily)}
+  .topbar .meta{font-size:11px;color:#64748b}
+  .stage{flex:1;position:relative;overflow:hidden}
+  iframe{width:100%;height:100%;border:0;background:#fff}
+
+  /* Pending panel */
+  .pending-wrap{position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+                background:radial-gradient(circle at 50% 30%,#eef2f7,#e2e8f0);padding:40px}
+  .pending-card{max-width:560px;text-align:center;background:#fff;border:1px solid #e2e8f0;
+                border-radius:16px;padding:40px 36px;box-shadow:0 10px 30px rgba(15,23,42,.08)}
+  .pending-card .ic{font-size:40px}
+  .pending-card h2{font-size:20px;margin:14px 0 6px;color:#0f172a}
+  .pending-card .cad{display:inline-block;font-size:11px;font-weight:700;color:#fff;padding:3px 10px;border-radius:999px;margin-bottom:14px}
+  .pending-card p{font-size:13.5px;color:#475569;line-height:1.7}
+  .pending-card .how{margin-top:18px;padding:14px 16px;background:#f1f5f9;border-radius:10px;
+                     font-size:12.5px;color:#334155;text-align:left}
+  .pending-card .how b{color:#0f172a}
+  .archive-note{max-width:620px}
+  .archive-note table{width:100%;border-collapse:collapse;margin-top:14px;font-size:12.5px}
+  .archive-note td{border:1px solid #e2e8f0;padding:8px 10px;text-align:left;color:#334155}
+  .archive-note td:first-child{font-weight:700;color:#0f172a;white-space:nowrap}
+</style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>📊 成果物ハブ</h1>
+      <p>Research &amp; Analysis — 一元管理ダッシュボード</p>
+    </div>
+    <nav class="nav" id="nav">
+      <!-- Adhoc -->
+      <div class="group">
+        <div class="group-label"><span class="dot adhoc"></span>Adhoc（知識の振り返り）</div>
+        <div class="item" data-type="frame" data-cad="adhoc" data-title="巨大経済規模の可視化アプリ"
+             data-src="contents/adhoc/economic_scale.html">
+          <span class="label">巨大経済規模の可視化アプリ</span><span class="badge ready">実</span></div>
+        <div class="item" data-type="frame" data-cad="adhoc" data-title="米国プライベートクレジット評価実務 講座"
+             data-src="contents/adhoc/private_credit_course.html">
+          <span class="label">プライベートクレジット評価実務 講座</span><span class="badge ready">実</span></div>
+        <div class="item" data-type="frame" data-cad="adhoc" data-title="アカウント自動化の最適化とClaude活用レポート"
+             data-src="contents/adhoc/automation_claude_report.html">
+          <span class="label">自動化最適化・Claude活用レポート</span><span class="badge ready">実</span></div>
+        <div class="item" data-type="frame" data-cad="adhoc" data-title="PEファンド分析（研究の場）"
+             data-src="contents/adhoc/pe_fund_analysis.html">
+          <span class="label">PEファンド分析（研究の場）</span><span class="badge ready">実</span></div>
+      </div>
+
+      <!-- Weekly -->
+      <div class="group">
+        <div class="group-label"><span class="dot weekly"></span>週次（Weekly）</div>
+        <div class="item" data-type="frame" data-cad="weekly" data-title="米国株：狙うべき業界（モザイク思考）"
+             data-src="contents/weekly/us_stock_analysis.html">
+          <span class="label">米国株：狙うべき業界</span><span class="badge ready">実</span></div>
+        <div class="item" data-type="frame" data-cad="weekly" data-title="PEマーケット動向 シニア・リサーチ"
+             data-src="contents/weekly/pe_market_trends.html">
+          <span class="label">PEマーケット動向リサーチ</span><span class="badge ready">実</span></div>
+
+        <div class="subhead">★ PE投資分析プロセス（実データあり）</div>
+        <div class="item sub" data-type="frame" data-cad="weekly" data-title="PEスクリーニング：日本 × 電子部品"
+             data-src="contents/pe_process/pe_screening_japan_electronic_components.html">
+          <span class="label">▸ スクリーニング：電子部品</span><span class="badge ready">実</span></div>
+        <div class="item sub" data-type="frame" data-cad="weekly" data-title="PEディープダイブ：イリソ電子工業（6908）"
+             data-src="contents/pe_process/pe_deepdive_iriso_6908.html">
+          <span class="label">▸ ディープダイブ：イリソ 6908</span><span class="badge ready">実</span></div>
+        <div class="item sub" data-type="frame" data-cad="weekly" data-title="PEスクリーニング：日本 × 医療機器"
+             data-src="contents/pe_process/pe_screening_japan_medical_devices.html">
+          <span class="label">▸ スクリーニング：医療機器</span><span class="badge ready">実</span></div>
+        <div class="item sub" data-type="frame" data-cad="weekly" data-title="PEディープダイブ：日本ライフライン（7575）"
+             data-src="contents/pe_process/pe_deepdive_nippon_lifeline_7575.html">
+          <span class="label">▸ ディープダイブ：日本ライフライン 7575</span><span class="badge ready">実</span></div>
+      </div>
+
+      <!-- Daily -->
+      <div class="group">
+        <div class="group-label"><span class="dot daily"></span>日次（Daily）</div>
+        <div class="item" data-type="frame" data-cad="daily" data-title="US Market Morning Brief"
+             data-src="contents/daily/morning_brief.html">
+          <span class="label">US Market Morning Brief</span><span class="badge ready">実</span></div>
+      </div>
+
+      <!-- Archive -->
+      <div class="group">
+        <div class="group-label" style="color:#64748b">🗂 アーカイブ</div>
+        <div class="item" data-type="archive" data-cad="adhoc" data-title="成果物アーカイブ（Excel・メモ）">
+          <span class="label">Excel／投資メモ 保管場所</span></div>
+      </div>
+    </nav>
+    <div class="foot">
+      最終同期 2026-07-10 ／ 全11タブ実データ化・準備中 0枠<br>
+      不足トピックは今後スキルで生成しタブに追加します。
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="title"><span id="cadPill" class="pill daily">DAILY</span><span id="stageTitle">US Market Morning Brief</span></div>
+      <div class="meta" id="stageMeta"></div>
+    </div>
+    <div class="stage">
+      <iframe id="frame" src="contents/daily/morning_brief.html" title="content"></iframe>
+      <div class="pending-wrap" id="pendingWrap">
+        <div class="pending-card" id="pendingCard"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const CAD = {adhoc:{t:'ADHOC',c:'adhoc'},weekly:{t:'WEEKLY',c:'weekly'},daily:{t:'DAILY',c:'daily'}};
+  const frame=document.getElementById('frame');
+  const pendingWrap=document.getElementById('pendingWrap');
+  const pendingCard=document.getElementById('pendingCard');
+  const stageTitle=document.getElementById('stageTitle');
+  const stageMeta=document.getElementById('stageMeta');
+  const cadPill=document.getElementById('cadPill');
+
+  function setCad(cad){const m=CAD[cad]||CAD.daily;cadPill.textContent=m.t;cadPill.className='pill '+m.c;}
+  function clearActive(){document.querySelectorAll('.item').forEach(i=>i.classList.remove('active'));}
+
+  function showFrame(el){
+    pendingWrap.style.display='none';frame.style.display='block';
+    frame.src=el.dataset.src;
+    stageTitle.textContent=el.dataset.title;
+    stageMeta.textContent=el.dataset.src;
+    setCad(el.dataset.cad);
+  }
+  function showPending(el){
+    frame.style.display='none';pendingWrap.style.display='flex';
+    setCad(el.dataset.cad);
+    const c=CAD[el.dataset.cad];
+    stageTitle.textContent=el.dataset.title;stageMeta.textContent='準備中 — 未生成';
+    pendingCard.className='pending-card';
+    pendingCard.innerHTML=
+      '<div class="ic">'+(el.dataset.ic||'📄')+'</div>'+
+      '<span class="cad" style="background:var(--'+c.c+')">'+c.t+'</span>'+
+      '<h2>'+el.dataset.title+'</h2>'+
+      '<p>'+el.dataset.desc+'</p>'+
+      '<div class="how"><b>このタブの埋め方：</b><br>対象トピックのスキルを実行すると成果物HTMLが生成されます。'+
+      '生成後、<b>contents/</b> 配下に保存して本タブの参照先を差し替えれば、ここに表示されます。</div>';
+  }
+  function showArchive(el){
+    frame.style.display='none';pendingWrap.style.display='flex';
+    setCad(el.dataset.cad);
+    stageTitle.textContent=el.dataset.title;stageMeta.textContent='archive/';
+    pendingCard.className='pending-card archive-note';
+    pendingCard.innerHTML=
+      '<div class="ic">🗂</div><h2>成果物アーカイブ</h2>'+
+      '<p>Excelモデルと投資メモは、ハブとは分離してフォルダ整理済みです。以下から開けます。</p>'+
+      '<table>'+
+      '<tr><td>イリソ電子 6908</td><td>archive/PE分析/イリソ電子_6908/ … LBO/DCF final・practice・plugin＋投資メモ(docx)</td></tr>'+
+      '<tr><td>日本ライフライン 7575</td><td>archive/PE分析/日本ライフライン_7575/ … LBO/DCF final・v2・v3＋投資メモ(md)</td></tr>'+
+      '<tr><td>モデル雛形</td><td>archive/PE分析/_models_templates/ … LBOテンプレート・Debt Waterfall 等</td></tr>'+
+      '<tr><td>Market Brief 控え</td><td>archive/MarketBrief_backup/ … 日次バックアップ用</td></tr>'+
+      '</table>';
+  }
+
+  document.getElementById('nav').addEventListener('click',e=>{
+    const el=e.target.closest('.item');if(!el)return;
+    clearActive();el.classList.add('active');
+    const t=el.dataset.type;
+    if(t==='frame')showFrame(el);
+    else if(t==='archive')showArchive(el);
+    else showPending(el);
+  });
+
+  // default: daily morning brief
+  const first=document.querySelector('.item[data-cad="daily"]');
+  if(first){first.classList.add('active');showFrame(first);}
+</script>
+</body>
+</html>
