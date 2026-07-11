@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 米国株 業種選定</title>
+<style>
+  :root{--bg:#0b1220;--card:#141d2f;--line:#26324a;--text:#e7edf7;--muted:#93a3bd;--g:#34d399;--b:#60a5fa;--y:#fbbf24;--r:#fb7185;--p:#c084fc}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic UI",Meiryo,sans-serif;background:linear-gradient(180deg,#0b1220,#0e1729);color:var(--text);padding:22px 26px 60px;line-height:1.6}
+  h1{font-size:22px;font-weight:800}
+  .meta{color:var(--muted);font-size:12px;margin:4px 0 18px}
+  .callout{background:#101a2c;border:1px solid var(--line);border-left:3px solid var(--g);border-radius:10px;padding:14px 16px;font-size:13px;color:#c9d5e8;margin-bottom:20px}
+  h2{font-size:16px;margin:26px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .sectors{display:flex;flex-direction:column;gap:14px}
+  .sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .sec .h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .sec .rank{font-size:12px;font-weight:800;color:#0b1220;background:var(--g);border-radius:7px;padding:3px 8px}
+  .sec h3{font-size:15.5px}
+  .conv{margin-left:auto;font-size:11px;color:var(--muted)}
+  .conv b{color:var(--g)}
+  .sec p{font-size:13px;color:#d3dcec;margin:9px 0}
+  .reps{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .rep{font-size:11.5px;padding:4px 9px;border-radius:8px;background:#0f1728;border:1px solid var(--line);color:#a9d9c6}
+  .risk{font-size:12px;color:#f6b0bb;margin-top:8px}
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#0f1728;color:#9fb0c9}
+  td .bars{display:inline-block;color:var(--y)}
+  .repro{background:#0f1728;border:1px dashed var(--line);border-radius:10px;padding:14px 16px;font-size:12.5px;color:#9fb0c9;margin-top:14px}
+  .repro b{color:#c4b5fd}
+  .foot{margin-top:22px;color:#5f6f8a;font-size:11px;line-height:1.7}
+</style>
+</head>
+<body>
+  <h1>📈 2026年 米国株で狙うべき業界</h1>
+  <div class="meta">週次更新 ／ 作成 2026-07-10 ／ 投資対象選定＋企業分析（スキル化により業種・企業を差し替えて再現可能）</div>
+
+  <div class="callout">
+    <b>2026年の地合い：</b>AI設備投資が成長を牽引しつつ、資金は「メガキャップ・テックだけ」から <b>電力・資本財・エネルギー・ディフェンシブ</b> へローテーション中。半導体は今後5年の年率EPS成長 約26%、世界半導体産業は2026年に約$1兆規模へ。金利・高バリュエーション・AI投資の消化が主なリスク。
+  </div>
+
+  <h2>狙う業種 ランキング（確信度順）</h2>
+  <div class="sectors" id="sectors"></div>
+
+  <h2>選定フレーム（スコアリング）</h2>
+  <table>
+    <tr><th>業種</th><th>構造成長</th><th>収益モメンタム</th><th>バリュエーション妥当性</th><th>ディフェンシブ性</th><th>総合</th></tr>
+    <tr><td>半導体・AIインフラ</td><td>★★★★★</td><td>★★★★★</td><td>★★☆☆☆</td><td>★★☆☆☆</td><td><b>A</b></td></tr>
+    <tr><td>電力・データセンター</td><td>★★★★★</td><td>★★★★☆</td><td>★★★☆☆</td><td>★★★★☆</td><td><b>A</b></td></tr>
+    <tr><td>資本財・インフラ/防衛</td><td>★★★★☆</td><td>★★★★☆</td><td>★★★☆☆</td><td>★★★☆☆</td><td><b>A-</b></td></tr>
+    <tr><td>ヘルスケア</td><td>★★★★☆</td><td>★★★☆☆</td><td>★★★★☆</td><td>★★★★★</td><td><b>B+</b></td></tr>
+    <tr><td>エネルギー</td><td>★★★☆☆</td><td>★★★★☆</td><td>★★★★☆</td><td>★★★☆☆</td><td><b>B+</b></td></tr>
+  </table>
+
+  <div class="repro">
+    <b>このレポートの再現方法（スキル化の狙い）：</b><br>
+    ①スクリーニング条件（対象＝米国株、年＝2026、テーマ＝AI/電力/ディフェンシブ 等）を指定 → ②業種ごとに構造成長・収益モメンタム・バリュエーション・ディフェンシブ性でスコア → ③各業種の代表企業を抽出 → ④このHTMLレイアウトに流し込む。<br>
+    <b>差し替え可能な引数：</b>対象市場（米国/日本/欧州）・年・テーマ・スコア軸・銘柄数。同じ枠組みで「日本株×高配当」等に展開できます。
+  </div>
+
+  <div class="foot" id="foot"></div>
+
+<script>
+const SECTORS=[
+ {rank:1,color:"#34d399",name:"半導体・AIインフラ",conv:"高",
+  thesis:"AI向けロジック/メモリ需要が牽引。世界半導体は2026年に約$1兆、今後5年の年率EPS成長 約26%見込み。データセンター/推論(inference)拡大の直接的な受益。",
+  reps:["Nvidia","Broadcom","AMD","Micron","TSMC(ADR)","ASML(ADR)"],
+  risk:"リスク：高バリュエーション、AI設備投資の一服、対中規制。"},
+ {rank:2,color:"#60a5fa",name:"電力・データセンター（AI電力需要）",conv:"高",
+  thesis:"AIデータセンターの電力需要急増で、発電・送配電・電力機器が構造的な追い風。ローテーションの主役の一つ。",
+  reps:["Constellation Energy","Vistra","GE Vernova","Vertiv","Eaton","NextEra"],
+  risk:"リスク：規制・許認可の遅延、金利感応度（公益株）、電力価格の変動。"},
+ {rank:3,color:"#a78bfa",name:"資本財・インフラ／防衛",conv:"中〜高",
+  thesis:"電化・製造回帰(オンショアリング)・AIインフラ建設・防衛費増で設備投資サイクルが継続。エネルギー/素材にも波及。",
+  reps:["Caterpillar","GE Vernova","Quanta Services","Eaton","RTX","General Dynamics"],
+  risk:"リスク：景気循環性、受注の期ずれ、コモディティ価格。"},
+ {rank:4,color:"#fbbf24",name:"ヘルスケア（ディフェンシブ＋革新）",conv:"中",
+  thesis:"高齢化・健康志向・技術革新が下支え。景気不透明時の守りにもなる。GLP-1やロボティクス等の成長ドライバー。",
+  reps:["Eli Lilly","UnitedHealth","Intuitive Surgical","Thermo Fisher"],
+  risk:"リスク：薬価政策、規制、大型特許切れ。"},
+ {rank:5,color:"#fb7185",name:"エネルギー",conv:"中",
+  thesis:"地政学(中東情勢)とAIデータセンターの電力需要が価格を下支え。相対的に割安でキャッシュ創出力が高い。",
+  reps:["Exxon Mobil","Chevron","ConocoPhillips"],
+  risk:"リスク：原油価格の急落、需要減速、脱炭素の長期逆風。"},
+];
+const box=document.getElementById('sectors');
+SECTORS.forEach(s=>{
+  const el=document.createElement('div');el.className='sec';
+  el.innerHTML=`<div class="h"><span class="rank" style="background:${s.color}">#${s.rank}</span>
+    <h3>${s.name}</h3><span class="conv">確信度：<b style="color:${s.color}">${s.conv}</b></span></div>
+    <p>${s.thesis}</p>
+    <div class="reps">${s.reps.map(r=>`<span class="rep">${r}</span>`).join('')}</div>
+    <div class="risk">${s.risk}</div>`;
+  box.appendChild(el);
+});
+document.getElementById('foot').textContent="出典: Morningstar / Morgan Stanley / Charles Schwab / Forbes 2026 Outlook ほか。個別銘柄は代表例であり投資推奨ではありません。数値は概算。";
+</script>
+</body>
+</html>
