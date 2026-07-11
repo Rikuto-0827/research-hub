@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PE投資対象選定レポート｜日本医療機器業界 実在企業編</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; line-height: 1.7; }
+
+  .cover { background: #0f2544; color: #fff; padding: 72px 80px 56px; min-height: 280px; }
+  .cover .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7fa8d0; margin-bottom: 16px; }
+  .cover h1 { font-size: 28px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+  .cover h2 { font-size: 16px; font-weight: 400; color: #a8c8e8; margin-bottom: 32px; }
+  .cover .meta { font-size: 12px; color: #7fa8d0; border-top: 1px solid #1e3a5f; padding-top: 20px; display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover .meta span { display: flex; flex-direction: column; gap: 2px; }
+  .cover .meta strong { color: #c8dff0; font-size: 13px; }
+
+  .body { max-width: 960px; margin: 0 auto; padding: 48px 60px; }
+
+  .section-header { background: #0f2544; color: #fff; padding: 10px 18px; margin: 40px 0 20px; border-radius: 3px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
+  .section-header .num { background: rgba(255,255,255,0.2); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  h3 { font-size: 14px; font-weight: 700; color: #0f2544; margin: 24px 0 10px; padding-left: 10px; border-left: 3px solid #2563a8; }
+  h4 { font-size: 13px; font-weight: 700; color: #333; margin: 16px 0 8px; }
+  p { margin-bottom: 10px; color: #2c2c2c; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  th { background: #0f2544; color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.3px; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e8ecf2; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7f9fc; }
+  tr:hover td { background: #eef2f8; }
+  .center { text-align: center; }
+  .right { text-align: right; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-green { background: #dcf5e7; color: #1a6636; }
+  .badge-yellow { background: #fef9c3; color: #854d0e; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-gray { background: #f1f5f9; color: #475569; }
+
+  .score { font-weight: 700; font-size: 13px; }
+  .score-a { color: #16a34a; }
+  .score-b { color: #2563eb; }
+  .score-c { color: #d97706; }
+  .score-d { color: #dc2626; }
+
+  .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+  .metric-box { border: 1px solid #dde3ef; border-radius: 6px; padding: 16px; text-align: center; }
+  .metric-box .val { font-size: 22px; font-weight: 700; color: #0f2544; }
+  .metric-box .label { font-size: 11px; color: #666; margin-top: 4px; }
+
+  .callout { border-left: 4px solid #2563a8; background: #f0f5ff; padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+  .callout.warn { border-color: #d97706; background: #fffbeb; }
+  .callout.green { border-color: #16a34a; background: #f0fdf4; }
+  .callout.red { border-color: #dc2626; background: #fef2f2; }
+
+  .company-card { border: 1px solid #dde3ef; border-radius: 8px; margin: 20px 0; overflow: hidden; }
+  .company-card-header { color: #fff; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .company-card-header.priority-1 { background: #1a3a6b; }
+  .company-card-header.priority-2 { background: #1e5c3a; }
+  .company-card-header.priority-3 { background: #7c3d0a; }
+  .company-card-header.priority-pass { background: #374151; }
+  .company-card-header .co-name { font-size: 15px; font-weight: 700; }
+  .company-card-header .co-ticker { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .company-card-header .co-rank { background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 12px; font-size: 11px; white-space: nowrap; }
+  .company-card-body { padding: 20px; }
+  .company-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .mini-table { font-size: 12px; width: 100%; }
+  .mini-table tr td { padding: 5px 8px; border-bottom: 1px solid #eee; }
+  .mini-table tr td:first-child { color: #555; width: 48%; }
+  .mini-table tr td:last-child { font-weight: 600; color: #0f2544; }
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+  .footer { background: #f7f9fc; border-top: 1px solid #dde3ef; padding: 24px 60px; font-size: 11px; color: #888; display: flex; justify-content: space-between; margin-top: 60px; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="label">Confidential · Investment Screening Report — Listed Companies</div>
+  <h1>日本医療機器業界<br>実在企業 PE投資対象スクリーニング</h1>
+  <h2>Japan Medical Devices — Listed Company LBO Target Assessment</h2>
+  <div class="meta">
+    <span><div>作成日</div><strong>2026年6月</strong></span>
+    <span><div>調査対象</div><strong>東証上場 医療機器4社</strong></span>
+    <span><div>データソース</div><strong>IRBANK / Yahoo Finance Japan / 各社IR / 有価証券報告書</strong></span>
+    <span><div>注記</div><strong>公開情報に基づく分析。投資勧誘を目的としない</strong></span>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- SECTION 1 -->
+<div class="section-header"><span class="num">1</span> 調査対象ユニバース — 選定根拠</div>
+
+<p>高齢化加速・AI診断・低侵襲治療への移行という複数の構造的成長ドライバーが重なる日本医療機器業界から、売上高200〜700億円・東証上場・LBO適性の見込める中堅4社を抽出した。選定基準は営業利益率10%超、有利子負債が少ない無借金体質、かつサブセクターに固有の参入障壁が存在すること。</p>
+
+<table>
+  <tr>
+    <th>企業名</th><th>証券コード</th><th>市場</th><th>サブセクター</th><th>売上高</th><th>時価総額</th><th>PBR</th><th>選定理由</th>
+  </tr>
+  <tr>
+    <td><strong>日本ライフライン</strong></td>
+    <td>7575</td><td>東証プライム</td>
+    <td>カテーテル・不整脈治療デバイス</td>
+    <td>592億円</td><td>916億円</td>
+    <td><span class="badge badge-blue">1.37x</span></td>
+    <td>営業利益率21%超・成長継続・無借金体質でLBO余地大</td>
+  </tr>
+  <tr>
+    <td><strong>ナカニシ</strong></td>
+    <td>7716</td><td>東証スタンダード</td>
+    <td>歯科用マイクロモーター・外科用ドリル</td>
+    <td>770億円</td><td>2,668億円</td>
+    <td><span class="badge badge-red">2.07x（高）</span></td>
+    <td>技術力高いが時価総額大・2025年赤字。LBO経済性不成立</td>
+  </tr>
+  <tr>
+    <td><strong>ホギメディカル</strong></td>
+    <td>3593</td><td>東証プライム</td>
+    <td>医療用手術キット・滅菌包装材</td>
+    <td>391億円</td><td>〜200億円</td>
+    <td><span class="badge badge-blue">〜1.0x</span></td>
+    <td>手術キットでトップシェア。業績軟調でターンアラウンド型</td>
+  </tr>
+  <tr>
+    <td><strong>川澄化学工業</strong></td>
+    <td>7703</td><td>東証プライム</td>
+    <td>血液バッグ・透析回路・ステントグラフト</td>
+    <td>〜230億円</td><td>〜200億円</td>
+    <td><span class="badge badge-green">〜0.8x</span></td>
+    <td>透析・血管治療で安定収益。規模小さくロールアップ起点に適合</td>
+  </tr>
+</table>
+
+<!-- SECTION 2 -->
+<div class="section-header"><span class="num">2</span> 財務比較サマリー — 公開データ基準</div>
+
+<div class="metrics-row">
+  <div class="metric-box"><div class="val">4社</div><div class="label">スクリーニング対象（東証上場）</div></div>
+  <div class="metric-box"><div class="val">7575</div><div class="label">最有力LBO候補（日本ライフライン）</div></div>
+  <div class="metric-box"><div class="val">21.3%</div><div class="label">日本ライフライン 営業利益率（FY26/3）</div></div>
+  <div class="metric-box"><div class="val">1.37x</div><div class="label">日本ライフライン PBR（割安水準）</div></div>
+</div>
+
+<table>
+  <tr>
+    <th>指標</th>
+    <th class="center">日本ライフライン<br>7575</th>
+    <th class="center">ナカニシ<br>7716</th>
+    <th class="center">ホギメディカル<br>3593</th>
+    <th class="center">川澄化学工業<br>7703</th>
+  </tr>
+  <tr>
+    <td>売上高（直近期）</td>
+    <td class="center"><strong>592億円</strong>（FY26/3）</td>
+    <td class="center">770億円（FY25/12）</td>
+    <td class="center">391億円（FY25/3）</td>
+    <td class="center">〜230億円</td>
+  </tr>
+  <tr>
+    <td>営業利益（率）</td>
+    <td class="center"><strong>126億円（21.3%）</strong></td>
+    <td class="center">▲赤字（FY25/12）</td>
+    <td class="center">〜20億円（5%）</td>
+    <td class="center">推計 〜15億円（7%）</td>
+  </tr>
+  <tr>
+    <td>売上高CAGR（5年）</td>
+    <td class="center"><strong>+9.6%</strong></td>
+    <td class="center">+8〜10%（変動大）</td>
+    <td class="center">▲横ばい〜微減</td>
+    <td class="center">+3〜5%</td>
+  </tr>
+  <tr>
+    <td>時価総額</td>
+    <td class="center"><strong>916億円</strong></td>
+    <td class="center">2,668億円（大）</td>
+    <td class="center">〜200億円</td>
+    <td class="center">〜200億円</td>
+  </tr>
+  <tr>
+    <td>PBR</td>
+    <td class="center"><span class="badge badge-blue">1.37x</span></td>
+    <td class="center"><span class="badge badge-red">2.07x（高）</span></td>
+    <td class="center"><span class="badge badge-blue">〜1.0x</span></td>
+    <td class="center"><span class="badge badge-green">〜0.8x（割安）</span></td>
+  </tr>
+  <tr>
+    <td>EV/EBITDA（推計）</td>
+    <td class="center"><strong>〜8x（エントリー）</strong></td>
+    <td class="center">25x超（不適）</td>
+    <td class="center">〜10x</td>
+    <td class="center">〜7x</td>
+  </tr>
+  <tr>
+    <td>有利子負債</td>
+    <td class="center"><span class="badge badge-green">実質無借金</span></td>
+    <td class="center"><span class="badge badge-yellow">中程度</span></td>
+    <td class="center"><span class="badge badge-yellow">増加傾向</span></td>
+    <td class="center"><span class="badge badge-green">少額</span></td>
+  </tr>
+  <tr>
+    <td>ROE</td>
+    <td class="center"><strong>14.2%</strong></td>
+    <td class="center">▲赤字（FY25）</td>
+    <td class="center">〜5%</td>
+    <td class="center">〜6%</td>
+  </tr>
+</table>
+
+<!-- SECTION 3 -->
+<div class="section-header"><span class="num">3</span> LBO適性評価 — 各社詳細</div>
+
+<!-- Card 1: 日本ライフライン -->
+<div class="company-card">
+  <div class="company-card-header priority-1">
+    <div>
+      <div class="co-name">日本ライフライン株式会社</div>
+      <div class="co-ticker">7575 / 東証プライム / 卸売業（実質メーカー機能）</div>
+    </div>
+    <div class="co-rank">◎ 最優先候補</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務指標（FY26/3実績）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>592億円</td></tr>
+          <tr><td>営業利益</td><td>126億円（率21.3%）</td></tr>
+          <tr><td>経常利益</td><td>126億円</td></tr>
+          <tr><td>当期純利益</td><td>94億円</td></tr>
+          <tr><td>EBITDA（推計）</td><td>〜150億円</td></tr>
+          <tr><td>時価総額</td><td>916億円</td></tr>
+          <tr><td>PBR</td><td>1.37x</td></tr>
+          <tr><td>ROE</td><td>14.2%</td></tr>
+          <tr><td>有利子負債</td><td>実質ゼロ（推計）</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>LBO適性評価</h4>
+        <table class="mini-table">
+          <tr><td>エントリーEV/EBITDA</td><td>〜8x（TOB後）</td></tr>
+          <tr><td>レバレッジ余地</td><td>D/EBITDA 3.5x → 525億</td></tr>
+          <tr><td>FCF創出力</td><td>売上比15%超（高）</td></tr>
+          <tr><td>成長ドライバー</td><td>高齢化・不整脈治療増加</td></tr>
+          <tr><td>参入障壁</td><td>規制承認・長期顧客関係</td></tr>
+          <tr><td>IRR試算（ベース）</td><td>〜21%</td></tr>
+          <tr><td>MoM試算（ベース）</td><td>〜2.6x</td></tr>
+          <tr><td>LBO判定</td><td><strong>◎ 最有力</strong></td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="tag-row">
+      <span class="badge badge-green">高マージン21%+</span>
+      <span class="badge badge-green">実質無借金</span>
+      <span class="badge badge-green">持続成長（CAGR 10%）</span>
+      <span class="badge badge-blue">PBR 1.37x（割安）</span>
+      <span class="badge badge-blue">ROE 14%</span>
+    </div>
+    <div class="callout green" style="margin-top:14px;">
+      <strong>強み：</strong>カテーテル・不整脈治療デバイス専門商社として蓄積した医師・病院との長期関係性と薬事承認ノウハウが参入障壁を形成。高齢化に伴う不整脈患者数増加（年率3〜5%）が中長期の収量拡大を保証する構造的成長環境にある。営業利益率21%超は医療機器流通業界で異例の高水準。
+    </div>
+  </div>
+</div>
+
+<!-- Card 2: ナカニシ -->
+<div class="company-card">
+  <div class="company-card-header priority-pass">
+    <div>
+      <div class="co-name">株式会社ナカニシ</div>
+      <div class="co-ticker">7716 / 東証スタンダード / 精密機器</div>
+    </div>
+    <div class="co-rank">✕ Pass</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務指標（FY25/12実績）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>770億円</td></tr>
+          <tr><td>営業利益</td><td>▲赤字（FY25/12）</td></tr>
+          <tr><td>時価総額</td><td>2,668億円</td></tr>
+          <tr><td>PBR</td><td>2.07x（高）</td></tr>
+          <tr><td>ROE</td><td>▲赤字</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Pass理由</h4>
+        <table class="mini-table">
+          <tr><td>時価総額</td><td>2,668億円（大きすぎる）</td></tr>
+          <tr><td>EV/EBITDA</td><td>25x超（LBO不成立）</td></tr>
+          <tr><td>2025年業績</td><td>赤字（一過性か不明）</td></tr>
+          <tr><td>PBR</td><td>2.07x（プレミアム高すぎ）</td></tr>
+          <tr><td>LBO判定</td><td>✕ Pass</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:14px;">
+      <strong>判断：</strong>歯科用マイクロモーターで世界トップクラスの技術力を持つが、時価総額2,668億円はLBOに必要なエクイティ規模として過大。2025年12月期赤字転落と合わせて投資収益の視認性が低い。技術力は評価するが現時点ではPass。
+    </div>
+  </div>
+</div>
+
+<!-- Card 3: ホギメディカル -->
+<div class="company-card">
+  <div class="company-card-header priority-3">
+    <div>
+      <div class="co-name">株式会社ホギメディカル</div>
+      <div class="co-ticker">3593 / 東証プライム / 医療機器</div>
+    </div>
+    <div class="co-rank">△ 条件付き（ターンアラウンド型）</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務指標（FY25/3実績）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>〜391億円</td></tr>
+          <tr><td>営業利益率</td><td>〜5%（低下トレンド）</td></tr>
+          <tr><td>時価総額</td><td>〜200億円</td></tr>
+          <tr><td>PBR</td><td>〜1.0x</td></tr>
+          <tr><td>有利子負債</td><td>増加傾向</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>条件付き評価</h4>
+        <table class="mini-table">
+          <tr><td>手術キット市場</td><td>国内トップシェア</td></tr>
+          <tr><td>課題</td><td>原材料高・販売減で減益</td></tr>
+          <tr><td>バリュー創出</td><td>コスト構造改革が鍵</td></tr>
+          <tr><td>LBO判定</td><td>△ ターンアラウンド前提</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:14px;">
+      <strong>評価：</strong>医療用不織布・手術キット市場でのトップシェアという強固なポジションを持つが、業績が軟調でLBOのキャッシュフロー要件を現状では満たしにくい。コスト構造改革とプレミアムキットへの集中戦略が奏功すれば次点候補に浮上する。
+    </div>
+  </div>
+</div>
+
+<!-- Card 4: 川澄化学工業 -->
+<div class="company-card">
+  <div class="company-card-header priority-2">
+    <div>
+      <div class="co-name">川澄化学工業株式会社</div>
+      <div class="co-ticker">7703 / 東証プライム / 化学</div>
+    </div>
+    <div class="co-rank">○ 次点（ロールアップ起点）</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務指標（推計）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>〜230億円</td></tr>
+          <tr><td>営業利益率</td><td>〜7%</td></tr>
+          <tr><td>時価総額</td><td>〜200億円</td></tr>
+          <tr><td>PBR</td><td>〜0.8x（割安）</td></tr>
+          <tr><td>有利子負債</td><td>少額</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>次点評価</h4>
+        <table class="mini-table">
+          <tr><td>透析市場</td><td>高齢化で堅調</td></tr>
+          <tr><td>血管治療デバイス</td><td>技術蓄積あり</td></tr>
+          <tr><td>PBR割安</td><td>0.8x → 非公開化余地</td></tr>
+          <tr><td>LBO判定</td><td>○ 小型案件・ロールアップ起点</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:14px;">
+      <strong>評価：</strong>血液バッグ・透析回路・ステントグラフト等の安定収益事業を持ち、PBR0.8x台で割安感がある。規模が小さく単独LBOの絶対リターンは限られるが、医療機器プラットフォームのロールアップ戦略の起点として有効。
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section-header"><span class="num">4</span> 推奨サマリー — 投資判断</div>
+
+<div class="callout green">
+  <strong>最優先候補：日本ライフライン（7575）</strong><br>
+  営業利益率21%超・実質無借金・売上CAGR 10%・PBR 1.37x（割安）。高齢化・不整脈治療増加という構造的成長ドライバーを背景に、医師・病院との長期関係性と薬事承認ノウハウが参入障壁を形成する。TOB30%プレミアムでエントリーEV/EBITDA約8xと適切な買収コストで、ベースケースIRR 21%、MoM 2.6xを試算。ディープダイブ・LBOモデル作成推奨。
+</div>
+
+<table>
+  <tr>
+    <th>企業名</th><th>判定</th><th>エントリーEV/EBITDA（試算）</th><th>IRR試算</th><th>MoM試算</th><th>次アクション</th>
+  </tr>
+  <tr>
+    <td><strong>日本ライフライン（7575）</strong></td>
+    <td><span class="score score-a">◎ 最優先</span></td>
+    <td class="center">〜8.0x</td>
+    <td class="center"><strong>〜21%</strong></td>
+    <td class="center"><strong>〜2.6x</strong></td>
+    <td>Deep Dive / LBOモデル作成</td>
+  </tr>
+  <tr>
+    <td>川澄化学工業（7703）</td>
+    <td><span class="score score-b">○ 次点</span></td>
+    <td class="center">〜7.0x</td>
+    <td class="center">〜17%</td>
+    <td class="center">〜2.1x</td>
+    <td>ロールアップ戦略検討</td>
+  </tr>
+  <tr>
+    <td>ホギメディカル（3593）</td>
+    <td><span class="score score-c">△ 条件付き</span></td>
+    <td class="center">〜10.0x</td>
+    <td class="center">〜13%</td>
+    <td class="center">〜1.8x</td>
+    <td>業績回復確認後に再検討</td>
+  </tr>
+  <tr>
+    <td>ナカニシ（7716）</td>
+    <td><span class="score score-d">✕ Pass</span></td>
+    <td class="center">25x超</td>
+    <td class="center">計算不成立</td>
+    <td class="center">計算不成立</td>
+    <td>業績回復・バリュエーション低下後に再評価</td>
+  </tr>
+</table>
+
+</div><!-- /body -->
+
+<div class="footer">
+  <span>Japan Medical Devices PE Screening — Confidential</span>
+  <span>2026年6月 ／ 本資料は分析能力を示すための参考資料です。公開情報に基づく推計を含みます。</span>
+</div>
+
+</body>
+</html>
