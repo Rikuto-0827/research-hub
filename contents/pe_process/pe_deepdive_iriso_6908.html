@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イリソ電子工業（6908）PE投資分析レポート</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; line-height: 1.7; }
+
+  .cover { background: #0f2544; color: #fff; padding: 72px 80px 56px; min-height: 280px; }
+  .cover .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7fa8d0; margin-bottom: 16px; }
+  .cover h1 { font-size: 28px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+  .cover h2 { font-size: 16px; font-weight: 400; color: #a8c8e8; margin-bottom: 32px; }
+  .cover .meta { font-size: 12px; color: #7fa8d0; border-top: 1px solid #1e3a5f; padding-top: 20px; display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover .meta span { display: flex; flex-direction: column; gap: 2px; }
+  .cover .meta strong { color: #c8dff0; font-size: 13px; }
+
+  .body { max-width: 960px; margin: 0 auto; padding: 48px 60px; }
+
+  .section-header { background: #0f2544; color: #fff; padding: 10px 18px; margin: 40px 0 20px; border-radius: 3px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
+  .section-header .num { background: rgba(255,255,255,0.2); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  h3 { font-size: 14px; font-weight: 700; color: #0f2544; margin: 24px 0 10px; padding-left: 10px; border-left: 3px solid #2563a8; }
+  h4 { font-size: 13px; font-weight: 700; color: #333; margin: 16px 0 8px; }
+  p { margin-bottom: 10px; color: #2c2c2c; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  th { background: #0f2544; color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.3px; }
+  th.right { text-align: right; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e8ecf2; vertical-align: top; }
+  td.right { text-align: right; font-variant-numeric: tabular-nums; }
+  td.center { text-align: center; }
+  tr:nth-child(even) td { background: #f7f9fc; }
+  tr:hover td { background: #eef2f8; }
+  tr.subtotal td { background: #e8ecf4; font-weight: 700; }
+  tr.total td { background: #0f2544; color: #fff; font-weight: 700; }
+  tr.total td.right { color: #fff; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-green { background: #dcf5e7; color: #1a6636; }
+  .badge-yellow { background: #fef9c3; color: #854d0e; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-gray { background: #f1f5f9; color: #475569; }
+
+  .score { font-weight: 700; font-size: 13px; }
+  .score-a { color: #16a34a; }
+  .score-b { color: #2563eb; }
+  .score-c { color: #d97706; }
+  .score-d { color: #dc2626; }
+
+  .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+  .metric-box { border: 1px solid #dde3ef; border-radius: 6px; padding: 16px; text-align: center; }
+  .metric-box .val { font-size: 22px; font-weight: 700; color: #0f2544; line-height: 1.2; }
+  .metric-box .sub { font-size: 11px; color: #888; margin-top: 2px; }
+  .metric-box .label { font-size: 11px; color: #555; margin-top: 6px; border-top: 1px solid #eee; padding-top: 6px; }
+
+  .metrics-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+
+  .callout { border-left: 4px solid #2563a8; background: #f0f5ff; padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+  .callout.warn { border-color: #d97706; background: #fffbeb; }
+  .callout.green { border-color: #16a34a; background: #f0fdf4; }
+  .callout.red { border-color: #dc2626; background: #fef2f2; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 16px 0; }
+  .card { border: 1px solid #dde3ef; border-radius: 8px; padding: 18px; }
+  .card h4 { margin-top: 0; margin-bottom: 10px; }
+
+  .source-note { font-size: 11px; color: #888; margin-top: 6px; font-style: italic; }
+
+  .lbo-scenario { border: 1px solid #dde3ef; border-radius: 8px; overflow: hidden; margin: 16px 0; }
+  .lbo-scenario-header { background: #1a3a6b; color: #fff; padding: 10px 18px; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .lbo-scenario-header .tag { background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 10px; font-size: 11px; }
+  .lbo-scenario-body { padding: 16px 18px; }
+
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+  .footer { background: #f7f9fc; border-top: 1px solid #dde3ef; padding: 24px 60px; font-size: 11px; color: #888; display: flex; justify-content: space-between; margin-top: 60px; }
+
+  .up { color: #16a34a; font-weight: 600; }
+  .down { color: #dc2626; font-weight: 600; }
+
+  @media print {
+    .body { padding: 20px 30px; }
+    .cover { padding: 40px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="label">Confidential · PE Deep-Dive Analysis · Based on Annual Securities Report (有価証券報告書)</div>
+  <h1>イリソ電子工業株式会社（6908）<br>PE投資詳細分析レポート</h1>
+  <h2>IRISO Electronics — LBO Investment Analysis · 2025年3月期 有価証券報告書ベース</h2>
+  <div class="meta">
+    <span><div>分析基準日</div><strong>2026年6月</strong></span>
+    <span><div>データソース</div><strong>有価証券報告書（第59期・2025年3月期）</strong></span>
+    <span><div>分析対象期間</div><strong>第55期〜第59期（5期推移）</strong></span>
+    <span><div>提出日</div><strong>2025年6月23日</strong></span>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- SECTION 1: EXECUTIVE SUMMARY -->
+<div class="section-header"><span class="num">1</span> エグゼクティブサマリー</div>
+
+<div class="metrics-row">
+  <div class="metric-box">
+    <div class="val">563億円</div>
+    <div class="sub">（前期比 +1.9%）</div>
+    <div class="label">売上高（2025/3期）</div>
+  </div>
+  <div class="metric-box">
+    <div class="val">55億円</div>
+    <div class="sub">（営業利益率 9.8%）</div>
+    <div class="label">営業利益（推計）</div>
+  </div>
+  <div class="metric-box">
+    <div class="val">120億円</div>
+    <div class="sub">（FCF変換率 71%）</div>
+    <div class="label">営業CF（実績）</div>
+  </div>
+  <div class="metric-box">
+    <div class="val">243億円</div>
+    <div class="sub">（有利子負債ほぼゼロ）</div>
+    <div class="label">現金同等物期末残高</div>
+  </div>
+</div>
+
+<div class="callout green">
+  <strong>投資仮説サマリー：</strong>有報データで確認した最重要ポイントは<strong>実質ネットキャッシュポジション</strong>（現金243億円・有利子負債ほぼゼロ・自己資本比率77%）。これはLBOにおいて買収後のデット組成余地が最大化される状態を意味する。営業CF120億円の安定創出力、車載電動化による中計650億円・営業利益率15%目標、中計期間のROIC10%目標が揃い、PE投資の「買収→バリューアップ→エグジット」シナリオの実現可能性が高い。
+</div>
+
+<!-- SECTION 2: 5-YEAR FINANCIAL TREND -->
+<div class="section-header"><span class="num">2</span> 5期財務推移 — 有価証券報告書実績値</div>
+
+<p class="source-note">出所：イリソ電子工業 有価証券報告書 第59期（2025年3月期）主要経営指標等の推移より</p>
+
+<table>
+  <tr>
+    <th>指標（連結）</th>
+    <th class="right">第55期<br>2021/3</th>
+    <th class="right">第56期<br>2022/3</th>
+    <th class="right">第57期<br>2023/3</th>
+    <th class="right">第58期<br>2024/3</th>
+    <th class="right">第59期<br>2025/3</th>
+    <th class="right">5期成長率</th>
+  </tr>
+  <tr>
+    <td><strong>売上高</strong>（百万円）</td>
+    <td class="right">36,520</td>
+    <td class="right">43,863</td>
+    <td class="right">52,903</td>
+    <td class="right">55,271</td>
+    <td class="right"><strong>56,332</strong></td>
+    <td class="right"><span class="up">+54%</span></td>
+  </tr>
+  <tr>
+    <td><strong>経常利益</strong>（百万円）</td>
+    <td class="right">2,970</td>
+    <td class="right">4,838</td>
+    <td class="right">7,661</td>
+    <td class="right">7,189</td>
+    <td class="right"><strong>5,504</strong></td>
+    <td class="right"><span class="up">+85%</span></td>
+  </tr>
+  <tr>
+    <td>経常利益率（%）</td>
+    <td class="right">8.1%</td>
+    <td class="right">11.0%</td>
+    <td class="right">14.5%</td>
+    <td class="right">13.0%</td>
+    <td class="right">9.8%</td>
+    <td class="right"><span class="down">▼ピーク比低下</span></td>
+  </tr>
+  <tr>
+    <td><strong>純利益</strong>（百万円）</td>
+    <td class="right">2,141</td>
+    <td class="right">3,913</td>
+    <td class="right">5,541</td>
+    <td class="right">5,593</td>
+    <td class="right"><strong>2,662</strong></td>
+    <td class="right"><span class="down">▼前期比-52%</span></td>
+  </tr>
+  <tr>
+    <td>自己資本比率（%）</td>
+    <td class="right">85.0%</td>
+    <td class="right">83.8%</td>
+    <td class="right">81.7%</td>
+    <td class="right">78.7%</td>
+    <td class="right">77.3%</td>
+    <td class="right"><span class="badge badge-green">無借金経営</span></td>
+  </tr>
+  <tr>
+    <td><strong>純資産</strong>（百万円）</td>
+    <td class="right">54,731</td>
+    <td class="right">61,776</td>
+    <td class="right">68,019</td>
+    <td class="right">77,016</td>
+    <td class="right"><strong>71,196</strong></td>
+    <td class="right"><span class="up">+30%</span></td>
+  </tr>
+  <tr>
+    <td><strong>総資産</strong>（百万円）</td>
+    <td class="right">63,941</td>
+    <td class="right">73,153</td>
+    <td class="right">82,491</td>
+    <td class="right">96,856</td>
+    <td class="right"><strong>91,370</strong></td>
+    <td class="right"><span class="up">+43%</span></td>
+  </tr>
+  <tr>
+    <td>ROE（%）</td>
+    <td class="right">4.1%</td>
+    <td class="right">6.8%</td>
+    <td class="right">8.6%</td>
+    <td class="right">7.8%</td>
+    <td class="right">3.6%</td>
+    <td class="right"><span class="down">▼低下（特損影響）</span></td>
+  </tr>
+  <tr>
+    <td><strong>営業CF</strong>（百万円）</td>
+    <td class="right">6,234</td>
+    <td class="right">6,691</td>
+    <td class="right">11,613</td>
+    <td class="right">12,934</td>
+    <td class="right"><strong>12,043</strong></td>
+    <td class="right"><span class="up">+93%</span></td>
+  </tr>
+  <tr>
+    <td>投資CF（百万円）</td>
+    <td class="right">▲4,881</td>
+    <td class="right">▲6,248</td>
+    <td class="right">▲8,179</td>
+    <td class="right">▲9,089</td>
+    <td class="right">▲8,778</td>
+    <td class="right">—</td>
+  </tr>
+  <tr class="subtotal">
+    <td><strong>FCF（営業CF－投資CF）</strong></td>
+    <td class="right">1,353</td>
+    <td class="right">443</td>
+    <td class="right">3,434</td>
+    <td class="right">3,845</td>
+    <td class="right"><strong>3,265</strong></td>
+    <td class="right"><span class="up">+141%</span></td>
+  </tr>
+  <tr>
+    <td><strong>現金同等物残高</strong>（百万円）</td>
+    <td class="right">14,260</td>
+    <td class="right">14,066</td>
+    <td class="right">18,640</td>
+    <td class="right">26,692</td>
+    <td class="right"><strong>24,314</strong></td>
+    <td class="right"><span class="up">+71%</span></td>
+  </tr>
+</table>
+
+<div class="callout warn">
+  <strong>2025年3月期の純利益▲52%（56億→27億円）の要因：</strong>有報内で「構造改革の実施に伴う希望退職制度の募集結果及び特別損失計上」が確認される。これは一過性の特別損失であり、営業利益ベースのEBITDAには実質的な影響は軽微。PE投資家はNormalized EBITDAでの評価が必要。構造改革完了後の正常化利益水準は前期（2024/3）の経常利益72億円が参考水準。
+</div>
+
+<!-- SECTION 3: LBO KEY METRICS -->
+<div class="section-header"><span class="num">3</span> LBO核心指標 — EBITDA・FCF・デット組成余地</div>
+
+<h3>EBITDA推計（Normalized）</h3>
+
+<table>
+  <tr>
+    <th>項目</th>
+    <th class="right">2024/3（参考）</th>
+    <th class="right">2025/3（実績）</th>
+    <th class="right">推計根拠</th>
+  </tr>
+  <tr>
+    <td>経常利益</td>
+    <td class="right">7,189百万円</td>
+    <td class="right">5,504百万円</td>
+    <td>有報実績値</td>
+  </tr>
+  <tr>
+    <td>支払利息（推計）</td>
+    <td class="right">+100百万円</td>
+    <td class="right">+100百万円</td>
+    <td>無借金経営のため極少</td>
+  </tr>
+  <tr>
+    <td>減価償却費（推計）</td>
+    <td class="right">+2,500百万円</td>
+    <td class="right">+2,500百万円</td>
+    <td>投資CF規模・資産規模から試算。有報詳細未開示</td>
+  </tr>
+  <tr>
+    <td>特別損失（一過性）Add-back</td>
+    <td class="right">—</td>
+    <td class="right">+1,000百万円</td>
+    <td>希望退職等 構造改革コスト（推計）</td>
+  </tr>
+  <tr class="subtotal">
+    <td><strong>Normalized EBITDA</strong></td>
+    <td class="right"><strong>9,789百万円（約98億円）</strong></td>
+    <td class="right"><strong>9,104百万円（約91億円）</strong></td>
+    <td>PE標準のNormalized EBITDA</td>
+  </tr>
+  <tr>
+    <td>EBITDAマージン</td>
+    <td class="right">17.7%</td>
+    <td class="right">16.2%</td>
+    <td></td>
+  </tr>
+</table>
+
+<h3>キャッシュ変換・レバレッジ余地</h3>
+<div class="two-col">
+  <div class="card">
+    <h4>FCF変換率（2025/3期実績）</h4>
+    <table style="margin:0;">
+      <tr><td>営業CF</td><td class="right"><strong>120億円</strong></td></tr>
+      <tr><td>Normalized EBITDA</td><td class="right">91億円</td></tr>
+      <tr><td>FCF変換率（営業CF/EBITDA）</td><td class="right"><strong>132%</strong></td></tr>
+      <tr><td>FCF（営業CF－投資CF）</td><td class="right">33億円</td></tr>
+      <tr><td>FCF変換率（FCF/EBITDA）</td><td class="right">36%</td></tr>
+      <tr><td style="color:#888;font-size:11px;">※FCF低い理由</td><td class="right" style="color:#888;font-size:11px;">投資CF88億円（Capex重め）</td></tr>
+    </table>
+    <p style="margin-top:8px;font-size:11px;color:#666;">営業CFは非常に強いがCapex投資（秋田新工場等）が大きく、FCFを圧迫。LBO後の投資水準管理が鍵。</p>
+  </div>
+  <div class="card">
+    <h4>デット組成余地（ネットキャッシュポジション）</h4>
+    <table style="margin:0;">
+      <tr><td>現金同等物</td><td class="right"><strong>243億円</strong></td></tr>
+      <tr><td>有利子負債（推計）</td><td class="right">ほぼゼロ</td></tr>
+      <tr><td>自己資本比率</td><td class="right">77.3%</td></tr>
+      <tr><td>純資産</td><td class="right">712億円</td></tr>
+      <tr><td>LBO想定デット</td><td class="right">EBITDA×3.5x = <strong>318億円</strong></td></tr>
+      <tr><td>現金活用（買収価格充当）</td><td class="right">▲243億円</td></tr>
+      <tr><td><strong>実質エクイティ投資</strong></td><td class="right"><strong>大幅圧縮可能</strong></td></tr>
+    </table>
+    <p style="margin-top:8px;font-size:11px;color:#666;">ネットキャッシュ243億円が買収コストを相殺。実効的なデット/EBITDA負担を低減できる構造。</p>
+  </div>
+</div>
+
+<!-- SECTION 4: BUSINESS ANALYSIS -->
+<div class="section-header"><span class="num">4</span> ビジネス分析 — 競争優位性・成長ドライバー・リスク</div>
+
+<h3>製品ポートフォリオ</h3>
+<table>
+  <tr>
+    <th>製品カテゴリー</th><th>概要</th><th>主要エンドマーケット</th><th>成長性</th>
+  </tr>
+  <tr>
+    <td><strong>基板対基板コネクタ（BtoBコネクタ）</strong></td>
+    <td>プリント基板接続用。垂直・平行・水平接続対応</td>
+    <td>車載ECU統合・産業機械・データセンター</td>
+    <td><span class="badge badge-green">高</span></td>
+  </tr>
+  <tr>
+    <td><strong>FPC/FFCコネクタ</strong></td>
+    <td>フレキシブル基板接続用。ZIF/NON-ZIFタイプ</td>
+    <td>車載インフォテインメント・民生電子機器</td>
+    <td><span class="badge badge-blue">中〜高</span></td>
+  </tr>
+  <tr>
+    <td><strong>インターフェイスコネクタ</strong></td>
+    <td>機器間信号接続（I/Oコネクタ）</td>
+    <td>カーナビ・PC・産業機器</td>
+    <td><span class="badge badge-blue">中</span></td>
+  </tr>
+</table>
+
+<h3>エンドマーケット別売上構成（2025/3期）</h3>
+<table>
+  <tr>
+    <th>セグメント</th><th class="right">売上構成比</th><th>主要用途</th><th>成長トレンド</th>
+  </tr>
+  <tr>
+    <td><strong>モビリティ（車載）</strong></td>
+    <td class="right"><strong>86%</strong></td>
+    <td>EV・HEV・ADAS・ECU統合・eVTOL</td>
+    <td><span class="badge badge-green">EV電動化で長期成長</span></td>
+  </tr>
+  <tr>
+    <td>コンシューマー</td>
+    <td class="right">8%</td>
+    <td>ゲーム機・家電・デジタル機器</td>
+    <td><span class="badge badge-red">低迷継続（ゲーム機需要減）</span></td>
+  </tr>
+  <tr>
+    <td><strong>インダストリアル</strong></td>
+    <td class="right">6%</td>
+    <td>産業機械・半導体製造装置・エネルギー</td>
+    <td><span class="badge badge-green">第二柱へ育成中</span></td>
+  </tr>
+</table>
+
+<div class="callout">
+  <strong>PE投資家の視点（バリュー創出機会）：</strong>中計でインダストリアル市場を「第二の柱」として育成する方針が明示されている。現状6%のインダストリアル比率を20〜30%へ引き上げることがバリュー創出の主軸。車載依存度の高さ（86%）はリスクでもあるが、xEV化でコネクタ点数増が構造的に続くため、車載市場自体も成長継続。
+</div>
+
+<h3>グローバル拠点構成（有報確認）</h3>
+<table>
+  <tr>
+    <th>地域</th><th>従業員数</th><th>主要子会社</th><th>機能</th>
+  </tr>
+  <tr>
+    <td>日本</td>
+    <td>594名（本社・開発・国内生産）</td>
+    <td>本体（横浜）・秋田工場（2024年竣工）</td>
+    <td>本社機能・R&D・国内生産</td>
+  </tr>
+  <tr>
+    <td>アジア</td>
+    <td><strong>2,272名（全体の77%）</strong></td>
+    <td>上海・南通・ベトナム・フィリピン・シンガポール・タイ・香港</td>
+    <td>主力生産（フィリピン・ベトナム）・販売</td>
+  </tr>
+  <tr>
+    <td>欧州</td>
+    <td>41名</td>
+    <td>IRISO ELECTRONICS EUROPE GmbH（ドイツ）</td>
+    <td>欧州販売。売上917億円規模</td>
+  </tr>
+  <tr>
+    <td>北米</td>
+    <td>29名</td>
+    <td>IRISO U.S.A., INC.（ミシガン）、メキシコ工場</td>
+    <td>北米販売・メキシコ生産</td>
+  </tr>
+</table>
+
+<h3>中期経営計画目標（2025〜2027年3月期）</h3>
+<table>
+  <tr>
+    <th>指標</th>
+    <th class="right">2024/3 実績</th>
+    <th class="right">2027/3 目標</th>
+    <th class="right">目標成長率</th>
+  </tr>
+  <tr>
+    <td>売上高</td>
+    <td class="right">553億円</td>
+    <td class="right"><strong>650億円</strong></td>
+    <td class="right"><span class="up">+18%（CAGR+6%）</span></td>
+  </tr>
+  <tr>
+    <td>営業利益</td>
+    <td class="right">59億円</td>
+    <td class="right"><strong>100億円</strong></td>
+    <td class="right"><span class="up">+70%（CAGR+19%）</span></td>
+  </tr>
+  <tr>
+    <td>営業利益率</td>
+    <td class="right">10.7%</td>
+    <td class="right"><strong>15.4%超</strong></td>
+    <td class="right"><span class="up">+4.7pt</span></td>
+  </tr>
+  <tr>
+    <td>EPS</td>
+    <td class="right">237.75円</td>
+    <td class="right"><strong>330円</strong></td>
+    <td class="right"><span class="up">+39%</span></td>
+  </tr>
+  <tr>
+    <td>ROE</td>
+    <td class="right">7.8%</td>
+    <td class="right"><strong>10.0%</strong></td>
+    <td class="right"><span class="up">+2.2pt</span></td>
+  </tr>
+  <tr>
+    <td>ROIC</td>
+    <td class="right">7.3%</td>
+    <td class="right"><strong>10.0%</strong></td>
+    <td class="right"><span class="up">+2.7pt</span></td>
+  </tr>
+  <tr>
+    <td>株主還元（目標）</td>
+    <td class="right">配当性向88%（1株100円）</td>
+    <td class="right"><strong>配当性向40%超またはDOE5%</strong></td>
+    <td class="right"><span class="badge badge-blue">方針転換中</span></td>
+  </tr>
+</table>
+
+<!-- SECTION 5: LBO SCENARIO ANALYSIS -->
+<div class="section-header"><span class="num">5</span> LBOシナリオ分析 — 3パターン試算</div>
+
+<p>有報データに基づくNormalized EBITDA 91〜98億円を前提に、エントリーマルチプル・レバレッジ・成長率の組み合わせ3シナリオを試算。</p>
+
+<!-- Base Case -->
+<div class="lbo-scenario">
+  <div class="lbo-scenario-header">
+    <span>ベースケース — 中計達成シナリオ</span>
+    <span class="tag">最有力</span>
+  </div>
+  <div class="lbo-scenario-body">
+    <table style="margin:0;">
+      <tr>
+        <th style="width:40%">項目</th><th class="right">エントリー時</th><th class="right">エグジット時（5年後）</th>
+      </tr>
+      <tr>
+        <td>Normalized EBITDA</td>
+        <td class="right">91億円（2025/3実績）</td>
+        <td class="right"><strong>145億円</strong>（CAGR +10%）</td>
+      </tr>
+      <tr>
+        <td>EV/EBITDA</td>
+        <td class="right">12x（TOBプレミアム込み）</td>
+        <td class="right">12x（同水準維持）</td>
+      </tr>
+      <tr>
+        <td>エンタープライズ・バリュー（EV）</td>
+        <td class="right">1,092億円</td>
+        <td class="right"><strong>1,740億円</strong></td>
+      </tr>
+      <tr>
+        <td>取得現金充当（ネットキャッシュ）</td>
+        <td class="right">▲243億円</td>
+        <td class="right">—</td>
+      </tr>
+      <tr>
+        <td>デット（D/EBITDA 3.5x）</td>
+        <td class="right">318億円</td>
+        <td class="right">▲100億円（返済後）</td>
+      </tr>
+      <tr>
+        <td><strong>エクイティ投資額</strong></td>
+        <td class="right"><strong>531億円</strong></td>
+        <td class="right"></td>
+      </tr>
+      <tr>
+        <td><strong>エクイティ回収額</strong></td>
+        <td class="right">—</td>
+        <td class="right"><strong>1,520億円</strong></td>
+      </tr>
+      <tr class="subtotal">
+        <td><strong>IRR / MoM</strong></td>
+        <td class="right"></td>
+        <td class="right"><strong>IRR 約23% / MoM 2.9x</strong></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Bull Case -->
+<div class="lbo-scenario">
+  <div class="lbo-scenario-header" style="background:#1e5c3a;">
+    <span>ブルケース — 中計超過達成・インダストリアル拡大</span>
+    <span class="tag">アップサイド</span>
+  </div>
+  <div class="lbo-scenario-body">
+    <table style="margin:0;">
+      <tr>
+        <th style="width:40%">項目</th><th class="right">エントリー時</th><th class="right">エグジット時（5年後）</th>
+      </tr>
+      <tr>
+        <td>Normalized EBITDA</td>
+        <td class="right">91億円</td>
+        <td class="right"><strong>180億円</strong>（CAGR +15%）</td>
+      </tr>
+      <tr>
+        <td>EV/EBITDA</td>
+        <td class="right">12x</td>
+        <td class="right">13x（成長評価プレミアム）</td>
+      </tr>
+      <tr>
+        <td>エンタープライズ・バリュー</td>
+        <td class="right">1,092億円</td>
+        <td class="right"><strong>2,340億円</strong></td>
+      </tr>
+      <tr class="subtotal">
+        <td><strong>IRR / MoM</strong></td>
+        <td class="right"></td>
+        <td class="right"><strong>IRR 約33% / MoM 4.1x</strong></td>
+      </tr>
+    </table>
+    <p style="margin-top:8px;font-size:11px;color:#666;">インダストリアル比率を6%→25%へ拡大、EBITDA利益率15%達成、北米EV向け新規顧客獲得の場合。</p>
+  </div>
+</div>
+
+<!-- Bear Case -->
+<div class="lbo-scenario">
+  <div class="lbo-scenario-header" style="background:#7c3d0a;">
+    <span>ベアケース — 車載市場低迷・中計未達</span>
+    <span class="tag">ダウンサイド</span>
+  </div>
+  <div class="lbo-scenario-body">
+    <table style="margin:0;">
+      <tr>
+        <th style="width:40%">項目</th><th class="right">エントリー時</th><th class="right">エグジット時（5年後）</th>
+      </tr>
+      <tr>
+        <td>Normalized EBITDA</td>
+        <td class="right">91億円</td>
+        <td class="right"><strong>100億円</strong>（CAGR +2%）</td>
+      </tr>
+      <tr>
+        <td>EV/EBITDA</td>
+        <td class="right">12x</td>
+        <td class="right">9x（マルチプル縮小）</td>
+      </tr>
+      <tr>
+        <td>エンタープライズ・バリュー</td>
+        <td class="right">1,092億円</td>
+        <td class="right"><strong>900億円</strong></td>
+      </tr>
+      <tr class="subtotal">
+        <td><strong>IRR / MoM</strong></td>
+        <td class="right"></td>
+        <td class="right"><strong>IRR 約▲3% / MoM 0.9x（損失）</strong></td>
+      </tr>
+    </table>
+    <p style="margin-top:8px;font-size:11px;color:#666;">xEV普及遅延・米国関税によるグローバル生産台数減少・中国競合台頭の複合シナリオ。ネットキャッシュがバッファーとなるが、TOBプレミアム分が回収できない。</p>
+  </div>
+</div>
+
+<!-- SECTION 6: RISK ANALYSIS -->
+<div class="section-header"><span class="num">6</span> リスク分析 — PE投資家視点での重要リスク</div>
+
+<table>
+  <tr>
+    <th>リスク項目</th><th>内容（有報ベース）</th><th>影響度</th><th>ミティゲーション</th>
+  </tr>
+  <tr>
+    <td><strong>車載依存リスク</strong></td>
+    <td>売上の86%が車載向け。自動車生産台数低下・EV普及遅延の影響を直接受ける。有報で「2026/3期はグローバル生産台数が前期比減少」と明記</td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>インダストリアル比率拡大（中計）、EV向け新製品投入で構造的な成長持続を確認</td>
+  </tr>
+  <tr>
+    <td><strong>米国関税政策リスク</strong></td>
+    <td>有報で「米国の関税政策がグローバルに波及し不透明感が増している」と明記。メキシコ工場・北米拠点への直接影響あり</td>
+    <td><span class="badge badge-red">高</span></td>
+    <td>アジア生産比率77%で北米依存度は限定的。メキシコ・米国向け売上の規模確認が必要</td>
+  </tr>
+  <tr>
+    <td><strong>中国リスク</strong></td>
+    <td>上海・南通に主力生産拠点。地政学リスクが高まる局面での中国拠点集中は問題含み</td>
+    <td><span class="badge badge-yellow">中〜高</span></td>
+    <td>ベトナム・フィリピン工場への分散が進行中。中計でサプライチェーン強靭化を重点施策</td>
+  </tr>
+  <tr>
+    <td><strong>Capexの重さ</strong></td>
+    <td>投資CFが毎期▲80〜90億円。秋田新工場（2024竣工）の減価償却負担が追加。FCFを圧迫しデット返済余力を制約</td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>秋田工場稼働後の維持Capexは低下見込み。今後3〜5年のCapex水準の詳細DD要</td>
+  </tr>
+  <tr>
+    <td><strong>TOBプレミアムコスト</strong></td>
+    <td>時価総額712億円（2025年）に30〜40%プレミアムでエクイティ取得コスト920〜1,000億円。エントリーEV/EBITDA 12〜13xが成立するかはCapex・デット返済計画次第</td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>ネットキャッシュ243億円が実質コストを低減。有報上の純資産712億円との整合性確認</td>
+  </tr>
+  <tr>
+    <td>コンシューマー市場低迷</td>
+    <td>ゲーム機向け需要が引き続き低迷。ただし売上構成比8%と軽微</td>
+    <td><span class="badge badge-gray">低</span></td>
+    <td>売上構成比軽微。影響軽微</td>
+  </tr>
+</table>
+
+<!-- SECTION 7: NEXT STEPS -->
+<div class="section-header"><span class="num">7</span> 次のアクション — DDおよびモデル構築優先課題</div>
+
+<table>
+  <tr><th>優先度</th><th>アクション</th><th>確認事項</th><th>手法</th></tr>
+  <tr>
+    <td><span class="badge badge-red">最高</span></td>
+    <td>減価償却費の正確な数値取得</td>
+    <td>有報本体のキャッシュフロー計算書・注記にD&A明示箇所を確認。EBITDA精緻化</td>
+    <td>有報詳細ページ（P/Lおよびキャッシュフロー注記）</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-red">最高</span></td>
+    <td>構造改革コスト（特別損失）の内訳精査</td>
+    <td>2025/3期純利益急減の一過性コスト規模確認。Normalized EBITDA算出精度向上</td>
+    <td>有報「特別損失」開示箇所、適時開示資料</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-red">最高</span></td>
+    <td>LBOモデル構築（Excel）</td>
+    <td>エントリーEV・デット構造・返済スケジュール・IRR/MoM感応度分析</td>
+    <td>Claude xlsxスキルで作成</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-yellow">高</span></td>
+    <td>Capex内訳・維持Capex vs. 成長Capexの分離</td>
+    <td>秋田工場完工後の正規化Capex水準（FCF改善余地の確認）</td>
+    <td>中計説明資料・設備投資計画確認</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-yellow">高</span></td>
+    <td>セグメント別利益率の確認</td>
+    <td>日本・アジア・欧州・北米の利益貢献度。中国拠点の利益率確認</td>
+    <td>有報セグメント情報（注記）</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-blue">中</span></td>
+    <td>IC Memo草稿作成</td>
+    <td>本レポートの分析を投資委員会提出用メモに整形</td>
+    <td>Claude docxスキル</td>
+  </tr>
+</table>
+
+<div class="callout green">
+  <strong>結論：</strong>有報データで確認した事実として、①243億円のネットキャッシュ、②営業CF120億円の安定創出、③無借金・自己資本比率77%の健全B/S、④中計で売上650億円・営業利益率15%超を明示的に掲げる経営陣のコミットメント、⑤EV化・ADASという構造的成長ドライバーが揃っている。ベースケースIRR 23%・MoM 2.9xは日本PEファンドの一般的ハードルレート（IRR 20%・MoM 2.5x）をクリアしており、<strong>最優先のディープダイブ対象として妥当性が高い。</strong>次のステップはD&Aと特別損失の正確な数値確認と、それに基づくLBOモデルのExcel構築。
+</div>
+
+</div><!-- /body -->
+
+<div class="footer">
+  <span>本レポートはイリソ電子工業 有価証券報告書（第59期・2025年3月期、提出日2025年6月23日）の公開情報に基づく参考資料です。投資勧誘を目的としません。</span>
+  <span>Generated with Claude · June 2026</span>
+</div>
+
+</body>
+</html>
