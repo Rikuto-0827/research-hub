@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage 2｜Constellation Energy (CEG) 投資レポート</title>
+<style>
+  :root{--bg:#ffffff;--ink:#16233b;--soft:#f4f7fb;--soft2:#e9eef6;--line:#dbe3ee;--muted:#5f708a;
+        --purple:#7c3aed;--blue:#2563eb;--amber:#d97706;--red:#dc2626;--green:#0f9d6e}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo","Noto Sans JP",sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.85;font-feature-settings:"palt";
+       max-width:940px;margin:0 auto;padding:26px 30px 70px}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--purple);text-transform:uppercase}
+  h1{font-size:24px;font-weight:800;margin:4px 0 2px}
+  .dek{font-size:13px;color:var(--muted)}
+  .meta{font-size:11.5px;color:var(--muted);margin-top:8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0}
+  h2{font-size:17px;margin:30px 0 6px;padding-bottom:7px;border-bottom:2px solid var(--ink)}
+  h2 .ag{font-size:10.5px;font-weight:800;color:#fff;background:var(--purple);border-radius:5px;padding:2px 8px;margin-right:8px;letter-spacing:.5px}
+  h3{font-size:14px;margin:16px 0 6px}
+  p{font-size:13.5px;margin:8px 0}
+  .concl{background:#f5f0ff;border:1px solid #ddc9fb;border-left:4px solid var(--purple);border-radius:12px;padding:16px 18px;margin:16px 0}
+  .concl .t{font-size:12px;color:var(--purple);font-weight:800;letter-spacing:1px}
+  .concl h3{margin:2px 0 6px;font-size:19px;color:#3b0b6b}
+  .concl p{font-size:13px;color:#3a2a55}
+  .hero{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+  .stat{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .stat .v{font-size:22px;font-weight:800;color:var(--purple)}
+  .stat .l{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--soft2);font-weight:700}
+  .g{color:var(--green)} .a{color:var(--amber)} .r{color:var(--red)} .b{color:var(--blue)} .warn{color:var(--amber);font-weight:700}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .card{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:12.5px}
+  .card h4{font-size:12.5px;margin-bottom:4px}
+  .plus{text-align:center;color:var(--muted);font-weight:800;align-self:center}
+  .float{background:#ecfdf6;border:1px solid #b6ecd7;border-radius:10px;padding:12px 14px;font-size:12.5px;margin:10px 0}
+  .float b{color:#0b3b2c}
+  .matrix{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--soft);margin:12px 0}
+  .matrix svg{width:100%;height:auto;display:block}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;margin-top:6px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .sw{width:14px;height:3px;display:inline-block;border-radius:2px}
+  .bear{background:#fff5f5;border:1px solid #fbd0d0;border-left:4px solid var(--red);border-radius:10px;padding:11px 14px;margin:9px 0;font-size:12.5px}
+  .bear h4{color:#b91c1c;font-size:12.5px;margin-bottom:2px}
+  .gloss dt{font-weight:800;font-size:12.5px;margin-top:8px;color:var(--ink)}
+  .gloss dd{font-size:12px;color:#374; margin:1px 0 0 0;color:#3a4a63}
+  .src{font-size:10.5px;color:var(--muted);line-height:1.7;margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+  .disc{font-size:10.5px;color:var(--muted);margin-top:8px}
+  @media(max-width:680px){.hero,.cards3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="eyebrow">MOSAIC DEEP-DIVE V2 · 一次情報検証版</div>
+  <h1>Constellation Energy (CEG) 投資レポート</h1>
+  <div class="dek">SEC開示による数値確定・検証エージェント・独立評価反映版</div>
+  <div class="meta">作成日：2026年7月9日　｜　株価 $244（7/8終値ベース）　｜　v1からの主な更新：①一次情報（8-K/10-K）で全指標を再計算 ②ソース乖離の原因特定 ③PBR-ROE分析追加 ④業界・企業理解セクション ⑤投資アクション・カレンダー ⑥独立評価エージェントの指摘反映</div>
+
+  <div class="concl">
+    <div class="t">結論（更新）</div>
+    <h3>BUY（Quality Pick）維持 ── ただし「何を信じれば買えるか」を明確化</h3>
+    <p>一次情報での再計算後も推奨は維持。現値 $244 に対し目標 <b>$300–340</b>（+23〜39%／12–24ヶ月、Street平均$358）。本検証で判明した重要事実：①CEGのEV/EBITDAは「核燃料償却の扱い」で <b>13.1x⇔9.6x</b> に割れる（ソース間乖離の正体）、②PBR2.58xは足元ROE（12.2%）では正当化されず、統合後ROEが16〜18%へ拡張することが株価前提に既に含まれている。つまり本投資は<b>「割安株買い」ではなく「質の高い資産のROE回復に賭ける」投資</b>である。</p>
+  </div>
+
+  <div class="hero">
+    <div class="stat"><div class="v">$108.0B</div><div class="l">EV（自算：時価総額$86.4B＋純有利子負債$21.3B＋NCI）</div></div>
+    <div class="stat"><div class="v">13.1x / 9.6x</div><div class="l">EV/2026E調整EBITDA（狭義／広義・自算）</div></div>
+    <div class="stat"><div class="v">$11.00–12.00</div><div class="l">FY26 調整後EPSガイダンス（会社・据置）</div></div>
+  </div>
+
+  <h3>v1 → v2 の主な変化</h3>
+  <table>
+    <tr><th>項目</th><th>v1（7/8作成）</th><th>v2（一次検証後）</th><th>変化の理由</th></tr>
+    <tr><td>株価前提</td><td>$255</td><td>$244</td><td>最新終値に更新（52週安値$228.63近辺）</td></tr>
+    <tr><td>EV/EBITDA</td><td>13.2–13.9x（集計サイト）</td><td>13.1x（狭義・自算）</td><td>SEC BS/ガイダンスから再構築</td></tr>
+    <tr><td>PBR</td><td class="r">~3.9x（推計・誤）</td><td>2.58x（確定）</td><td>Calpine株式発行で自己資本$33.5Bに倍増、v1は旧資本ベースで過大</td></tr>
+    <tr><td>ROE</td><td>16.1%（LTM）</td><td>12.2%（FY26E調整・自算）</td><td>増資後の新分母＋調整後利益で計算（LTMは含み益で嵩上げ）</td></tr>
+    <tr><td>アップサイド</td><td>+18〜33%</td><td>+23〜39%</td><td>株価下落分だけ拡大（目標レンジは維持）</td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--muted)">v1のPBR推計（~3.9x）は誤りだった。独立評価エージェントの指摘F-2で修正。誤りの修正を隠さないことが本ワークフローの原則。</p>
+
+  <h2>業界理解 —— IPPはどうやって儲けるのか（3層の収益構造）</h2>
+  <p>CEGを理解する前提として、独立発電事業者（IPP）のビジネスモデルを分解する。規制ユーティリティ（料金認可で守られる代わりに儲けも規制される）と違い、IPPは市場価格で電気を売る「電力の商社兼メーカー」である。</p>
+  <div class="cards3">
+    <div class="card"><h4>① エネルギー市場</h4>発電した電気をISO/RTO（PJM・ERCOT等）の卸市場価格で販売。価格変動に直接エクスポージャー。</div>
+    <div class="card"><h4>② 容量市場</h4>「発電できる状態を維持する」こと自体への対価。オークションで数年先の単価が決まる＝先行指標。</div>
+    <div class="card"><h4>③ 長期契約（PPA）</h4>特定顧客と10〜20年の固定価格契約。市況を遮断し、キャッシュフローを債券化する。</div>
+  </div>
+  <p style="font-size:12.5px"><b>2026年に起きている構造変化：③の爆発と②の急騰。</b>データセンター需要は「①で市況が上がる」だけでなく、ハイパースケーラーが③のPPAを長期・大型・プレミアム価格で締結し始めたことが本質。CEGのQ1'26開示では、PJM西部の電力参照価格が前年比<b>+81%</b>（$53.69→$97.16/MWh）、PJM容量価格は<b>約5倍</b>（$53.60→$269.92/MW-day）に急騰。容量市場は数年先の分をオークションで確定するため、この価格は将来収益の先行確定を意味する。</p>
+  <div class="float"><b>原子力PTCという「利益の床」：</b>インフレ抑制法（IRA）の原子力生産税額控除（PTC）は、電力価格が一定水準を下回ると税額控除で補填する仕組み。市況が崩れてもCEGの原子力収益には法定の下限がある。逆に市況が高い時は控除が減るだけ。＝<b>「下値限定・上値追随」という非対称なペイオフ構造</b>で、これが他IPP（純粋な市況エクスポージャー）との決定的な差。</div>
+  <p style="font-size:12.5px"><b>なぜ原子力がデータセンターに刺さるのか：</b>AIデータセンターは24時間365日稼働し、かつ大手テックはカーボンフリー電源の調達目標を持つ。この2条件を同時に満たすのは常時稼働（設備利用率92%超）かつ無炭素の原子力だけ。太陽光・風力は間欠的、ガスは炭素を出す。新設に10年超かかるため、既存の原子力フリートは「増やせない資産」＝希少性そのもの。</p>
+
+  <h2>企業理解 —— CEGとは何者か（数字で見る事業の骨格）</h2>
+  <div class="hero">
+    <div class="stat"><div class="v">55 GW</div><div class="l">発電容量（Calpine統合後）＝世界最大の民間発電事業者</div></div>
+    <div class="stat"><div class="v">~10%</div><div class="l">米国のクリーン電力に占めるシェア</div></div>
+    <div class="stat"><div class="v">2,700万</div><div class="l">世帯分の発電能力の規模感</div></div>
+  </div>
+  <table>
+    <tr><th>セグメント</th><th>Q1'26発電量</th><th>性質</th><th>投資家目線の意味</th></tr>
+    <tr><td>原子力（Mid-Atlantic/Midwest/NY/ERCOT）</td><td>44,666 GWh</td><td>常時稼働・無炭素・PTC下支え</td><td>利益の「質」の源泉。設備利用率92.3%</td></tr>
+    <tr><td>Calpine（2026/1取得）</td><td>26,497 GWh</td><td>ガス火力中心・柔軟な出力調整</td><td>成長の源泉。需要ピークを収益化</td></tr>
+    <tr><td>その他ガス・石油・再エネ</td><td>5,564 GWh</td><td>地域補完</td><td>—</td></tr>
+    <tr><td>小売供給（約250万口座・Fortune100の80%と取引）</td><td>—</td><td>法人・家庭への直接販売</td><td>市況ヘッジ＋顧客接点（PPA営業の入口）</td></tr>
+  </table>
+  <p style="font-size:12.5px"><b>Calpine買収がBSに与えた変化（一次確認済）：</b>総資産 $57.2B→$96.9B（+69%）、PP&E $22.5B→$40.8B、のれん $0.4B→$11.5B。自己資本 $14.5B→$33.5B（株式発行）、有利子負債 $9.0B→$22.5B。<b>戦略的意味：</b>原子力（ベースロード）＋ガス（ピーク対応）＋小売の垂直統合。「24/7無炭素はCEG、足りない瞬間はガスで」というデータセンター向けフルパッケージ供給が可能な唯一の事業者に。</p>
+  <div class="float"><b>Moatの正体：</b>①新設不能な原子力フリート（許認可・建設に10年超）、②PTCの法定フロア、③Fortune100の80%という顧客基盤、④55GWの規模がもたらす供給信頼性。この4点は競合が資本を投じても短期に複製できない。<b>弱点：</b>⑤市況部分の変動と⑥統合実行リスク。</div>
+
+  <h2><span class="ag">AGENT F+</span>決算分析・評価 —— Q1'26決算（8-K）の精読</h2>
+  <table>
+    <tr><th>項目（$M）</th><th>Q1'25</th><th>Q1'26</th><th>YoY</th><th>評価</th></tr>
+    <tr><td>売上高</td><td>6,788</td><td>11,122</td><td>+64%</td><td>Calpine連結が主因。オーガニックと区別要</td></tr>
+    <tr><td>営業利益（GAAP）</td><td>451</td><td>2,332</td><td>+417%</td><td class="warn">⚠ 未実現ヘッジ益+$1,111Mが売上に混入</td></tr>
+    <tr><td>純利益（GAAP・EPS）</td><td>$0.38</td><td>$4.49</td><td>×11.8</td><td class="warn">⚠ 同上。額面通り受け取らない</td></tr>
+    <tr><td>調整後営業利益EPS（実力値）</td><td>$2.14</td><td>$2.74</td><td>+28%</td><td class="g">◎ これが見るべき数字。Calpine寄与＋PTC＋市況</td></tr>
+  </table>
+  <p style="font-size:12.5px"><b>読み方の教訓：</b>GAAP純利益$4.49にはデリバティブの未実現評価益（税前+$968M相当）が含まれ、翌四半期に反転し得る。会社が調整後$2.74を「実力」と定義し、ガイダンス（$11.00–12.00）も調整後ベースである以上、投資判断・バリュエーションはすべて調整後で統一する。</p>
+  <p style="font-size:12.5px"><b>キャッシュフロー：</b>営業CF $425M（前年$107M）は利益対比で薄い。要因は①担保の出入り、②買掛金の季節性(-$1,377M)、③Calpine買収直後の運転資本再構築。CFO/純利益の乖離は商品デリバティブを大量に使う電力会社に構造的なもので、通期FCFと年間ベースで評価する。<span class="warn">⚠ ただし今後4四半期のCFO回復は必須の検証項目。</span></p>
+  <p style="font-size:12.5px"><b>10-K由来の重要ファクト：</b>4年連続でガイダンス中点超え＝経営陣の予想精度・保守性は信頼に足る。PJM容量価格$269.92/MW-day（前年$53.60）＝2026-27年度の収益は既にオークションで固まっている部分が大きい。成長投資：Pastoria太陽光105MW稼働、Pin Oak Creekガス460MW商業運転入り、Freestoneデータセンター併設をPUCT承認（CyrusOne 380MW＋Phase2独占契約）。NY原子力2基のライセンスを2049年まで延長申請＝フリート寿命の長期化はDCF終端価値に直結。</p>
+  <p style="font-size:12.5px"><b>決算総合評価：<span class="g">A−</span>。</b>実力値（調整後+28%）と収益の先行確定（容量価格・PPA）は文句なし。減点は営業CFの薄さ（説明可能だが未回復）と、GAAP数値の派手さが市場の期待値を歪めるリスク。</p>
+
+  <h2><span class="ag">AGENT R</span>数値検証・調整エージェント —— ソース間乖離の解剖</h2>
+  <p>v1で判明した「EV/EBITDAが13.24x〜13.86x、ROEが16%⇔43%で割れる」問題を、SEC一次データからの再計算で解決する。結論：乖離は誤りではなく<b>「定義の違い」</b>であり、投資判断には定義を固定した自算値を使う。</p>
+  <h3>① EVの構築（自算・2026/7/8時点）</h3>
+  <table>
+    <tr><th>構成要素</th><th>金額</th><th>出所</th></tr>
+    <tr><td>時価総額（354M株 × $244）</td><td>$86.4B</td><td>株数=8-K診断表、株価=7/8終値</td></tr>
+    <tr><td>＋総有利子負債（短期$5.10B＋1年内$0.37B＋長期$16.99B）</td><td>+$22.5B</td><td>Q1'26連結BS</td></tr>
+    <tr><td>− 現金・制限付現金</td><td>−$1.2B</td><td>同上</td></tr>
+    <tr><td>＋非支配持分</td><td>+$0.3B</td><td>同上</td></tr>
+    <tr><td><b>EV（標準）</b></td><td><b>$108.0B</b></td><td>—</td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--muted)">⚠ 論点：原子力廃炉信託（NDT資産$19.4B）と資産除去債務（ARO $12.4B）をEVにどう反映するかはプロバイダーで不統一。本レポートは「両方ともEVに含めない（ネットで概ね相殺）」を採用。NDTを現金同等物としてEVから引くソースは倍率が見かけ上小さくなる。</p>
+  <h3>② EBITDA：乖離の正体は「核燃料償却」</h3>
+  <table>
+    <tr><th>定義</th><th>2026E EBITDA</th><th>EV/EBITDA</th><th>何が入っているか</th></tr>
+    <tr><td>狭義（IS上のD&A $443M/四半期のみ加算）</td><td>$8.2B</td><td><b>13.1x</b></td><td>設備の減価償却のみ</td></tr>
+    <tr><td>広義（CF上のD&A $1,202M/四半期を加算）</td><td>$11.3B</td><td>9.6x</td><td>＋核燃料償却＋Calpine契約無形の償却</td></tr>
+  </table>
+  <p style="font-size:12.5px"><b>検証エージェントの裁定：</b>核燃料は毎期必ず再購入する「実質的な燃料費」であり、これをEBITDAに足し戻すと恒常的なキャッシュ流出を無視した過大なEBITDAになる（広義9.6xは「見かけ上安すぎる」）。一方、Calpine商品契約の償却は買収会計上の非現金項目で足し戻しが妥当。<b>投資判断に用いるべきは：狭義ベースの13.1xを主</b>、そこからCalpine無形償却分のみ調整した「経済的EBITDA」≈12x台を参考とする。ピア比較時は全社を同一定義で再計算すること。</p>
+  <h3>③ ROEの乖離（16.1% vs 43% vs 自算12.2%）</h3>
+  <p style="font-size:12.5px">LTMベースROE 16.1%は「未実現益込みの純利益÷増資前の小さい自己資本」で嵩上げ。自算：FY26E調整後純利益$4.07B÷増資後自己資本$33.5B=<b>12.2%</b>が保守的な実力値。ピアの40%超は自社株買いで自己資本を極小化した結果であり、「効率」ではなく「資本構成」の産物。裁定：ROE比較は無意味化しているため、ROIC-WACCとPBR-ROE整合で代替する。</p>
+
+  <h2>追加分析 —— PBR × ROE マトリックス</h2>
+  <p><b>ROA×PBRでなくROE×PBRを選択した理由：</b>PBRは理論上 PBR＝(ROE−g)/(Ke−g)（残余利益モデル）とROEに直接リンクし、「株主資本コストを超えるROEがどれだけ純資産をプレミアム化するか」を測れる。ROAは資本構成を無視するためこの理論接続がない。ただしIPPはレバレッジでROEが歪むため、CEGは自算の調整後ROE、ピアは参考表示に留める。</p>
+  <div class="matrix">
+    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+      <!-- axes -->
+      <line x1="60" y1="40" x2="60" y2="320" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="60" y1="320" x2="560" y2="320" stroke="#94a3b8" stroke-width="1.5"/>
+      <!-- y ticks PBR 0..4 -->
+      <g font-size="11" fill="#5f708a">
+        <line x1="56" y1="320" x2="60" y2="320" stroke="#94a3b8"/><text x="40" y="324">0x</text>
+        <line x1="56" y1="250" x2="60" y2="250" stroke="#94a3b8"/><text x="40" y="254">1x</text>
+        <line x1="56" y1="180" x2="60" y2="180" stroke="#94a3b8"/><text x="40" y="184">2x</text>
+        <line x1="56" y1="110" x2="60" y2="110" stroke="#94a3b8"/><text x="40" y="114">3x</text>
+        <line x1="56" y1="40"  x2="60" y2="40"  stroke="#94a3b8"/><text x="40" y="44">4x</text>
+      </g>
+      <!-- x ticks ROE -->
+      <g font-size="11" fill="#5f708a" text-anchor="middle">
+        <text x="60"  y="338">8%</text><text x="220" y="338">12%</text>
+        <text x="380" y="338">16%</text><text x="540" y="338">20%</text>
+      </g>
+      <text x="300" y="356" font-size="11.5" fill="#16233b" text-anchor="middle" font-weight="700">ROE（調整後・予想）</text>
+      <text x="18" y="180" font-size="11.5" fill="#16233b" text-anchor="middle" font-weight="700" transform="rotate(-90 18 180)">PBR（倍）</text>
+      <!-- justified PBR g=2.5 -->
+      <polyline points="60,267 220,228 380,190 540,151" fill="none" stroke="#0d9488" stroke-width="2" stroke-dasharray="6 4"/>
+      <!-- justified PBR g=5.0 -->
+      <polyline points="60,276 220,217 380,158 540,99" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="2 3"/>
+      <!-- CEG current -->
+      <circle cx="228" cy="139" r="6.5" fill="#dc2626"/>
+      <text x="238" y="134" font-size="11.5" fill="#dc2626" font-weight="800">CEG現在 (12.2%, 2.58x)</text>
+      <!-- target -->
+      <circle cx="420" cy="145" r="6.5" fill="#0f9d6e" stroke="#fff" stroke-width="1.5"/>
+      <text x="300" y="128" font-size="11.5" fill="#0f9d6e" font-weight="800">統合後の到達点 (~17%, 2.5x=fair)</text>
+    </svg>
+    <div class="legend">
+      <span><span class="sw" style="background:#0d9488"></span>正当化PBR（g=2.5%）</span>
+      <span><span class="sw" style="background:#2563eb"></span>正当化PBR（g=5.0%）</span>
+      <span><span class="sw" style="background:#dc2626;width:10px;height:10px;border-radius:50%"></span>CEG現在</span>
+      <span><span class="sw" style="background:#0f9d6e;width:10px;height:10px;border-radius:50%"></span>到達点</span>
+    </div>
+  </div>
+  <p style="font-size:12.5px"><b>読み方（重要）：</b>破線は「そのROEなら理論上このPBRが妥当」という正当化ライン。ラインより上＝理論比で割高、下＝割安。CEG現在（●）は、足元ROE12.2%に対する正当化PBR（1.3〜1.5x）を大きく上回る<b>2.58x</b>に位置する。すなわち市場は既に「統合シナジー＋容量価格＋PPAでROEが16〜18%へ拡張する」未来をかなり織り込んでいる。だから本投資の本質は『バリュー買い』ではなく<b>『ROE拡張の実現に賭けるクオリティ・グロース』</b>である。到達点（○）に届けば現PBRは正当化され株価は利益成長分だけ上がる。届かなければPBRの圧縮（デレーティング）が下落余地になる。</p>
+  <p style="font-size:12px;color:var(--muted)">補足：純資産には原子力フリートが「取得原価−数十年の減価償却」で計上され、再調達価値（新設不能性）を全く反映しない。PBRが正当化ラインを上回る一部は、この簿価の過小評価に対する市場の合理的補正とも解釈できる。両方の解釈を併記するのが誠実な読み。</p>
+
+  <h2><span class="ag">AGENT E</span>ピア比較（一次検証反映版）—— IPPコンプス</h2>
+  <table>
+    <tr><th>指標</th><th>CEG（自算）</th><th>VST</th><th>TLN</th><th>NRG</th><th>読み方</th></tr>
+    <tr><td>EV/EBITDA（26E）</td><td>13.1x（狭義）</td><td>~10x</td><td>~12.5x</td><td>~15.9x</td><td>ピアは集計値＝定義未統一。厳密比較は同一再計算が必要</td></tr>
+    <tr><td>PER（26Eガイダンス基準）</td><td>21.2x（244/11.5）</td><td>15.9–17.5x</td><td>14.8x</td><td>18.0x</td><td>CEGのプレミアムは質（PTC・低レバ）の対価</td></tr>
+    <tr><td>PBR</td><td>2.58x（確定）</td><td>n.m.</td><td>n.m.</td><td>n.m.</td><td>CEGのみ理論分析可能</td></tr>
+    <tr><td>ROE（実力）</td><td>12.2%（26E調整）</td><td colspan="3">40%超はレバレッジ産物で比較不能</td><td>ROIC-WACCで代替</td></tr>
+    <tr><td>D/E</td><td>0.67（22.5/33.5）</td><td>3.55</td><td>高</td><td>9.89</td><td>CEGの財務耐性は別格</td></tr>
+    <tr><td>CAPEX/売上（Q1'26）</td><td>11.5%</td><td>—</td><td>—</td><td>—</td><td>成長投資局面。Dep(狭義)/売上4.0%との差＝純投資超過</td></tr>
+    <tr><td>配当利回り</td><td>0.66%</td><td>0.60%</td><td>0%</td><td>中位</td><td>リターンはほぼ全て値上がり益前提</td></tr>
+  </table>
+  <p style="font-size:12.5px"><b>CAPEX/Depの解釈：</b>CAPEX（11.5%）がDep狭義（4.0%）の約2.9倍。教科書的には「将来の償却費増→利益率圧迫」のフラグだが、CEGの中身は成長投資（Pin Oak・Pastoria・原子力延命）で、容量価格5倍・PPA単価上昇の環境下では投資リターンが資本コストを大きく超える公算。CAPEX/Dep比率は「悪」ではなく<b>「経営陣が需要に確信を持つ証拠」</b>と読む。ただし投資が市況ピークに集中する逆張りリスクは監視。</p>
+  <p style="font-size:12px;color:var(--muted)">残る限界（正直に）：VST/TLN/NRGは依然集計サイト値。完全な同一定義比較には3社の10-Q/10-KからのEV・EBITDA再構築が必要。現時点の結論（CEG＝質のプレミアム、VST＝成長対比割安）は再計算で覆る可能性は低いが、倍率の絶対差±1-2xの精度。</p>
+
+  <h2>投資アクション —— 何を・いつ・どう確認して動くか</h2>
+  <div class="hero">
+    <div class="stat"><div class="v">~$602B</div><div class="l">2026年 大手5社設備投資計画（前年比+36%）</div></div>
+    <div class="stat"><div class="v">$49B</div><div class="l">MGXの新AIインフラファンド（7/1発表）＝需要の追加証拠</div></div>
+    <div class="stat"><div class="v">7月末〜8月初</div><div class="l">MSFT/GOOGL/META/AMZNのQ2決算＝CAPEXガイダンス更新の集中点</div></div>
+  </div>
+  <p style="font-size:12.5px"><b>① ハイパースケーラーCAPEX＝本テーゼの生命線。</b>各社決算の「Capital Expenditureガイダンス」を前回比で追う。4社中2社以上が減額なら前提が揺らぐ。増額・維持ならCEGの需要面は追認。</p>
+  <h3>② カタリスト・カレンダー（今後6ヶ月）</h3>
+  <table>
+    <tr><th>時期</th><th>イベント</th><th>Bull確認／Bear警戒</th></tr>
+    <tr><td>7月末–8月初</td><td>ハイパースケーラーQ2決算（CAPEXガイダンス）</td><td>維持・増額＝◎／2社以上減額＝テーゼ再考</td></tr>
+    <tr><td>7/30 または 8/6※</td><td>CEG Q2'26決算</td><td>①ガイダンス再確認 ②営業CF回復 ③新規PPA言及。CF未回復なら利益の質を再検証</td></tr>
+    <tr><td>随時</td><td>データセンターPPA成約（Walmart型・CyrusOne型）</td><td>四半期1件以上のペース継続＝柱①の追認</td></tr>
+    <tr><td>H2 2026</td><td>PJM次期容量オークション結果</td><td>$200+/MW-day維持＝収益先行確定の継続</td></tr>
+    <tr><td>随時</td><td>Crane（旧TMI）再稼働の進捗・NYライセンス延長審査</td><td>遅延・費用超過は柱①の毀損シグナル</td></tr>
+    <tr><td>中間選挙（11月）前後</td><td>電力料金の政治問題化・PTC/IRA修正論</td><td>「電気代高騰の犯人」としてIPP規制強化論が出れば最大の外生リスク</td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--muted)">※決算日はソース間で不一致（investing.com=7/30、stockanalysis=8/6）。IRサイトでの正式告知を確認のこと —— 日付すら複数ソースで割れるのが公開データの現実。</p>
+  <h3>③ エントリー・エグジット設計</h3>
+  <p style="font-size:12.5px"><b>現在地：</b>$244は52週レンジ（$228.63–412.70）の下端8%圏。Citi目標引下げ($297)とMS引上げ($364)が7日差で並存＝Street内の意見対立が最大化＝転換点近傍で起きやすい。<b>分割エントリーの根拠：</b>Q2決算（CF回復確認）とハイパースケーラーCAPEX（需要確認）の2つの不確実性が7-8月に同時解消。<b>下値の物差し：</b>私募市場のプラットフォーム倍率12x（AES）をEV/EBITDA狭義に当てると株価$210台後半≈52週安値圏と整合。<b>上値の物差し：</b>目標$300–340はROE拡張の途中経過の織込み。フル実現（ROE~17%）ならStreet高値側($364–441)が視野。</p>
+
+  <h2><span class="ag">AGENT G / V</span>PRE-MORTEM ＋ 独立評価 —— 反証と、このレポート自体の弱点</h2>
+  <div class="bear"><h4>S1 市況反転（確率:中）</h4>電力先物・容量価格の正常化。PTCで床はあるが市況部分は毀損。トリガー：PJM先物の前年比二桁下落、次期容量オークション急落。</div>
+  <div class="bear"><h4>S2 統合失敗（確率:中低）</h4>Calpineシナジー未達→ROE拡張が実現せずPBR圧縮。トリガー：統合費用の上方修正、Calpineセグメントのマージン低下。</div>
+  <div class="bear"><h4>S3 政治リスク（確率:中・新規追加）</h4>電気代高騰の政治問題化→PTC見直し・超過利潤課税・PPA規制。中間選挙前後が山場。トリガー：連邦・州レベルの規制法案提出。</div>
+  <div class="bear"><h4>S4 デッドマネー（確率:中）</h4>資金がTLN/VSTの高成長ストーリーに滞留し、CEGは正しくても放置。対策：PPA成約ペースを触媒に監視、途絶なら機会費用で判断。</div>
+  <h3>独立評価エージェント（Agent V）の監査所見と反映</h3>
+  <table>
+    <tr><th>所見</th><th>重大度</th><th>v2での対応</th></tr>
+    <tr><td>F-1 v1は株価・倍率が集計サイト依存で検証不能</td><td class="r">高</td><td>SEC 8-K/BSから全指標を再計算。EV・PBR・ROE・EBITDA確定</td></tr>
+    <tr><td>F-2 v1のPBR推計3.9xは増資反映漏れで誤り</td><td class="r">高</td><td>2.58xに訂正し、誤りと原因を明示</td></tr>
+    <tr><td>F-3 「質が高い」の主張が定量モデルと未接続</td><td class="a">中</td><td>PBR-ROE正当化ラインで「何を信じれば買えるか」を数式化</td></tr>
+    <tr><td>F-4 政治・規制リスクがPre-Mortemに欠落</td><td class="a">中</td><td>S3として追加。中間選挙をカレンダーに組込み</td></tr>
+    <tr><td>F-5 読者の前提知識（IPP・容量市場等）を仮定しすぎ</td><td class="a">中</td><td>業界理解・企業理解・用語集を新設</td></tr>
+    <tr><td>F-6 ピア3社は依然二次データ（未解決）</td><td class="a">中</td><td>限界として明示。次アクション：3社の8-K再計算</td></tr>
+    <tr><td>F-7 営業CFの弱さの追跡計画が曖昧</td><td>低</td><td>Q2決算でのCF回復を明示的なBear検証条件に昇格</td></tr>
+  </table>
+  <p style="font-size:12.5px"><b>Agent V総合評価：</b>v2は「数値の再現可能性」「反証可能性」「読者の理解形成」の3点でv1から実質改善。残存する最大の弱点はピア側の一次検証（F-6）と、目標株価がROE拡張シナリオに感応的である点。<b>目標$300–340は「ROE 15–16%到達」相当</b>であり、12.2%に留まるなら$210–240が理論適正圏 —— この感応性を理解した上で判断されたい。</p>
+
+  <h2>APPENDIX 用語集 —— 本レポートを読むための最小知識</h2>
+  <dl class="gloss">
+    <dt>IPP（独立発電事業者）</dt><dd>規制料金に守られず、卸市場・相対契約で電気を売る発電会社。市況次第で利益が大きく振れる分、需給逼迫時の利益弾力性が大きい。</dd>
+    <dt>ハイパースケーラー</dt><dd>超大規模データセンターを世界展開するクラウド事業者（Microsoft・Amazon・Google・Meta等）。彼らの設備投資（CAPEX）がAI電力需要の一次ドライバー。</dd>
+    <dt>PPA / vPPA</dt><dd>電力購入契約。企業が発電事業者と10〜20年の固定価格で電力を長期契約。vPPA（仮想PPA）は物理供給を伴わない金融的な差金決済型。</dd>
+    <dt>容量市場</dt><dd>「発電できる状態を保つ」能力への対価をオークションで決める市場。PJMでは数年先の分を先に確定するため、価格急騰（$53.60→$269.92/MW-day）は将来収益の先行確定を意味する。</dd>
+    <dt>PJM / ERCOT / ISO-RTO</dt><dd>米国の地域送電機関（電力市場の運営者）。PJMは東部13州（世界最大の電力市場）、ERCOTはテキサス。CEGは両方に主力資産。</dd>
+    <dt>原子力PTC</dt><dd>Production Tax Credit。IRAによる原子力への生産税額控除。電力価格が低い時に控除で補填される「利益の床」。CEGの下方耐性の法的根拠。</dd>
+    <dt>ZEC</dt><dd>Zero Emission Credit。州レベルの無炭素電源支援制度。PTCと併存するが、PTC受給分の返還条項があるものも。</dd>
+    <dt>NDT / ARO</dt><dd>NDT＝原子力廃炉信託（将来の廃炉費用の積立資産）。ARO＝資産除去債務（廃炉義務の負債計上）。EV算定でこの2つの扱いがソース間の倍率乖離要因になる。</dd>
+    <dt>核燃料償却</dt><dd>装荷済み核燃料の費用化。会計上は償却（非現金）だが経済実態は燃料費。EBITDAに足し戻すか否かで倍率が13.1x⇔9.6xに割れる本レポート最大の検証ポイント。</dd>
+    <dt>EV / EBITDA</dt><dd>EV＝時価総額＋純有利子負債等（事業全体の値段）。EBITDA＝利払い・税・償却前利益。資本構成の違いを跨いで比較する標準倍率。ただし「どのEBITDAか」の定義確認が絶対条件。</dd>
+    <dt>PBR / 正当化PBR</dt><dd>株価÷1株純資産。理論上 (ROE−g)/(Ke−g) が正当化水準で、ROEが資本コストKeを超えるほど高PBRが妥当化する。</dd>
+    <dt>SGR</dt><dd>Sustainable Growth Rate＝ROE×内部留保率。外部資本に頼らず維持できる成長率の理論値。</dd>
+    <dt>co-location（併設）</dt><dd>データセンターを発電所の敷地内・直結で建てる方式。送電網の接続待ち（4-5年）を回避できるため急拡大中。CEGのFreestone×CyrusOne案件が典型。</dd>
+    <dt>Moat</dt><dd>経済的な堀＝競合が模倣困難な優位性。CEGでは新設不能な原子力フリート・PTC・顧客基盤がこれに当たる。</dd>
+    <dt>Pre-Mortem</dt><dd>「失敗した未来」を先に想定し原因を逆算する意思決定手法。確証バイアスの解毒剤。</dd>
+  </dl>
+
+  <div class="src"><b>データソース（取得日：2026年7月8-9日）：</b>Robinhood/CNN株価（7/8終値 $244.03-244.52、52週 $228.63-412.70、配当利回り0.66-0.68%）／Investing.com（アナリスト12ヶ月平均目標$357.81、高$441/低$296）／SEC EDGAR: CEG Form 8-K（2026/5/11）Q1'26決算＝財務数値の一次ソース／Constellation/Walmart 15年原子力PPA（2026/6/23, Reuters）／SEC EDGAR: CEG Form 8-K（2026/2/24）FY2025決算（4年連続ガイダンス中点超え）／CNN/TipRanksニュースフロー（Citi PT $348→$297、MS $359→$364、NY原子力2049年延長申請、MGX $49B、次回決算7/30）／stockanalysis.com/Yahoo Finance/GuruFocus（ピア倍率・決算日8/6併記）／ハイパースケーラー2026 CAPEX計画 約$602B・前年比+36%／Gabelli Utilities U.S. Outlook（AES 12.0x・TXNM 11.8x・Calpine 7.9x）。</div>
+  <div class="disc">計算はすべて再現可能：EV・EBITDA・PBR・ROE・正当化PBRの算式と入力値は本文に明記。免責：本資料は情報整理・分析であり投資助言ではない。投資判断は自己責任で、最新の一次情報に基づき行うこと。</div>
+</body>
+</html>
