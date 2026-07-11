@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PE投資対象選定レポート｜実在企業編</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; line-height: 1.7; }
+
+  .cover { background: #0f2544; color: #fff; padding: 72px 80px 56px; min-height: 280px; }
+  .cover .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7fa8d0; margin-bottom: 16px; }
+  .cover h1 { font-size: 28px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+  .cover h2 { font-size: 16px; font-weight: 400; color: #a8c8e8; margin-bottom: 32px; }
+  .cover .meta { font-size: 12px; color: #7fa8d0; border-top: 1px solid #1e3a5f; padding-top: 20px; display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover .meta span { display: flex; flex-direction: column; gap: 2px; }
+  .cover .meta strong { color: #c8dff0; font-size: 13px; }
+
+  .body { max-width: 960px; margin: 0 auto; padding: 48px 60px; }
+
+  .section-header { background: #0f2544; color: #fff; padding: 10px 18px; margin: 40px 0 20px; border-radius: 3px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
+  .section-header .num { background: rgba(255,255,255,0.2); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  h3 { font-size: 14px; font-weight: 700; color: #0f2544; margin: 24px 0 10px; padding-left: 10px; border-left: 3px solid #2563a8; }
+  h4 { font-size: 13px; font-weight: 700; color: #333; margin: 16px 0 8px; }
+  p { margin-bottom: 10px; color: #2c2c2c; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  th { background: #0f2544; color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.3px; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e8ecf2; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7f9fc; }
+  tr:hover td { background: #eef2f8; }
+  .center { text-align: center; }
+  .right { text-align: right; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-green { background: #dcf5e7; color: #1a6636; }
+  .badge-yellow { background: #fef9c3; color: #854d0e; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-gray { background: #f1f5f9; color: #475569; }
+
+  .score { font-weight: 700; font-size: 13px; }
+  .score-a { color: #16a34a; }
+  .score-b { color: #2563eb; }
+  .score-c { color: #d97706; }
+  .score-d { color: #dc2626; }
+
+  .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+  .metric-box { border: 1px solid #dde3ef; border-radius: 6px; padding: 16px; text-align: center; }
+  .metric-box .val { font-size: 22px; font-weight: 700; color: #0f2544; }
+  .metric-box .label { font-size: 11px; color: #666; margin-top: 4px; }
+
+  .callout { border-left: 4px solid #2563a8; background: #f0f5ff; padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+  .callout.warn { border-color: #d97706; background: #fffbeb; }
+  .callout.green { border-color: #16a34a; background: #f0fdf4; }
+  .callout.red { border-color: #dc2626; background: #fef2f2; }
+
+  .company-card { border: 1px solid #dde3ef; border-radius: 8px; margin: 20px 0; overflow: hidden; }
+  .company-card-header { color: #fff; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .company-card-header.priority-1 { background: #1a3a6b; }
+  .company-card-header.priority-2 { background: #1e5c3a; }
+  .company-card-header.priority-3 { background: #7c3d0a; }
+  .company-card-header.priority-pass { background: #374151; }
+  .company-card-header .co-name { font-size: 15px; font-weight: 700; }
+  .company-card-header .co-ticker { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .company-card-header .co-rank { background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 12px; font-size: 11px; white-space: nowrap; }
+  .company-card-body { padding: 20px; }
+  .company-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .mini-table { font-size: 12px; width: 100%; }
+  .mini-table tr td { padding: 5px 8px; border-bottom: 1px solid #eee; }
+  .mini-table tr td:first-child { color: #555; width: 48%; }
+  .mini-table tr td:last-child { font-weight: 600; color: #0f2544; }
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+  .notice-box { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px 20px; margin: 20px 0; }
+  .notice-box h4 { color: #1e40af; margin-bottom: 8px; }
+
+  .footer { background: #f7f9fc; border-top: 1px solid #dde3ef; padding: 24px 60px; font-size: 11px; color: #888; display: flex; justify-content: space-between; margin-top: 60px; }
+
+  @media print {
+    .body { padding: 20px 30px; }
+    .cover { padding: 40px 30px; }
+    .footer { padding: 16px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="label">Confidential · Investment Screening Report — Listed Companies</div>
+  <h1>日本電子部品業界<br>実在企業 PE投資対象スクリーニング</h1>
+  <h2>Japan Electronic Components — Listed Company LBO Target Assessment</h2>
+  <div class="meta">
+    <span><div>作成日</div><strong>2026年6月</strong></span>
+    <span><div>調査対象</div><strong>東証上場 電子部品4社</strong></span>
+    <span><div>データソース</div><strong>Yahoo Finance / IRBank / Buffett Code / 各社IR</strong></span>
+    <span><div>注記</div><strong>公開情報に基づく分析。投資勧誘を目的としない</strong></span>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- SECTION 1: UNIVERSE -->
+<div class="section-header"><span class="num">1</span> 調査対象ユニバース — 選定根拠</div>
+
+<p>前回レポートのスクリーニング基準（産業・EV向けコネクタ、EMC・ノイズ対策、産業用センサー、特殊受動部品）を適用し、東証上場の電子部品中堅企業から4社を抽出した。選定基準は売上高100〜600億円、EV/EBITDA低〜中水準、LBO適性のあるサブセクター。</p>
+
+<table>
+  <tr>
+    <th>企業名</th><th>証券コード</th><th>市場</th><th>サブセクター</th><th>売上高</th><th>時価総額</th><th>PBR</th><th>選定理由</th>
+  </tr>
+  <tr>
+    <td><strong>イリソ電子工業</strong></td>
+    <td>6908</td><td>東証プライム</td>
+    <td>車載・産業コネクタ</td>
+    <td>563億円</td><td>712億円</td>
+    <td><span class="badge badge-blue">低め</span></td>
+    <td>アクティビスト関与歴あり、非公開化圧力の素地</td>
+  </tr>
+  <tr>
+    <td><strong>山一電機</strong></td>
+    <td>6941</td><td>東証プライム</td>
+    <td>半導体ICソケット・コネクタ</td>
+    <td>453億円</td><td>2,320億円</td>
+    <td><span class="badge badge-red">4.4x（高い）</span></td>
+    <td>業界最高水準の技術力。LBO不向きだが比較対象として評価</td>
+  </tr>
+  <tr>
+    <td><strong>SMK</strong></td>
+    <td>6798</td><td>東証プライム</td>
+    <td>コネクタ・スイッチ（構造改革中）</td>
+    <td>480億円</td><td>141億円</td>
+    <td><span class="badge badge-green">0.5x（割安）</span></td>
+    <td>ターンアラウンド型LBO候補。EV/EBITDA 4.7x超割安</td>
+  </tr>
+  <tr>
+    <td><strong>菊水ホールディングス</strong></td>
+    <td>6912</td><td>東証スタンダード</td>
+    <td>産業用電源・電子計測器</td>
+    <td>134億円</td><td>154億円</td>
+    <td><span class="badge badge-blue">〜1.0x</span></td>
+    <td>AI/EV向け試験装置需要、小型案件としての検討価値</td>
+  </tr>
+</table>
+
+<!-- SECTION 2: FINANCIAL COMPARISON -->
+<div class="section-header"><span class="num">2</span> 財務比較サマリー — 公開データ基準</div>
+
+<div class="metrics-row">
+  <div class="metric-box"><div class="val">4社</div><div class="label">スクリーニング対象（東証上場）</div></div>
+  <div class="metric-box"><div class="val">6908</div><div class="label">最有力LBO候補（イリソ電子工業）</div></div>
+  <div class="metric-box"><div class="val">0.49x</div><div class="label">SMK PBR（最割安）</div></div>
+  <div class="metric-box"><div class="val">4.7x</div><div class="label">SMK EV/EBITDA（最低水準）</div></div>
+</div>
+
+<table>
+  <tr>
+    <th>指標</th>
+    <th class="center">イリソ電子工業<br>6908</th>
+    <th class="center">山一電機<br>6941</th>
+    <th class="center">SMK<br>6798</th>
+    <th class="center">菊水HD<br>6912</th>
+  </tr>
+  <tr>
+    <td>売上高</td>
+    <td class="center">563億円</td>
+    <td class="center">453億円</td>
+    <td class="center">480億円</td>
+    <td class="center">134億円</td>
+  </tr>
+  <tr>
+    <td>営業利益</td>
+    <td class="center">55億円（率10%）</td>
+    <td class="center">82億円（率18%）</td>
+    <td class="center">▲2億円（率-0.5%）</td>
+    <td class="center">非開示（ROE 10%）</td>
+  </tr>
+  <tr>
+    <td>時価総額</td>
+    <td class="center">712億円</td>
+    <td class="center">2,320億円</td>
+    <td class="center">141億円</td>
+    <td class="center">154億円</td>
+  </tr>
+  <tr>
+    <td>PBR</td>
+    <td class="center"><span class="badge badge-blue">低め</span></td>
+    <td class="center"><span class="badge badge-red">4.4x（高）</span></td>
+    <td class="center"><span class="badge badge-green">0.49x（割安）</span></td>
+    <td class="center"><span class="badge badge-blue">〜1.0x</span></td>
+  </tr>
+  <tr>
+    <td>EV/EBITDA（推計）</td>
+    <td class="center">9〜11x（推計）</td>
+    <td class="center">20x超（高）</td>
+    <td class="center"><strong>4.7x</strong>（実測）</td>
+    <td class="center">7〜9x（推計）</td>
+  </tr>
+  <tr>
+    <td>海外売上比率</td>
+    <td class="center">84%</td>
+    <td class="center">高（半導体向け）</td>
+    <td class="center">グローバル展開</td>
+    <td class="center">海外拠点あり</td>
+  </tr>
+  <tr>
+    <td>主要エンドマーケット</td>
+    <td class="center">車載86%・産業6%</td>
+    <td class="center">半導体検査・車載</td>
+    <td class="center">コネクタ・スイッチ汎用</td>
+    <td class="center">産業・AI/DC・EV</td>
+  </tr>
+  <tr>
+    <td>LBO適性（概観）</td>
+    <td class="center"><span class="score score-a">◎</span></td>
+    <td class="center"><span class="score score-d">✕</span></td>
+    <td class="center"><span class="score score-b">△〜○</span></td>
+    <td class="center"><span class="score score-b">○</span></td>
+  </tr>
+</table>
+
+<!-- SECTION 3: INDIVIDUAL ASSESSMENTS -->
+<div class="section-header"><span class="num">3</span> 個社評価 — PE投資家視点での詳細分析</div>
+
+<!-- イリソ電子工業 -->
+<div class="company-card">
+  <div class="company-card-header priority-1">
+    <div>
+      <div class="co-name">イリソ電子工業株式会社</div>
+      <div class="co-ticker">東証プライム｜6908｜車載・産業用コネクタ</div>
+    </div>
+    <div class="co-rank">◎ 最有力 Priority #1</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務データ（2025年3月期実績）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>563億円（前期比-2.4%）</td></tr>
+          <tr><td>営業利益</td><td>55億円（利益率 10%）</td></tr>
+          <tr><td>EBITDA推計</td><td>70〜80億円（D&A 15〜25億円想定）</td></tr>
+          <tr><td>時価総額</td><td>712億円</td></tr>
+          <tr><td>EV/EBITDA</td><td>9〜11x（推計）</td></tr>
+          <tr><td>海外売上比率</td><td>84%</td></tr>
+          <tr><td>主要エンドマーケット</td><td>モビリティ86%、産業6%、民生8%</td></tr>
+          <tr><td>中計目標（2027/3期）</td><td>売上550億円、営業利益55億円</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>定性評価</h4>
+        <table class="mini-table">
+          <tr><td>市場ポジション</td><td>車載コネクタ専業で国内有力。高速伝送対応品で差別化</td></tr>
+          <tr><td>成長ドライバー</td><td>EV電動化による車載コネクタ点数増。産業向け比率拡大余地</td></tr>
+          <tr><td>株主動向</td><td>シティインデックスイレブンスが5%超保有→その後減少。アクティビスト意識</td></tr>
+          <tr><td>オーナーシップ</td><td>創業家系の持株比率は低い。機関投資家中心</td></tr>
+          <tr><td>非公開化余地</td><td>PBR低水準＋アクティビスト経由でMBO圧力がかかりやすい状態</td></tr>
+          <tr><td>バリュー創出余地</td><td>産業向けシフト加速、海外EV顧客開拓、コスト最適化</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <h4>LBO投資仮説（公開情報ベースの試算）</h4>
+      <p>TOBプレミアム30%想定でEV約1,000億円（時価総額712億円 × 1.3 + 純有利子負債）。EBITDA75億円を前提にエントリーEV/EBITDA 13x前後。デット/EBITDA 3.5xでデット263億円、エクイティ約750億円。EV成長で5年後EBITDA 100億円超を目指し、エグジット10xでEV 1,000億円。LBO経済性を成立させるにはTOBプレミアムとエグジット倍率の設定が鍵。</p>
+    </div>
+    <div class="tag-row">
+      <span class="badge badge-green">LBO適性：高</span>
+      <span class="badge badge-green">EV追い風：強</span>
+      <span class="badge badge-blue">アクティビスト素地あり</span>
+      <span class="badge badge-yellow">TOBプレミアムコスト：要注意</span>
+      <span class="badge badge-blue">海外売上84%</span>
+    </div>
+  </div>
+</div>
+
+<!-- SMK -->
+<div class="company-card">
+  <div class="company-card-header priority-3">
+    <div>
+      <div class="co-name">SMK株式会社</div>
+      <div class="co-ticker">東証プライム｜6798｜コネクタ・スイッチ（構造改革中）</div>
+    </div>
+    <div class="co-rank">△ ターンアラウンド型 Priority #2</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務データ（2025年3月期実績）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>480億円</td></tr>
+          <tr><td>営業利益</td><td>▲2億円（率 -0.5%）</td></tr>
+          <tr><td>EBITDA（実測）</td><td>21.3億円</td></tr>
+          <tr><td>EV/EBITDA</td><td><strong>4.73x</strong>（実測・超割安）</td></tr>
+          <tr><td>PBR</td><td>0.49x</td></tr>
+          <tr><td>時価総額</td><td>141億円</td></tr>
+          <tr><td>ROE</td><td>▲6.1%（赤字）</td></tr>
+          <tr><td>中計目標（2027/3期）</td><td>売上600億円、営業利益率3.5%、ROE5%</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>定性評価</h4>
+        <table class="mini-table">
+          <tr><td>現状</td><td>構造改革プログラム（2025年3月発表）実行中。事業選択と集中、固定費削減推進</td></tr>
+          <tr><td>バリュエーション</td><td>EV/EBITDA 4.7x・PBR 0.5xは日本電子部品セクターで最割安水準</td></tr>
+          <tr><td>バリュー創出余地</td><td>構造改革完遂によるマージン正常化。中計達成で営業利益率3.5%→EBITDA 30億円超</td></tr>
+          <tr><td>PE向き理由</td><td>上場維持コスト・機関投資家プレッシャーから解放し、非公開でリストラ断行が合理的</td></tr>
+          <tr><td>リスク</td><td>ターンアラウンド未達リスク、構造改革に追加コスト発生の可能性</td></tr>
+          <tr><td>競合入札リスク</td><td>PBR0.5xのため戦略的買い手も関心を持ちやすい</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <h4>LBO投資仮説（ターンアラウンド型）</h4>
+      <p>時価総額141億円にTOBプレミアム30%でエクイティ183億円。現状EBITDAは低水準だが、構造改革完遂でEBITDA 30〜40億円が見えれば、エグジット時EV/EBITDA 8xでEV 240〜320億円。保守的なレバレッジ（D/EBITDA 2.0x以下）設定が前提。ターンアラウンドが実現した場合のIRRポテンシャルは高いが、実行リスクを内包。</p>
+    </div>
+    <div class="tag-row">
+      <span class="badge badge-green">EV/EBITDA 4.7x：超割安</span>
+      <span class="badge badge-green">PBR 0.5x</span>
+      <span class="badge badge-red">営業赤字中</span>
+      <span class="badge badge-yellow">ターンアラウンドリスク</span>
+      <span class="badge badge-blue">非公開化で構造改革加速</span>
+    </div>
+  </div>
+</div>
+
+<!-- 菊水HD -->
+<div class="company-card">
+  <div class="company-card-header priority-2">
+    <div>
+      <div class="co-name">菊水ホールディングス株式会社</div>
+      <div class="co-ticker">東証スタンダード｜6912｜産業用電源・電子計測器</div>
+    </div>
+    <div class="co-rank">○ 小型案件候補 Priority #3</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務データ（2025年3月期実績）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>134億円（前期比+7.5%）</td></tr>
+          <tr><td>純利益</td><td>14億円（前期比+10.7%）</td></tr>
+          <tr><td>ROE</td><td>10.0%</td></tr>
+          <tr><td>時価総額</td><td>154億円</td></tr>
+          <tr><td>EV/EBITDA</td><td>7〜9x（推計）</td></tr>
+          <tr><td>PBR</td><td>〜1.0x</td></tr>
+          <tr><td>主要事業</td><td>直流安定化電源・耐電圧試験器・バッテリーテスタ</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>定性評価</h4>
+        <table class="mini-table">
+          <tr><td>市場ポジション</td><td>据置型直流安定化電源・耐電圧試験器で強み。産業用電源の専業メーカー</td></tr>
+          <tr><td>成長ドライバー</td><td>AI/データセンター向け大電力評価・EV電池安全試験の需要急増</td></tr>
+          <tr><td>規模感</td><td>時価総額154億円は日本PE標準のバイアウトサイズ下限。スモールキャップ</td></tr>
+          <tr><td>オーナーシップ</td><td>持株会社構造。創業者系オーナー比率要確認</td></tr>
+          <tr><td>バリュー創出余地</td><td>AI/EV向け製品強化、海外販路拡張。ROE10%→15%改善余地</td></tr>
+          <tr><td>リスク</td><td>規模が小さく、単独投資としてのリターン規模に限界</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <h4>投資仮説</h4>
+      <p>AI・データセンター向け大電力評価装置・EV電池試験装置の需要急増が強力な追い風。時価総額154億円はPE標準の下限だが、スモールキャップ専門ファンドには適合。収益安定性が高くデット組成もしやすい。単独よりも産業用電源・計測器セクターのロールアップ戦略のプラットフォームとして活用するシナリオが有効。</p>
+    </div>
+    <div class="tag-row">
+      <span class="badge badge-green">AI/EV追い風：強</span>
+      <span class="badge badge-green">ROE10%：安定収益</span>
+      <span class="badge badge-yellow">規模小さめ</span>
+      <span class="badge badge-blue">ロールアップ起点に最適</span>
+    </div>
+  </div>
+</div>
+
+<!-- 山一電機 -->
+<div class="company-card">
+  <div class="company-card-header priority-pass">
+    <div>
+      <div class="co-name">山一電機株式会社</div>
+      <div class="co-ticker">東証プライム｜6941｜半導体ICソケット・コネクタ</div>
+    </div>
+    <div class="co-rank">✕ Pass（割高） — 参考比較</div>
+  </div>
+  <div class="company-card-body">
+    <div class="company-grid">
+      <div>
+        <h4>財務データ（2025年3月期実績）</h4>
+        <table class="mini-table">
+          <tr><td>売上高</td><td>453億円（前期比+24.4%）</td></tr>
+          <tr><td>営業利益</td><td>82億円（前期比+180%）</td></tr>
+          <tr><td>営業利益率</td><td>18%（業界最高水準）</td></tr>
+          <tr><td>時価総額</td><td>2,320億円</td></tr>
+          <tr><td>PBR</td><td>4.44x（過去レンジ0.18〜2.65x比でも高い）</td></tr>
+          <tr><td>ROE予</td><td>18.28%</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Pass理由</h4>
+        <table class="mini-table">
+          <tr><td>バリュエーション</td><td>PBR4.4x・時価総額2,320億円はLBO経済性が成立しない</td></tr>
+          <tr><td>成長性</td><td>半導体ICソケット世界トップシェア。市場が高く評価済み</td></tr>
+          <tr><td>TOBコスト</td><td>プレミアム乗せで取得EV 3,000億円超。デット返済が現実的でない</td></tr>
+          <tr><td>結論</td><td>優良企業だが上場継続が最適。PE非公開化対象外</td></tr>
+          <tr><td>活用方法</td><td>コンプ企業として業界マルチプルの上限値参照に使用</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="tag-row">
+      <span class="badge badge-red">PBR 4.4x：LBO不適</span>
+      <span class="badge badge-red">時価総額2,320億円：規模大きすぎ</span>
+      <span class="badge badge-blue">コンプ参照として有用</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: PRIORITY MATRIX -->
+<div class="section-header"><span class="num">4</span> 優先順位マトリックス — 実在企業 Go/No-go 判断</div>
+
+<table>
+  <tr>
+    <th>企業</th>
+    <th class="center">EV/EBITDA</th>
+    <th class="center">PBR</th>
+    <th class="center">LBO<br>経済性</th>
+    <th class="center">成長性</th>
+    <th class="center">非公開化<br>実現性</th>
+    <th class="center">PE型</th>
+    <th class="center">総合判断</th>
+  </tr>
+  <tr>
+    <td><strong>イリソ電子工業</strong><br><span style="font-size:11px;color:#666">6908</span></td>
+    <td class="center">9〜11x</td>
+    <td class="center"><span class="score score-b">中</span></td>
+    <td class="center"><span class="score score-a">A</span></td>
+    <td class="center"><span class="score score-a">A</span></td>
+    <td class="center"><span class="score score-a">A</span></td>
+    <td class="center"><span class="badge badge-blue">成長型</span></td>
+    <td class="center"><span class="badge badge-green">◎ 最優先</span></td>
+  </tr>
+  <tr>
+    <td><strong>SMK</strong><br><span style="font-size:11px;color:#666">6798</span></td>
+    <td class="center"><strong>4.7x</strong></td>
+    <td class="center"><span class="score score-a">0.5x 低</span></td>
+    <td class="center"><span class="score score-b">B</span></td>
+    <td class="center"><span class="score score-c">C</span></td>
+    <td class="center"><span class="score score-b">B</span></td>
+    <td class="center"><span class="badge badge-yellow">ターンアラウンド</span></td>
+    <td class="center"><span class="badge badge-yellow">△ 条件付き</span></td>
+  </tr>
+  <tr>
+    <td><strong>菊水HD</strong><br><span style="font-size:11px;color:#666">6912</span></td>
+    <td class="center">7〜9x</td>
+    <td class="center"><span class="score score-b">〜1.0x</span></td>
+    <td class="center"><span class="score score-b">B</span></td>
+    <td class="center"><span class="score score-b">B</span></td>
+    <td class="center"><span class="score score-b">B</span></td>
+    <td class="center"><span class="badge badge-blue">ロールアップ起点</span></td>
+    <td class="center"><span class="badge badge-blue">○ 次点</span></td>
+  </tr>
+  <tr>
+    <td><strong>山一電機</strong><br><span style="font-size:11px;color:#666">6941</span></td>
+    <td class="center">20x超</td>
+    <td class="center"><span class="score score-d">4.4x 高</span></td>
+    <td class="center"><span class="score score-d">D</span></td>
+    <td class="center"><span class="score score-a">A</span></td>
+    <td class="center"><span class="score score-d">D</span></td>
+    <td class="center"><span class="badge badge-gray">上場継続最適</span></td>
+    <td class="center"><span class="badge badge-red">✕ Pass</span></td>
+  </tr>
+</table>
+
+<!-- SECTION 5: STRUCTURAL CONSTRAINTS -->
+<div class="section-header"><span class="num">5</span> 上場企業へのPEアプローチにおける構造的制約</div>
+
+<p>前回レポートの仮想企業と異なり、上場企業へのLBOアプローチには以下の追加的な制約・コストが発生する。</p>
+
+<div class="notice-box">
+  <h4>① TOBプレミアムコスト（最重要）</h4>
+  <p>日本での非公開化TOBには株価に対し通常<strong>20〜40%のプレミアム</strong>が求められる。イリソの場合、時価総額712億円に30%プレミアムで取得エクイティ約926億円。これがエントリーコストを押し上げ、LBO経済性を圧迫する最大の制約要因。</p>
+</div>
+
+<div class="notice-box">
+  <h4>② 独立委員会・公正意見書（フェアネス・オピニオン）</h4>
+  <p>日本の非公開化TOBでは実質的に必須となっている独立委員会設置・第三者評価機関によるフェアネス・オピニオン取得が必要。プロセスに時間（6〜12ヶ月）とコストが発生する。</p>
+</div>
+
+<div class="notice-box">
+  <h4>③ インサイダー規制・公開情報制約</h4>
+  <p>上場企業に対して非公開情報をベースにした接触は重大なインサイダー違反リスクを伴う。本分析は完全に公開情報に基づくものであり、実際のDD・企業接触はNDA締結後に限られる。</p>
+</div>
+
+<div class="callout warn">
+  <strong>実務上の示唆：</strong>これらの制約を考慮すると、同等の財務特性を持つ<strong>非上場の優良オーナー企業</strong>（売上100〜300億円、電子部品ニッチメーカー）の方がLBO経済性は出やすい。上場企業は「参考バリュエーション・ベンチマーク」として活用しつつ、実際のDealフローはヘッドハンター・仲介経由の非上場案件に重点を置くアプローチが現実的。
+</div>
+
+<!-- SECTION 6: NEXT STEPS -->
+<div class="section-header"><span class="num">6</span> 次のアクション — ディープダイブ優先課題</div>
+
+<table>
+  <tr><th>優先度</th><th>アクション</th><th>対象企業</th><th>手法</th></tr>
+  <tr>
+    <td><span class="badge badge-red">最高</span></td>
+    <td>有価証券報告書の詳細財務分析（EBITDA・FCF変換率・減価償却・Capexの正確な数値取得）</td>
+    <td>イリソ6908・SMK6798</td>
+    <td>Claude PDFアップロード解析</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-red">最高</span></td>
+    <td>LBOモデル構築（TOBプレミアム込み、デット構造・IRR・MoM感応度）</td>
+    <td>イリソ6908</td>
+    <td>Claude xlsxスキル</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-yellow">高</span></td>
+    <td>コンプ分析（山一電機を上限として業界マルチプルレンジを確定）</td>
+    <td>4社 + 海外コンプ</td>
+    <td>Capital IQ スキル</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-yellow">高</span></td>
+    <td>SMK構造改革プログラムの詳細精査（2025年3月発表資料）</td>
+    <td>SMK6798</td>
+    <td>Claude PDF解析</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-blue">中</span></td>
+    <td>非上場ターゲットリストの作成（電子部品ニッチメーカー、売上100〜300億円）</td>
+    <td>非上場企業</td>
+    <td>ヘッドハンター連携</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-blue">中</span></td>
+    <td>IC Memo草稿（イリソ電子工業 非公開化案件想定）</td>
+    <td>イリソ6908</td>
+    <td>Claude docx/pptxスキル</td>
+  </tr>
+</table>
+
+<div class="callout green">
+  <strong>推奨：次の具体的ステップ</strong><br>
+  イリソ電子工業（6908）の有価証券報告書PDFをClaudeにアップロードし、「PE投資家視点での財務分析とLBOモデル用インプット整理」を依頼するのが最も効率的な次のアクション。EBITDAの正確な数値・D&A・Capex・運転資本変動が確定すれば、LBOモデル構築に即移行できる。
+</div>
+
+</div><!-- /body -->
+
+<div class="footer">
+  <span>本レポートは公開情報のみに基づく参考資料です。特定銘柄への投資を推奨するものではありません。実際の投資判断には個別の財務・法務・税務DDが必要です。</span>
+  <span>Generated with Claude · June 2026</span>
+</div>
+
+</body>
+</html>
