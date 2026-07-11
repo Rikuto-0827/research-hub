@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PE Deep Dive｜日本ライフライン（7575）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; line-height: 1.7; }
+
+  .cover { background: #0f2544; color: #fff; padding: 72px 80px 56px; min-height: 280px; }
+  .cover .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7fa8d0; margin-bottom: 16px; }
+  .cover h1 { font-size: 28px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+  .cover h2 { font-size: 16px; font-weight: 400; color: #a8c8e8; margin-bottom: 32px; }
+  .cover .meta { font-size: 12px; color: #7fa8d0; border-top: 1px solid #1e3a5f; padding-top: 20px; display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover .meta span { display: flex; flex-direction: column; gap: 2px; }
+  .cover .meta strong { color: #c8dff0; font-size: 13px; }
+
+  .body { max-width: 960px; margin: 0 auto; padding: 48px 60px; }
+
+  .section-header { background: #0f2544; color: #fff; padding: 10px 18px; margin: 40px 0 20px; border-radius: 3px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
+  .section-header .num { background: rgba(255,255,255,0.2); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  h3 { font-size: 14px; font-weight: 700; color: #0f2544; margin: 24px 0 10px; padding-left: 10px; border-left: 3px solid #2563a8; }
+  h4 { font-size: 13px; font-weight: 700; color: #333; margin: 16px 0 8px; }
+  p { margin-bottom: 10px; color: #2c2c2c; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  th { background: #0f2544; color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.3px; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e8ecf2; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7f9fc; }
+  tr:hover td { background: #eef2f8; }
+  .center { text-align: center; }
+  .right { text-align: right; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-green { background: #dcf5e7; color: #1a6636; }
+  .badge-yellow { background: #fef9c3; color: #854d0e; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-gray { background: #f1f5f9; color: #475569; }
+
+  .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+  .metric-box { border: 1px solid #dde3ef; border-radius: 6px; padding: 16px; text-align: center; }
+  .metric-box .val { font-size: 22px; font-weight: 700; color: #0f2544; }
+  .metric-box .label { font-size: 11px; color: #666; margin-top: 4px; }
+
+  .callout { border-left: 4px solid #2563a8; background: #f0f5ff; padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+  .callout.warn { border-color: #d97706; background: #fffbeb; }
+  .callout.green { border-color: #16a34a; background: #f0fdf4; }
+  .callout.red { border-color: #dc2626; background: #fef2f2; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 16px 0; }
+
+  .footer { background: #f7f9fc; border-top: 1px solid #dde3ef; padding: 24px 60px; font-size: 11px; color: #888; display: flex; justify-content: space-between; margin-top: 60px; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="label">Confidential · PE Investment Deep Dive Report</div>
+  <h1>日本ライフライン株式会社（7575）<br>詳細投資分析レポート</h1>
+  <h2>Japan Medical Devices — Catheter &amp; Electrophysiology Device Distributor / LBO Analysis</h2>
+  <div class="meta">
+    <span><div>作成日</div><strong>2026年6月</strong></span>
+    <span><div>対象企業</div><strong>日本ライフライン（7575 / 東証プライム）</strong></span>
+    <span><div>エントリーEV</div><strong>〜1,100億円（TOBプレミアム30%）</strong></span>
+    <span><div>ベースIRR</div><strong>〜21%（5年）</strong></span>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- SECTION 1 -->
+<div class="section-header"><span class="num">1</span> 企業選定プロセス：スクリーニングから対象特定まで</div>
+
+<h3>1-1. セクター選定の根拠</h3>
+<p>PE投資対象の候補として日本医療機器業界を選定した理由は以下の通りです。</p>
+<ul style="margin:10px 0 10px 20px; color:#2c2c2c;">
+  <li>超高齢化社会（2026年：人口の29%超が65歳以上）を背景に、不整脈・心疾患・透析など慢性疾患治療デバイスの需要が構造的に拡大している</li>
+  <li>医療機器は薬事承認制度により参入障壁が高く、一度採用されると医師・病院との長期関係が形成されるため、LBO後の収益安定性が高い</li>
+  <li>日本の中堅医療機器企業に多い「実質無借金・現金蓄積型」経営はLBO後のレバレッジ余地を最大化する</li>
+  <li>グローバル医療機器大手（Boston Scientific、Medtronic等）による日本市場でのパートナー需要があり、エグジットオプションが多様</li>
+</ul>
+
+<h3>1-2. サブセクター分析と日本ライフラインへの絞り込み</h3>
+<table>
+  <tr>
+    <th>サブセクター</th><th>EBITDAマージン</th><th>LBO適性</th><th>選定理由</th>
+  </tr>
+  <tr>
+    <td><strong>カテーテル・不整脈治療 ◎</strong></td>
+    <td>18〜25%</td>
+    <td><span class="badge badge-green">高</span></td>
+    <td>高齢化直結。薬事承認が参入障壁。消耗品型で繰り返し収益</td>
+  </tr>
+  <tr>
+    <td>透析関連 ○</td>
+    <td>12〜18%</td>
+    <td><span class="badge badge-blue">中〜高</span></td>
+    <td>患者数安定増加。ただしコスト圧縮圧力あり</td>
+  </tr>
+  <tr>
+    <td>手術キット・消耗品 △</td>
+    <td>5〜10%</td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>トップシェアあるが利益率改善が課題</td>
+  </tr>
+  <tr>
+    <td>精密工具（歯科・外科） △</td>
+    <td>15〜25%</td>
+    <td><span class="badge badge-yellow">中</span></td>
+    <td>高マージンだがバリュエーション高め・時価総額大</td>
+  </tr>
+</table>
+
+<h3>1-3. 上場企業スクリーニング結果</h3>
+<table>
+  <tr>
+    <th>企業（コード）</th><th>時価総額</th><th>EV/EBITDA</th><th>PBR</th><th>判定</th><th>理由</th>
+  </tr>
+  <tr>
+    <td><strong>日本ライフライン（7575）</strong></td>
+    <td>916億円</td>
+    <td>〜8x</td>
+    <td>1.37x</td>
+    <td><strong>◎ 最優先</strong></td>
+    <td>高マージン・成長継続・無借金・PBR割安</td>
+  </tr>
+  <tr>
+    <td>川澄化学工業（7703）</td>
+    <td>〜200億円</td>
+    <td>〜7x</td>
+    <td>〜0.8x</td>
+    <td>○ 次点</td>
+    <td>規模小さい。ロールアップ起点向き</td>
+  </tr>
+  <tr>
+    <td>ホギメディカル（3593）</td>
+    <td>〜200億円</td>
+    <td>〜10x</td>
+    <td>〜1.0x</td>
+    <td>△ 条件付き</td>
+    <td>業績軟調。ターンアラウンド前提</td>
+  </tr>
+  <tr>
+    <td>ナカニシ（7716）</td>
+    <td>2,668億円</td>
+    <td>25x超</td>
+    <td>2.07x</td>
+    <td>✕ Pass</td>
+    <td>時価総額大・2025年赤字。LBO経済性不成立</td>
+  </tr>
+</table>
+
+<!-- SECTION 2 -->
+<div class="section-header"><span class="num">2</span> 業界分析：日本医療機器業界</div>
+
+<h3>2-1. マクロ環境と成長ドライバー</h3>
+<table>
+  <tr>
+    <th>ドライバー</th><th>医療機器への影響</th><th>PE投資観点での評価</th>
+  </tr>
+  <tr>
+    <td><strong>超高齢化加速</strong></td>
+    <td>不整脈・心不全・透析患者数が年率3〜5%増加。治療デバイス需要が構造的に拡大</td>
+    <td>景気に左右されない需要安定性。LBOのFCF予測精度が高い</td>
+  </tr>
+  <tr>
+    <td><strong>低侵襲治療への移行</strong></td>
+    <td>外科手術からカテーテル治療（TAVI、アブレーション等）へのシフトが加速。単価・技術難度が上昇</td>
+    <td>高付加価値デバイスへの移行でマージン拡大余地。新規参入障壁が高まる</td>
+  </tr>
+  <tr>
+    <td><strong>診療報酬改定</strong></td>
+    <td>2024年改定でカテーテルアブレーション（心房細動治療）の保険点数が維持。患者負担減少で普及加速</td>
+    <td>制度後押しによる需要増。ただし点数引き下げリスクは常時モニタリング必要</td>
+  </tr>
+  <tr>
+    <td><strong>グローバル大手の日本展開</strong></td>
+    <td>Boston Scientific、Medtronic等が日本市場に注力。現地パートナーへの需要増</td>
+    <td>独占販売権の維持・拡大が収益拡大の鍵。エグジット時のストラテジック入札競合を期待</td>
+  </tr>
+  <tr>
+    <td><strong>薬事規制の安定性</strong></td>
+    <td>PMDAによる厳格な承認制度が参入障壁を形成。既存品の地位が保護される</td>
+    <td>一度確立した販売権の持続性が高い。競合排除効果でマージンが守られる</td>
+  </tr>
+</table>
+
+<h3>2-2. 競合構造（カテーテル・電気生理学デバイス市場）</h3>
+<p>日本の不整脈治療デバイス市場は、グローバルメーカー（Boston Scientific、Johnson &amp; Johnson MedTech、Abbott等）が製品を供給し、国内流通・販売は専門商社が担う二層構造が一般的。日本ライフラインはこの構造の中で独占的・優先的販売権を複数製品で持ち、医師・病院との長期関係資産と薬事承認ノウハウを差別化源泉としている。</p>
+<ul style="margin:10px 0 10px 20px; color:#2c2c2c;">
+  <li>国内競合：日本メドトロニック（外資系子会社）、ジョンソン・エンド・ジョンソン（直販）、テルモ（大型）</li>
+  <li>テルモ・オリンパス等の大型上場企業は競合するが規模が異なり直接比較対象外</li>
+  <li>中堅では日本ライフラインが不整脈・電気生理学分野に特化したポジションを確立</li>
+  <li>独占販売権の期間・更新可否が最大のリスクであり、入念なデューデリジェンスが必要</li>
+</ul>
+
+<!-- SECTION 3 -->
+<div class="section-header"><span class="num">3</span> 企業分析：日本ライフライン（7575）</div>
+
+<h3>3-1. 会社概要</h3>
+<p>1981年設立。東京都品川区に本社を置く医療機器専門商社（実質的にはメーカー機能を一部内製化）。不整脈治療用カテーテル、ペースメーカー・ICD（植込み型除細動器）、血管内治療デバイスを主力とし、全国の病院・大学病院に直接販売。グローバルメーカーとの独占・優先販売契約が収益の基盤。</p>
+<table>
+  <tr><th>項目</th><th>内容</th></tr>
+  <tr><td><strong>証券コード・市場</strong></td><td>7575 / 東証プライム</td></tr>
+  <tr><td><strong>売上高（FY26/3）</strong></td><td>592億円（前期比+4.6%）</td></tr>
+  <tr><td><strong>営業利益（FY26/3）</strong></td><td>126億円（営業利益率21.3%）</td></tr>
+  <tr><td><strong>経常利益（FY26/3）</strong></td><td>126億円</td></tr>
+  <tr><td><strong>当期純利益（FY26/3）</strong></td><td>94億円</td></tr>
+  <tr><td><strong>時価総額</strong></td><td>916億円（2026年6月）</td></tr>
+  <tr><td><strong>有利子負債</strong></td><td>実質ゼロ（推計）</td></tr>
+  <tr><td><strong>PBR</strong></td><td>1.37x</td></tr>
+  <tr><td><strong>ROE（FY26/3）</strong></td><td>14.2%</td></tr>
+  <tr><td><strong>主力製品・サービス</strong></td><td>不整脈治療カテーテル / ペースメーカー・ICD / 血管内治療デバイス / 医療器材販売</td></tr>
+  <tr><td><strong>主要販売先</strong></td><td>全国大学病院・循環器専門病院・地域中核病院</td></tr>
+  <tr><td><strong>来期（FY27/3）予想</strong></td><td>売上632億円（+6.8%）、営業利益107億円（▲15%、研究開発投資増）</td></tr>
+</table>
+
+<h3>3-2. 5期財務推移</h3>
+<p>（出所：IRBANK / 各社決算短信・有価証券報告書、単位：億円）</p>
+<table>
+  <tr>
+    <th>指標</th>
+    <th class="center">FY22/3</th>
+    <th class="center">FY23/3</th>
+    <th class="center">FY24/3</th>
+    <th class="center">FY25/3</th>
+    <th class="center">FY26/3</th>
+    <th class="center">5期CAGR</th>
+  </tr>
+  <tr>
+    <td><strong>売上高</strong></td>
+    <td class="center">515</td>
+    <td class="center">518</td>
+    <td class="center">514</td>
+    <td class="center">566</td>
+    <td class="center">592</td>
+    <td class="center"><strong>+3.5%</strong></td>
+  </tr>
+  <tr>
+    <td><strong>営業利益</strong></td>
+    <td class="center">100</td>
+    <td class="center">108</td>
+    <td class="center">109</td>
+    <td class="center">123</td>
+    <td class="center">126</td>
+    <td class="center"><strong>+5.9%</strong></td>
+  </tr>
+  <tr>
+    <td>営業利益率</td>
+    <td class="center">19.4%</td>
+    <td class="center">20.9%</td>
+    <td class="center">21.2%</td>
+    <td class="center">21.7%</td>
+    <td class="center">21.3%</td>
+    <td class="center">—</td>
+  </tr>
+  <tr>
+    <td><strong>EBITDA（推計）</strong></td>
+    <td class="center">〜122</td>
+    <td class="center">〜130</td>
+    <td class="center">〜131</td>
+    <td class="center">〜146</td>
+    <td class="center">〜150</td>
+    <td class="center"><strong>+5.3%</strong></td>
+  </tr>
+  <tr>
+    <td>当期純利益</td>
+    <td class="center">75</td>
+    <td class="center">69</td>
+    <td class="center">75</td>
+    <td class="center">93</td>
+    <td class="center">94</td>
+    <td class="center"><strong>+5.7%</strong></td>
+  </tr>
+  <tr>
+    <td>ROE</td>
+    <td class="center">13.7%</td>
+    <td class="center">12.3%</td>
+    <td class="center">12.9%</td>
+    <td class="center">15.6%</td>
+    <td class="center">14.2%</td>
+    <td class="center">—</td>
+  </tr>
+</table>
+
+<h3>3-3. 投資の着眼点（Business Quality Assessment）</h3>
+
+<h4>① 参入障壁の高さ：薬事承認と医師関係</h4>
+<p>医療機器の新規採用プロセスは薬事承認（PMDA）取得に数年、その後の病院採用・医師トレーニングに1〜2年を要する。一度採用されたデバイスは医師の習熟度・信頼関係から乗り換えコストが極めて高い。日本ライフラインは不整脈領域の専門医との長年の関係資産を保有しており、この障壁は高齢化で患者数が増えるほど強化される。</p>
+
+<h4>② キャッシュ生成力：高マージン・実質無借金</h4>
+<p>営業利益率21%超は医療機器流通業界で異例の高水準。5期平均で売上高の約15%をフリーキャッシュフローとして創出。有利子負債が実質ゼロのため、LBO実行時にD/EBITDA 3.5xまでのデット組成余地が最大限確保できる。これはエクイティ投入額を圧縮し、IRRを直接改善する源泉となる。</p>
+
+<h4>③ 成長ドライバー：構造的高齢化需要</h4>
+<p>不整脈（心房細動）患者数は日本で約100万人。高齢化に伴い年率3〜5%増加が見込まれる。カテーテルアブレーション件数は2024年改定後さらに拡大傾向にあり、消耗品（カテーテル）の繰り返し売上がFCFの基盤となっている。FY27/3予想売上632億円は+6.8%増と成長継続。</p>
+
+<h4>④ バリュー創出のレバー</h4>
+<ul style="margin:10px 0 10px 20px; color:#2c2c2c;">
+  <li><strong>オペレーション：</strong>PBR1.37x（割安）→ 非公開化で上場維持コスト削減。経営の短期目線からの解放</li>
+  <li><strong>成長：</strong>販売地域・病院カバレッジ拡大。新製品（ペースメーカー自社製品化等）への投資加速</li>
+  <li><strong>マルチプル：</strong>エグジット時にストラテジック（Boston Scientific等）入札競合でEV/EBITDAプレミアムを狙う</li>
+  <li><strong>財務：</strong>無借金→D/EBITDA 3.5x活用。借入利息は損金算入でTax Shieldも有効</li>
+</ul>
+
+<h3>3-4. 主要リスクと軽減策</h3>
+<table>
+  <tr>
+    <th>リスク</th><th>内容</th><th>軽減策</th>
+  </tr>
+  <tr>
+    <td><strong>独占販売権の喪失</strong></td>
+    <td>グローバルメーカーが直販に転換した場合、主力商材を失うリスク</td>
+    <td>複数メーカー・複数製品に分散。医師関係資産はメーカー変更後も活用可</td>
+  </tr>
+  <tr>
+    <td><strong>診療報酬引き下げ</strong></td>
+    <td>2026年以降の改定でカテーテル関連の点数引き下げが起きれば単価圧迫</td>
+    <td>件数増（高齢化）で数量カバー可能。過去改定でも売上成長を維持した実績</td>
+  </tr>
+  <tr>
+    <td><strong>円安・輸入コスト上昇</strong></td>
+    <td>仕入れの多くが外貨建て。円安継続で売上原価上昇リスク</td>
+    <td>販売価格への転嫁実績あり。為替ヘッジの強化で変動を吸収</td>
+  </tr>
+  <tr>
+    <td><strong>来期（FY27）利益減</strong></td>
+    <td>FY27/3営業利益予想107億円（▲15%）。研究開発・システム投資増が要因</td>
+    <td>一過性の先行投資と評価。LBOモデルではFY1の利益低下をNormalized EBITDAで調整</td>
+  </tr>
+  <tr>
+    <td><strong>TOBプレミアム</strong></td>
+    <td>30%プレミアムでエントリーEV/EBITDA〜8x。ベアケースでIRR低下</td>
+    <td>ベアケースMoM 2.0x以上確保。感応度分析でマルチプル・成長率の下振れ耐性を確認済み</td>
+  </tr>
+</table>
+
+<!-- SECTION 4 -->
+<div class="section-header"><span class="num">4</span> LBOモデル：ストラクチャーと財務予測</div>
+
+<h3>4-1. 取引ストラクチャー（Sources &amp; Uses）</h3>
+<table>
+  <tr>
+    <th>資金源（Sources）</th><th>金額（億円）</th><th>比率</th>
+    <th>資金使途（Uses）</th><th>金額（億円）</th>
+  </tr>
+  <tr>
+    <td>ターム・ローンB（D/EBITDA 3.5x）</td>
+    <td class="center">525</td>
+    <td class="center">48%</td>
+    <td>株式買収代金（TOBプレミアム30%）</td>
+    <td class="center">1,091</td>
+  </tr>
+  <tr>
+    <td>スポンサーエクイティ</td>
+    <td class="center">575</td>
+    <td class="center">52%</td>
+    <td>買収関連費用</td>
+    <td class="center">9</td>
+  </tr>
+  <tr>
+    <td><strong>資金源合計</strong></td>
+    <td class="center"><strong>1,100</strong></td>
+    <td class="center"><strong>100%</strong></td>
+    <td><strong>資金使途合計</strong></td>
+    <td class="center"><strong>1,100</strong></td>
+  </tr>
+</table>
+
+<h3>4-2. 財務予測サマリー（5年）</h3>
+<table>
+  <tr>
+    <th>指標（億円）</th>
+    <th class="center">Proforma<br>LBO実行</th>
+    <th class="center">FY1<br>2027/3</th>
+    <th class="center">FY2<br>2028/3</th>
+    <th class="center">FY3<br>2029/3</th>
+    <th class="center">FY4<br>2030/3</th>
+    <th class="center">FY5<br>2031/3</th>
+  </tr>
+  <tr>
+    <td>売上高</td>
+    <td class="center">592</td>
+    <td class="center">632</td>
+    <td class="center">676</td>
+    <td class="center">716</td>
+    <td class="center">752</td>
+    <td class="center">790</td>
+  </tr>
+  <tr>
+    <td>EBITDA</td>
+    <td class="center">150</td>
+    <td class="center">143</td>
+    <td class="center">162</td>
+    <td class="center">172</td>
+    <td class="center">180</td>
+    <td class="center">191</td>
+  </tr>
+  <tr>
+    <td>EBITDAマージン</td>
+    <td class="center">25.3%</td>
+    <td class="center">22.6%</td>
+    <td class="center">24.0%</td>
+    <td class="center">24.0%</td>
+    <td class="center">23.9%</td>
+    <td class="center">24.2%</td>
+  </tr>
+  <tr>
+    <td>支払利息</td>
+    <td class="center">—</td>
+    <td class="center">26</td>
+    <td class="center">24</td>
+    <td class="center">21</td>
+    <td class="center">18</td>
+    <td class="center">14</td>
+  </tr>
+  <tr>
+    <td>デット残高</td>
+    <td class="center">525</td>
+    <td class="center">468</td>
+    <td class="center">388</td>
+    <td class="center">296</td>
+    <td class="center">200</td>
+    <td class="center">95</td>
+  </tr>
+  <tr>
+    <td>D/EBITDA</td>
+    <td class="center">3.5x</td>
+    <td class="center">3.3x</td>
+    <td class="center">2.4x</td>
+    <td class="center">1.7x</td>
+    <td class="center">1.1x</td>
+    <td class="center">0.5x</td>
+  </tr>
+</table>
+
+<h3>4-3. 投資リターン分析</h3>
+<table>
+  <tr>
+    <th>シナリオ</th>
+    <th class="center">エグジットEV/EBITDA</th>
+    <th class="center">エグジットEV（FY5）</th>
+    <th class="center">エクイティ価値</th>
+    <th class="center">MoM</th>
+    <th class="center">IRR（5年）</th>
+  </tr>
+  <tr>
+    <td>ベアケース（成長率4%・7x出口）</td>
+    <td class="center">7.0x</td>
+    <td class="center">1,274億円</td>
+    <td class="center">1,179億円</td>
+    <td class="center">2.1x</td>
+    <td class="center">15.6%</td>
+  </tr>
+  <tr>
+    <td><strong>ベースケース（成長率5%・8x出口）</strong></td>
+    <td class="center"><strong>8.0x</strong></td>
+    <td class="center"><strong>1,528億円</strong></td>
+    <td class="center"><strong>1,433億円</strong></td>
+    <td class="center"><strong>2.5x</strong></td>
+    <td class="center"><strong>20.2%</strong></td>
+  </tr>
+  <tr>
+    <td>ブルケース（成長率7%・9x出口）</td>
+    <td class="center">9.0x</td>
+    <td class="center">1,895億円</td>
+    <td class="center">1,800億円</td>
+    <td class="center">3.1x</td>
+    <td class="center">25.4%</td>
+  </tr>
+</table>
+
+<!-- SECTION 5 -->
+<div class="section-header"><span class="num">5</span> 投資判断サマリー</div>
+
+<div class="callout green">
+  <strong>推奨：投資実行</strong><br>
+  日本ライフラインは、超高齢化という抗えない構造変化を背景に、薬事承認・医師関係という二重の参入障壁で守られた高マージン事業を展開する。営業利益率21%・実質無借金・売上5年CAGR 3.5%（直近FY25/3は+10%）という質の高いビジネスが、1.37x PBRという割安なバリュエーションで取得可能。TOBプレミアム30%・エントリーEV/EBITDA 8xという適切なエントリーコストで、ベースケースIRR 20.2%・MoM 2.5xを確保できる。ベアケース（15.6%・2.1x）でもPEの最低ハードルを大きく上回る投資安定性がある。
+</div>
+
+<table>
+  <tr>
+    <th>チェック項目</th><th>基準</th><th>結果</th><th>判定</th>
+  </tr>
+  <tr>
+    <td>IRR ベースケース</td>
+    <td>&gt; 20%</td>
+    <td>20.2%</td>
+    <td><span class="badge badge-green">✓ クリア</span></td>
+  </tr>
+  <tr>
+    <td>MoM ベースケース</td>
+    <td>&gt; 2.5x</td>
+    <td>2.5x</td>
+    <td><span class="badge badge-green">✓ クリア</span></td>
+  </tr>
+  <tr>
+    <td>D/EBITDA エグジット時</td>
+    <td>&lt; 1.5x</td>
+    <td>0.5x（FY5末）</td>
+    <td><span class="badge badge-green">✓ 十分デレバレッジ</span></td>
+  </tr>
+  <tr>
+    <td>エントリーEV/EBITDA</td>
+    <td>&lt; 12x</td>
+    <td>〜8.0x</td>
+    <td><span class="badge badge-green">✓ 適切</span></td>
+  </tr>
+  <tr>
+    <td>ベアケースIRR</td>
+    <td>&gt; 12%</td>
+    <td>15.6%</td>
+    <td><span class="badge badge-green">✓ クリア</span></td>
+  </tr>
+</table>
+
+</div><!-- /body -->
+
+<div class="footer">
+  <span>Japan Lifeline (7575) PE Deep Dive — Confidential</span>
+  <span>2026年6月 ／ 本資料は分析能力を示すための参考資料です。公開情報および推計値に基づきます。</span>
+</div>
+
+</body>
+</html>
