@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巨大経済規模の可視化</title>
+<style>
+  :root{--bg:#0b1220;--card:#131c2e;--line:#26324a;--text:#e7edf7;--muted:#93a3bd;
+        --macro:#60a5fa;--market:#34d399;--asset:#fbbf24;--alt:#c084fc;--micro:#fb7185;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic UI",Meiryo,sans-serif;
+       background:linear-gradient(180deg,#0b1220,#0e1729);color:var(--text);padding:22px 26px 60px}
+  h1{font-size:22px;font-weight:800;letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:12.5px;margin-top:4px;margin-bottom:16px}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .toggle{display:flex;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .toggle button{background:transparent;border:0;color:var(--muted);padding:8px 14px;font-size:12.5px;cursor:pointer}
+  .toggle button.on{background:linear-gradient(90deg,#2563eb,#0ea5e9);color:#fff;font-weight:700}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+  .chip{font-size:11px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);
+        background:var(--card);color:var(--muted);cursor:pointer;user-select:none}
+  .chip .d{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
+  .chip.off{opacity:.35}
+  .ref{font-size:12px;color:var(--muted);margin:6px 0 14px}
+  .ref select{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:5px 8px}
+  .bars{display:flex;flex-direction:column;gap:7px}
+  .row{display:grid;grid-template-columns:230px 1fr;gap:12px;align-items:center;cursor:pointer}
+  .row .name{font-size:12.5px;text-align:right;color:#cdd8ea;line-height:1.25}
+  .row .name small{color:var(--muted);display:block;font-size:10.5px}
+  .track{position:relative;height:26px;background:#0e1626;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .fill{position:absolute;left:0;top:0;bottom:0;border-radius:5px 0 0 5px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+  .val{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11.5px;font-weight:700;color:#0b1220;
+       mix-blend-mode:screen;filter:none}
+  .valout{position:absolute;top:50%;transform:translateY(-50%);font-size:11.5px;font-weight:700;color:var(--text);padding-left:8px}
+  .row:hover .track{border-color:#3b82f6}
+  .detail{margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;min-height:70px}
+  .detail h3{font-size:15px;margin-bottom:6px}
+  .detail .mult{color:var(--muted);font-size:13px;line-height:1.7}
+  .detail b{color:#7dd3fc}
+  .foot{margin-top:22px;color:#5f6f8a;font-size:11px;line-height:1.7}
+</style>
+</head>
+<body>
+  <h1>💰 巨大経済規模の可視化</h1>
+  <div class="sub">世界のGDP・金融市場・資産クラス・巨大企業を同じ物差しで比較。数値は概算（2025年前後・出典末尾）。データはコード先頭の配列を書き換えるだけで更新できます。</div>
+
+  <div class="controls">
+    <div class="toggle" id="scaleToggle">
+      <button data-scale="log" class="on">対数スケール（全体を俯瞰）</button>
+      <button data-scale="linear">実数スケール（桁違いを体感）</button>
+    </div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="ref">基準を選ぶと「〜の何倍か」を計算します：
+    <select id="refSel"></select></div>
+
+  <div class="bars" id="bars"></div>
+
+  <div class="detail" id="detail"><span class="mult">バーをクリックすると、基準比の倍率と内訳が表示されます。</span></div>
+
+  <div class="foot" id="foot"></div>
+
+<script>
+/* ===== データ（USD建て・単位=兆ドル。更新はここだけ触ればOK）===== */
+const DATA = [
+  {n:"デリバティブ想定元本 (BIS)", v:700, c:"market", src:"BIS notional"},
+  {n:"世界の総債務 (政府+企業+家計)", v:318, c:"macro", src:"IIF 2025"},
+  {n:"世界の不動産 総額(推計)", v:330, c:"asset", src:"Savills系推計"},
+  {n:"世界の債券市場", v:145, c:"market", src:"SIFMA 2025"},
+  {n:"世界の株式時価総額", v:130, c:"market", src:"~2025"},
+  {n:"世界の運用資産 (AM業界AUM)", v:128, c:"alt", src:"BCG 2025"},
+  {n:"世界のGDP (名目)", v:113, c:"macro", src:"IMF 2025"},
+  {n:"米国の債券市場", v:58, c:"market", src:"SIFMA"},
+  {n:"米国の株式時価総額", v:62, c:"market", src:"~2025"},
+  {n:"米国連邦政府 債務", v:36, c:"macro", src:"US Treasury"},
+  {n:"米国のGDP", v:29, c:"macro", src:"BEA 2025"},
+  {n:"金 地上在庫の時価", v:22, c:"asset", src:"WGC ~2025"},
+  {n:"中国のGDP", v:19, c:"macro", src:"IMF 2025"},
+  {n:"BlackRock 運用資産", v:11.5, c:"alt", src:"BlackRock"},
+  {n:"プライベート・エクイティ AUM", v:8.5, c:"alt", src:"Preqin"},
+  {n:"日本のGDP", v:4.1, c:"macro", src:"IMF 2025"},
+  {n:"時価総額 最大級の企業 (Nvidia級)", v:3.5, c:"micro", src:"~2025"},
+  {n:"プライベート・クレジット AUM", v:3.5, c:"alt", src:"ACC 2025"},
+  {n:"Apple 時価総額", v:3.3, c:"micro", src:"~2025"},
+  {n:"暗号資産 時価総額", v:3.5, c:"asset", src:"~2025"},
+  {n:"米国 年間 財政赤字", v:1.8, c:"macro", src:"CBO"},
+  {n:"日本 国家予算(一般会計)", v:0.75, c:"macro", src:"~112兆円"},
+  {n:"世界一の富豪の純資産", v:0.4, c:"micro", src:"~2025"},
+];
+const CAT = {
+  macro:{label:"マクロ経済",color:"#60a5fa"},
+  market:{label:"金融市場",color:"#34d399"},
+  asset:{label:"資産クラス",color:"#fbbf24"},
+  alt:{label:"オルタナ運用",color:"#c084fc"},
+  micro:{label:"企業・個人",color:"#fb7185"},
+};
+/* ============================================================ */
+
+let scale="log";
+const off=new Set();               // 非表示カテゴリ
+let refName=DATA.find(d=>d.n.includes("世界のGDP")).n;
+
+const fmt=v=> v>=1 ? "$"+v.toLocaleString(undefined,{maximumFractionDigits:1})+"兆" :
+                     "$"+Math.round(v*1000).toLocaleString()+"億";
+
+function legend(){
+  const el=document.getElementById('legend');el.innerHTML='';
+  Object.entries(CAT).forEach(([k,c])=>{
+    const b=document.createElement('span');b.className='chip'+(off.has(k)?' off':'');
+    b.innerHTML=`<span class="d" style="background:${c.color}"></span>${c.label}`;
+    b.onclick=()=>{off.has(k)?off.delete(k):off.add(k);legend();render();};
+    el.appendChild(b);
+  });
+}
+function refSelect(){
+  const s=document.getElementById('refSel');s.innerHTML='';
+  DATA.slice().sort((a,b)=>b.v-a.v).forEach(d=>{
+    const o=document.createElement('option');o.value=d.n;o.textContent=d.n+"（"+fmt(d.v)+"）";
+    if(d.n===refName)o.selected=true;s.appendChild(o);
+  });
+  s.onchange=()=>{refName=s.value;render();};
+}
+function render(){
+  const bars=document.getElementById('bars');bars.innerHTML='';
+  const items=DATA.filter(d=>!off.has(d.c)).sort((a,b)=>b.v-a.v);
+  const max=Math.max(...items.map(d=>d.v));
+  const min=Math.min(...items.map(d=>d.v));
+  const lmin=Math.log10(min*0.8), lmax=Math.log10(max);
+  items.forEach(d=>{
+    let pct = scale==="log"
+      ? (Math.log10(d.v)-lmin)/(lmax-lmin)*100
+      : d.v/max*100;
+    pct=Math.max(pct,1.5);
+    const row=document.createElement('div');row.className='row';
+    const inside = pct>26;
+    row.innerHTML=`
+      <div class="name">${d.n}<small>${CAT[d.c].label} ・ ${d.src}</small></div>
+      <div class="track">
+        <div class="fill" style="width:${pct}%;background:linear-gradient(90deg,${CAT[d.c].color},${CAT[d.c].color}bb)"></div>
+        ${inside?`<span class="val" style="left:calc(${pct}% - 8px);transform:translate(-100%,-50%);color:#0b1220">${fmt(d.v)}</span>`
+                :`<span class="valout" style="left:${pct}%">${fmt(d.v)}</span>`}
+      </div>`;
+    row.onclick=()=>detail(d);
+    bars.appendChild(row);
+  });
+}
+function detail(d){
+  const ref=DATA.find(x=>x.n===refName);
+  const el=document.getElementById('detail');
+  const ratio=d.v/ref.v;
+  const comp = ratio>=1 ? `<b>${ref.n}</b> の <b>${ratio.toLocaleString(undefined,{maximumFractionDigits:1})}倍</b>`
+                        : `<b>${ref.n}</b> の <b>${(ratio*100).toLocaleString(undefined,{maximumFractionDigits:1})}%</b>`;
+  // vs 世界のGDP を常に併記
+  const gdp=DATA.find(x=>x.n.includes("世界のGDP"));
+  const vsg=(d.v/gdp.v);
+  el.innerHTML=`<h3 style="color:${CAT[d.c].color}">${d.n} — ${fmt(d.v)}</h3>
+    <div class="mult">この規模は ${comp}。<br>
+    世界のGDP($${gdp.v}兆)比では <b>${vsg.toLocaleString(undefined,{maximumFractionDigits:2})}倍</b>。<br>
+    分類：${CAT[d.c].label} ／ 出典：${d.src}</div>`;
+}
+document.getElementById('scaleToggle').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  scale=b.dataset.scale;
+  document.querySelectorAll('#scaleToggle button').forEach(x=>x.classList.toggle('on',x===b));
+  render();
+});
+document.getElementById('foot').textContent=
+  "出典（概算）: IMF WEO 2025 / SIFMA / IIF Global Debt Monitor / BIS / BCG Global Asset Management / Preqin / ACC (Alternative Credit Council) 2025 ほか。数値は丸めた概算で、比較の桁感を掴む目的です。";
+
+legend();refSelect();render();
+document.querySelector('#bars .row')&&detail(DATA.find(d=>d.n.includes("世界のGDP")));
+</script>
+</body>
+</html>
