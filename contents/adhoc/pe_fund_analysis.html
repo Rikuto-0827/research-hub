@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEファンド分析</title>
+<style>
+  :root{--bg:#0b1220;--card:#141d2f;--card2:#0f1728;--line:#26324a;--text:#e7edf7;--muted:#93a3bd;--accent:#8b5cf6;--accent2:#6366f1}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic UI",Meiryo,sans-serif;background:linear-gradient(180deg,#0b1220,#0e1729);color:var(--text);padding:22px 26px 60px}
+  h1{font-size:22px;font-weight:800}
+  .sub{color:var(--muted);font-size:12.5px;margin:4px 0 16px}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+  .bar input{background:var(--card);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:8px 12px;font-size:13px;min-width:200px}
+  .bar select{background:var(--card);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:8px 10px;font-size:12.5px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .fund{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s}
+  .fund:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .fund .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .fund h3{font-size:15.5px}
+  .fund .hq{font-size:11px;color:var(--muted);margin-top:2px}
+  .aum{font-size:19px;font-weight:800;color:#c4b5fd;white-space:nowrap}
+  .aum small{display:block;font-size:9.5px;color:var(--muted);font-weight:500;text-align:right}
+  .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+  .tag{font-size:10.5px;padding:3px 8px;border-radius:999px;background:#1e293b;border:1px solid var(--line);color:#a5b4cf}
+  .note{margin-top:10px;font-size:12px;color:#b9c4d8;line-height:1.55}
+  .rn{margin-top:10px;font-size:10.5px;color:#64748b}
+  .rn b{color:#93a3bd}
+  /* detail modal */
+  .overlay{position:fixed;inset:0;background:rgba(4,8,16,.72);display:none;align-items:center;justify-content:center;padding:24px;z-index:10}
+  .modal{max-width:640px;width:100%;max-height:86vh;overflow:auto;background:var(--card);border:1px solid var(--accent);border-radius:16px;padding:24px 26px}
+  .modal h2{font-size:19px;margin-bottom:2px}
+  .modal .hq{color:var(--muted);font-size:12px;margin-bottom:14px}
+  .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;font-size:13px;margin-bottom:14px}
+  .kv .k{color:var(--muted)}
+  .modal h4{font-size:13px;color:#c4b5fd;margin:14px 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .modal p{font-size:13px;line-height:1.7;color:#d3dcec}
+  .research{background:#0f1728;border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:12.5px;color:#93a3bd;margin-top:6px}
+  .close{float:right;background:#1e293b;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:12px}
+  .foot{margin-top:22px;color:#5f6f8a;font-size:11px;line-height:1.7}
+  .howto{background:#101a2c;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:12px;color:#9fb0c9;margin-bottom:16px}
+</style>
+</head>
+<body>
+  <h1>🏦 PEファンド分析</h1>
+  <div class="sub">主要PEファンドの研究ベース。各ファンドの戦略・規模を俯瞰し、個別ファンドの投資先企業研究をここに蓄積していきます。ファンドはコード先頭の配列に追記するだけで増やせます。</div>
+
+  <div class="howto">📌 使い方：カードをクリックすると詳細と「企業研究メモ」欄が開きます。新しいファンドや、あるファンドの投資先企業を深掘りしたら、<b>FUNDS配列</b>の該当ファンドの <b>research</b> に追記 → このタブが育っていきます。</div>
+
+  <div class="bar">
+    <input id="q" placeholder="ファンド名・戦略で絞り込み…">
+    <select id="sort">
+      <option value="aum">AUM 大きい順</option>
+      <option value="name">名前順</option>
+    </select>
+    <span id="count" style="color:var(--muted);font-size:12px"></span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+
+  <div class="foot" id="foot"></div>
+
+<script>
+/* ===== ファンド配列（追記で拡張）。aum=十億ドル。confirmed=Web確認済み ===== */
+const FUNDS=[
+ {name:"Blackstone", hq:"New York, US", aum:1300, conf:true, year:"Q1 2026",
+  tags:["最大手","不動産","クレジット","インフラ","PE"],
+  note:"世界最大のオルタナ運用。不動産・クレジット・インフラが厚く、PEは一部門。",
+  strat:"Corporate PE / Real Estate / Credit & Insurance / Infrastructure / Secondaries。規模を活かした大型・多資産戦略。",
+  research:""},
+ {name:"Apollo Global Management", hq:"New York, US", aum:990, conf:true, year:"Dec 2025",
+  tags:["クレジット主導","保険(Athene)","バリュー"],
+  note:"クレジット/保険(Athene)を核に急成長（AUM前年比+21%）。ハイブリッド資本に強み。",
+  strat:"Yield(クレジット)/Hybrid/Equity の3本柱。ディストレスト・バリュー志向のPEと巨大なクレジットプラットフォーム。",
+  research:""},
+ {name:"KKR", hq:"New York, US", aum:744, conf:true, year:"2025",
+  tags:["バイアウト老舗","インフラ","アジア強い"],
+  note:"5年募集額でPEI 300首位を奪還。バイアウトの老舗でインフラ・アジアも拡大。",
+  strat:"Private Equity / Infrastructure / Real Estate / Credit / Insurance(Global Atlantic)。従業員持株など経営関与型。",
+  research:""},
+ {name:"The Carlyle Group", hq:"Washington D.C., US", aum:477, conf:true, year:"Dec 2025",
+  tags:["グローバル","セクター特化","クレジット"],
+  note:"ワシントン発のグローバルPE。企業投資・クレジット・運用ソリューションの3領域。",
+  strat:"Global Private Equity / Global Credit / Global Investment Solutions。産業別チーム体制。",
+  research:""},
+ {name:"EQT", hq:"Stockholm, Sweden", aum:285, conf:true, year:"2025 (€266bn)",
+  tags:["欧州最大級","テーマ投資","インフラ"],
+  note:"募集額で世界3位。欧州発、テーマ/インフラ/成長投資に強い。日本でも活動（例：小売・TOB案件）。",
+  strat:"Private Capital(バイアウト/成長) と Real Assets(インフラ)。デジタル化・脱炭素などテーマ主導。",
+  research:""},
+ {name:"Ares Management", hq:"Los Angeles, US", aum:550, conf:false, year:"概算",
+  tags:["プライベートクレジット最大手","直接融資"],
+  note:"プライベートクレジットの最大手級。直接融資・二次流通で存在感。",
+  strat:"Credit / Private Equity / Real Assets / Secondaries。クレジット比率が非常に高い。",
+  research:""},
+ {name:"Brookfield", hq:"Toronto, Canada", aum:1000, conf:false, year:"概算(オルタナ全体)",
+  tags:["インフラ","再エネ","不動産"],
+  note:"インフラ・再生可能エネルギー・不動産の実物資産に強い巨大オルタナ運用。",
+  strat:"Infrastructure / Renewable Power / Real Estate / Private Equity / Credit。長期・実物資産志向。",
+  research:""},
+ {name:"Thoma Bravo", hq:"Chicago, US", aum:180, conf:false, year:"概算",
+  tags:["ソフトウェア特化","バイアウト"],
+  note:"エンタープライズ・ソフトウェアのバイアウトに特化。オペレーション改善型。",
+  strat:"ソフトウェア/テック企業の非公開化・成長。プレイブックによる収益性改善。",
+  research:""},
+];
+/* ========================================================= */
+
+const grid=document.getElementById('grid');
+const fmtAum=v=> v>=1000 ? "$"+(v/1000).toFixed(2)+"T" : "$"+v+"B";
+
+function render(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const sort=document.getElementById('sort').value;
+  let list=FUNDS.filter(f=>!q || (f.name+f.tags.join()+f.note).toLowerCase().includes(q));
+  list.sort((a,b)=> sort==="aum" ? b.aum-a.aum : a.name.localeCompare(b.name));
+  grid.innerHTML='';
+  list.forEach(f=>{
+    const el=document.createElement('div');el.className='fund';
+    el.innerHTML=`<div class="top"><div><h3>${f.name}</h3><div class="hq">${f.hq}</div></div>
+      <div class="aum">${fmtAum(f.aum)}<small>AUM ${f.conf?'':'(概算)'} ${f.year}</small></div></div>
+      <div class="tags">${f.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="note">${f.note}</div>
+      <div class="rn">${f.research? '📝 企業研究メモあり' : '<b>企業研究メモ：未記入</b>'}</div>`;
+    el.onclick=()=>open(f);
+    grid.appendChild(el);
+  });
+  document.getElementById('count').textContent=`${list.length} / ${FUNDS.length} ファンド`;
+}
+function open(f){
+  const m=document.getElementById('modal');
+  m.innerHTML=`<button class="close" onclick="document.getElementById('overlay').style.display='none'">閉じる ✕</button>
+    <h2>${f.name}</h2><div class="hq">${f.hq}</div>
+    <div class="kv"><span class="k">AUM</span><span>${fmtAum(f.aum)} ${f.conf?'（確認済 '+f.year+'）':'（概算 '+f.year+'）'}</span>
+      <span class="k">タグ</span><span>${f.tags.join(' / ')}</span></div>
+    <h4>戦略</h4><p>${f.strat}</p>
+    <h4>投資先・企業研究メモ</h4>
+    <div class="research">${f.research? f.research : 'まだ記入がありません。このファンドの投資先企業を分析したら、FUNDS配列の '+f.name+' の research に追記してください（ここに表示されます）。'}</div>`;
+  document.getElementById('overlay').style.display='flex';
+}
+document.getElementById('overlay').onclick=e=>{ if(e.target.id==='overlay') e.currentTarget.style.display='none'; };
+document.getElementById('q').oninput=render;
+document.getElementById('sort').onchange=render;
+document.getElementById('foot').textContent="出典: PEI 300 / AlphaSense / DealRoom / 各社IR（Blackstone・Apollo・KKR・Carlyle・EQTはWeb確認、Ares・Brookfield・Thoma BravoはAUM概算）。2025-2026年時点。";
+render();
+</script>
+</body>
+</html>
