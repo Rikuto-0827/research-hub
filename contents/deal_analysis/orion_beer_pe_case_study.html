@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オリオンビール PE投資ケーススタディ｜面接対策レポート（改訂版）</title>
+<style>
+  :root{
+    --navy:#0f2a43; --navy2:#16395c; --accent:#c9a13b; --bg:#f7f8fa;
+    --text:#26303a; --muted:#6b7683; --line:#dde3e9; --red:#b23a48; --green:#2f7d5b; --blue:#2b6cb0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background:var(--bg); color:var(--text); line-height:1.75; font-size:15px;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 28px 80px;}
+  header.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 70%); color:#fff; padding:56px 28px 44px;}
+  .hero-inner{max-width:980px; margin:0 auto;}
+  .hero .tag{display:inline-block; border:1px solid var(--accent); color:var(--accent); font-size:12px; letter-spacing:.15em; padding:3px 12px; margin-bottom:16px;}
+  .hero h1{font-size:29px; font-weight:700; line-height:1.4; margin-bottom:10px;}
+  .hero p.sub{color:#c8d4e0; font-size:14px;}
+  .hero .meta{margin-top:18px; font-size:12px; color:#9fb2c4;}
+  nav.toc{background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px 26px; margin:-26px auto 40px; max-width:980px; position:relative; box-shadow:0 2px 10px rgba(15,42,67,.08);}
+  nav.toc strong{font-size:13px; color:var(--navy); letter-spacing:.1em;}
+  nav.toc ol{margin:8px 0 0 20px; columns:2; font-size:13.5px;}
+  nav.toc a{color:var(--navy2); text-decoration:none;}
+  nav.toc a:hover{text-decoration:underline;}
+  section{margin-top:52px;}
+  h2{font-size:21px; color:var(--navy); border-left:5px solid var(--accent); padding-left:14px; margin-bottom:20px;}
+  h3{font-size:16.5px; color:var(--navy2); margin:26px 0 10px;}
+  h4{font-size:14.5px; color:var(--navy2); margin:18px 0 8px;}
+  p{margin-bottom:12px;}
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:20px 0;}
+  .kpi{background:#fff; border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:6px; padding:16px 18px;}
+  .kpi .v{font-size:21px; font-weight:700; color:var(--navy);}
+  .kpi .l{font-size:12px; color:var(--muted); margin-top:4px;}
+  table{width:100%; border-collapse:collapse; background:#fff; margin:16px 0; font-size:13.5px;}
+  th{background:var(--navy); color:#fff; padding:9px 12px; text-align:left; font-weight:600;}
+  td{padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:nth-child(even) td{background:#fbfcfd;}
+  td.num, th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  .callout{background:#fff; border-left:4px solid var(--accent); border-radius:0 6px 6px 0; padding:16px 20px; margin:18px 0; box-shadow:0 1px 4px rgba(15,42,67,.06);}
+  .callout.insight{border-left-color:var(--green);}
+  .callout.risk{border-left-color:var(--red);}
+  .callout.learn{border-left-color:var(--blue);}
+  .callout b.title{display:block; font-size:13px; letter-spacing:.08em; margin-bottom:6px; color:var(--navy);}
+  .timeline{list-style:none; margin:20px 0; padding-left:0;}
+  .timeline li{position:relative; padding:0 0 22px 30px; border-left:2px solid var(--line); margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 2px var(--accent);}
+  .timeline .d{font-weight:700; color:var(--navy); font-size:13.5px;}
+  .qa{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .qa .q{background:#eef2f6; padding:12px 18px; font-weight:700; color:var(--navy); font-size:14px;}
+  .qa .a{padding:14px 18px; font-size:13.8px;}
+  .glossary{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .glossary .term{background:#f0f4f8; padding:11px 18px; font-weight:700; color:var(--navy2); font-size:14px; border-bottom:1px solid var(--line);}
+  .glossary .def{padding:14px 18px; font-size:13.8px;}
+  .glossary .def p{margin-bottom:10px;}
+  .note{font-size:12px; color:var(--muted);}
+  .est{color:var(--red); font-size:11px; font-weight:700; border:1px solid var(--red); border-radius:3px; padding:0 4px; margin-left:4px; vertical-align:middle;}
+  .bar-row{display:flex; align-items:center; gap:10px; margin:4px 0; font-size:12.5px;}
+  .bar-row .y{width:76px; color:var(--muted); text-align:right; flex-shrink:0;}
+  .bar-row .bar{height:16px; background:linear-gradient(90deg,var(--navy2),#3d6a99); border-radius:2px;}
+  .bar-row .bar.covid{background:linear-gradient(90deg,var(--red),#d47a85);}
+  .bar-row .val{color:var(--navy); font-weight:600; flex-shrink:0;}
+  footer{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted);}
+  footer a{color:var(--navy2); word-break:break-all;}
+  ul.clean{margin:0 0 12px 22px;}
+  ul.clean li{margin-bottom:6px;}
+  @media print{ body{background:#fff;} nav.toc{box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="tag">PE INTERVIEW CASE STUDY — 改訂版 v2</span>
+    <h1>オリオンビール：野村キャピタル・パートナーズ × カーライルによる<br>買収からIPOエグジットまでの全貌</h1>
+    <p class="sub">2019年TOB（総額570億円）→ コロナ禍を挟む約6年半のバリューアップ → 2025年9月 東証プライム上場による完全エグジット → 上場後の株価動向まで</p>
+    <div class="meta">作成日：2026年7月12日（v2改訂）｜面接想定：日系・外資系PEファンド アソシエイト採用｜推定値は<span class="est" style="border-color:#c9a13b;color:#c9a13b;">推定</span>と明記｜v2追加：事業・財務ディープダイブ／難解ポイント解説／FA基礎知識キャッチアップ</div>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>CONTENTS</strong>
+  <ol>
+    <li><a href="#s1">エグゼクティブサマリー</a></li>
+    <li><a href="#s2">ディール概要とストラクチャー</a></li>
+    <li><a href="#s3">事業・財務ディープダイブ ★NEW</a></li>
+    <li><a href="#s4">投資テーゼ（なぜ買ったのか）</a></li>
+    <li><a href="#s5">ホールド期間のバリュークリエーション</a></li>
+    <li><a href="#s6">エグジット分析（IPOの設計と上場後）</a></li>
+    <li><a href="#s7">リターン構造の考察</a></li>
+    <li><a href="#s8">リスクと批判的視点</a></li>
+    <li><a href="#s9">難解ポイント徹底解説 ★NEW</a></li>
+    <li><a href="#s10">FA未経験者のための基礎知識 ★NEW</a></li>
+    <li><a href="#s11">面接で差がつくインサイト</a></li>
+    <li><a href="#s12">想定Q&A</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 1. Executive Summary ============ -->
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>本件は、<b>野村キャピタル・パートナーズ（NCAP、出資比率51%）と米カーライル・グループ（同49%）</b>が共同で設立した買収SPC「オーシャン・ホールディングス」を通じ、2019年に沖縄県のオリオンビールを<b>総額約570億円</b>でTOB・非公開化（経営陣も出資するMBO形式）し、約6年半のホールドを経て<b>2025年9月25日に東証プライム市場へのIPOで完全エグジット</b>した、日本PE市場を代表する消費財ブランド投資のケースである。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">約570億円</div><div class="l">買収総額（2019年、1株79,200円）</div></div>
+    <div class="kpi"><div class="v">約6年半</div><div class="l">ホールド期間（2019年3月〜2025年9月）</div></div>
+    <div class="kpi"><div class="v">850円 → 1,863円</div><div class="l">IPO公開価格 → 初値（+119%）</div></div>
+    <div class="kpi"><div class="v">約380億円</div><div class="l">公開価格ベースの上場時時価総額</div></div>
+    <div class="kpi"><div class="v">297億円 / 43億円</div><div class="l">2026年3月期 売上高／営業利益（OPM14.5%）</div></div>
+    <div class="kpi"><div class="v">約500億円</div><div class="l">上場後の時価総額（2026年6月時点、株価約1,190円）</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">■ 30秒で語るならこう言う</b>
+    「事業承継型・地方名門企業の非公開化案件です。実質無借金・自己資本比率80%のバランスシートを活かしたLBOで、コロナ直撃（売上は一時▲41%）という最悪の外部環境を、プロ経営者の招聘・プレミアム化・値上げ・EC/ホテル再生で乗り切り、営業利益率をコロナ前の約11%から14.5%へ引き上げてIPOで完全エグジットした。一方で公開価格ベースの時価総額（約380億円）は買収総額（570億円）を下回っており、『EBITDAは改善したがエクイティリターンはレバレッジと部分売却・資本政策で確保した可能性が高い』という、バリュークリエーションとリターンの分解を冷静に語れるかが問われる案件です。」
+  </div>
+</section>
+
+<!-- ============ 2. Deal Overview ============ -->
+<section id="s2">
+  <h2>2. ディール概要とストラクチャー</h2>
+
+  <h3>2-1. 対象会社：オリオンビール（沖縄県豊見城市）</h3>
+  <ul class="clean">
+    <li><b>創業：</b>1957年。米軍統治下の沖縄で誕生した「県民ブランド」。沖縄県内ビール類シェアは約5割と圧倒的（かつては6割超）。</li>
+    <li><b>事業：</b>①酒類・清涼飲料（主力「オリオン・ザ・ドラフト」、RTD、泡盛等）＋②観光・ホテル事業の2本柱（詳細は第3章）。</li>
+    <li><b>買収前の財務特性：</b>自己資本比率約80%、実質無借金。安定キャッシュフロー×低レバレッジという<b>LBOに極めて適したバランスシート</b>。</li>
+    <li><b>アサヒとの関係：</b>2002年から業務提携。沖縄県内のアサヒ製品はオリオンが製造、本土でのオリオン製品はアサヒが販売。この提携が後のエグジットで効いてくる。</li>
+  </ul>
+
+  <h3>2-2. ストラクチャー</h3>
+  <table>
+    <tr><th style="width:30%">項目</th><th>内容</th></tr>
+    <tr><td>買主体</td><td>オーシャン・ホールディングス（買収SPC）＝ NCAP 51%／カーライル 49%出資</td></tr>
+    <tr><td>手法</td><td>非上場会社に対するTOB＋スクイーズアウト。経営陣（嘉手苅義男会長ら）もSPCに再出資する<b>MBO形式</b></td></tr>
+    <tr><td>TOB価格</td><td>1株79,200円、買収総額 最大約570億円</td></tr>
+    <tr><td>TOB結果</td><td>応募84.21%＋相対取得8.54%＝92%超を取得（2019年3月成立）→全株取得へ</td></tr>
+    <tr><td>ファイナンス</td><td>LBOローン活用（対象会社が実質無借金のため調達余地大）。上場後も有利子負債約164億円が残存しており、買収ファイナンスの押し下げ（デットプッシュダウン）の痕跡とみられる<span class="est">推定</span></td></tr>
+    <tr><td>特記事項</td><td>約400名の株主に分散した「地元名士の持ち合い」状態の解消＝<b>事業承継・ガバナンス再構築案件</b>としての性格</td></tr>
+  </table>
+
+  <h3>2-3. タイムライン</h3>
+  <ul class="timeline">
+    <li><span class="d">2019年1月</span><br>野村HD・カーライルによるTOB発表（1株79,200円・総額570億円）</li>
+    <li><span class="d">2019年3月</span><br>TOB成立（84.21%応募）。非公開化・MBO完了、「5年後のIPO」を標榜</li>
+    <li><span class="d">2020〜2022年</span><br>コロナ直撃。売上は2022年3月期に165.7億円までコロナ前比▲41%の水準に落ち込む。中期経営計画を2021年に見直し</li>
+    <li><span class="d">2020年代前半</span><br>プロ経営陣招聘（村野一社長ら）、プレミアム戦略・値上げ・EC強化・ホテルリニューアル・海外展開を推進</li>
+    <li><span class="d">2024年6月</span><br>近鉄グループHDと資本業務提携。NCAP・カーライルから株式10%を売却（<b>部分エグジット第1弾</b>）。同年9月に1:200の株式分割（IPO準備）</li>
+    <li><span class="d">2025年3月期</span><br>売上高288.7億円（+11%）、当期純利益73.0億円（+57%）で2期連続増収増益を達成しIPO体制へ</li>
+    <li><span class="d">2025年9月25日</span><br>東証プライム上場（証券コード409A）。公開価格850円、初値1,863円（+119%）。売出2,756万株＋OAでスポンサーは<b>全株売却＝完全エグジット</b>。アサヒビール・近鉄GHDが大株主に</li>
+    <li><span class="d">2026年3月期</span><br>上場後初通期：売上高297.1億円（+2.9%）、営業利益43.1億円（+24.0%）で<b>過去最高の売上・営業利益</b>を更新。2026年6月時点の株価は約1,190円（公開価格比+40%、初値比▲36%）、時価総額約500億円</li>
+  </ul>
+</section>
+
+<!-- ============ 3. Business Deep Dive (NEW) ============ -->
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ ★NEW</h2>
+
+  <h3>3-1. セグメント構造：酒類清涼飲料 × 観光・ホテル</h3>
+  <table>
+    <tr><th style="width:22%">セグメント</th><th class="num" style="width:20%">売上高（FY2025/3）</th><th class="num" style="width:12%">構成比</th><th>内容</th></tr>
+    <tr><td><b>酒類清涼飲料</b></td><td class="num">227.3億円</td><td class="num">78.7%</td><td>ビール（オリオン・ザ・ドラフト）、新ジャンル、RTD（チューハイ等）、泡盛、清涼飲料。県内販売＋県外（アサヒ経由）＋EC＋輸出。アサヒスーパードライの県内ライセンス製造も担う</td></tr>
+    <tr><td><b>観光・ホテル</b></td><td class="num">61.4億円</td><td class="num">21.3%</td><td>オリオンホテル モトブ リゾート＆スパ、オリオンホテル那覇等の所有・運営。2025年7月開業のテーマパーク「ジャングリア」（沖縄北部）が本部エリアの集客追い風</td></tr>
+  </table>
+  <ul class="clean">
+    <li><b>収益性：</b>全社EBITDAマージンは22%台<span class="est">推定</span>と、国内飲料・ホテル複合企業として高水準。営業利益率14.5%（FY2026/3）はアサヒ（約9%）、サッポロ（約2%）を大きく上回る。</li>
+    <li><b>EC比率：</b>EC売上約10億円・EC化率3.5%（上場時点）。非公開化前はほぼゼロだった直販チャネルをPE傘下で構築。</li>
+    <li><b>顧客集中：</b>主要顧客に県内卸のタカダ。県内流通への依存度が高い点はDD論点。</li>
+    <li><b>組織：</b>連結従業員352名（臨時251名）、平均年収704万円。少数精鋭でブランドを回すアセット構造。</li>
+  </ul>
+
+  <h3>3-2. 業績推移：コロナの谷と「V字＋α」回復</h3>
+  <p class="note">単位：億円。2021〜2023年3月期は個別決算、他は連結。2019〜2020年3月期は非公開化直後で開示なし。出所：有価証券報告書・決算短信（IRBANK集計）</p>
+  <table>
+    <tr><th>決算期</th><th class="num">売上高</th><th class="num">営業利益</th><th class="num">経常利益</th><th class="num">純利益</th><th>コメント</th></tr>
+    <tr><td>2017/3期（連）</td><td class="num">280.1</td><td class="num">29.8</td><td class="num">36.1</td><td class="num">27.8</td><td>買収前ピーク圏。OPM 10.7%</td></tr>
+    <tr><td>2018/3期（連）</td><td class="num">283.2</td><td class="num">30.5</td><td class="num">37.1</td><td class="num">23.1</td><td>買収直前期。OPM 10.8%</td></tr>
+    <tr><td>2019〜20/3期</td><td class="num" colspan="4" style="text-align:center">非公開化に伴い開示なし</td><td>2019年3月TOB成立</td></tr>
+    <tr><td style="color:var(--red)">2021/3期（個）</td><td class="num">196.0</td><td class="num">—</td><td class="num">6.6</td><td class="num">11.2</td><td style="color:var(--red)">コロナ1年目。経常▲82%</td></tr>
+    <tr><td style="color:var(--red)">2022/3期（個）</td><td class="num">165.7</td><td class="num">—</td><td class="num">5.9</td><td class="num">8.1</td><td style="color:var(--red)"><b>ボトム。コロナ前比▲41%</b></td></tr>
+    <tr><td>2023/3期（個）</td><td class="num">217.9</td><td class="num">—</td><td class="num">26.9</td><td class="num">65.5</td><td>回復開始。純利益65.5億＞経常26.9億→約40億円規模の特別利益（資産売却・補助金等とみられる）<span class="est">推定</span></td></tr>
+    <tr><td>2024/3期（連）</td><td class="num">260.1</td><td class="num">28.5</td><td class="num">28.2</td><td class="num">46.5</td><td>観光回復・値上げ効果</td></tr>
+    <tr><td>2025/3期（連）</td><td class="num">288.7</td><td class="num">34.8</td><td class="num">34.5</td><td class="num">73.0</td><td>IPO直前期。純利益73億にも特別利益含む<span class="est">留意</span>。ROE 38.5%</td></tr>
+    <tr><td><b>2026/3期（連）</b></td><td class="num"><b>297.1</b></td><td class="num"><b>43.1</b></td><td class="num"><b>41.2</b></td><td class="num"><b>36.4</b></td><td><b>過去最高の売上・営業利益。</b>OPM 14.5%。純利益半減は前期の特別利益剥落による正常化</td></tr>
+    <tr><td>2027/3期（会社予想）</td><td class="num">311.2</td><td class="num">43.5</td><td class="num">41.9</td><td class="num">29.3</td><td>増収・営業増益継続を計画</td></tr>
+  </table>
+
+  <h4>売上高の推移（イメージ）</h4>
+  <div>
+    <div class="bar-row"><span class="y">2018/3</span><div class="bar" style="width:71%"></div><span class="val">283億</span></div>
+    <div class="bar-row"><span class="y">2021/3</span><div class="bar covid" style="width:49%"></div><span class="val">196億</span></div>
+    <div class="bar-row"><span class="y">2022/3</span><div class="bar covid" style="width:41%"></div><span class="val">166億（底）</span></div>
+    <div class="bar-row"><span class="y">2023/3</span><div class="bar" style="width:55%"></div><span class="val">218億</span></div>
+    <div class="bar-row"><span class="y">2024/3</span><div class="bar" style="width:65%"></div><span class="val">260億</span></div>
+    <div class="bar-row"><span class="y">2025/3</span><div class="bar" style="width:72%"></div><span class="val">289億</span></div>
+    <div class="bar-row"><span class="y">2026/3</span><div class="bar" style="width:74%"></div><span class="val">297億（最高）</span></div>
+  </div>
+
+  <h3>3-3. バランスシートの読み方（FY2026/3期末）</h3>
+  <table>
+    <tr><th style="width:30%">項目</th><th class="num" style="width:20%">金額</th><th>PE的な読み解き</th></tr>
+    <tr><td>総資産</td><td class="num">440.9億円</td><td>前期比▲13%。資産圧縮・資本効率化が進行</td></tr>
+    <tr><td>純資産</td><td class="num">184.8億円</td><td>自己資本比率41.9%。<b>買収前の約80%から大幅に低下</b>＝LBOの典型的な痕跡</td></tr>
+    <tr><td>有利子負債</td><td class="num">163.6億円</td><td>買収前は実質無借金。<b>買収ファイナンスの残債</b>とみられ、上場後も返済継続中<span class="est">推定</span></td></tr>
+    <tr><td>現金同等物</td><td class="num">95.1億円</td><td>ネットデット約68億円。EBITDA約65億円<span class="est">推定</span>に対しネットデット/EBITDA約1倍と健全化</td></tr>
+    <tr><td>利益剰余金</td><td class="num">36.3億円（▲77%）</td><td>純資産がほぼ横ばいのまま利益剰余金だけが約155億円→36億円に激減＝<b>SPC合併・減資等による資本の組み替え／株主還元の痕跡</b>。LBOの資本政策を読み解く格好の材料<span class="est">要検証</span></td></tr>
+  </table>
+
+  <h3>3-4. 上場後のバリュエーション（2026年6月時点）</h3>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">約1,190円</div><div class="l">株価（公開価格850円比+40%／初値1,863円比▲36%）</div></div>
+    <div class="kpi"><div class="v">約500億円</div><div class="l">時価総額</div></div>
+    <div class="kpi"><div class="v">13.7倍 / 17.0倍</div><div class="l">PER（実績／予想）</div></div>
+    <div class="kpi"><div class="v">2.7倍</div><div class="l">PBR（ROE実績19.7%）</div></div>
+    <div class="kpi"><div class="v">約2.9%</div><div class="l">予想配当利回り</div></div>
+    <div class="kpi"><div class="v">個人50.98%</div><div class="l">株主構成（アサヒ9.76%・近鉄9.74%・信託9.87%）</div></div>
+  </div>
+  <div class="callout insight">
+    <b class="title">■ インサイト：初値は「祭り」、半年後の株価が「実力」</b>
+    初値1,863円は個人需要主導のオーバーシュートで、その後は1,200円前後（PER14〜17倍）に収斂。これは食品・飲料セクターの平均的なマルチプル水準であり、市場は「沖縄プレミアム」でも「衰退ディスカウント」でもなく、<b>普通の優良中堅食品会社として値付けし直した</b>ことを意味する。面接では「初値ではなくアフターマーケットの安定水準で出口バリュエーションを評価すべき」と言えると良い。
+  </div>
+</section>
+
+<!-- ============ 4. Investment Thesis ============ -->
+<section id="s4">
+  <h2>4. 投資テーゼ（なぜ買ったのか）</h2>
+
+  <h3>4-1. スポンサー側のロジック</h3>
+  <table>
+    <tr><th style="width:33%">テーゼ</th><th>内容</th></tr>
+    <tr><td>① 圧倒的ローカルブランド</td><td>沖縄シェア約5割・認知率ほぼ100%の「準独占的」地位。ブランドの価格決定力が未活用（長年据え置かれた価格、プレミアムライン不在）</td></tr>
+    <tr><td>② アンダーマネージド</td><td>同族・地元名士による分散株主構造の下、マーケティング・DX・海外展開・ホテル運営に大きな伸びしろ。典型的な「良い事業×緩い経営」</td></tr>
+    <tr><td>③ 沖縄観光の構造成長</td><td>インバウンド増・観光客1,000万人時代を背景に、ビール消費とホテル事業の両方が観光にレバレッジ</td></tr>
+    <tr><td>④ LBO適性</td><td>実質無借金・自己資本比率80%・安定CF。買収後のレバレッジ＆資本効率化余地が大きい</td></tr>
+    <tr><td>⑤ 出口の複線化</td><td>IPO（沖縄初のプライム上場という「物語」）と、アサヒ等ストラテジックへの売却の両にらみが当初から可能</td></tr>
+  </table>
+
+  <h3>4-2. 野村とカーライル、それぞれの狙い</h3>
+  <p><b>野村（NCAP）：</b>本件は野村HDがプリンシパル投資を再開する象徴案件。地方の事業承継・オーナー企業の資本再編という、証券リテール網と親和性の高い「事業承継関連ビジネス」の展開が狙い。<b>カーライル：</b>消費財・ブランドのバリューアップ実績（グローバルの消費財プラクティス）を持ち込み、経営改革を主導する役割分担。マイノリティ（49%）に敢えて留まり、日本の地方名門企業への配慮（外資色の緩和）とみられる設計も交渉上のポイント。</p>
+
+  <div class="callout insight">
+    <b class="title">■ インサイト：日本PEの主要テーマを全部含む「教科書案件」</b>
+    ①事業承継（分散株主の解消）、②地方名門企業の非公開化、③実質MBO、④日系・外資ファンドの共同投資、⑤ブランド消費財のプレミアム化、⑥観光・インバウンドテーマ、⑦IPOエグジット——日本のミッドキャップPEで頻出する論点をほぼ網羅しており、面接で「日本のPE市場をどう見るか」に接続しやすい。
+  </div>
+</section>
+
+<!-- ============ 5. Value Creation ============ -->
+<section id="s5">
+  <h2>5. ホールド期間のバリュークリエーション</h2>
+
+  <h3>5-1. まずコロナという「想定外」から語る</h3>
+  <p>2019年3月クローズの直後、2020年からコロナが直撃。沖縄観光客の蒸発で、業務用酒類とホテルという<b>両事業が同時に毀損</b>し、売上は2022年3月期に165.7億円（コロナ前比▲41%）、経常利益は6億円前後まで落ち込んだ。当初の「5年でIPO」は後ろ倒しに。2021年に中計を見直し、守り（コスト構造改革）と攻め（EC・家庭用・海外）を再定義した。<b>この「クライシス下でのプラン修正力」こそPEの付加価値として語るべき部分</b>。</p>
+
+  <h3>5-2. 5つのバリューアップレバー</h3>
+  <table>
+    <tr><th style="width:26%">レバー</th><th>具体施策</th></tr>
+    <tr><td>① ガバナンス／経営人材</td><td>プロ経営者・村野一氏をCEOに招聘、外部人材でCxO層を補強。取締役会にファンド側（カーライル富岡隆臣氏ら＝現在も社外取締役）が入り、KPI経営・月次PDCAを導入。分散株主構造下では不可能だった意思決定スピードを実現</td></tr>
+    <tr><td>② ブランド＆価格戦略</td><td>主力を「オリオン・ザ・ドラフト」として刷新、「75BEER」等のプレミアムライン投入、RTD・泡盛など周辺カテゴリ拡充。長年据え置きだった価格の改定（値上げ）を断行し、ミックス改善と併せて粗利率を改善</td></tr>
+    <tr><td>③ チャネル改革</td><td>コロナで毀損した業務用依存から、EC/D2C（売上約10億円・EC化率3.5%まで育成）・本土量販・海外（米国・アジア、米関税対応での現地ライセンス生産検討まで）へ多角化。「沖縄に行けない人が沖縄を飲む」需要の獲得</td></tr>
+    <tr><td>④ 観光・ホテル事業の再生</td><td>オリオンホテル モトブ リゾート＆スパ等のリニューアルでADR（客室単価）向上。セグメント売上61億円（構成比21%）まで回復。「ジャングリア」開業（2025年7月）が本部エリアの集客追い風</td></tr>
+    <tr><td>⑤ コスト・DX</td><td>調達・物流・製造の効率化、間接部門のDX、構造改革。営業利益率は買収前の約11%から14.5%へ——アサヒ（約9%）、サッポロ（約2%）を上回る水準は面接で必ず使える数字</td></tr>
+  </table>
+
+  <h3>5-3. 財務インパクトの総括</h3>
+  <table>
+    <tr><th>指標</th><th class="num">買収直前（2018/3期）</th><th class="num">エグジット後（2026/3期）</th><th>含意</th></tr>
+    <tr><td>売上高</td><td class="num">283.2億円</td><td class="num">297.1億円（+5%）</td><td>8年でわずか+5%。<b>成長ストーリーではなく収益性改善ストーリー</b></td></tr>
+    <tr><td>営業利益</td><td class="num">30.5億円</td><td class="num">43.1億円（+42%）</td><td>値上げ・ミックス・コスト改革で構造的に改善</td></tr>
+    <tr><td>営業利益率</td><td class="num">10.8%</td><td class="num">14.5%</td><td>+3.7pt。国内ビール大手を上回る水準に到達</td></tr>
+    <tr><td>ROE</td><td class="num">4.3%</td><td class="num">19.7%</td><td>利益率改善×レバレッジ×資産圧縮の合わせ技。<b>PEの資本効率化の教科書的成果</b></td></tr>
+  </table>
+
+  <div class="callout insight">
+    <b class="title">■ インサイト：バリュークリエーションの本質は「売上成長」ではなく「利益率とガバナンス」</b>
+    8年で売上は+5%しか増えていないのに、営業利益は+42%、ROEは4%→20%。つまり本件のバリューアップは、<b>価格決定力の顕在化（値上げ＋プレミアム化）×コスト構造改革×BS効率化</b>による利益率・資本効率改善型。面接で「PEは何をしたのか」と問われたら、EBITDAブリッジを「数量→単価/ミックス→コスト→（ホテル回復）」の順で分解し、さらにROEをデュポン分解（利益率×回転率×レバレッジ）して語ると解像度が伝わる。
+  </div>
+</section>
+
+<!-- ============ 6. Exit Analysis ============ -->
+<section id="s6">
+  <h2>6. エグジット分析（IPOの設計と上場後）</h2>
+
+  <h3>6-1. 段階的な売却設計</h3>
+  <ul class="clean">
+    <li><b>Step1（2024年6月）：</b>近鉄グループHDへ10%を相対売却＋資本業務提携。観光・ホテル事業のシナジー（近鉄は沖縄でリゾート事業を展開）を持つ買い手に「値付けの実績」を作り、IPOバリュエーションのアンカーとした。</li>
+    <li><b>Step2（2025年9月）：</b>IPO。<b>公募ゼロ・全株売出（売出2,756万株、OA行使で保有株全量＝発行済の約7割を放出）</b>という純粋なエグジット設計。上場時にカーライル38.06%／NCAP39.61%を全て売却。</li>
+    <li><b>Step3（同時）：</b>アサヒビール（約9.8%）・近鉄GHD（約9.7%）が安定株主として残る株主構成を構築。上場後の需給不安を「事業シナジーのあるストラテジック」で抑える設計。</li>
+  </ul>
+
+  <h3>6-2. プライシングの経緯と初値・その後</h3>
+  <table>
+    <tr><th>時点</th><th>価格</th><th>備考</th></tr>
+    <tr><td>想定価格（2025年8月）</td><td>770円</td><td>目論見書提出時</td></tr>
+    <tr><td>仮条件（9月上旬）</td><td>800〜850円</td><td>投資家需要を受けて引き上げ</td></tr>
+    <tr><td>公開価格</td><td>850円（上限）</td><td>時価総額約380億円。主幹事は野村證券</td></tr>
+    <tr><td>初値（9月25日）</td><td><b>1,863円（+119%）</b></td><td>初値ベース時価総額は800億円超に</td></tr>
+    <tr><td>2026年6月</td><td>約1,190円</td><td>時価総額約500億円。公開価格比+40%で安定推移</td></tr>
+  </table>
+
+  <div class="callout risk">
+    <b class="title">■ 批判的視点：初値+119%は「成功」か？</b>
+    売り手にとって初値の急騰は<b>「テーブルに置き忘れた金（money left on the table）」</b>を意味する。全株売出のスポンサーは850円でしか回収できておらず、初値ベースでは400億円以上を取り逃した計算になる。加えて、<b>売り手が野村系ファンド、主幹事が野村證券</b>という利益相反構造は面接で指摘できると鋭い（詳細は第9章で解説）。もっとも半年後の株価は1,200円前後であり、「初値がバブルだった」側面と「公開価格が保守的すぎた」側面の両方があるというバランス感覚も重要。
+  </div>
+</section>
+
+<!-- ============ 7. Returns ============ -->
+<section id="s7">
+  <h2>7. リターン構造の考察（ここが面接の勝負どころ）</h2>
+
+  <h3>7-1. 一見すると「アンダーウォーター」に見えるパズル</h3>
+  <p>買収総額<b>約570億円</b>（2019年）に対し、IPO公開価格ベースの時価総額は<b>約380億円</b>。表面比較では企業価値が3分の2に縮んだように見える。しかし、これをもって「失敗案件」と断じるのは分析として浅い。エクイティリターンは以下の要素で分解する必要がある。</p>
+
+  <table>
+    <tr><th style="width:30%">リターン源泉</th><th>内容</th></tr>
+    <tr><td>① レバレッジ効果</td><td>570億円は「株式取得総額」であり、SPCはLBOローンを活用。実際のエクイティ拠出額はこれより小さく<span class="est">推定</span>、ホールド中のデット返済がエクイティ価値に転化。上場後も残る有利子負債164億円がその痕跡</td></tr>
+    <tr><td>② ネットキャッシュ・資産の回収</td><td>買収時点で実質無借金・潤沢な現預金と不動産を保有。総資産は440億円まで圧縮されており、資産売却（2023/3期の特別利益約40億円<span class="est">推定</span>等）・余剰資金の還元でエクイティ回収が進んだとみられる</td></tr>
+    <tr><td>③ 部分売却</td><td>2024年の近鉄への10%売却で先行回収。売却価格は非開示だが提携プレミアム込みの可能性<span class="est">推定</span></td></tr>
+    <tr><td>④ IPO売出代金</td><td>公開価格850円×スポンサー保有全量（発行済の約7割）＝<b>グロスで300億円前後</b><span class="est">推定</span>＋OA分</td></tr>
+    <tr><td>⑤ 配当・資本再構成</td><td>FY2026/3期に利益剰余金が約155億円→36億円へ激減しており、上場前後の株主還元・SPC合併等の資本政策の存在を示唆（＝リキャップ的な回収。第9章で解説）<span class="est">要検証</span></td></tr>
+  </table>
+
+  <h3>7-2. マルチプルの視点:入口が高く、出口が安い</h3>
+  <p>入口は「無借金の名門ブランド」への競争的なプロセスで、EV/EBITDAで約10倍前後<span class="est">推定</span>と、縮小する国内ビール市場のローカルプレーヤーとしては強気の水準だったとみられる。出口は公開価格ベースでPER一桁台と、日本の中小型IPOディスカウント＋酒税リスクを織り込んだ保守的な水準。つまり本件は<b>「EBITDAは改善したが、マルチプルは収縮した」案件</b>であり、リターンドライバー3分解で語ると：</p>
+  <ul class="clean">
+    <li><b>EBITDA成長：プラス</b>（利益率改善主導、営業利益+42%）</li>
+    <li><b>マルチプル：マイナス</b>（プレコロナの強気な入口 vs 保守的なIPO出口）</li>
+    <li><b>レバレッジ／キャッシュ回収：プラス</b>（無借金BSの資本効率化＋資産売却＋資本政策）</li>
+  </ul>
+
+  <div class="callout insight">
+    <b class="title">■ インサイト：「ファンドは儲かったのか？」への模範解答</b>
+    「開示情報だけでは断定できませんが、公開価格ベースの時価総額が買収総額を下回る以上、<b>エクイティMOICは高くても1倍台半ば、IRRは一桁〜10%台前半程度に留まった可能性が高い</b>と推察します<span class="est">推定</span>。コロナで2〜3年を失ったことがIRRを大きく毀損した一方、レバレッジと段階売却・資本政策で下値は守った。『ホームランではないが、危機対応としては及第点のシングルヒット』という評価が妥当ではないでしょうか。むしろ本件の価値は、利益率改善とガバナンス改革の再現性、そしてストラテジックを絡めた出口設計にあります」——と、断定を避けつつ数字の構造で語るのが正解。
+  </div>
+</section>
+
+<!-- ============ 8. Risks ============ -->
+<section id="s8">
+  <h2>8. リスクと批判的視点（DD論点）</h2>
+  <table>
+    <tr><th style="width:28%">リスク</th><th>内容と評価</th></tr>
+    <tr><td>① 酒税軽減措置の終了</td><td><b>最大の構造リスク。</b>沖縄復帰（1972年）以来続いてきた県産酒類への酒税軽減（ビールは約2割減税）が、経過措置を経て<b>2026年10月に終了</b>。オリオンの県内価格競争力を直撃するイベントで、値上げ・プレミアム化はこの「Xデー」への先回りという文脈でも理解できる</td></tr>
+    <tr><td>② 国内ビール市場の縮小</td><td>人口減・若年層のアルコール離れで国内ビール類市場は長期縮小。過去10年の売上CAGRは0.7%と、市場構造の逆風が数字にも表れている</td></tr>
+    <tr><td>③ 観光依存の景気感応度</td><td>酒類（業務用）とホテルがともに沖縄観光に連動する「一本足」構造。コロナで売上▲41%と現実化した通り、パンデミック・地政学・台風等への脆弱性が高い</td></tr>
+    <tr><td>④ 県民ブランドとPEの緊張関係</td><td>「県民の会社」を外資ファンドが買うことへの地元感情。価格改定・リストラ・本土/海外シフトは常にレピュテーションリスクと隣り合わせ。村野社長の「沖縄の会社じゃなくなる」発言を巡る議論はその象徴</td></tr>
+    <tr><td>⑤ 小型株の流動性・需給</td><td>時価総額500億円・個人株主比率51%。機関投資家の参入とカバレッジが限定的で、株価はイベントドリブンに振れやすい。空売り機関（GS・MS等）も参入済み</td></tr>
+  </table>
+</section>
+
+<!-- ============ 9. Explainer (NEW) ============ -->
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説 ★NEW</h2>
+  <p class="note">本レポートに登場する概念のうち、実務未経験者がつまずきやすいものを噛み砕いて解説する。面接で「わかったフリ」が最も危険な箇所。</p>
+
+  <div class="glossary">
+    <div class="term">① 「公募ゼロ・全株売出」とは何か？ なぜ重要か？</div>
+    <div class="def">
+      <p><b>IPOで市場に出る株には2種類ある。</b>「公募（新株発行）」は会社が新しく株を刷って売るもので、<b>調達資金は会社に入る</b>（成長投資の原資になる）。「売出（既存株の放出）」は既存株主が持ち株を売るもので、<b>お金は売った株主に入り、会社には1円も入らない</b>。</p>
+      <p>オリオンのIPOは公募ゼロ・売出100%。つまり<b>会社の資金調達イベントではなく、ファンドの換金イベント</b>だった。これが持つ意味は3つ。（a）「上場で調達した資金で成長します」という株式ストーリーが作れないため、投資家への訴求が弱くなり価格にマイナス圧力がかかる。（b）「ファンドが全部売って出ていく」というシグナルは「高値で売り抜けたいのでは」という警戒を招く（レモン問題）。（c）一方で希薄化（1株価値の低下）は起きないというプラス面もある。</p>
+      <p><b>面接での使い方：</b>「全株売出はエグジットの確実性を最大化する一方、IPOディスカウントを深くするトレードオフがある。アサヒ・近鉄という事業シナジー株主を残すことで(b)の警戒を緩和したのが本件の設計上の工夫」と言えれば十分。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">② なぜ公開価格は「保守的」に落ち着いたのか（詳細メカニズム）</div>
+    <div class="def">
+      <p>公開価格850円に対し初値1,863円。なぜこれほど「安く」値付けされたのか。構造要因を分解すると：</p>
+      <p><b>（a）日本のIPOプライシングの構造。</b>日本では公開価格は機関投資家へのヒアリング（ブックビルディング）を経て主幹事が決めるが、配分先の中心は個人投資家。主幹事には「初値が公開価格を割ると引受評判が傷つき、次のIPOの営業に響く」という強い誘因があり、<b>構造的に安値バイアス</b>がかかる（日本のIPO初値騰落率は平均でも+50%前後と世界的に高い）。</p>
+      <p><b>（b）全株売出＋成長ストーリー不在。</b>①で述べた通り、調達資金の使途で夢を語れない売出100%案件は、機関投資家がバリュエーションで厳しめに見る。</p>
+      <p><b>（c）ファンダメンタルズの割引要因。</b>2026年の酒税軽減終了という利益下押しイベントが目前にあり、縮小する国内ビール市場のローカルプレーヤーという見え方も重なって、類似会社比較で保守的なマルチプル（公開価格PERは一桁台）が採用された。</p>
+      <p><b>（d）売り手側の評判管理。</b>野村・カーライルにとって本件は「地元の反発を抑えて成立させた象徴案件」。上場後に株価が公開価格を割れば「ファンドが高値で県民に売りつけた」という批判に直結するため、<b>売り手自身にも安値で確実に成立させる誘因</b>があった。野村グループが売り手かつ主幹事という利益相反は、通常「高値誘導」を疑われる構図だが、本件では逆に<b>「疑われるからこそ保守的にせざるを得ない」方向に働いた</b>と解釈できる。</p>
+      <p><b>（e）結果の評価。</b>初値+119%はスポンサーの取り逃しに見えるが、半年後の株価は1,200円前後。「適正価格は1,100〜1,300円、公開価格は2〜3割のIPOディスカウント、初値は個人需要のオーバーシュート」と三層で捉えるのが正確。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">③ 「リキャップ（レバレッジド・リキャピタライゼーション）」とは何か？</div>
+    <div class="def">
+      <p><b>リキャップ＝資本構成（デットとエクイティの比率）の組み替え。</b>PEの文脈では「投資先に追加借入をさせ、その資金で特別配当や自社株買いを行い、スポンサーが投資資金を早期回収する」取引を指す（配当リキャップ／dividend recapitalization）。</p>
+      <p><b>なぜやるのか：</b>IRR（内部収益率）は「いつキャッシュが返ってくるか」に極めて敏感。エグジットを待たず途中で資金の一部を回収できれば、同じ最終回収額でもIRRは大きく改善する。また回収済み資金はリスクから外れるため、下振れ時の損失も限定される。</p>
+      <p><b>リスクと批判：</b>投資先の借入を増やすため財務体力を削る。「会社の信用力でファンドが先に儲ける」という批判があり、レンダー（銀行）の同意やコベナンツ（財務制限条項）が制約になる。</p>
+      <p><b>オリオンでの示唆：</b>FY2026/3期に利益剰余金が約155億円→36億円へ激減する一方、純資産はほぼ横ばい。これは大型配当そのものよりも<b>SPC（オーシャンHD）との合併や減資に伴う資本の組み替え</b>の可能性が高いが<span class="est">要検証</span>、いずれにせよ「LBOでは持株SPCの合併・資本政策・配当を通じてスポンサーへの資金還流が設計される」という実務の痕跡として読める。面接では「開示から資本政策の痕跡を読んだ」と言えると実務感度をアピールできる。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">④ スクイーズアウトとは？（TOBで100%取れなかった後の処理）</div>
+    <div class="def">
+      <p>TOBで92%を取得しても、残り8%の少数株主が残る。非公開化には100%が必要なため、<b>残存株主を法的手続で強制的に退出させる（対価は支払う）</b>のがスクイーズアウト。実務では（a）議決権90%以上なら「特別支配株主の株式等売渡請求」（株主総会不要でスピーディ）、（b）90%未満なら「株式併合」（総会特別決議＝3分の2で可決）を使う。だからTOBの下限は「3分の2」に設定されることが多い——この「3分の2」と「90%」という閾値は面接頻出の基礎知識。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑤ オーバーアロットメント（OA）とグリーンシューオプション</div>
+    <div class="def">
+      <p>IPOで需要が想定より強い場合に、主幹事が売出予定株数の最大15%程度を<b>追加で売る</b>仕組みがOA。主幹事は一時的に株を借りて追加販売し、後で（a）市場価格が公開価格を下回れば市場で買い戻す（＝株価下支え効果）、（b）上回ればグリーンシューオプション（第三者割当や追加売出を受ける権利）を行使して返済する。オリオンの「OA行使で保有株全量を売却」とは、<b>需要が強かったためOA分まで含めてスポンサー持分が完全にゼロになった</b>ことを意味する。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑥ EV（企業価値）と時価総額の違い — 「570億 vs 380億」を正しく比べる</div>
+    <div class="def">
+      <p><b>時価総額＝株式の値段（エクイティバリュー）。EV＝時価総額＋有利子負債−現金（事業全体の値段）。</b>買収時の570億円は「株式100%の取得対価」でエクイティバリュー。当時は実質無借金・現金潤沃だったのでEVは570億円より小さい。一方、上場時の時価総額380億円の会社はネットデット約70億円を抱えるためEVは約450億円。<b>正しい比較は「エントリーEV（570億−当時のネットキャッシュ）」vs「エグジットEV（約450億）」</b>であり、差は表面の「570 vs 380」より小さい。この調整を自分でできるかが、財務リテラシーの試金石。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑦ MOICとIRR — 「儲かったか」の2つのものさし</div>
+    <div class="def">
+      <p><b>MOIC（Multiple on Invested Capital）＝回収額÷投資額</b>。2倍なら「倍返し」。時間を考慮しない。<b>IRR＝年率換算の複利リターン</b>。時間に敏感で、同じMOIC2倍でも3年なら26%、7年なら10%。PEファンドの合格ラインは概ね「MOIC 2倍以上・IRR 20%以上」。オリオンは6年半かかったため、仮にMOIC1.5倍でもIRRは約6%——「コロナで失った時間がIRRを毀損した」という本文の指摘はこの計算に基づく。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. FA Basics (NEW) ============ -->
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識キャッチアップ ★NEW</h2>
+  <p class="note">FA（フィナンシャル・アドバイザー）実務の経験がない候補者が、PE面接までに最低限キャッチアップしておくべき知識を、本件に引きつけて整理する。</p>
+
+  <h3>10-1. FAとは何をする人か</h3>
+  <p>M&AにおけるFAは、売り手または買い手の代理人として<b>①バリュエーション、②プロセス設計・進行管理、③交渉支援、④ドキュメンテーション調整</b>を担う（証券会社の投資銀行部門、M&Aブティック等）。本件では野村證券がTOB・IPOの両局面で中心的役割を担った。PEファンドはFAの「クライアント」側であり、<b>FA出身者に期待されるのはプロセスを回す力、事業会社出身者には事業の目利き、コンサル出身者には分析力</b>——自分の強みをどこに置くかを意識してキャッチアップ領域を選ぶこと。</p>
+
+  <h3>10-2. M&Aプロセスの全体像（セルサイド標準形）</h3>
+  <table>
+    <tr><th style="width:24%">フェーズ</th><th>内容</th><th style="width:32%">本件での対応物</th></tr>
+    <tr><td>① 準備</td><td>FA起用、バリュエーション、ティーザー・IM（企業概要書）作成、買い手候補リスト（ロングリスト）作成</td><td>オリオン側が事業承継の選択肢を検討、野村が関与</td></tr>
+    <tr><td>② 一次入札</td><td>ティーザー配布→NDA→IM開示→意向表明（IOI）受領・絞り込み</td><td>野村・カーライル連合が有力候補に</td></tr>
+    <tr><td>③ DD・二次入札</td><td>データルーム開設、各種DD（後述）、マネジメントプレゼン、法的拘束力ある最終提案（binding offer）</td><td>買収価格79,200円/株の根拠形成</td></tr>
+    <tr><td>④ 契約・クロージング</td><td>SPA（株式譲渡契約）交渉・締結、競争法等の許認可、資金決済</td><td>上場株ではないが少数株主が多数いたためTOBを採用</td></tr>
+    <tr><td>⑤ ポストクロージング</td><td>PMI（統合・改革実行）、スクイーズアウト</td><td>第5章のバリューアップ全て</td></tr>
+  </table>
+
+  <h3>10-3. バリュエーション3手法＋LBO法（最重要）</h3>
+  <table>
+    <tr><th style="width:26%">手法</th><th>考え方</th><th style="width:34%">本件への当てはめ</th></tr>
+    <tr><td>類似会社比較法<br>（Trading Comps）</td><td>上場同業のEV/EBITDA・PER等の倍率を対象会社に適用。「市場は同じような会社をいくらで評価しているか」</td><td>アサヒ・キリン・サッポロ等のEV/EBITDA 8〜12倍から出発し、規模・流動性でディスカウント</td></tr>
+    <tr><td>類似取引比較法<br>（Transaction Comps）</td><td>過去のM&A事例の買収倍率を適用。支配権プレミアム込みの水準</td><td>国内飲料・食品の非公開化事例の倍率と比較</td></tr>
+    <tr><td>DCF法</td><td>将来FCFをWACCで割引。事業計画の前提が全て</td><td>観光成長×値上げのアップサイドと酒税終了のダウンサイドをシナリオで反映</td></tr>
+    <tr><td><b>LBO法（PE固有）</b></td><td>「目標IRR（20%超）を達成できる最大の買値はいくらか」から逆算。<b>PEにとっての実質的な上限価格</b>を決める</td><td>EBITDA約50億円<span class="est">推定</span>×倍率、レバレッジ約50%<span class="est">推定</span>、5年後IPOを置いて逆算すると570億円が説明できるかを検証する——面接のモデルテストそのもの</td></tr>
+  </table>
+
+  <h3>10-4. LBOモデルの基本構造（面接のモデルテスト対策）</h3>
+  <ul class="clean">
+    <li><b>Sources & Uses：</b>資金使途（株式取得570億＋手数料）と調達源（エクイティ＋シニアローン＋メザニン等）の一覧表。ここが起点。</li>
+    <li><b>デットスケジュール：</b>各年のEBITDA→FCFから約定返済・任意返済を計算し、残債とレバレッジ倍率（Net Debt/EBITDA）を追う。</li>
+    <li><b>エグジット計算：</b>出口EBITDA×出口倍率＝出口EV→残債を引いてエクイティ価値→MOIC・IRR算出。</li>
+    <li><b>感応度：</b>入口/出口倍率、EBITDA成長、レバレッジの3軸でIRRのマトリクスを作る。<b>「オリオンを題材に紙で組んでみる」のが最良の面接準備</b>——入口EV/EBITDA 10倍・出口8倍・EBITDA+40%・6年半で、レバレッジ次第でIRRがどう変わるかを手を動かして確認しておく。</li>
+  </ul>
+
+  <h3>10-5. TOB・スクイーズアウトの法制度（数字だけは暗記）</h3>
+  <ul class="clean">
+    <li><b>3分の1ルール：</b>市場外で株式を3分の1超取得する場合はTOBが原則義務（金商法）。</li>
+    <li><b>3分の2：</b>株主総会特別決議（合併・株式併合等）の可決ライン。TOBの成立下限に設定されることが多い。また3分の2以上取得する場合は全部勧誘義務・全部買付義務。</li>
+    <li><b>90%：</b>特別支配株主の株式等売渡請求（総会不要のスクイーズアウト）が使えるライン。</li>
+    <li><b>MBOの利益相反対応：</b>経営陣が買い手側に立つため、特別委員会の設置・第三者評価機関の算定書・マジョリティ・オブ・マイノリティ等の公正性担保措置が実務標準（経産省「公正なM&Aの在り方に関する指針」）。本件も経営陣出資を伴うため、この論点を語れると良い。</li>
+  </ul>
+
+  <h3>10-6. IPO実務の骨格</h3>
+  <ul class="clean">
+    <li><b>プレイヤー：</b>主幹事証券（本件は野村）、監査法人（EY新日本）、取引所（東証）、印刷会社等。上場審査は「形式基準」＋「実質基準（ガバナンス・内部管理・事業計画の合理性）」。</li>
+    <li><b>価格決定プロセス：</b>想定価格（770円）→ロードショー・需要調査→仮条件（800〜850円）→ブックビルディング→公開価格（850円）→上場・初値。各段階で価格が動いた理由を説明できるようにしておく。</li>
+    <li><b>ロックアップ：</b>大株主が上場後一定期間（90〜180日）売却しない契約。全株売出の本件では実質論点にならなかったが、通常のIPOエグジットでは「ファンドの残存持分＋ロックアップ明け需給」が株価の最大の重石になる。</li>
+  </ul>
+
+  <h3>10-7. DD（デューデリジェンス）の種類</h3>
+  <table>
+    <tr><th style="width:22%">種類</th><th>担い手</th><th>本件での重要論点例</th></tr>
+    <tr><td>ビジネスDD</td><td>戦略コンサル</td><td>県内シェアの持続性、酒税終了後の価格弾力性、観光市場予測、県外/海外の成長余地</td></tr>
+    <tr><td>財務・税務DD</td><td>会計事務所（FAS）</td><td>正常収益力（EBITDAの一過性要因除去）、運転資本、設備投資の実態、酒税軽減の税務影響</td></tr>
+    <tr><td>法務DD</td><td>法律事務所</td><td>アサヒとのライセンス契約の継続性・チェンジオブコントロール条項、不動産権利関係</td></tr>
+    <tr><td>その他</td><td>専門家</td><td>環境（工場）、人事（退職給付）、IT等</td></tr>
+  </table>
+
+  <div class="callout learn">
+    <b class="title">■ キャッチアップの学習動線（優先順位つき）</b>
+    ①本件の<b>新規上場時の有価証券報告書（Ⅰの部）</b>を通読する——事業内容・リスク・財務・株主の全てが1次情報で載っており、最高の教材。②LBOモデルをExcelで一度自作する。③TOB・スクイーズアウトの数字（1/3、2/3、90%）と公正性担保措置を暗記。④直近の類似案件（PEによる非公開化→IPO：スシローやツルハ等の事例）を2〜3件、同じフレームで整理して比較できるようにする。この4つで「FA未経験」のハンデはほぼ消せる。
+  </div>
+</section>
+
+<!-- ============ 11. Insights ============ -->
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト（まとめ）</h2>
+  <ul class="clean">
+    <li><b>① 「時価総額＜買収額」の表面比較で止まらない。</b>EV調整（ネットキャッシュ／ネットデット）、レバレッジ、部分売却、資本政策まで含めたエクイティベースのリターン分解を自分の言葉で再構成できるかが、アナリストとアソシエイトの分水嶺。</li>
+    <li><b>② バリューアップの中身を「利益率・資本効率改善型」と正しく類型化する。</b>売上+5%に対し営業利益+42%、ROE 4%→20%。価格決定力の顕在化＋コスト改革＋BS圧縮が本質で、日本の成熟ブランド企業に広く再現可能なプレイブック。</li>
+    <li><b>③ 出口の複線化・段階化を設計として評価する。</b>近鉄への相対売却（アンカー価格形成）→ IPO全株売出 → アサヒ・近鉄が安定株主として残置、という3段構えは日本のIPOエグジットのベストプラクティス例。</li>
+    <li><b>④ 利益相反と初値+119%を構造で説明できると鋭い。</b>「野村が売り手かつ主幹事」という構図が、逆説的に保守的プライシングを促した可能性まで言及できると差がつく（第9章②参照）。</li>
+    <li><b>⑤ 規制イベント（酒税軽減終了・2026年10月）を投資判断の時間軸に接続する。</b>値上げ・プレミアム化・県外/海外シフトは全てXデーへの先回りとして整合的。</li>
+    <li><b>⑥ 開示から資本政策の痕跡を読む。</b>自己資本比率80%→42%、有利子負債0→164億円、利益剰余金の激減——BSの変化そのものがLBOの教科書であり、「数字で語る」最良の材料。</li>
+    <li><b>⑦ 上場後の株価まで追う。</b>初値ではなくアフターマーケット（1,200円前後・PER14〜17倍）を「市場の最終評価」として引用できると、分析の時間軸が一段深くなる。</li>
+  </ul>
+</section>
+
+<!-- ============ 12. Q&A ============ -->
+<section id="s12">
+  <h2>12. 想定Q&A</h2>
+
+  <div class="qa">
+    <div class="q">Q1. あなたがこのディールの担当アソシエイトだったら、投資委員会で何を最重要論点に挙げますか？</div>
+    <div class="a">「酒税軽減終了後の県内シェアと価格弾力性です。オリオンの県内シェア約5割は軽減税率による価格優位に一定程度支えられており、2026年の終了で本土大手と同一価格になった際のボリューム減をどこまで単価・ミックス・県外/海外成長で相殺できるかが、EBITDAの持続性、ひいては出口マルチプルを決めます。DDでは県内POSデータでの価格弾力性分析と、観光客需要（お土産・ホテル）の非価格感応的な需要の切り分けを行います。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q2. コロナがなかったら、このディールはどうなっていたと思いますか？</div>
+    <div class="a">「当初計画通り5年以内・より高いマルチプルでのエグジットが可能だったと考えます。逆説的ですが、コロナは①業務用依存からEC・家庭用・県外への多角化、②ホテルの抜本リニューアル、③コスト構造改革を『強制』し、売上が▲41%まで落ちる中で損益分岐点を下げた結果、回復局面では利益率がコロナ前を大きく上回りました（OPM 10.8%→14.5%）。危機がバリューアップを加速させた事例として、PEの介在価値を示すケースだと整理しています。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q3. なぜトレードセール（アサヒへの100%売却）ではなくIPOだったと思いますか？</div>
+    <div class="a">「3点あると考えます。①『県民ブランド』を本土大手に丸ごと売ることへの地元・従業員の反発リスクが大きく、社会的受容性の面でIPOが優位だった。②アサヒにとっても縮小する国内ビールで数百億円のフルバイアウトは正当化しにくく、約10%＋既存の製造販売提携で実利は十分取れる。③IPOなら近鉄・アサヒへの相対売却と組み合わせて競争環境を作り、価格発見とエグジット確実性を両立できる。結果として『上場企業として自立しつつ、事業シナジー株主を残す』構成は、全ステークホルダーの最大公約数だったと評価しています。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q4. このケースから、今後の日本のPE投資機会について何を学びますか？</div>
+    <div class="a">「①地方の名門・同族企業には『良い事業×未活用の価格決定力×緩いガバナンス』という組み合わせがまだ多く残っており、事業承継を入口としたバイアウトの継続的なパイプラインがあること。②売上成長が見込めない成熟企業でも、利益率・資本効率改善型のバリューアップで十分に投資が成立すること（本件はROE 4%→20%）。③出口では、IPO単独ではなくストラテジックへの部分売却を組み合わせたハイブリッド型が主流化していくこと。この3点は他の地方消費財・食品・観光関連の案件にそのまま応用可能だと考えています。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q5. 逆に、この投資を「やるべきでなかった」と主張するとしたら？</div>
+    <div class="a">「①入口価格：縮小市場のローカルビールにEV/EBITDA約10倍<span class="est">推定</span>は、酒税イベントと市場縮小（過去10年売上CAGR 0.7%）を織り込むと割高。②リスク集中：酒類とホテルが同一マクロ（沖縄観光）に連動し分散が効かない——実際にコロナで売上▲41%が現実化した。③出口の天井：国内小型消費財のIPOバリュエーションには構造的な天井があり、公開価格ベースで買収額を下回った事実がそれを裏付ける——という3点で、『良い会社だが、良い投資とは限らない』の典型例として反対側も論じられます。両面を語れることがフェアな分析の証明になると考えます。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q6.（基礎確認）公募と売出の違いを説明してください。オリオンはどちらでしたか？</div>
+    <div class="a">「公募は新株発行で調達資金が会社に入り希薄化を伴う。売出は既存株主の持分放出で資金は株主に入り、会社の資本は変わらない。オリオンは公募ゼロ・売出100%＋OAで、スポンサー2社の完全エグジットを目的としたIPOでした。成長資金の調達ストーリーがない分、価格には保守的な圧力がかかった一方、希薄化はなく、アサヒ・近鉄という安定株主構成で需給を設計した点が特徴です。」</div>
+  </div>
+
+  <footer>
+    <b>主要ソース（公開情報）</b><br>
+    <a href="https://www.bloomberg.com/jp/news/articles/2019-01-23/PLRXSD6JIJUV01">Bloomberg「野村ＨＤと米カーライルがオリオンビールを買収、最大570億円」(2019/1)</a>／
+    <a href="https://ryukyushimpo.jp/news/entry-893138.html">琉球新報「オリオンビールTOB成立 株式84.21%取得」(2019/3)</a>／
+    <a href="https://www.carlyle.com/ja/media-room/news-release-archive/%E3%82%AA%E3%83%AA%E3%82%AA%E3%83%B3%E3%83%93%E3%83%BC%E3%83%AB%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%85%AC%E9%96%8B%E8%B2%B7%E4%BB%98%E3%81%91%E3%81%AE%E7%B5%90%E6%9E%9C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">カーライル公式リリース（TOB結果）</a>／
+    <a href="https://business.nikkei.com/atcl/gen/19/00002/012400031/">日経ビジネス「オリオンビール買収、野村の狙いは事業継承関連ビジネス」</a>／
+    <a href="https://ryukyushimpo.jp/news/entry-4621077.html">琉球新報「野村・カーライル保有の全株式を売却へ アサヒビールが筆頭株主に 時価総額は約380億円」(2025/9)</a>／
+    <a href="https://www.bloomberg.com/jp/news/articles/2025-09-24/T32OZIGOT0JT00">Bloomberg「オリオンビール株の初値は1863円、公開価格の2.2倍」(2025/9)</a>／
+    <a href="https://business.nikkei.com/atcl/gen/19/00139/092400303/">日経ビジネス「オリオンビール上場 ファンド傘下6年で変身、ジャングリア追い風に」</a>／
+    <a href="https://toyokeizai.net/articles/-/910053">東洋経済「カーライル富岡氏が明かす『オリオンビール事業改革』の中身」</a>／
+    <a href="https://toyokeizai.net/articles/-/907005">東洋経済「村野社長インタビュー」</a>／
+    <a href="https://www.jpx.co.jp/listing/stocks/new/um3qrc0000021qif-att/09ORIONBREWERIES-1s.pdf">新規上場申請のための有価証券報告書（Ⅰの部）</a>／
+    <a href="https://www.okinawatimes.co.jp/articles/-/1648766">沖縄タイムス「酒税軽減終了を控え正念場」</a>／
+    <a href="https://irbank.net/E00410">IRBANK オリオンビール（409A）企業分析・業績推移・株主構成</a>／
+    <a href="https://irbank.net/E00410/pl">IRBANK 会社業績（長期時系列）</a>／
+    <a href="https://ir.orionbeer.co.jp/ja/ir/finance/segment.html">オリオンビールIR セグメント情報</a>／
+    <a href="https://www.zaikei.co.jp/article/20260708/860254.html">財経新聞「2026年3月期は過去最高の売上・営業利益を更新」(2026/7)</a>／
+    <a href="https://netshop.impress.co.jp/node/14663">ネットショップ担当者フォーラム「EC売上10億円・EC化率3.5%」</a>
+    <br><br>
+    <span class="note">※「推定」表記の数値は公開情報からの逆算・推計であり、面接では推定である旨を明示して使用すること。財務数値は連結・個別、会計期間の定義により差異があり得る（2021〜2023年3月期は個別決算）。本資料は2026年7月12日時点の公開情報に基づく。</span>
+  </footer>
+
+</div>
+</body>
+</html>
