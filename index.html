@@ -9,7 +9,7 @@
     --bg:#0f172a; --sidebar:#111827; --sidebar2:#1e293b;
     --accent:#38bdf8; --accent2:#0ea5e9; --text:#e2e8f0; --muted:#94a3b8;
     --line:#334155; --panel:#f8fafc; --pending:#475569;
-    --adhoc:#a78bfa; --weekly:#34d399; --daily:#fbbf24;
+    --adhoc:#a78bfa; --weekly:#34d399; --daily:#fbbf24; --deal:#f472b6;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
@@ -27,7 +27,7 @@
   .group-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;
                text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:6px 10px}
   .dot{width:8px;height:8px;border-radius:50%}
-  .dot.adhoc{background:var(--adhoc)} .dot.weekly{background:var(--weekly)} .dot.daily{background:var(--daily)}
+  .dot.adhoc{background:var(--adhoc)} .dot.weekly{background:var(--weekly)} .dot.daily{background:var(--daily)} .dot.deal{background:var(--deal)}
   .item{display:flex;align-items:center;justify-content:space-between;gap:8px;
         padding:9px 12px;margin:2px 0;border-radius:8px;font-size:13px;cursor:pointer;
         color:#cbd5e1;transition:.15s;border:1px solid transparent}
@@ -48,7 +48,7 @@
           padding:0 22px;border-bottom:1px solid #e2e8f0;background:#fff}
   .topbar .title{font-size:15px;font-weight:700;color:#0f172a;display:flex;align-items:center;gap:10px}
   .pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff}
-  .pill.adhoc{background:var(--adhoc)} .pill.weekly{background:var(--weekly)} .pill.daily{background:var(--daily)}
+  .pill.adhoc{background:var(--adhoc)} .pill.weekly{background:var(--weekly)} .pill.daily{background:var(--daily)} .pill.deal{background:var(--deal)}
   .topbar .meta{font-size:11px;color:#64748b}
   .stage{flex:1;position:relative;overflow:hidden}
   iframe{width:100%;height:100%;border:0;background:#fff}
@@ -120,6 +120,14 @@
           <span class="label">▸ ディープダイブ：日本ライフライン 7575</span><span class="badge ready">実</span></div>
       </div>
 
+      <!-- Deal Analysis -->
+      <div class="group">
+        <div class="group-label"><span class="dot deal"></span>ディール分析（Deal Analysis）</div>
+        <div class="item" data-type="frame" data-cad="deal" data-title="オリオンビール：野村×カーライル 買収からIPOエグジットまで（v2）"
+             data-src="contents/deal_analysis/orion_beer_pe_case_study.html">
+          <span class="label">オリオンビール PEケーススタディ</span><span class="badge ready">実</span></div>
+      </div>
+
       <!-- Daily -->
       <div class="group">
         <div class="group-label"><span class="dot daily"></span>日次（Daily）</div>
@@ -136,8 +144,8 @@
       </div>
     </nav>
     <div class="foot">
-      最終同期 2026-07-10 ／ 全11タブ実データ化・準備中 0枠<br>
-      不足トピックは今後スキルで生成しタブに追加します。
+      最終同期 2026-07-12 ／ 全12タブ実データ化・準備中 0枠<br>
+      ディール分析は deal-analysis-report スキルで生成し、contents/deal_analysis/ に追加します。
     </div>
   </aside>
 
@@ -155,7 +163,7 @@
   </div>
 
 <script>
-  const CAD = {adhoc:{t:'ADHOC',c:'adhoc'},weekly:{t:'WEEKLY',c:'weekly'},daily:{t:'DAILY',c:'daily'}};
+  const CAD = {adhoc:{t:'ADHOC',c:'adhoc'},weekly:{t:'WEEKLY',c:'weekly'},daily:{t:'DAILY',c:'daily'},deal:{t:'DEAL',c:'deal'}};
   const frame=document.getElementById('frame');
   const pendingWrap=document.getElementById('pendingWrap');
   const pendingCard=document.getElementById('pendingCard');
