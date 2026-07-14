@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇺🇸 US Market Morning Brief | Private Credit Focus</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ─── Reset & Base ─── */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:#f0f4f8;color:#1e293b;min-height:100vh}
+a{color:#3b82f6}
+
+/* ─── Header ─── */
+#site-header{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 55%,#0f3460 100%);color:#fff;padding:16px 28px;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.5)}
+#header-row{display:flex;justify-content:space-between;align-items:center}
+#site-header h1{font-size:19px;font-weight:800;letter-spacing:-.3px}
+#site-header h1 .sub{font-size:12px;font-weight:400;opacity:.55;margin-left:6px}
+#live-badge{background:rgba(16,185,129,.18);border:1px solid rgba(16,185,129,.35);color:#6ee7b7;font-size:11px;padding:4px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;white-space:nowrap}
+#live-badge::before{content:'';width:7px;height:7px;background:#10b981;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ─── Tab Nav ─── */
+#tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;position:sticky;top:57px;z-index:100;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#tab-nav::-webkit-scrollbar{display:none}
+#tab-nav-inner{display:inline-flex;padding:0 20px;min-width:100%}
+.tab-btn{border:none;background:none;padding:10px 20px;font-size:13px;font-weight:600;color:#64748b;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .15s;white-space:nowrap}
+.tab-btn:hover{color:#1e40af}
+.tab-btn.active{color:#1e40af;border-bottom-color:#3b82f6}
+.tab-btn .dow{display:block;font-size:10px;color:#94a3b8;font-weight:400;margin-top:1px}
+.tab-btn.active .dow{color:#93c5fd}
+
+/* ─── Panel ─── */
+.report-panel{display:none;max-width:1160px;margin:0 auto;padding:22px 20px 52px}
+.report-panel.active{display:block}
+.section{margin-bottom:26px}
+.sec-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:13px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:1px;background:#e2e8f0}
+
+/* ─── Index Cards ─── */
+.idx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:680px){.idx-grid{grid-template-columns:repeat(2,1fr)}}
+.idx-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9;position:relative;overflow:hidden}
+.idx-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.idx-card.up::after{background:linear-gradient(90deg,#10b981,#34d399)}
+.idx-card.down::after{background:linear-gradient(90deg,#ef4444,#f87171)}
+.idx-card.flat::after{background:#94a3b8}
+.idx-name{font-size:11px;color:#94a3b8;font-weight:600;letter-spacing:.4px;margin-bottom:7px}
+.idx-val{font-size:24px;font-weight:800;color:#1e293b;letter-spacing:-1px;line-height:1}
+.idx-chg{font-size:12px;font-weight:700;margin-top:5px}
+.c-up{color:#10b981} .c-down{color:#ef4444} .c-flat{color:#94a3b8}
+
+/* ─── Cards + Two-col ─── */
+.two-col{display:grid;grid-template-columns:3fr 2fr;gap:12px}
+@media(max-width:760px){.two-col{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9}
+.card-title{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:12px}
+.chart-wrap{position:relative;height:190px}
+.macro-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.macro-item{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:#f8fafc;border-radius:8px;font-size:12px}
+.macro-lbl{color:#64748b}
+.macro-val{font-weight:700;color:#1e293b}
+.macro-val.up{color:#10b981} .macro-val.down{color:#ef4444}
+
+/* ─── Movers ─── */
+.movers-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9}
+.movers-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;margin-top:12px}
+@media(max-width:760px){.movers-layout{grid-template-columns:1fr}}
+.mover-row{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9}
+.mover-row:last-child{border:none}
+.mover-ticker{font-weight:800;font-size:13px;min-width:50px;padding-top:1px}
+.mover-info{flex:1}
+.mover-name{font-size:12px;color:#1e293b;font-weight:600}
+.mover-why{font-size:11px;color:#94a3b8;margin-top:2px;line-height:1.4}
+.mover-pct{font-weight:700;font-size:14px;min-width:56px;text-align:right}
+.mover-pct.up{color:#10b981} .mover-pct.down{color:#ef4444}
+
+/* ─── Events ─── */
+.events-list{display:flex;flex-direction:column;gap:10px}
+.ev-item{background:#fff;border-radius:12px;padding:14px 16px;border-left:4px solid #3b82f6;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.ev-title{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:5px}
+.ev-detail{font-size:12px;color:#64748b;line-height:1.65}
+
+/* ─── Private Credit ─── */
+.pc-box{background:#fff;border-radius:16px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.07);border:1px solid #f1f5f9}
+.pc-hdr{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.pc-flag{font-size:22px}
+.pc-name{font-size:16px;font-weight:800;color:#1e293b}
+.pc-sub{font-size:11px;color:#94a3b8;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+.pc-summary{font-size:13px;color:#475569;line-height:1.75;margin:14px 0;padding:13px 16px;border-left:4px solid;border-radius:0 10px 10px 0}
+.us-box .pc-summary{border-color:#3b82f6;background:#eff6ff}
+.jp-box .pc-summary{border-color:#f59e0b;background:#fffbeb}
+.deals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:11px;margin-bottom:14px}
+.deal{border-radius:12px;padding:14px;border:1px solid #e8edf5;background:#fafbfd;transition:box-shadow .18s}
+.deal:hover{box-shadow:0 4px 16px rgba(0,0,0,.09)}
+.deal-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+.t-blue{background:#dbeafe;color:#1d4ed8}
+.t-orange{background:#ffedd5;color:#c2410c}
+.t-red{background:#fee2e2;color:#dc2626}
+.t-purple{background:#ede9fe;color:#7c3aed}
+.t-green{background:#dcfce7;color:#16a34a}
+.deal-ttl{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:4px;line-height:1.4}
+.deal-meta{font-size:11px;color:#94a3b8;margin-bottom:7px}
+.deal-body{font-size:12px;color:#64748b;line-height:1.65}
+.deal-sig{font-size:11px;font-weight:600;color:#6366f1;margin-top:7px}
+.deal-sig::before{content:'⚡ '}
+.deal-link,.ev-link{display:inline-block;font-size:11px;font-weight:700;text-decoration:none;padding:3px 10px;border-radius:20px;transition:opacity .15s}
+.deal-link:hover,.ev-link:hover{opacity:.75}
+.deal-links{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.dl-reuters{background:#fff1f2;color:#be123c}
+.dl-ft{background:#fef3c7;color:#92400e}
+.dl-dst{background:#ecfdf5;color:#065f46}
+.dl-src{background:#f0fdf4;color:#15803d}
+.dl-wsj{background:#1f2937;color:#f3f4f6}
+.dl-jp{background:#eef2ff;color:#4338ca}
+.ev-link{display:inline-block;margin-top:8px;background:#dbeafe;color:#1d4ed8}
+.ev-link-ft{background:#fef3c7;color:#92400e}
+.ev-link-wsj{background:#1f2937;color:#f3f4f6}
+.ev-link-jp{background:#eef2ff;color:#4338ca}
+.pe-news-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;padding-top:12px;border-top:1px solid #e2e8f0;align-items:center}
+.pe-news-links span{font-size:11px;color:#94a3b8;font-weight:600}
+.pe-news-btn{font-size:11px;padding:4px 11px;border-radius:20px;background:#f1f5f9;color:#475569;text-decoration:none;font-weight:600;transition:background .15s}
+.pe-news-btn:hover{background:#e2e8f0;color:#1e293b}
+.pc-outlook{border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.75;border:1px solid}
+.us-box .pc-outlook{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe;color:#1e3a8a}
+.jp-box .pc-outlook{background:linear-gradient(135deg,#fffbeb,#fef3c7);border-color:#fcd34d;color:#78350f}
+
+/* ─── Takeaway ─── */
+.takeaway{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#e2e8f0;border-radius:16px;padding:24px 26px;box-shadow:0 4px 20px rgba(15,23,42,.3)}
+.takeaway-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#60a5fa;margin-bottom:10px}
+.takeaway-txt{font-size:14px;line-height:1.85;color:#cbd5e1}
+
+/* ─── Footer ─── */
+footer{background:#0f172a;color:#475569;text-align:center;padding:18px;font-size:11px;line-height:1.8}
+footer b{color:#60a5fa}
+
+/* ─── Narrative ─── */
+.narrative-box{background:#fff;border-radius:14px;padding:24px 28px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9;font-size:14px;line-height:2.1;color:#374151}
+.narrative-box p{margin-bottom:1.3em}.narrative-box p:last-child{margin-bottom:0}
+
+/* ─── PE Training ─── */
+.pet-summary{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:14px;padding:18px 24px;margin-bottom:16px}
+.pet-summary-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#93c5fd;margin-bottom:8px}
+.pet-summary-txt{font-size:14px;font-weight:600;line-height:1.85;color:#e0f2fe}
+.pet-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.pet-grid{grid-template-columns:1fr}}
+.pet-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9}
+.pet-card-hdr{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f5f9}
+.qa-item{padding:11px 0;border-bottom:1px solid #f8fafc}
+.qa-item:last-child{border:none;padding-bottom:0}
+.qa-q{font-size:12px;font-weight:700;color:#1e293b;margin-bottom:7px;line-height:1.55}
+.qa-q::before{content:'Q. ';color:#3b82f6;font-size:13px}
+.qa-a{font-size:12px;color:#475569;line-height:1.8;padding-left:18px}
+.concept-items{display:flex;flex-direction:column;gap:8px}
+.concept-item{background:#f8fafc;border-radius:8px;padding:10px 12px}
+.concept-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#94a3b8;margin-bottom:3px}
+.concept-val{font-size:12px;color:#374151;line-height:1.65}
+.da-items{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:500px){.da-items{grid-template-columns:1fr}}
+.da-item{border-radius:8px;padding:11px 13px;border-left:3px solid}
+.da-item.thesis{background:#eff6ff;border-color:#3b82f6}
+.da-item.timing{background:#f0fdf4;border-color:#10b981}
+.da-item.downside{background:#fef2f2;border-color:#ef4444}
+.da-item.valuation{background:#f5f3ff;border-color:#8b5cf6}
+.da-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#94a3b8;margin-bottom:3px}
+.da-val{font-size:12px;color:#374151;line-height:1.65}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div id="header-row">
+    <h1>🇺🇸 US Market Morning Brief<span class="sub">Private Credit &amp; PE Focus</span></h1>
+    <div id="live-badge">EST 9:15 毎日更新</div>
+  </div>
+</header>
+
+<nav id="tab-nav"><div id="tab-nav-inner"></div></nav>
+<main id="main-content"></main>
+
+<footer>
+  自動生成 by <b>Claude Cowork</b> ｜ EST 9:15 AM 毎朝更新 ｜ データはウェブ検索に基づく参考情報です。投資判断は自己責任でお願いします。
+  <br><span id="token-info" style="font-size:10px;opacity:.65"></span>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     MARKET DATA  (scheduled task edits between START/END markers)
+     ══════════════════════════════════════════ -->
+<script>
+// ── START_DATA ──
+const MARKET_REPORTS = [
+  {
+    date: "2026-06-25",
+    dateLabel: "Jun 25",
+    tokenEstimate: 15000,
+    indices: {
+      sp500:  { name:"S&P 500",     flag:"🇺🇸", value:5950.2,  change:28.5,  pct:0.52,  dir:"up"   },
+      nasdaq: { name:"Nasdaq 100",  flag:"🇺🇸", value:21467.3, change:51.5,  pct:0.24,  dir:"up"   },
+      dow:    { name:"Dow Jones",   flag:"🇺🇸", value:43215.0, change:280.0, pct:0.65,  dir:"up"   },
+      nikkei: { name:"Nikkei 225",  flag:"🇯🇵", value:39820.0, change:-47.5, pct:-0.12, dir:"down"  }
+    },
+    macro: {
+      "10Y米国債":  { value:"4.40%",    dir:"up"   },
+      "2Y米国債":   { value:"4.70%",    dir:"up"   },
+      "VIX":        { value:"18.63",    dir:"flat" },
+      "DXY":        { value:"~101.5",   dir:"flat" },
+      "WTI原油":    { value:"~$67.5",   dir:"down" },
+      "Gold金":     { value:"~$3,250",  dir:"up"   }
+    },
+    movers: [
+      { ticker:"TECH", name:"Bio-Techne",        pct: 19.6, dir:"up",   why:"強決算 / AI×バイオ交差期待" },
+      { ticker:"MU",   name:"Micron Technology", pct: 17.1, dir:"up",   why:"FQ3 EPS $25.11 vs 予想$20.63。AI向けHBMメモリ需要急増" },
+      { ticker:"QCOM", name:"Qualcomm",          pct: 10.0, dir:"up",   why:"Micron連動 / AI推論チップ需要拡大" },
+      { ticker:"HTZ",  name:"Hertz Global",      pct: -6.1, dir:"down", why:"EV関連減損・業績懸念継続" },
+      { ticker:"DLTR", name:"Dollar Tree",       pct: -3.6, dir:"down", why:"PCE 4.1%でコスト圧迫懸念再燃" },
+      { ticker:"VZ",   name:"Verizon",           pct: -0.6, dir:"down", why:"6/29 Dow除外を前に売り先行" }
+    ],
+    events: [
+      { icon:"📊", title:"PCEインフレ 4.1%（前年比）— 2023年4月以来の高水準", detail:"Fed優先インフレ指標が予想を大幅上回る。利下げ時期の後ずれ観測が強まり、長期金利は高止まり継続。マーケットは「higher for longer」シナリオを再度織り込む展開。" },
+      { icon:"🤖", title:"Micron Q3決算：EPS $25.11（+22% 上振れ）、売上 $41.5B（+16%）", detail:"Q4ガイダンスも売上$50B（予想$43.2B）と強気。AI/データセンター向けHBM（高帯域幅メモリ）需要が爆発的に増加。Qualcomm・エヌビディア関連銘柄も連動高。" },
+      { icon:"📋", title:"Dow銘柄変更：Verizon除外 → Alphabet採用（6月29日施行）", detail:"AI・テック企業重視へのインデックス再編。通信からAIへの価値移転を象徴する出来事として市場は評価。指数トラッキングファンドによる大規模なリバランスが予定される。" }
+    ],
+    usCredit: {
+      summary: "2026年6月、プライベートクレジット市場は「選別と革新」の局面へ。Q1に$140億超の解約請求が示す流動性懸念と、AI向け$35Bチップファイナンスが象徴する革新的活用が同時進行。",
+      deals: [
+        { title:"Apollo × Blackstone：Anthropic AIコンピュート $35B チップファイナンス", tag:"プライベートクレジット", tagCls:"t-blue", meta:"Apollo Global + Blackstone Group ｜ $35B ｜ AIインフラ", body:"2026年6月8日クローズ。GoogleカスタムTPUをSPV経由で購入・Anthropicにリースする革新的スキーム。AIインフラ向け史上最大級のPC案件。", sig:"AIインフラ融資の新パラダイム" },
+        { title:"欧州ダイレクトレンディング 2025年 €590億で過去最高", tag:"ファンド組成", tagCls:"t-orange", meta:"複数大手マネジャー ｜ €590億 ｜ 欧州DL", body:"米国DL過熱を受け欧州に資金流入が急増。UK・DACH地域ミドルマーケット需要が旺盛。", sig:"地理的分散が加速する2026年" },
+        { title:"スペシャルティファイナンス 2025年 $370億で急成長", tag:"スペシャルティ", tagCls:"t-purple", meta:"複数マネジャー ｜ $370億 ｜ 資産担保型クレジット", body:"消費者ローン・航空機リース・ロイヤルティ等を対象。DLに次ぐ第2位の主要戦略に急浮上。", sig:"Direct Lendingの代替戦略として台頭" }
+      ],
+      outlook: "💡 2026年後半はスペシャルティ・ABFへの資金配分が一段と加速する見込み。"
+    },
+    jpCredit: {
+      summary: "2026年5月のTOBルール改正施行後、初の本格的な案件形成局面へ。バイアウトファンドへの資本集中と手法の多様化が同時進行。",
+      deals: [
+        { title:"Advantage Partners Japan Buyout Fund VIII — ¥300B Hard Cap達成", tag:"バイアウト", tagCls:"t-orange", meta:"Advantage Partners ｜ ¥300億（約$2.1B）｜ 日本バイアウト専門", body:"2026年5月29日ファイナルクローズ。目標¥250億を超過しハードキャップ¥300億で終了。日本PE最大規模クラス。", sig:"日本PE機関投資家需要の底堅さを証明" },
+        { title:"TOBルール改正（2026年5月1日施行）", tag:"規制変更", tagCls:"t-red", meta:"金融商品取引法改正 ｜ 強制TOB閾値 1/3→30%", body:"市場内取引を含む全株式取得にTOB規制が適用され、強制TOB閾値も30%へ引き下げ。プロセス設計の精緻化が不可欠に。", sig:"バイアウトプロセス設計の巧拙が案件成否を左右" },
+        { title:"国内メザニンプロバイダーの台頭", tag:"メザニン", tagCls:"t-purple", meta:"MCo / MCP Partners / Fivestar Mezzanine等 ｜ 拡大中", body:"シニアデット6x EBITDAの上乗せとして国内メザニンプロバイダーが急増。大型バイアウトファイナンスの選択肢が格段に拡大中。", sig:"日本レバレッジドファイナンスの急速な成熟" }
+      ],
+      outlook: "💡 TOB改正後初の大型P2P案件の登場に注目。メザニン活用の標準化とプロセス設計の精緻化が競争優位を左右する。"
+    },
+    takeaway: "本日はMicronの爆発決算（+17.1%）がAI半導体需要の底堅さを証明。PCE 4.1%はFedの利下げ期待を冷やし10Y金利は高止まり。Apollo×Blackstoneの$35B AIチップファイナンスはプライベートクレジットがAIインフラという新資本需要源を取り込む象徴的案件。日本ではTOBルール改正後の初の本格局面、Advantage Partners Fund VIIIの超過申込クローズが機関投資家需要の旺盛さを証明。"
+  },
+  {
+    date: "2026-06-29",
+    dateLabel: "Jun 29",
+    tokenEstimate: 15000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7299.0,  change:-55.0,  pct:-0.75, dir:"down" },
+      nasdaq: { name:"Nasdaq 100", flag:"🇺🇸", value:24940.0, change:-357.6, pct:-1.41, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:51715.0, change:-161.1, pct:-0.31, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:38150.0, change:-280.0, pct:-0.73, dir:"down" }
+    },
+    macro: {
+      "10Y米国債":  { value:"4.42%",    dir:"up"   },
+      "2Y米国債":   { value:"4.68%",    dir:"flat" },
+      "VIX":        { value:"21.4",     dir:"up"   },
+      "DXY":        { value:"~102.1",   dir:"flat" },
+      "WTI原油":    { value:"~$67.2",   dir:"down" },
+      "Gold金":     { value:"~$3,275",  dir:"up"   }
+    },
+    movers: [
+      { ticker:"ILLR", name:"Triller Group", pct: 64.9, dir:"up",   why:"SpaceX株式を財務資産として取得。NasdaqからSpaceXへの間接エクスポージャーとして急騰" },
+      { ticker:"NVDA", name:"NVIDIA",        pct: -3.2, dir:"down", why:"AIチップ株5日連続安。半導体セクター全体に売り圧力継続" },
+      { ticker:"AMD",  name:"AMD",           pct: -4.1, dir:"down", why:"Nasdaq技術株売りに連動。AI半導体バリュエーション懸念" },
+      { ticker:"TSMC", name:"TSMC ADR",      pct: -2.8, dir:"down", why:"地政学リスク再燃・半導体全体の調整局面" },
+      { ticker:"OMER", name:"Omeros Corp",   pct:-23.0, dir:"down", why:"欧州でのNarsoplimab医薬品承認申請に関する否定的規制アップデート" },
+      { ticker:"MSFT", name:"Microsoft",     pct: -1.4, dir:"down", why:"OpenAI IPO遅延報道でAI投資への懸念台頭、テック全体に波及" }
+    ],
+    events: [
+      { icon:"🤖", title:"OpenAI IPO延期報道 — SpaceX上場不振が影響", detail:"OpenAIが2026年内IPOを来年以降に延期する可能性を検討中と報道。AI関連株のボラティリティ上昇が背景。Microsoftなど主要AI投資家株に売り圧力。" },
+      { icon:"📉", title:"Nasdaq 5日連続安 — チップ株主導の技術株売り継続", detail:"半導体セクターから防衛的セクターへの資金ローテーション継続。NVIDIA・AMD・TSMCなどAIチップ関連が下落リード。バリュエーション懸念とAI収益化タイムラインへの疑念が背景。" },
+      { icon:"📊", title:"米国プライベートクレジット市場：Q1解約請求$100億超", detail:"エバーグリーン型ダイレクトレンディング戦略から$100億超の解約請求がQ1に集中。流動性リスク管理が業界課題に。ABF（資産担保型ファイナンス）への資金シフトが加速。" }
+    ],
+    usCredit: {
+      summary: "2026年6月末時点、プライベートクレジット市場は$1.5〜2兆規模に拡大し、広義シンジケートローン市場と並ぶ規模に到達。Direct Lendingが全体の52%を占める。",
+      deals: [
+        { title:"Ares Management：プライベートクレジット成長と成熟の2026年見通し", tag:"マーケット見通し", tagCls:"t-blue", meta:"Ares Management ｜ マーケットレポート ｜ DL/ABF", body:"規制緩和・法人税優遇・地銀貸出制約がDirect Lendingの追い風として継続。M&A再開期待によるディールフロー増加・スプレッド改善を予測。ABFがDLに次ぐ第2位戦略として台頭。", sig:"2028年までに市場規模$3兆到達予測" },
+        { title:"PineBridge：直接融資の4つの追い風 — 2026年後半見通し", tag:"ダイレクトレンディング", tagCls:"t-purple", meta:"PineBridge Investments ｜ アウトルック ｜ 中堅企業向けDL", body:"①規制・税制の事業拡大支援、②低金利環境、③地銀制約、④M&A回復という4追い風を提示。オリジネーション能力のある大手マネジャーへ資金集中が進む。", sig:"選別力が差別化要因となる後半戦" },
+        { title:"Northleaf Capital：Q1-2026 プライベートクレジット市場アップデート", tag:"四半期レポート", tagCls:"t-green", meta:"Northleaf Capital ｜ Q1 2026 ｜ プライベートクレジット全般", body:"Q1はエバーグリーンファンドの流動性懸念が浮上した一方、機関投資家向けクローズドエンドファンドへの資金流入は安定。ポートフォリオ報告品質が競争差別化要素として重要性増大。", sig:"機関投資家は透明性・流動性管理を重視" }
+      ],
+      outlook: "💡 2026年後半はABFとスペシャルティファイナンスへの資金シフトが加速。大手マネジャーへの集中と中小マネジャーの差別化が鮮明に。"
+    },
+    jpCredit: {
+      summary: "2026年6月、日本PEは外資PE第三波が本格化。TOBルール改正後の初の本格案件形成局面へ。機関投資家需要は依然旺盛。",
+      deals: [
+        { title:"Bain Capital主導：外資系PEの日本バイアウト第三波", tag:"バイアウト", tagCls:"t-orange", meta:"Bain Capital / 外資PE複数社 ｜ 大型バイアウト ｜ カーブアウト・P2P", body:"コーポレートガバナンス改革を追い風にBain Capitalが日本バイアウト市場でリード。KKR・Carlyle・Apollo等外資勢が日本専任チームを拡充中。TOBルール改正後のP2P案件が2026年後半の主テーマに。", sig:"外資PE第三波：規律あるコーポレートアクション増加へ" },
+        { title:"事業承継PE：後継者不在$1.6兆市場をターゲット", tag:"事業承継", tagCls:"t-blue", meta:"国内PE複数社 ｜ 中小企業事業承継 ｜ ミドルマーケット", body:"後継者不在の中小企業$1.6兆（推計）市場へのPE参入が加速。地方銀行との協調案件・地域密着型バイアウトが増加。事業承継補助金・税制優遇との組み合わせで案件成立率が向上。", sig:"地方銀行との協調融資モデルが標準に" },
+        { title:"日本レバレッジドファイナンス：メザニン標準化が急進展", tag:"メザニン", tagCls:"t-purple", meta:"MCo / MCP Partners / Fivestar Mezzanine等 ｜ ¥50〜200億/案件", body:"シニアデット6x EBITDAの上乗せとして国内メザニンプロバイダーが急増。2026年は大型バイアウトでのメザニン活用が標準化し、総デットマルチプル7〜8xの案件も登場。", sig:"日本LBOファイナンスの成熟が加速" }
+      ],
+      outlook: "💡 TOBルール改正後初の大型P2P案件登場に注目。メザニン活用標準化とプロセス設計の精緻化が投資リターン格差を生む重要局面へ。"
+    },
+    takeaway: "本日（6/29月曜）は、OpenAI IPO延期報道とAIチップ株5日連続安を背景にNasdaqが-1.4%と続落。半導体セクターから防衛的セクターへの資金ローテーションが継続し、VIXは21台へ上昇。プライベートクレジット市場は$1.5〜2兆規模に拡大し広義シンジケートローン市場と並ぶ巨大市場に成長。日本PEは外資PE第三波が本格化し、TOBルール改正後の初P2P案件登場が2026年後半の最大注目テーマ。"
+  },
+  {
+    date: "2026-06-30",
+    dateLabel: "Jun 30",
+    tokenEstimate: 22000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7449.4,  change:58.4,   pct:0.79,  dir:"up" },
+      nasdaq: { name:"Nasdaq 100", flag:"🇺🇸", value:25190.0, change:249.9,  pct:1.00,  dir:"up" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52319.2, change:604.2,  pct:1.17,  dir:"up" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:70498.0, change:1030.0, pct:1.48,  dir:"up" }
+    },
+    macro: {
+      "10Y米国債":  { value:"4.39%",   dir:"up"   },
+      "2Y米国債":   { value:"4.07%",   dir:"up"   },
+      "VIX":        { value:"17.65",   dir:"down" },
+      "DXY":        { value:"~102",    dir:"up"   },
+      "WTI原油":    { value:"~$70.3",  dir:"down" },
+      "Gold金":     { value:"~$4,020", dir:"down" }
+    },
+    movers: [
+      { ticker:"CNXC", name:"Concentrix",           pct:-22.0, dir:"down", why:"Q2決算ミス・Q3および通期ガイダンスを大幅下方修正" },
+      { ticker:"NSC",  name:"Norfolk Southern",     pct: -8.4, dir:"down", why:"業績見通し悪化、鉄道輸送量の減少懸念が継続" },
+      { ticker:"DLR",  name:"Digital Realty Trust", pct: -4.2, dir:"down", why:"データセンター需要の短期鈍化懸念、テック株調整に連動" },
+      { ticker:"NKE",  name:"Nike",                 pct:  0.3, dir:"up",   why:"引け後決算発表前に積極買い。11年ぶり安値付近からの反発期待" },
+      { ticker:"SMH",  name:"VanEck Semiconductor", pct:  0.82,dir:"up",   why:"半導体セクター全体の反発。前日の売られ過ぎからショートカバー" },
+      { ticker:"MAGS", name:"Roundhill Mag7 ETF",   pct:  0.25,dir:"up",   why:"メガキャップテック回復基調。Q2末ポートフォリオリバランス" }
+    ],
+    events: [
+      { icon:"🏆", title:"Q2 2026終了 — 主要株価指数が2020年以来最良の四半期", detail:"S&P 500・Dow Jones・Nasdaqの全主要指数が2020年パンデミック回復以来最高の四半期パフォーマンスを記録。Dow Jonesは史上初めて52,000台を突破。年前半の強い企業業績とAIブームが牽引。", searchKey:"US stock market Q2 2026 best quarter Dow Jones 52000" },
+      { icon:"👟", title:"Nike (NKE) 引け後決算発表 — 11年ぶり安値からの反発に注目", detail:"株価は11年ぶりの安値付近で推移。中国市場回復・コスト削減効果・DTC（Direct-to-Consumer）戦略の成果が焦点。決算結果次第では短期的な大幅変動も想定される。", searchKey:"Nike NKE earnings fiscal Q4 2026 results China" },
+      { icon:"📋", title:"JOLTS（雇用動態調査）— 予想を大幅上回る求人件数", detail:"6月の求人件数が市場予想を大幅に上回り、米国債利回りが上昇（10Y: 4.39%）。Fed利下げ期待をさらに後退させ「higher for longer」シナリオが継続。Goldはこの四半期で14%下落し2013年以来最悪の四半期に。", searchKey:"JOLTS job openings June 2026 Federal Reserve rate cut" },
+      { icon:"🏦", title:"Fed ウォーシュ議長、バランスシート縮小タスクフォース創設を発表", detail:"FRB議長ウォーシュが大型バランスシートの必要性を評価するタスクフォースの創設を発表。国債売却（QT加速）のシグナルとして市場は受け止め、長期金利に上昇圧力が続く。", searchKey:"Fed Warsh balance sheet quantitative tightening task force 2026" }
+    ],
+    usCredit: {
+      summary: "2026年Q2末、US Private Credit市場はエバーグリーン型ファンドからの解約請求（Q1: $100億超）と大手マネジャーによる大型ファンドレイズが並行進行。確立されたマネジャーへの資金集中が鮮明で、CarlyleとBrookfieldが大型調達を主導。",
+      deals: [
+        { title:"Carlyle：北米バイアウト次期ファンド — $85億アンカーファイナンス確保", tag:"バイアウト", tagCls:"t-blue", meta:"Carlyle Group ｜ $8.5B ｜ 北米ミドルマーケット・バイアウト", body:"正式なLP向けファンドレイズ前に$85億のファイナンスアレンジメントをアンカーとして確保。前ファンド比の超過申込を背景にLP需要は依然旺盛。2026年後半に正式クローズへ向けた動き。", sig:"確立マネジャーへの資金集中が一段と加速", searchKey:"Carlyle North America buyout fund fundraising 2026" },
+        { title:"Brookfield：$200億プライベートクレジットファンド — Q3初回クローズ目標", tag:"ファンドレイズ", tagCls:"t-orange", meta:"Brookfield Asset Management ｜ $20B ｜ プライベートクレジット", body:"前ファンド（$300億クローズ）の後継として$200億を目標とした新ファンドのQ3初回クローズを計画。インフラ・再エネ関連のSpecialty Financeが中心戦略。", sig:"大型マネジャーが示す市場成長への確信", searchKey:"Brookfield private credit fund 20 billion 2026" },
+        { title:"エバーグリーン型DLファンド：Q1に$100億超の解約請求", tag:"流動性リスク", tagCls:"t-red", meta:"複数大手マネジャー ｜ $10B超 ｜ エバーグリーン型ダイレクトレンディング", body:"Q1 2026にエバーグリーン型ダイレクトレンディング戦略から$100億超の解約請求が発生。PIKトグル利用増・高プロファイルデフォルトを背景に投資家が流動性を優先。解約制限の導入マネジャーも増加。", sig:"クローズドエンドvsエバーグリーン：構造選択が評価基準に", searchKey:"private credit evergreen fund redemptions direct lending 2026" }
+      ],
+      outlook: "💡 2026年後半はABF（資産担保型ファイナンス）とSpecialty Financeへの資金シフトが加速。大手マネジャーへの集中と中小マネジャーの差別化が鮮明になる局面へ。"
+    },
+    jpCredit: {
+      summary: "2026年6月末、日本PE市場は外資PE第三波の本格化とFEFTA初適用（MBK×牧野フライス）という歴史的事案が重なる節目。年間ディールバリューは5年連続で3兆円超を記録し、テイクプライベート案件が全体の約半数を占める。",
+      deals: [
+        { title:"MBK Partners × 牧野フライス：FEFTA改正後初のTOB阻止勧告", tag:"規制リスク", tagCls:"t-red", meta:"MBK Partners ｜ TOB中止勧告 ｜ 精密機械・安保規制", body:"2026年4月、政府がFEFTA改正後初となるTOB停止勧告をMBK Partnersの牧野フライス買収に発動。安全保障上の懸念が理由。9年間ゼロだった勧告が初適用され、外資PE戦略全体への影響が広がる。", sig:"FEFTA安保審査が外資PE戦略の新たな制約に", searchKey:"MBK Partners Makino Milling FEFTA Japan takeover blocked" },
+        { title:"日本PE市場：年間ディールバリュー5年連続3兆円超・EV過去最高2.4兆円", tag:"マーケット動向", tagCls:"t-orange", meta:"日本PE市場全体 ｜ ¥4.8兆（取引額）・¥2.4兆（EV） ｜ バイアウト中心", body:"2025年の日本PE市場はディールバリュー4.8兆円（5年連続3兆円超）・EV過去最高2.4兆円を記録。テイクプライベートが全体の約半数を占め、60〜80%のプレミアムが標準化。外資PE日本専任チームの拡充が加速。", sig:"コーポレートガバナンス改革が日本PE黄金時代を継続", searchKey:"Japan private equity buyout deal value record 2025 2026" },
+        { title:"事業承継PE：後継者不在$1.6兆市場への参入加速", tag:"事業承継", tagCls:"t-blue", meta:"国内PE複数社 ｜ 中小企業事業承継 ｜ ミドルマーケット", body:"後継者不在の中小企業$1.6兆（推計）市場へのPE参入が加速。地方銀行との協調案件・地域密着型バイアウトが増加。事業承継補助金・税制優遇との組み合わせで案件成立率が向上。", sig:"地方銀行との協調融資モデルが標準化へ", searchKey:"Japan business succession SME private equity regional bank 2026" }
+      ],
+      outlook: "💡 FEFTA安保審査の初適用により外資PEの対日投資プロセスに新たな不確実性。TOBルール改正×FEFTA二重ハードルを乗り越える案件組成力が2026年後半の差別化要因に。"
+    },
+    takeaway: "2026年6月30日（Q2最終日）、S&P 500が+0.79%、Dow Jonesが史上初めて52,000を突破し、全主要指数が2020年以来最良の四半期を締めくくった。VIXは21台から17.65に低下しリスクセンチメントが回復。一方でJOLTS求人件数が予想を上回り10Y金利は4.39%に上昇、利下げ期待はさらに後退。GoldはQ2で14%下落（2013年以来最悪）、原油は6年ぶり最悪の四半期。US Private Credit市場ではCarlyle（$85億）・Brookfield（$200億目標）の大型ファンドレイズが順調な一方、エバーグリーン型ファンドの流動性問題が浮上。日本ではMBK×牧野フライスのFEFTA初適用という歴史的事案により外資PE戦略に新たな安保制約が加わる局面を迎えた。",
+    narrative: "2026年Q2最終日の市場は、「好調な経済指標と金利高止まりの共存」という今年を象徴するパラドックスで締めくくられた。S&P 500は+0.79%、Dow Jonesは史上初めて52,000台を突破し、主要3指数がそろって2020年のパンデミック回復局面以来最高の四半期パフォーマンスを記録した。表面上は典型的なリスクオンの景色だ。||しかし水面下を見ると、話はそう単純ではない。JOLTS（雇用動態調査）が予想を大幅に上回ったことで、米10年債利回りは4.39%に上昇した。Fed議長ウォーシュはバランスシート縮小タスクフォースの創設を発表し、QT加速への地ならしも進む。市場は「growth without easing（緩和なき成長）」というシナリオを静かに織り込みつつある。GoldがQ2で14%下落し2013年以来最悪となったのも、「金利上昇で実質金利がプラス化した現実」が資産配分を根本から変えていることを示す。||プライベートクレジット市場への含意はさらに複層的だ。金利高止まりはダイレクトレンディングのスプレッドを維持する追い風となる一方、ポートフォリオ企業の利払い負担を押し上げ、PIKトグルの行使増加や緩やかなデフォルト率上昇につながる。Q1のエバーグリーン型ファンドからの$100億超の解約申請は、こうした構造的ストレスが投資家心理に与えた影響の大きさを物語る。||それでもCarlyle（$85億アンカー調達）やBrookfield（$200億目標）の大型ファンド組成が順調なことは、「強者がより強く」という二極化の現実を証明する。トラックレコードのある大手マネジャーには資金が集まり、未確立の中小マネジャーは苦境に立たされる。この構造は日本の生保・年金のLP行動にも同様に当てはまり、2026年後半の最重要テーマとなるだろう。||日本PEは今、二つの歴史的変化が同時進行している。一つはMBK Partners×牧野フライスへのFEFTA初適用で、9年間ゼロだった政府の買収阻止勧告が現実となった。安全保障審査が外資PEの投資判断に組み込まれる新時代の幕開けだ。もう一つはディールバリューの5年連続3兆円超という市場の成熟で、テイクプライベートが全体の半数、60〜80%プレミアムが標準化するなど量的・質的の両面で進化が続く。この複雑さをどう読み解くか——それがこのマーケットのプロに求められる核心的な視点だ。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①Dow Jones史上初の52,000突破でQ2は2020年以来最良の四半期。②JOLTS予想超えで10年債4.39%に上昇、利下げ期待は完全に後退しgrowth without easingシナリオへ。③プライベートクレジットはCarlyle・Brookfieldが大型調達で強者優位が鮮明、日本ではFEFTA初適用という歴史的転換点を迎えた。",
+      interviewQA: [
+        {
+          q: "最近のプライベートクレジット市場で最も注目しているトレンドを教えてください",
+          a: "エバーグリーン型DLファンドからの大規模解約（Q1: $100億超）とABF・Specialty Financeへの資金シフトです。背景には金利高止まり環境でのバリュエーション懸念と流動性需要の増大があります。特に注目しているのはABFとRated Feeder Note（RFN）の組み合わせで、規制資本コストに敏感な保険会社資本をプライベートクレジットに呼び込む構造が大手マネジャーの差別化要因となっています。Apolloがこの垂直統合モデルで先行しており、日本の生保・年金資本がこの流れに乗る可能性を注視しています。"
+        },
+        {
+          q: "日本のPE市場の現状と今後の見通しを聞かせてください",
+          a: "2025年のディールバリューが4.8兆円と5年連続3兆円超を記録し、テイクプライベートが全体の約半数を占めるなど構造的成長局面にあります。コーポレートガバナンス改革とTSEのPBR1倍割れ改善要求が継続的な案件供給源となっています。一方で今年4月のMBK Partners×牧野フライスへのFEFTA初適用は重要なターニングポイントで、安全保障審査が外資PEの投資判断に新たな変数を加えました。この変化は案件スクリーニングの複雑化を意味しますが、同時に安保上の懸念が低い案件や国内PEとの協調という新たな戦略機会も生み出します。"
+        },
+        {
+          q: "PIKトグルとは何か、なぜ今それが問題になっているか説明してください",
+          a: "PIK（Payment-in-Kind）トグルとは、借り手が現金での利払いの代わりに元本を膨らませる形で利払いを代替できる条項です。業績低迷期の息継ぎ弁として設計されましたが、高金利環境の長期化でその行使が増加し、貸し手にとっては元本膨張＝将来のデフォルト確率上昇を意味します。現在PIK比率の上昇はポートフォリオストレスの先行指標として業界で注視されており、Q1のエバーグリーン型DLファンドからの解約ラッシュの一因ともなっています。投資家がPIKで見かけ上の健全性を保っているうちに解約したいと動いた結果です。"
+        }
+      ],
+      keyConceptToday: {
+        term: "PIKトグル（Payment-in-Kind Toggle）",
+        definition: "借り手が現金での利払いの代わりに追加元本（ローン残高の増加）で利払いを代替できる条項。現金支出を抑えながら債務を維持できるが、元本は膨張し続ける。",
+        background: "LBO後にキャッシュフローが一時的に悪化した企業の息継ぎ弁として開発された。業績回復後に現金払いに戻る想定で設計されているが、本質的には利払い負担の先送り機能でもある。",
+        practical: "貸し手視点では「PIK比率の上昇＝ポートフォリオストレスの先行指標」として監視する。PIK行使が増えると元本が膨張し、最終的なデフォルト時の損失額（LGD）が拡大する。クレジットアナリストは現金払い比率をモニタリング指標として重点追跡する。",
+        context2026: "金利高止まりの長期化でPIKトグルの行使が増加し、エバーグリーン型DLファンドからの解約ラッシュの一因となった。市場全体のデフォルト率が急上昇しているわけではないが、PIK増加はその予兆として業界全体で警戒されている局面。"
+      },
+      dealAnalysis: {
+        title: "MBK Partners × 牧野フライス（工作機械バイアウト）",
+        thesis: "コーポレートガバナンス改革を追い風にP2P案件が増加する日本市場でのバイアウト。コスト構造改革・海外販路拡大・設備更新サイクルを活用したオペレーショナルバリューアップを想定した案件。",
+        timing: "TSEのガバナンス改革でPBR1倍割れ製造業への外資PEの関心が高まるタイミング。上場廃止・非公開化が加速する局面での案件組成。ただし今回はFEFTA審査という予測困難なリスクが顕在化した。",
+        downside: "工作機械は景気感応度が高くグローバル設備投資サイクル悪化時に収益が急落するリスク。さらにFEFTA規制による取得阻止が現実となり投資前提が崩壊。安保規制の予測困難性が最大のリスク要因として確定した。",
+        valuation: "製造業バイアウトは一般にEV/EBITDA 8〜12xで評価。成長性より安定CF・ROE向上でバリュー正当化。日本では60〜80%のTOBプレミアムが標準化しエントリーバリュエーションが高くなる傾向があり、バリューアップの確実な実行がリターンの鍵となる。"
+      }
+    }
+  },
+  {
+    date: "2026-07-01",
+    dateLabel: "Jul 01",
+    tokenEstimate: 22000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7449.4,  change:0.0,   pct:0.00,  dir:"flat" },
+      nasdaq: { name:"Nasdaq 100", flag:"🇺🇸", value:25190.0, change:0.0,   pct:0.00,  dir:"flat" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52319.2, change:0.0,   pct:0.00,  dir:"flat" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:70475.0, change:412.6, pct:0.59,  dir:"up" }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.42%",   dir:"up"   },
+      "2Y米国債":     { value:"4.18%",   dir:"down" },
+      "VIX":          { value:"17.65",   dir:"flat" },
+      "DXY":          { value:"~101",    dir:"down" },
+      "WTI原油":      { value:"~$69",    dir:"down" },
+      "Gold金":       { value:"~$4,003", dir:"down" },
+      "ドル円":       { value:"¥162.7",  dir:"up"   },
+      "日10年国債":   { value:"2.70%",   dir:"up"   },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.6%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"FMC",  name:"FMC Corp.",              pct: 8.3,  dir:"up",   why:"農薬・特殊化学品メーカー、事業見通し改善を好感し急伸" },
+      { ticker:"NOW",  name:"ServiceNow",             pct: 4.1,  dir:"up",   why:"AI関連ソフトウェア需要への期待で上昇" },
+      { ticker:"GIS",  name:"General Mills",          pct: 4.4,  dir:"up",   why:"決算内容が市場予想を上回り食品セクターが堅調" },
+      { ticker:"KR",   name:"Kroger",                 pct:-2.8,  dir:"down", why:"Giant Eagleを16.5億ドルで買収すると発表、材料出尽くしで軟調" },
+      { ticker:"ESS",  name:"Essex Property Trust",   pct:-11.6, dir:"down", why:"住宅REIT、金利・需要懸念から大幅下落" },
+      { ticker:"PSA",  name:"Public Storage",         pct: -4.1, dir:"down", why:"REITセクター全般に売り、金利上昇を警戒" }
+    ],
+    events: [
+      { icon:"🎆", title:"2026年第3四半期（Q3）が寄り付き — 過去最高のQ2から続伸なるか", detail:"S&P 500・Nasdaqは前四半期に2020年以来最良のパフォーマンスを記録した後の初日。寄り付き前先物はやや軟調で「強すぎた四半期」後の一服感も。", searchKey:"S&P 500 futures Q3 2026 start after best quarter" },
+      { icon:"🛒", title:"Kroger、Giant Eagleを16.5億ドルで買収と発表", detail:"食品スーパー業界の再編が加速。Kroger株は発表を受けて寄り付き前に軟調。地域スーパー統合トレンドの一環として注目。", searchKey:"Kroger Giant Eagle acquisition 1.65 billion 2026" },
+      { icon:"⚖️", title:"日本のTOB規制改正が施行済み（2026年5月1日）— 下期の案件形成が本格化へ", detail:"市場内取引もTOB対象化、強制公開買付の閾値が1/3から30%に引き下げられた新ルールの下、下期の大型テイクプライベート案件の増加が見込まれる。", searchKey:"Japan TOB rule change May 2026 tender offer threshold" },
+      { icon:"🗻", title:"日経平均、7万台で続伸（+0.59%）", detail:"東京市場は堅調に推移し70,475円で取引を終了。米ハイテク株高の流れを引き継ぐ形に。", searchKey:"Nikkei 225 close July 1 2026" }
+    ],
+    usCredit: {
+      summary: "H1 2026の米ダイレクトレンディング市場は貸し手優位の局面へ転換。M&A回復や金利正常化を背景に、貸し手はより有利な価格・契約条件を交渉できる環境が続いている。一方でAI関連の過剰投資懸念や信用市場の後期サイクル的な過熱感が新たなリスク要因として意識されている。",
+      deals: [
+        { title:"Macquarie AM、10億ドルの米ダイレクトレンディングファンド組成", tag:"新規ファンド", tagCls:"t-blue", meta:"Macquarie Asset Management ｜ 10億ドル（2次クローズ4〜5億ドル目標） ｜ ダイレクトレンディング", body:"2025年11月に1次クローズ済み、2026年半ばの2次クローズを目指す。", sig:"運用会社の資金調達意欲は底堅く、市場拡大トレンドが継続。", searchKey:"Macquarie direct lending fund 1 billion 2026" },
+        { title:"BSL⇄プライベートクレジット、双方向の資金移動が活発化", tag:"市場構造", tagCls:"t-purple", meta:"市場全体 ｜ $37B（BSL→DL）／$34B（DL→BSL） ｜ シンジケートローン⇄DL", body:"広義シンジケートローン(BSL)市場からダイレクトレンディングへ約$37B、逆方向へ約$34Bの借り換えが発生。金利環境や案件特性に応じて最適な調達チャネルを選ぶ動きが常態化。", sig:"2つの市場の垣根が薄れ、借り手優位の裁定機会が拡大", searchKey:"broadly syndicated loan direct lending refinancing 2026" },
+        { title:"ジャンボローン（$10億超）の増加で大型顧客も取り込み", tag:"市場拡大", tagCls:"t-green", meta:"業界全体 ｜ 未投資資金(ドライパウダー) $400B超 ｜ 大型ダイレクトレンディング", body:"$10億超の大型プライベートクレジット案件（ジャンボローン）が増加し、これまでBSL市場が担っていた大企業向け融資にもDLが浸食。$400億超のドライパウダーが投資機会を待つ。", sig:"プライベートクレジットの対象領域がミドルマーケットから大企業へ拡大", searchKey:"jumbo private credit loans billion dollar 2026" }
+      ],
+      outlook: "💡 ダイレクトレンディング市場は現状の1.5〜2兆ドル規模から2028年に3兆ドル規模へ拡大する見通し。下期はLP流動性ニーズとAI関連ポートフォリオの再評価が焦点。"
+    },
+    jpCredit: {
+      summary: "2025年の日本PE取引額は4.8兆円（約300億ドル）と前年比約30%増加。テイクプライベート案件が全体の約半分を占め、コーポレートガバナンス改革と上場廃止の増加が背景にある。2026年も大型ディールが継続する見通し。",
+      deals: [
+        { title:"Apollo、日本板硝子(NSG)を37億ドルで買収", tag:"大型買収", tagCls:"t-purple", meta:"Apollo Global Management ｜ 37億ドル ｜ 素材・ガラス", body:"2026年に予定される大型テイクプライベート案件の一つ。5月施行のTOB規制改正後、初期の大型案件としてプロセス設計のベンチマークとなる。", sig:"海外PEファンドによる日本の非中核・低評価企業への関心が継続。", searchKey:"Apollo Nippon Sheet Glass acquisition 3.7 billion 2026" },
+        { title:"Bain Capital、MCJを13億ドルで非公開化", tag:"非公開化", tagCls:"t-orange", meta:"Bain Capital ｜ 13億ドル ｜ 電子機器", body:"ガバナンス改革を背景とした上場廃止トレンドの一環。", sig:"中小型株のテイクプライベートが今後も増加する可能性。", searchKey:"Bain Capital MCJ privatization 1.3 billion 2026" },
+        { title:"Blackstone、過去最大の$131億アジアPEファンドをクローズ", tag:"ファンドレイズ", tagCls:"t-blue", meta:"Blackstone ｜ $13.1B（目標$10Bを超過） ｜ アジア全域・日本含む", body:"2026年6月2日、目標を上回りハードキャップでクローズ。過去24ヶ月でアジアに$70億超・12件を投資済みで、日本ではTechnoPro買収やAlinamin製薬のEXITなど活発。", sig:"海外メガファンドの日本を含むアジア専任投資体制が一段と強化", searchKey:"Blackstone Asia private equity fund 13.1 billion Japan 2026" }
+      ],
+      outlook: "💡 ガバナンス改革とTOB規制強化を背景に、2026年後半も日本の大型テイクプライベート案件が続く見通し。海外PEファンドの日本市場への関心は高水準を維持。"
+    },
+    takeaway: "米国市場はQ2の記録的な四半期を終え、Q3初日は前日終値近辺での様子見スタート。半導体・AI関連株への物色は継続する一方、寄り付き前先物はやや軟調で過熱感の一服も意識される。VIXは17台の低水準で市場心理は総じて楽観的。Private Credit市場は貸し手優位の局面へ転換しつつあり、Macquarieなど大手による新規ファンド組成が続く。日本ではApollo/日本板硝子、Bain/MCJなど大型テイクプライベート案件が相次ぎ、5月施行のTOB規制改正を背景に下期のM&A活発化が見込まれる。",
+    narrative: "2026年7月1日、市場はQ2の記録的な四半期を終えてQ3の初日を迎えた。S&P 500・Nasdaqは前四半期に2020年のパンデミック回復局面以来最良のパフォーマンスを記録しており、寄り付き前の先物がやや軟調なのは弱気転換のシグナルというより「強すぎた四半期」の一服感と見るのが妥当だろう。VIXは17台の低水準を維持しており、市場心理そのものは楽観的な地合いを崩していない。||個別銘柄では対照的な動きが目立った。FMC・ServiceNow・General Millsは事業見通しや決算内容の good newsを好感して上昇した一方、Essex Property TrustやPublic Storageなど住宅・商業REITは金利上昇への警戒から大きく売られた。Krogerによる Giant Eagle買収（16.5億ドル）は食品スーパー業界の再編機運を象徴する一件で、株価自体は「材料出尽くし」で軟調だったが、業界再編という構造トレンドの継続を示している。||プライベートクレジット市場では、量的な拡大だけでなく「市場の境界が溶けていく」変化が進行中だ。広義シンジケートローン(BSL)市場とダイレクトレンディングの間で$37B・$34Bという双方向の資金移動が発生しており、借り手は金利環境や案件特性に応じて最適な調達チャネルを機動的に選べるようになっている。加えて$10億超の「ジャンボローン」の増加は、プライベートクレジットの主戦場がミドルマーケットから大企業向け融資へと広がりつつあることを意味する。Macquarie Asset Managementなど大手による新規ファンド組成も、この拡大トレンドを裏付ける動きだ。||日本市場は、TOB規制改正（2026年5月1日施行）から2ヶ月が経過し、新ルール下での大型案件が実際に動き始めている。Apolloによる日本板硝子(NSG)買収（37億ドル）は、市場内取引もTOB対象化・強制TOB閾値30%という新環境下でのプロセス設計のベンチマークになりつつある。さらにBlackstoneが過去最大の$131億アジアPEファンドをクローズし、直近24ヶ月で日本を含むアジアに$70億超を投資してきた実績を踏まえると、海外メガファンドの日本への関心は構造的に高まり続けていると言える。||総じて本日は、「記録的な四半期の後の一服」という表層の下で、プライベートクレジット市場の境界拡大と、日本PE市場における新TOB規制下でのプロセス巧拙という、2026年後半を占う2つの構造変化が静かに進行している一日だったと言える。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①Q2の記録的相場を経てQ3が始動、先物はやや軟調も過熱感の一服にとどまる。②プライベートクレジット市場はBSLとの資金循環拡大とジャンボローン増加で対象領域が大企業まで拡大、Macquarieなど新規ファンド組成も継続。③日本ではTOB規制改正後初期の大型案件（Apollo/日本板硝子等）が新ルール下でのプロセス設計のベンチマークとなりつつある。",
+      interviewQA: [
+        {
+          q: "Q2に記録的な相場が続いた後、Q3入りでどんな点に注目していますか",
+          a: "寄り付き前先物のやや軟調な動きは、ファンダメンタルズの悪化というより「強すぎた四半期」の一服感だと捉えています。半導体・AI関連への物色は継続しており、短期的な押し目は良好なエントリー機会になり得ます。一方でVIXが17台という低水準にある局面は、裏を返せば市場が楽観に傾きすぎている可能性もあり、「静けさの中に潜むリスク」という視点も同時に持っておくべきタイミングだと考えています。"
+        },
+        {
+          q: "ダイレクトレンディング市場とBSL（広義シンジケートローン）市場の資金移動について教えてください",
+          a: "2026年は$37B相当のBSLローンがダイレクトレンディングへ、逆に$34B相当がBSLへと、双方向の借り換えが活発化しています。金利環境や案件の性質に応じて借り手が調達チャネルを機動的に選ぶ動きが常態化しており、$10億超のジャンボローンの増加によって、プライベートクレジットが対応できる顧客層もミドルマーケットから大企業へと広がっています。市場同士の境界が薄れていくトレンドと見ています。"
+        },
+        {
+          q: "日本のTOB規制改正から2ヶ月、実務への影響をどう見ていますか",
+          a: "市場内取引もTOB対象化され、強制TOB閾値が1/3から30%に引き下げられたことで、段階的な株式取得だけで支配権を握ることが難しくなりました。Apolloによる日本板硝子買収のような大型案件は、この新ルール下でのプロセス設計のベンチマークになりつつあり、案件組成力の巧拙がこれまで以上にディールの成否を左右する局面に入っています。"
+        }
+      ],
+      keyConceptToday: {
+        term: "強制公開買付（強制TOB）義務",
+        definition: "一定割合以上の株式を取得する際に、市場内・市場外を問わず全株主に対して同一条件での売却機会（公開買付）を提供することを義務付ける制度。",
+        background: "支配権の移動が一部の相対取引だけで完結すると、少数株主が不利な条件に取り残されるおそれがある。これを防ぐため、支配権移動時には全株主に平等なExit機会を保証する制度として整備されてきた。",
+        practical: "買収者はTOBの価格・期間・条件を精緻に設計する必要があり、閾値引き下げ後は市場内での段階的な株式取得だけで実質的な支配権を握ることが難しくなる。ディールチームにとってはプロセス設計そのものが差別化要因になる。",
+        context2026: "2026年5月1日施行の改正で、市場内取引もTOB規制の対象となり、強制TOBの閾値が1/3から30%へ引き下げられた。Apollo/日本板硝子やBain/MCJのような大型買収でも、新ルール下でのプロセス設計が案件成否を左右する要因として意識されている。"
+      },
+      dealAnalysis: {
+        title: "Apollo Global Management × 日本板硝子（NSG、ガラス・素材バイアウト）",
+        thesis: "素材・ガラス業界における非中核・低評価企業へのテイクプライベート。安定的なキャッシュフローとグローバル生産体制の再編余地に着目し、上場維持コストからの解放とオペレーショナルバリューアップを狙う案件。",
+        timing: "TOB規制改正後、初期の大型案件として新ルール下でのプロセス設計のベンチマークとなるタイミング。PBR1倍割れ・ガバナンス改革を背景とした非中核事業の見直し機運とも合致。",
+        downside: "素材業界は景気敏感かつ資本集約的で、グローバル需要の下振れ時に収益変動が大きい。新TOB規制下でのプロセス長期化・条件交渉の複雑化により、想定より時間とコストがかかるリスクもある。",
+        valuation: "素材セクターのバイアウトは一般にEV/EBITDA 6〜9x程度が目安。安定的なキャッシュフローとコスト構造改革余地でバリューを正当化する一方、日本特有の60〜80%のTOBプレミアムがエントリーコストを押し上げる傾向があり、バリューアップの確実な実行がリターンを左右する。"
+      }
+    }
+  },
+  {
+    date: "2026-07-02",
+    dateLabel: "Jul 02",
+    tokenEstimate: 23000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7483.2,  change:-16.5,  pct:-0.22, dir:"down" },
+      nasdaq: { name:"Nasdaq 100", flag:"🇺🇸", value:25023.7, change:-166.3, pct:-0.66, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52305.2, change:-14.0,  pct:-0.03, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:70671.0, change:608.0,  pct:0.87,  dir:"up"   }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.47%",   dir:"up"   },
+      "2Y米国債":     { value:"4.16%",   dir:"flat" },
+      "VIX":          { value:"16.45",   dir:"down" },
+      "DXY":          { value:"~101.4",  dir:"up"   },
+      "WTI原油":      { value:"~$70",    dir:"up"   },
+      "Gold金":       { value:"~$4,090", dir:"up"   },
+      "ドル円":       { value:"¥162.7",  dir:"flat" },
+      "日10年国債":   { value:"2.71%",   dir:"up"   },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.6%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"MU",   name:"Micron Technology",        pct:-10.6, dir:"down", why:"AIソフトウェア破壊懸念とバリュエーション調整で半導体株が急落" },
+      { ticker:"SNDK", name:"Sandisk",                  pct:-10.2, dir:"down", why:"2026年前半の急騰後の利益確定売り、メモリ需要懸念も一部影響" },
+      { ticker:"SMH",  name:"VanEck Semiconductor ETF", pct: -5.4, dir:"down", why:"半導体セクター全体に売り圧力、雇用統計を前にリスク回避" },
+      { ticker:"META", name:"Meta Platforms",           pct:  8.8, dir:"up",   why:"AIコンピューティングを外部提供するクラウド事業参入をBloombergが報道" },
+      { ticker:"RDDT", name:"Reddit",                   pct: 13.9, dir:"up",   why:"ソーシャルメディア株全般が上昇、明確な単独材料はなくセクター物色" }
+    ],
+    events: [
+      { icon:"📊", title:"6月雇用統計（NFP）発表 — Fed政策のカギを握る重要指標", detail:"8:30am ET発表予定。市場予想は+110〜115千人、失業率4.3%で概ね横ばい見込み。前日発表のADP民間雇用者数は+9.8万人と予想を下回り、労働市場減速のシグナルとして意識されている。強い数字ならFedの利下げ観測後退、弱い数字なら景気減速懸念台頭という両睨みの展開。", searchKey:"June 2026 jobs report nonfarm payrolls Federal Reserve" },
+      { icon:"☁️", title:"Meta Platforms急騰(+8.8%) — AIクラウド事業参入報道", detail:"Bloombergが、MetaがAIコンピューティング能力を外部顧客に販売するクラウドインフラ事業の計画を進めていると報道。AWS・Azure・Google Cloudに対抗する新たな収益源として市場が好感。データセンター投資の収益化ストーリーとして評価。", searchKey:"Meta Platforms AI cloud infrastructure business Bloomberg 2026" },
+      { icon:"💻", title:"半導体株が軒並み急落 — Micron・Sandisk 2桁安", detail:"AIによるソフトウェアビジネスモデル破壊懸念とバリュエーション調整で、MicronとSandiskが揃って10%超下落。VanEck半導体ETF(SMH)も-5.4%と急落。2026年前半に急騰した反動としての利益確定売りも重なる。", searchKey:"Micron Sandisk semiconductor stocks drop AI valuation 2026" },
+      { icon:"⚖️", title:"Kakaku.com争奪戦が本日決着へ — LINE Yahoo/Bain、EQTのTOBに対抗提案", detail:"LINE YahooがBain Capitalと組み、Kakaku.com（食べログ運営）に1株3,232円の対抗提案を提示。EQTの1株3,000円TOBは本日7/2が応募期限。AIデータ活用を巡る争奪戦として日本M&A市場の活発化を象徴する案件。", searchKey:"Kakaku.com LINE Yahoo Bain Capital EQT tender offer takeover 2026" }
+    ],
+    usCredit: {
+      summary: "Apollo×Blackstoneの$35B Anthropicチップファイナンスの構造詳細が明らかになる一方、業界全体ではノンアクルーアル増加やエバーグリーンファンド解約への懸念が根強く残る。ダイレクトレンディング市場は2028年までに$3兆規模への拡大が見込まれ、量的拡大と質的規律のせめぎ合いが今後のテーマとなる。",
+      deals: [
+        { title:"Apollo×Blackstone、Anthropic向け$35Bチップファイナンスの詳細判明", tag:"アセットファイナンス", tagCls:"t-purple", meta:"Apollo Global Management / Blackstone ｜ $35B ｜ AIインフラ・半導体担保ファイナンス", body:"AnthropicのAIチップ調達を裏付けとした資産担保型ファイナンスの詳細が明らかに。プライベートクレジットがハイパースケーラー級のAIインフラ投資に本格参入する象徴的事例。", sig:"ABF(資産担保ファイナンス)がAIインフラ投資の主要調達手段として台頭", searchKey:"Apollo Blackstone Anthropic chip financing 35 billion 2026" },
+        { title:"ノンアクルーアル増加、BDCポートフォリオの質に懸念", tag:"リスク", tagCls:"t-red", meta:"業界全体 ｜ 非トレーデッドBDC中心 ｜ ポートフォリオ品質", body:"金利高止まりの長期化を背景に、非トレーデッドBDCのノンアクルーアル資産比率が上昇。エバーグリーン型ファンドへの解約請求も増加し、流動性管理が引き続き業界の主要論点に。", sig:"信用選別力の差が今後のリターン格差を左右", searchKey:"private credit BDC non-accrual redemption 2026" },
+        { title:"ダイレクトレンディング市場、2028年に$3兆規模へ拡大見通し", tag:"マーケット見通し", tagCls:"t-blue", meta:"業界推計 ｜ 現状$1.5〜2兆 → 2028年$3兆 ｜ 全体市場", body:"広義シンジケートローン市場に匹敵する規模へ拡大が続く見通し。大手マネジャーへの資金集中と選別的な与信規律の両立が今後の焦点。", sig:"量的拡大と質的規律の両立が課題", searchKey:"direct lending market size 3 trillion 2028 forecast" }
+      ],
+      outlook: "💡 AIインフラ向けアセットファイナンスの拡大とBDCの質的懸念が併存する局面。ABF(資産担保ファイナンス)の存在感が一段と高まる見通し。"
+    },
+    jpCredit: {
+      summary: "Kakaku.com争奪戦が本日決着へ。LINE Yahoo/Bain陣営とEQTのTOB合戦は、日本のTOBルール改正後初の本格的な争奪戦として市場の注目を集めている。",
+      deals: [
+        { title:"Kakaku.com争奪戦、LINE Yahoo/Bainが1株3,232円で対抗提案", tag:"TOB合戦", tagCls:"t-red", meta:"LINE Yahoo / Bain Capital vs EQT ｜ 3,232円 vs 3,000円 ｜ 食べログ運営", body:"EQTの1株3,000円TOB（応募期限本日7/2）に対し、LINE YahooとBain Capitalが組んで3,232円の対抗提案を提示。AIデータ活用を巡る争奪戦として市場の関心が高い。", sig:"日本初の本格的TOB合戦、価格つり上げの前例に", searchKey:"Kakaku.com LINE Yahoo Bain EQT tender offer battle 2026" },
+        { title:"外資PE、日本での専任チーム拡充続く", tag:"市場構造", tagCls:"t-purple", meta:"KKR / Carlyle / Apollo等 ｜ 組織体制強化 ｜ バイアウト全般", body:"TOBルール改正後の案件増加を見込み、外資系PEファームが日本専任の投資・ディールチームを相次いで拡充。", sig:"日本市場への中長期コミットメントの表れ", searchKey:"foreign private equity Japan team expansion 2026" },
+        { title:"事業承継PE、地方銀行との協調案件が増加", tag:"事業承継", tagCls:"t-green", meta:"国内PE複数社 ｜ 中小企業事業承継 ｜ 地域金融機関連携", body:"後継者不在の中小企業向けバイアウトで、地方銀行との協調融資モデルが拡大。地域密着型の案件組成が加速。", sig:"地方銀行との連携が地域PEの差別化要因に", searchKey:"Japan business succession private equity regional bank 2026" }
+      ],
+      outlook: "💡 Kakaku.com争奪戦の決着は、TOBルール改正後の価格形成慣行を占う試金石。外資PEの日本専任体制強化も中長期の案件増加を示唆。"
+    },
+    takeaway: "7/2(木)は6月雇用統計発表を控え神経質な展開に。半導体株が軒並み急落する一方、MetaはAIクラウド事業参入報道で急伸。Apollo×BlackstoneによるAnthropic向け$35Bチップファイナンスの詳細判明は、プライベートクレジットがAIインフラ投資に本格参入する象徴的な事例。日本ではKakaku.com争奪戦が本日決着へ、TOBルール改正後初の本格的な価格つり上げ合戦として注目される。",
+    narrative: "7月2日、市場は8:30am ET発表の6月雇用統計を控えて神経質な地合いとなった。前日のADP民間雇用者数が予想を下回ったことで労働市場減速のシグナルが意識されており、強い数字ならFedの利下げ観測後退、弱い数字なら景気減速懸念台頭という両睨みの展開に。S&P500は-0.22%、Nasdaqは-0.66%とやや軟調に推移した。||個別では半導体株の急落が目立った。MicronとSandiskはともに10%超下落し、2026年前半の急騰後の利益確定売りとAIソフトウェアによるビジネスモデル破壊懸念が重なった。一方でMetaはAIコンピューティングを外部提供するクラウド事業参入報道を受けて+8.8%と急伸。データセンター投資の収益化ストーリーとして評価された。||プライベートクレジット市場では、Apollo×BlackstoneによるAnthropic向け$35Bチップファイナンスの構造詳細が明らかになった。AIインフラ投資へのアセットファイナンス(ABF)本格参入を象徴する案件である一方、業界全体ではノンアクルーアル資産の増加やエバーグリーンファンドへの解約請求増加という質的懸念も根強い。市場は2028年までに$3兆規模へ拡大する見通しだが、量的拡大と与信規律の両立が引き続き課題となる。||日本市場ではKakaku.com（食べログ運営）を巡る争奪戦が本日決着を迎える。EQTの1株3,000円TOB（応募期限本日）に対し、LINE YahooとBain Capitalが1株3,232円の対抗提案を提示しており、TOBルール改正後初の本格的な価格つり上げ合戦として市場の注目度が高い。外資PEの日本専任体制強化の動きとあわせ、下期の案件形成が一段と活発化する見通し。||総じて本日は、雇用統計を控えた神経質な株式市場と、AIインフラ向けアセットファイナンス拡大・日本TOB合戦という2つの構造的トレンドが同時進行する一日となった。短期的なボラティリティの背後で、プライベートクレジットとPE市場の質的変化が着実に進んでいる。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①6月雇用統計を控え神経質な株式市場、半導体株急落・Meta急伸とセクター内で明暗。②Apollo×BlackstoneのAnthropic向け$35BチップファイナンスがAIインフラ向けABF拡大を象徴。③Kakaku.com争奪戦が本日決着へ、TOBルール改正後初の本格的価格つり上げ合戦として注目。",
+      interviewQA: [
+        { q: "AIインフラ向けアセットファイナンス（ABF)とは何か、なぜ注目されているのか教えてください", a: "資産担保ファイナンス（ABF）とは、特定の資産（この場合はAIチップやデータセンター設備）のキャッシュフローや資産価値を裏付けに資金調達を行う手法です。Apollo×BlackstoneによるAnthropic向け$35Bのチップファイナンスは、プライベートクレジットがハイパースケーラー級のAIインフラ投資に本格参入する象徴的な事例であり、ダイレクトレンディングに次ぐ第2の柱としてABFの存在感が急速に高まっています。" },
+        { q: "半導体株が急落する一方でMetaが急伸した背景をどう見ますか", a: "MicronとSandiskの急落は、2026年前半の急騰に対する利益確定売りと、AIによるソフトウェアビジネスモデル破壊懸念という2つの要因が重なった結果と見ています。一方でMetaはAIコンピューティングを外部提供するクラウド事業への参入報道を受けて急伸しており、データセンター投資をいかに収益化するかという物語がAI関連株の明暗を分ける鍵になっていると考えます。" },
+        { q: "Kakaku.com争奪戦は日本のM&A市場にとってどんな意味を持ちますか", a: "EQTの1株3,000円TOBに対しLINE Yahoo・Bain Capitalが3,232円で対抗提案したこの案件は、5月施行のTOBルール改正後初となる本格的な価格つり上げ合戦です。買収者同士が公然と価格競争する構図は、これまでの日本のM&A慣行では比較的珍しく、今後のプロセス設計や入札競争の在り方を占う重要な試金石になると見ています。" }
+      ],
+      keyConceptToday: {
+        term: "資産担保ファイナンス（ABF: Asset-Based Finance）",
+        definition: "特定の資産群（売掛債権、設備、AIチップ等のハードウェア資産など）のキャッシュフローや資産価値を裏付けとして行う資金調達手法。企業の信用力ではなく資産そのものの価値に依拠する点がダイレクトレンディングと異なる。",
+        background: "伝統的な企業向けダイレクトレンディングの市場が成熟・競争激化する中で、プライベートクレジット各社が新たな成長領域として資産担保型の与信に注力し始めたことが背景。データセンターやAIインフラなど資本集約的な投資対象の増加も追い風となっている。",
+        practical: "貸し手は裏付け資産のキャッシュフロー予測や担保価値評価を精緻に行う必要があり、伝統的な企業与信とは異なる専門性が求められる。Apollo等の大手はABF専門チームを組成し、企業与信からのポートフォリオ分散を進めている。",
+        context2026: "Apollo×BlackstoneによるAnthropic向け$35Bチップファイナンスは、ABFがAIインフラという新たな資産クラスに本格展開する象徴的事例。プライベートクレジット全体が2028年に$3兆規模を目指す中、ABFはダイレクトレンディングに次ぐ成長エンジンとして位置付けられている。"
+      },
+      dealAnalysis: {
+        title: "Apollo Global Management × Blackstone — Anthropic向け$35Bチップファイナンス",
+        thesis: "AnthropicのAIチップ調達・データセンター投資を裏付けとした資産担保型ファイナンス。ハイパースケーラー級のAIインフラ投資需要に対し、プライベートクレジットが低コストかつ大規模な資金供給者として参入する構図。",
+        timing: "AI企業の設備投資需要が銀行融資や社債市場の供給能力を上回る局面で、プライベートクレジットの規模とスピードの優位性を活かせるタイミング。ABFという新領域での先行者優位を確立する狙いもある。",
+        downside: "AIインフラ投資の収益化タイムラインが想定より遅れた場合、裏付け資産（チップ・データセンター）の価値毀損リスクがある。技術陳腐化のスピードが速いハードウェア資産特有のリスクも内包する。",
+        valuation: "ABF案件のプライシングは裏付け資産のキャッシュフロー安定性と担保価値の毀損可能性で決まる。AIチップは技術陳腐化リスクがあるため、伝統的な設備担保融資より高いプレミアム（スプレッド）が要求される傾向にある。"
+      }
+    }
+  },
+  {
+    date: "2026-07-10",
+    dateLabel: "Jul 10",
+    tokenEstimate: 23000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7575.4,  change:31.8,   pct:0.42,  dir:"up"   },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:26281.6, change:75.3,   pct:0.29,  dir:"up"   },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52637.0, change:149.6,  pct:0.29,  dir:"up"   },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:68557.7, change:813.9,  pct:1.20,  dir:"up"   }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.56%",   dir:"up"   },
+      "2Y米国債":     { value:"4.15%",   dir:"flat" },
+      "VIX":          { value:"15.8",    dir:"down" },
+      "DXY":          { value:"~100.9",  dir:"flat" },
+      "WTI原油":      { value:"~$71.2",  dir:"down" },
+      "Gold金":       { value:"~$4,120", dir:"up"   },
+      "ドル円":       { value:"¥161.6",  dir:"down" },
+      "日10年国債":   { value:"2.77%",   dir:"down" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"HYNX", name:"SK Hynix (ADR)",       pct: 13.0, dir:"up",   why:"米国上場デビュー。$26.5Bと外国企業として過去最大の米上場で、初値は公開価格比+14%" },
+      { ticker:"META", name:"Meta Platforms",       pct:  6.0, dir:"up",   why:"AIインフラ費用に関する前向き報道でMag7首位、週間+15%" },
+      { ticker:"NVDA", name:"NVIDIA",               pct:  4.0, dir:"up",   why:"HBM需要期待とSK Hynix上場を追い風に半導体をけん引" },
+      { ticker:"WDFC", name:"WD-40",                pct: 14.9, dir:"up",   why:"第3四半期決算が市場予想を上回り急伸" },
+      { ticker:"ELAB", name:"PMGC Holdings",        pct: 17.9, dir:"up",   why:"子会社間合併の開示を受け思惑買いが集中" },
+      { ticker:"SLP",  name:"Simulations Plus",     pct: -0.7, dir:"down", why:"好決算にも関わらず伸び悩み、材料出尽くし感" }
+    ],
+    events: [
+      { icon:"💾", title:"SK Hynix、米上場デビューで+13% — 外国企業最大の$26.5B上場", detail:"半導体大手SK Hynixが米国上場を果たし、初値は公開価格($149)比+14%の$170、終値も+13%高。$26.5Bと外国企業として過去最大の米上場となった。AIメモリ(HBM)需要拡大を象徴する大型上場として市場の関心を集め、NVIDIA等の半導体関連にも追い風となった。", searchKey:"SK Hynix US IPO debut July 2026" },
+      { icon:"🕊️", title:"米国、イランとの技術的協議を検討と報道", detail:"複数メディアが、米国がイランとの技術的協議（technical talks）を検討していると報道。中東情勢の緊張緩和期待から原油市場に売り圧力がかかった一方、地政学リスクの後退は株式市場にはやや追い風となった。", searchKey:"US Iran technical talks report July 2026" },
+      { icon:"🥇", title:"金価格、$4,100台へリバウンド", detail:"金相場が1オンス$4,100台を回復。ドル安と実質金利低下観測を背景にリスクヘッジ需要が再燃。年初来で大幅高となっている金市場は、インフレ・地政学リスクへのヘッジとして引き続き資金流入が続いている。", searchKey:"gold price rebound 4100 July 2026" },
+      { icon:"🗾", title:"日本10年国債利回り、1997年以来の高水準2.82%に上昇", detail:"財政拡張・国債増発懸念を背景に日本の長期金利が上昇継続。中東情勢の緊張再燃による原油高もインフレ懸念を通じて金利上昇圧力となった。日銀の追加利上げ観測とあわせ、日本国債市場のボラティリティが高まっている。", searchKey:"Japan 10 year bond yield 2.82 percent 1997 high 2026" }
+    ],
+    usCredit: {
+      summary: "米ダイレクトレンディング市場は需給の非対称な調整局面に入っている。第2四半期の新規実行額は前四半期比▲55%と急減した一方、ファンドレイズは$16.25Bと過去2年で最高を記録。質と量の乖離が鮮明になっている。",
+      deals: [
+        { title:"Hayfin、目標を大幅超過し€15Bのダイレクトレンディング・ファンドVをクローズ", tag:"新規ファンド", tagCls:"t-blue", meta:"Hayfin Capital Management ｜ €15B（$17.1B、目標€8B超過） ｜ ダイレクトレンディング", body:"過去最大規模となる同社フラッグシップファンドが目標を大幅に上回りクローズ。既に35社超に50%以上をデプロイ済みで、CloserStill Media等への投資実績を持つ。", sig:"上位運用会社への資金集中が一段と鮮明に", searchKey:"Hayfin direct lending fund 15 billion euros 2026" },
+        { title:"米ダイレクトレンディング実行額、Q2は前四半期比▲55%に急減", tag:"市場構造", tagCls:"t-red", meta:"業界全体 ｜ Q2実行額$33.59B（Q1 $74.67Bから急減） ｜ ミドルマーケット中心", body:"M&A・バイアウト活動の鈍化、借り手の実行遅延、広義シンジケートローン市場との競合、運用会社の選別強化が複合的に影響。ソフトウェア企業向けエクスポージャーへの警戒も背景にある。", sig:"量から質への転換が加速、選別力の差が今後を左右", searchKey:"US direct lending volume decline Q2 2026" },
+        { title:"非トレーデッドBDC、解約請求の圧力続く", tag:"リスク", tagCls:"t-orange", meta:"業界全体 ｜ 非トレーデッドBDC複数 ｜ 流動性管理", body:"個人投資家向けエバーグリーン型ビークルで解約請求圧力が継続。デフォルト増加への懸念とソフトウェアセクターへのエクスポージャーが投資家の警戒を強めている。", sig:"流動性管理体制の巧拙がマネジャー間の差別化要因に", searchKey:"non-traded BDC redemption pressure 2026" }
+      ],
+      outlook: "💡 ファンドレイズは活況を維持する一方、実際の新規貸出は減速するという需給ギャップが当面続く見通し。上位パフォーマー（高DPI）への資金集中がさらに強まる可能性。"
+    },
+    jpCredit: {
+      summary: "日本PE市場は米国を上回るリターンを背景に、外資勢の関心が一段と強まっている。大型取引が相次ぐ中、バイアウト競争も激化している。",
+      deals: [
+        { title:"Blackstone、TechnoProに$3.5Bで買収提案", tag:"大型買収", tagCls:"t-purple", meta:"Blackstone ｜ $3.5B ｜ 人材サービス", body:"人材サービス大手TechnoProへの大型買収提案。日本の人材・アウトソーシング業界における外資PEの関心の高さを象徴する案件。", sig:"サービスセクターでも大型テイクプライベートが常態化", searchKey:"Blackstone TechnoPro acquisition 3.5 billion 2026" },
+        { title:"EQT、Fujitecを$2.7Bで買収", tag:"大型買収", tagCls:"t-orange", meta:"EQT ｜ $2.7B ｜ エレベーター・昇降機", body:"エレベーター大手Fujitecの買収。製造業のコア以外事業見直し・ガバナンス改革を背景とした大型テイクプライベートの一例。", sig:"製造業の事業ポートフォリオ見直しがPE案件の供給源に", searchKey:"EQT Fujitec acquisition 2.7 billion 2026" },
+        { title:"TOB合戦の増加、失敗案件・価格引き上げ事例が増加傾向", tag:"市場構造", tagCls:"t-red", meta:"市場全体 ｜ TOBプレミアム60〜80% ｜ アクティビスト対応", body:"アクティビストが割安と判断したTOBに対抗して株式を買い増す動きが増加し、失敗するTOB案件が増加傾向。成立した案件でも当初提示額から大幅な引き上げを迫られるケースが目立つ。", sig:"入札プロセスの精緻な設計が案件成否を左右する時代に", searchKey:"Japan tender offer failed price increase activist 2026" }
+      ],
+      outlook: "💡 日本PEは米国を上回るリターンで競争が一段と激化。TOBプレミアムの高止まりと入札プロセスの複雑化により、案件組成力の差がリターン格差に直結する局面が続く。"
+    },
+    takeaway: "7/10(金)は主要指数が揃って上昇し、S&P500は+0.42%の7,575、Nasdaq総合は+0.29%の26,282、Dowも+0.29%高と週間プラスで週を締めた。NVIDIA(+4%)・Meta(+6%)のメガキャップ高とSK Hynixの米上場デビュー(+13%)が相場を下支えし、VIXは15.8まで低下。ただ10年債利回りは4.56%へ上昇し金利面の警戒は残る。プライベートクレジットはファンドレイズ好調・新規実行急減の需給ギャップが継続、日本PEは米国超のリターンを背景に外資の争奪戦が一段と激化している。",
+    narrative: "7月10日(金)、米国株式市場は主要指数が揃って上昇し、週間プラスで取引を終えた。S&P500は+0.42%の7,575.39、Nasdaq総合は+0.29%の26,281.61、Dow工業株30種は+149.6ポイント(+0.29%)の52,637.01。NVIDIA(+4%)とMeta(+6%、週間+15%)のメガキャップ高が指数を押し上げ、SK Hynixの米上場デビュー(初値+14%、終値+13%)が半導体・AIメモリ関連への関心を象徴した。VIXは15.8と一段と低下し、リスクセンチメントは落ち着いている。一方で米10年債利回りは4.56%へ上昇し、金利面の警戒感は根強く残る。||個別ではWD-40が決算好感で+14.9%と急伸したほか、PMGC Holdingsも子会社間合併の開示を受けて+17.9%の思惑買いを集めた。金相場は$4,100台へリバウンドし、ドル安と実質金利低下観測を背景にリスクヘッジ需要が再燃している。原油はイラン協議報道を受けてやや軟調に推移した。||プライベートクレジット市場では需給の非対称な調整が鮮明になっている。第2四半期の米ダイレクトレンディング新規実行額は前四半期比▲55%の$33.59Bに急減した一方、ファンドレイズは$16.25Bと過去2年で最高を記録した。HayfinがフラッグシップのダイレクトレンディングファンドVを目標超過の€15Bでクローズしたことは、上位運用会社への資金集中という業界トレンドを象徴している。非トレーデッドBDCでは解約請求圧力が続き、量的拡大と質的規律の綱引きが引き続き市場のテーマとなっている。||日本PE市場は米国を上回るリターンを背景に外資勢の関心が一段と強まっている。BlackstoneによるTechnoPro($3.5B)、EQTによるFujitec($2.7B)買収など大型バイアウトが相次ぐ一方、TOB合戦の増加とアクティビスト対応の複雑化により、失敗するTOB案件や当初提示額からの大幅な引き上げ事例も目立ち始めている。案件組成力・プロセス設計の巧拙が今後のリターン格差を左右する構図が一段と鮮明になっている。||総じて本日は、株式市場の堅調な地合いの裏側で、プライベートクレジットの需給ギャップと日本PEの競争激化という2つの構造変化が並行して進行している一日だったと言える。週末を控えたポジショニングとしては、ボラティリティの低さに安住せず、質的な変化の兆候を注視する姿勢が求められる局面だろう。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①主要株価指数が揃って上昇、SK Hynix IPOデビューと米イラン協議報道が支援材料に。②米ダイレクトレンディングはファンドレイズ好調・新規実行急減という需給ギャップが継続、Hayfinの€15B調達が上位集中を象徴。③日本PEは米国を上回るリターンで外資勢の争奪戦が激化、TOB合戦・価格引き上げ事例が増加。",
+      interviewQA: [
+        { q: "米ダイレクトレンディング市場で『ファンドレイズは好調なのに新規実行は急減』という現象をどう解釈しますか", a: "これは市場が量的拡大から質的規律へと軸足を移している過渡期のシグナルだと捉えています。第2四半期の新規実行額が前四半期比で55%も減少した背景には、M&A・バイアウト活動自体の鈍化に加え、運用会社が案件を厳選する姿勢を強めていることがあります。一方でファンドレイズは過去2年で最高を記録しており、LPは『実行のタイミングと質を見極める運用力』を持つ上位マネジャーに資金を集中させていると考えられます。" },
+        { q: "Hayfinの€15Bファンドクローズが業界に示唆することは何ですか", a: "目標の€8Bを大きく上回る規模でクローズしたこと自体が、上位パフォーマーへの資金集中というトレンドを象徴していると考えます。同ファンドは既に35社超に50%以上をデプロイ済みとのことで、実行スピードと分散の両立ができるマネジャーへの評価が高まっていることを示しています。中堅以下の運用会社にとっては、差別化された強みがなければ資金調達が一段と難しくなる局面だと見ています。" },
+        { q: "日本PEにおけるTOB合戦の増加は何を意味しますか", a: "TOBルール改正後、アクティビストが割安と判断した買収提案に対抗して株式を買い増す動きが増え、失敗するTOB案件や当初提示額からの大幅な引き上げ事例が目立ち始めています。これは日本のM&A市場が『言い値で通る』時代から『真の企業価値を巡る競争』の時代へ移行しつつあることを示しており、買収側には精緻なプロセス設計と価格規律の両立がこれまで以上に求められると考えます。" }
+      ],
+      keyConceptToday: {
+        term: "エバーグリーンファンド (Evergreen Fund) と解約請求 (Redemption)",
+        definition: "満期を設けず、投資家がいつでも（一定の制約下で）解約請求を出せる継続型のファンド構造。個人投資家向けの非トレーデッドBDCなどで多く採用される。",
+        background: "従来のクローズドエンド型PEファンドは10年程度の固定満期でLPの資金を長期間ロックするが、個人投資家層の取り込みを狙い、より流動性の高い構造としてエバーグリーンファンドが開発された。ただし裏付け資産（プライベートクレジット等）自体は非流動的であるため、解約請求と資産流動性のミスマッチが構造的リスクとなる。",
+        practical: "運用会社は解約請求に応じるための現金バッファーや、ゲート条項(解約制限)を設けてミスマッチリスクを管理する。市場環境が悪化すると解約請求が集中し、運用会社が資産売却や与信の絞り込みを迫られることがある。",
+        context2026: "2026年は非トレーデッドBDCへの解約請求圧力が継続しており、デフォルト増加懸念とソフトウェアセクターへのエクスポージャーへの警戒が背景にある。この構造的な緊張が、プライベートクレジット市場全体の『量的拡大 vs 質的規律』という今日のテーマと直結している。"
+      },
+      dealAnalysis: {
+        title: "Hayfin Capital Management — ダイレクトレンディング・ファンドV（€15B）",
+        thesis: "目標€8Bを大幅に上回る€15Bで最終クローズしたフラッグシップファンド。上位パフォーマーへの資金集中というLP側の選好トレンドを体現する案件であり、既に35社超・50%超のデプロイ実績を持つ実行力の高さが評価されている。",
+        timing: "米ダイレクトレンディング市場全体で新規実行額が急減する中でのクローズであり、『量が減っても質の高い運用会社には資金が集まる』という市場の二極化が進行するタイミングでの成功事例。",
+        downside: "€15Bという大規模な資金を魅力的な利回りで着実にデプロイし続けられるかが課題。市場全体の実行機会が減少する中、運用会社の規模拡大がリターンの希薄化につながるリスクもある。",
+        valuation: "ダイレクトレンディングファンドの評価は、実行済みポートフォリオの利回り（SOFR+スプレッド）とデフォルト率・ノンアクルーアル比率で判断される。同ファンドは分散された35社超のポートフォリオを既に構築しており、単一セクター・単一案件への集中リスクは相対的に低いと評価される。"
+      }
+    }
+  },
+  {
+    date: "2026-07-12",
+    dateLabel: "Jul 12",
+    tokenEstimate: 19500,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7575.4,  change:0.0, pct:0.00, dir:"flat" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:26281.6, change:0.0, pct:0.00, dir:"flat" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52637.0, change:0.0, pct:0.00, dir:"flat" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:68557.7, change:0.0, pct:0.00, dir:"flat" }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.56%",   dir:"flat" },
+      "2Y米国債":     { value:"4.15%",   dir:"flat" },
+      "VIX":          { value:"15.8",    dir:"flat" },
+      "DXY":          { value:"~100.9",  dir:"flat" },
+      "WTI原油":      { value:"~$71",    dir:"flat" },
+      "Gold金":       { value:"~$4,120", dir:"flat" },
+      "ドル円":       { value:"¥161.6",  dir:"flat" },
+      "日10年国債":   { value:"2.77%",   dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"META", name:"Meta Platforms",   pct: 15.0, dir:"up", why:"週間+15%。AIインフラ投資に関する前向き報道でMag7の週間首位" },
+      { ticker:"SKHYV",name:"SK Hynix (ADR)",   pct: 12.8, dir:"up", why:"金曜の米上場デビューで公開価格比+12.8%。外国企業最大の$26.5B上場" },
+      { ticker:"WDFC", name:"WD-40",            pct: 14.9, dir:"up", why:"Q3決算が予想を上回り金曜に急伸、週間でも大幅高" },
+      { ticker:"NVDA", name:"NVIDIA",           pct:  4.0, dir:"up", why:"HBM需要期待とSK Hynix上場を追い風に金曜の半導体高をけん引" }
+    ],
+    events: [
+      { icon:"📅", title:"今週の最重要日は7/14(火) — 6月CPIと大手銀行決算が同日集中", detail:"6月CPI(市場予想: ヘッドライン前年比3.8%へ減速)が7/14朝に発表され、同日にJPMorgan・Bank of America・Wells Fargo・Goldman Sachs・CitigroupのQ2決算が集中。インフレ減速の確認と銀行の与信コメントが、S&P500が史上最高値まで0.45%に迫る中での相場の方向を決める。", searchKey:"June CPI bank earnings JPMorgan July 14 2026" },
+      { icon:"🏛️", title:"Warsh FRB議長、7/14-15に連日の議会証言", detail:"Warsh FRB議長が火曜に下院金融サービス委員会、水曜に上院銀行委員会で証言予定。CPI発表と同日となる火曜の証言では、利下げパスとインフレ認識に関する発言が注目される。", searchKey:"Fed Chair Warsh congressional testimony July 2026" },
+      { icon:"🛢️", title:"ホルムズ海峡情勢と米イラン協議 — 原油市場の焦点続く", detail:"先週はホルムズ海峡の緊張と米イラン技術的協議報道が交錯し原油は往来相場に。週明けも地政学ヘッドラインがWTI(~$71)とインフレ期待を左右する構図が続く。", searchKey:"Strait of Hormuz US Iran talks oil July 2026" },
+      { icon:"🗾", title:"Bain日本PEレポート2026 — 日本のTVM 2.5xで米国(2.1x)を上回る", detail:"Bainの年次レポートで、2025年の日本PE案件総額は4.8兆円と5年連続で3兆円超、Exit総額も2.4兆円と過去最高を記録したことが判明。平均TVM 2.5xは米国の2.1xを上回り、日本PEが世界で最も魅力的な市場の一つであることを裏付けた。", searchKey:"Bain Japan private equity report 2026" }
+    ],
+    usCredit: {
+      summary: "週末はエバーグリーン型ビークルの流動性を巡るニュースが交錯。KKRでは解約請求の減速が報じられた一方、Blue Owlは解約上限(ゲート)の設定に踏み切った。H1のファンドレイズ総額は前年比+9%だが、上位マネジャーへの集中が一段と進んでいる。",
+      deals: [
+        { title:"KKR、プライベートクレジット顧客の解約請求が減速と報道", tag:"流動性", tagCls:"t-blue", meta:"KKR ｜ セミリキッド型クレジットファンド ｜ 個人投資家向け", body:"個人投資家向けセミリキッド型ビークルで続いていた解約請求の勢いが鈍化していると報じられた。市場全体の警戒が続く中、大手の一角で流動性圧力が peak-out する兆し。", sig:"エバーグリーン型の流動性不安が全面拡大しない可能性を示唆", searchKey:"KKR private credit redemption requests slowing 2026" },
+        { title:"Blue Owl、解約請求増加を受けプライベートクレジットファンドに上限設定", tag:"リスク", tagCls:"t-orange", meta:"Blue Owl ｜ 非トレーデッドBDC等 ｜ ゲート条項発動", body:"解約請求の増加を受け、複数のプライベートクレジットファンドで解約上限(キャップ)を導入。裏付け資産の非流動性と投資家の解約権のミスマッチという構造的リスクが顕在化した形。", sig:"ゲート発動はマネジャーの評判リスクと隣り合わせ、選別の材料に", searchKey:"Blue Owl private credit funds redemption caps 2026" },
+        { title:"H1ファンドレイズ総額+9%も、本数は減少 — 大手集中が加速", tag:"市場構造", tagCls:"t-purple", meta:"業界全体 ｜ H1 2026調達額 前年比+9% ｜ ファンド本数は減少", body:"2026年上期の調達総額は前年同期比+9%と増加した一方、組成ファンド本数は減少。DPI(分配実績)の高い上位マネジャーが急速に資金を集め、それ以外は目標未達・期間長期化に直面する二極化が鮮明。", sig:"「調達できるか」より「どの速度で調達できるか」が実力の指標に", searchKey:"private equity fundraising H1 2026 concentration established managers" }
+      ],
+      outlook: "💡 今週は銀行決算での与信コメントとCPIがクレジット市場全体のトーンを決める。HYスプレッド~2.7%(267bps)と歴史的にタイトな水準が続く中、エバーグリーン型の流動性管理と上位集中という構造テーマは不変。"
+    },
+    jpCredit: {
+      summary: "Bainの年次レポートが日本PEの構造的な強さを再確認した週末。TVM 2.5xと米国超のリターンが外資の参入を促す一方、東証はMBO・支配株主による買収の開示規制を強化しており、プロセスの透明性向上が新たな論点となっている。",
+      deals: [
+        { title:"Bain日本PEレポート: 2025年案件総額4.8兆円・Exit 2.4兆円で過去最高", tag:"市場構造", tagCls:"t-blue", meta:"Bain & Company ｜ 案件総額¥4.8兆($29.5B) ｜ 年次レポート", body:"日本PEの2025年案件総額は4.8兆円と5年連続の3兆円超え、Exit総額は2.4兆円と過去最高。平均TVM 2.5xは米国(2.1x)を上回り、強いリターンが競争激化を招くという構図を定量的に裏付けた。", sig:"リターン優位が続く限り外資・新規参入の流入は止まらない", searchKey:"Bain Japan private equity report 2026 deal value" },
+        { title:"東証、MBO・支配株主による買収の開示ルールを厳格化", tag:"規制", tagCls:"t-red", meta:"東京証券取引所 ｜ 規制強化 ｜ MBO・親子上場解消", body:"東証がMBOと支配株主による従属会社買収について、価格の公正性・特別委員会の検討過程に関する開示拡充を要請。少数株主保護の強化はTOBプレミアムの高止まり要因となり得る。", sig:"バイアウト価格の規律強化 = 買収側のプロセス設計力が一層問われる", searchKey:"Tokyo Stock Exchange MBO disclosure rules tightening 2026" },
+        { title:"2026年もテイクプライベート・カーブアウトが案件供給の中心に", tag:"トレンド", tagCls:"t-purple", meta:"市場全体 ｜ ガバナンス改革・資本効率圧力 ｜ 継続テーマ", body:"ガバナンス改革・資本効率への圧力・株主エンゲージメントを背景に、2026年も非公開化と大企業のカーブアウトが日本M&Aの中心であり続けるとの見方が大勢。Blackstone-TechnoPro($3.5B)等の大型案件が続く。", sig:"案件パイプラインは構造的に厚い、問われるのは値付けと執行", searchKey:"Japan take-private carve-out M&A outlook 2026" }
+      ],
+      outlook: "💡 日本PEは「リターン優位 → 競争激化 → 規制・プロセス高度化」という発展段階に入った。東証の開示強化はショートタームでは買収コスト増だが、市場の信頼性向上を通じて長期的には案件供給を支える。"
+    },
+    takeaway: "週末(日曜)につき米国市場は休場。先週はS&P500が7,575と最高値まで0.45%に迫り、直近5週で4勝の堅調地合いで終えた。今週は7/14(火)に6月CPIと大手銀行決算、Warsh FRB議長証言が同日集中する今月最大のイベント週。プライベートクレジットではKKRの解約減速とBlue Owlのゲート発動が対照的なシグナルを発し、日本PEはBainレポートがTVM 2.5x(米国超)の構造的優位を確認した。",
+    narrative: "7月12日(日)、米国市場は週末につき休場。先週の米国株はS&P500が+0.42%の7,575.39で金曜を終え、直近5週で4度目の週間プラスと堅調な地合いを維持した。年初来では+10.7%、史上最高値まではわずか0.45%に迫っている。VIXは15.8と低位安定し、SK Hynixの米上場成功(公開価格比+12.8%)がAIメモリ・トレードの健在ぶりを示した一方、10年債利回りは4.56%と金利面の警戒は残ったまま週を越えた。||今週の焦点は7/14(火)に集中する。6月CPI(予想はヘッドライン前年比3.8%へ減速)、JPMorgan・BofA・Wells Fargo・Goldman・Citiの決算、そしてWarsh FRB議長の下院証言が同日に重なる。インフレ減速が確認され銀行の与信コメントが良好なら最高値更新が視野に入るが、CPI上振れなら4.5%台後半の長期金利と高バリュエーションの組み合わせが試される。木曜には小売売上高も控え、消費の体温を測る一週間となる。||米プライベートクレジットでは、エバーグリーン型ビークルの流動性を巡り対照的なニュースが並んだ。KKRでは解約請求の減速が報じられ流動性圧力のピークアウトを示唆する一方、Blue Owlは解約上限の設定に踏み切った。裏付け資産の非流動性と投資家の解約権のミスマッチという構造問題は共通だが、対応力とポートフォリオの質で明暗が分かれ始めている。H1のファンドレイズは総額+9%ながらファンド本数は減少しており、DPIの高い上位マネジャーへの集中という二極化が数字の上でも確認された。||日本ではBainの年次PEレポートが公表され、2025年の案件総額4.8兆円(5年連続3兆円超)、Exit総額2.4兆円(過去最高)、平均TVM 2.5x(米国2.1x超)と、日本PEの構造的な強さが定量的に裏付けられた。一方で東証はMBO・支配株主による買収の開示規制を強化しており、少数株主保護とプロセスの透明性が新たな論点に浮上。リターン優位が競争と規制の高度化を呼び込むという市場の成熟プロセスが進行している。||総じて、株式は最高値目前の凪、クレジットはタイトなスプレッド(HY ~267bps)の中での質的選別、日本PEは構造的優位の再確認と規制強化の並走 — という三層構造の週末となった。今週はCPIと銀行決算という2大イベントを前に、低ボラティリティに織り込まれた楽観がデータで裏付けられるかが最大の試金石となる。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①米国市場は休場、今週は7/14(火)にCPI・大手銀行決算・FRB議長証言が同日集中する今月最大のイベント週。②米プライベートクレジットはKKRの解約減速とBlue Owlのゲート発動が対照、エバーグリーン型の対応力格差が鮮明に。③Bain日本PEレポートがTVM 2.5x(米国2.1x超)を確認、東証はMBO開示規制を強化し市場の成熟が進む。",
+      interviewQA: [
+        { q: "Blue Owlのゲート発動とKKRの解約減速、この対照をどう解釈しますか", a: "エバーグリーン型ビークルの構造的リスク(非流動資産と解約権のミスマッチ)は両社共通ですが、顕在化の仕方が分かれた点が重要だと考えます。ゲート発動は短期的には流動性防衛として合理的でも、個人投資家の信頼を損ない将来の資金流入を細らせる評判リスクを伴います。一方で解約が自然減速すれば構造問題は表面化しません。ポートフォリオの質、ソフトウェア等リスクセクターへのエクスポージャー、現金バッファーの厚みが、同じ商品構造でも結果を分けることを示す事例だと見ています。" },
+        { q: "日本PEのTVM 2.5xが米国の2.1xを上回る要因をどう説明しますか", a: "第一に参入価格の低さです。ガバナンス改革前の日本企業は事業価値対比で割安に取得でき、PBR改善圧力が出口の追い風になります。第二にカーブアウト・非公開化という構造的な案件供給があり、競争入札が米国ほど過熱していなかったことです。第三に円安が外貨建てLPのリターンを押し上げた面もあります。ただしBainレポートが示す通り、この超過リターン自体が競争激化を招いており、TVMの優位が今後も持続するかは参入価格の規律次第だと考えます。" },
+        { q: "東証のMBO開示規制強化は、PEにとって追い風ですか逆風ですか", a: "短期的には逆風、長期的には追い風と整理しています。開示拡充と特別委員会プロセスの厳格化は、買収価格の引き上げ圧力とプロセス長期化を通じて取得コストを高めます。実際、TOBプレミアムは60〜80%と高止まりしています。しかし長期的には、少数株主保護の強化が「日本のテイクプライベートは公正である」という信頼を醸成し、経営陣・取締役会が非公開化を選択肢として検討しやすくなるため、案件パイプラインの持続性を支えると考えます。" }
+      ],
+      keyConceptToday: {
+        term: "DPI (Distributions to Paid-In Capital / 分配倍率)",
+        definition: "LPが払い込んだ資本に対して、実際に現金として分配された金額の倍率。DPI 1.0xで払込資本の全額回収を意味する。未実現の評価益を含むTVPIと異なり、「実際に返ってきたカネ」だけを測る指標。",
+        background: "PE業界では長らくIRRやTVPI(評価益込み倍率)が主要指標だったが、評価額は運用会社の裁量が入りやすく、Exit環境が悪化した2020年代半ばに「紙のリターン」と「現金のリターン」の乖離が問題化。LPが分配実績を重視するようになり、DPIが『信頼できる唯一の指標』として存在感を増した。",
+        practical: "ファンドレイズの場面で最も威力を発揮する。既存ファンドのDPIが高いGPは次号ファンドを迅速にクローズできる一方、TVPIは高くてもDPIが低いGPはLP投資委員会の懐疑に直面する。継続ファンド(Continuation Vehicle)やセカンダリー売却によるDPI創出も一般化した。",
+        context2026: "H1 2026のファンドレイズは総額+9%だがファンド本数は減少し、『高DPIのマネジャーが速く・大きく調達し、それ以外は苦戦する』二極化が鮮明。Exit環境の回復が遅れる中、DPI創出力こそがGPの序列を決める――今日のニュースが示す資金集中の背後にあるのがこの指標である。"
+      },
+      dealAnalysis: {
+        title: "Blue Owl — プライベートクレジットファンドの解約上限(ゲート)設定",
+        thesis: "案件ではなく運用会社の危機対応として分析する価値が高い事例。個人投資家マネーを取り込むエバーグリーン型は運用資産の安定成長をもたらすが、その代償として「解約対応力」という新たな経営課題を抱える。ゲート設定は資産の投げ売りを防ぎ既存投資家を守る合理的措置である。",
+        timing: "デフォルト増加懸念・ソフトウェアセクターへの警戒・非トレーデッドBDC全般への解約圧力が数カ月続いた末の発動。KKRで解約減速が報じられたのと同時期であり、業界一律の危機ではなく個社の資金繰り・ポートフォリオ格差の問題であることを示すタイミング。",
+        downside: "最大のリスクは評判の毀損。ゲートは「出られないかもしれない商品」という認識を個人投資家に植え付け、解約圧力が収まった後も新規資金流入が細る恐れがある。ウェルスチャネル経由の販売網への影響、また業界全体への波及(他社ファンドへの予防的解約)も注視点。",
+        valuation: "エバーグリーン型ビークルの評価はNAVの信頼性に尽きる。ノンアクルーアル比率、PIK(現物利払い)比率の上昇、レバレッジ、現金・流動資産バッファーの4点でストレス耐性を測る。ゲート発動時はNAVディスカウントでのセカンダリー取引が発生しやすく、それが「真の時価」のシグナルとなる。"
+      }
+    }
+  },
+  {
+    date: "2026-07-13",
+    dateLabel: "Jul 13",
+    tokenEstimate: 21000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7554.9,  change:-20.5,  pct:-0.27, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:26097.6, change:-184.0, pct:-0.70, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52668.6, change:31.6,   pct:0.06,  dir:"up"   },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:68183.7, change:-374.0, pct:-0.55, dir:"down" }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.57%",   dir:"up"   },
+      "2Y米国債":     { value:"4.16%",   dir:"flat" },
+      "VIX":          { value:"15.0",    dir:"down" },
+      "DXY":          { value:"~101",    dir:"up"   },
+      "WTI原油":      { value:"~$74.6",  dir:"up"   },
+      "Gold金":       { value:"~$4,090", dir:"down" },
+      "ドル円":       { value:"¥161.8",  dir:"up"   },
+      "日10年国債":   { value:"2.82%",   dir:"up"   },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"SKHYV",name:"SK Hynix (ADR)",   pct: -8.0, dir:"down", why:"米上場2日目で急落。金曜の+12.8%から一転、ソウル上場株は史上最悪の-15%超" },
+      { ticker:"MU",   name:"Micron Technology", pct: -4.5, dir:"down", why:"メモリ・半導体株にAIトレード再考の売り波及。HBM需給とバリュエーション懸念" },
+      { ticker:"NVDA", name:"NVIDIA",            pct: -2.0, dir:"down", why:"チップ株全体の調整。AI収益化タイムラインへの疑念が再燃" },
+      { ticker:"XOM",  name:"Exxon Mobil",       pct:  1.8, dir:"up",   why:"WTIが3%超高・$74台。ホルムズ海峡情勢でエネルギー株が逆行高" },
+      { ticker:"CVX",  name:"Chevron",           pct:  1.5, dir:"up",   why:"原油急伸を追い風にディフェンシブなエネルギー大手へ資金流入" }
+    ],
+    events: [
+      { icon:"🛢️", title:"米イラン緊張再燃 — 原油3%超高、株はまちまち", detail:"週末に米がイラン近辺で再攻撃、イランはクウェート・ヨルダン・カタール等の米同盟国へ報復。ホルムズ海峡の供給途絶懸念でWTIは$74台へ3%超上昇。Dowは小幅高だがS&P・Nasdaqは軟調と、ディフェンシブ／エネルギーへのローテーションが鮮明。", searchKey:"US Iran strikes Strait of Hormuz oil July 13 2026" },
+      { icon:"📊", title:"明日7/14(火)に6月CPI・大手銀行決算・Warsh議長証言が同日集中", detail:"6月CPI(予想ヘッドライン前年比3.8%へ減速)が朝に発表され、同日JPMorgan・BofA・Wells Fargo・Goldman・CitigroupのQ2決算とWarsh FRB議長の下院証言が重なる今月最大のイベント日。史上最高値まで約0.3%に迫る相場の方向を左右する。", searchKey:"June CPI bank earnings JPMorgan July 14 2026" },
+      { icon:"💾", title:"SK Hynix ADRが上場2日目で急落 — AIメモリ・トレードに再評価の売り", detail:"金曜に外国企業最大の$26.5B規模で華々しく上場(+12.8%)したSK HynixのADRが月曜に-8%と急反落。ソウル上場株も-15%超と史上最悪の一日。メモリ・半導体セクター全体に「AIトレードの持続性」を問う調整売りが波及した。", searchKey:"SK Hynix Micron memory chips AI selloff July 2026" },
+      { icon:"🇯🇵", title:"日本10年国債利回りが約30年ぶり高水準 — 財務相発言で一時2.7%へ反落", detail:"10年JGB利回りは原油高・インフレ再燃観測を背景に9日に2.88%(1996年以来の高水準)を付けた後、片山財務相が国内年金による日本資産の保有拡大を促す方針を示したことで一時2.7%まで急低下。財政・金融政策のせめぎ合いが金利のボラティリティを高めている。", searchKey:"Japan 10 year JGB yield 30 year high pension fund July 2026" }
+    ],
+    usCredit: {
+      summary: "H1 2026のダイレクトレンディングのファンドレイズはQ2に急回復(北米クローズドエンドDLはQ2 $162.5億、Q1の$13億から急増し2年ぶり最高)した一方、実際の投資実行(デプロイ)はQ2に約55%減の$336億へ急減。「集めるカネ」と「出せるカネ」の乖離が鮮明で、大手マネジャーへの資金集中とBDCの与信ストレスが並行する局面。",
+      deals: [
+        { title:"Crescent Capital、第4号米ダイレクトレンディングファンドで$108億調達 — H1最大", tag:"ファンドレイズ", tagCls:"t-blue", meta:"Crescent Capital Group ｜ $10.8B ｜ 米ダイレクトレンディング", body:"H1 2026で単一ファンドとして最大規模の$108億を集め第4号DLファンドをクローズ。M&A回復期待とスプレッドの高止まりを背景に機関投資家需要は旺盛だが、資金はトラックレコードのある大手に一段と集中している。", sig:"デプロイ鈍化下でもドライパウダーの積み上げが続く二極化", searchKey:"Crescent Capital fourth direct lending fund 10.8 billion 2026" },
+        { title:"Barings、グローバル・ダイレクトレンディング戦略で2年間$190億超を確保", tag:"ファンドレイズ", tagCls:"t-orange", meta:"Barings ｜ $19B+ ｜ グローバルDL(2年間の調達合計)", body:"5月に2年間の調達期間で$190億超を確保したと公表。地理的分散と大型化を志向するグローバル戦略が保険・年金マネーの受け皿に。上位マネジャーの調達力の桁が一段上がっている。", sig:"『どの速度で・どの規模で調達できるか』が実力の指標に", searchKey:"Barings global direct lending 19 billion 2026" },
+        { title:"BDCの与信ストレス — 私募BDCは解約増、上場BDCはNAV割れで増資制約", tag:"リスク", tagCls:"t-red", meta:"複数BDC ｜ 私募BDC解約増・上場BDCはNAV割れ ｜ 与信ストレス", body:"一部BDCは新規投資よりも既存の財務悪化した借り手支援へ資本を温存。私募BDCは解約請求の増加に直面し、多くの上場BDCはNAV割れで取引され新規エクイティ調達が制約されている。デプロイ55%減の裏側にある構造的ストレスを映す。", sig:"ファンドレイズの数字の裏で進む個社の与信劣化に注意", searchKey:"BDC private credit redemptions NAV discount stress 2026" }
+      ],
+      outlook: "💡 明日のCPIと大手銀行の与信コメントがクレジット全体のトーンを決める。HYスプレッド~2.7%(267bps)という歴史的タイト水準が続く一方、デプロイ鈍化・BDCの与信ストレス・上位集中という構造テーマは不変。ABF/Specialty Financeへの資金シフトが引き続き加速する見込み。"
+    },
+    jpCredit: {
+      summary: "日本PEは2025年の案件総額4.8兆円(5年連続3兆円超)・Exit 2.4兆円という記録的水準を土台に、2026年も大型案件が相次ぐ。ApolloのNippon Sheet Glass買収($3.7B)、BainのMCJ非公開化($1.3B)・FineToday取得など外資主導のラージキャップが並ぶ一方、TOBの攻防はアクティビストの介在で一段と複雑化している。",
+      deals: [
+        { title:"Apollo × 日本板硝子(Nippon Sheet Glass) — $37億の大型買収", tag:"バイアウト", tagCls:"t-blue", meta:"Apollo Global ｜ 約$3.7B ｜ 素材・ガラス製造", body:"2026年のラージキャップ案件の象徴。外資PEが日本の伝統的製造業をターゲットにカーブアウト／再編を志向する第三波の典型例。事業再構築とグローバル販路の最適化によるバリューアップが投資テーマ。", sig:"外資PEによる伝統的製造業ターゲットの大型化が続く", searchKey:"Apollo Nippon Sheet Glass acquisition 3.7 billion 2026" },
+        { title:"Bain Capital × MCJ($13億非公開化)＋FineToday取得", tag:"P2P", tagCls:"t-orange", meta:"Bain Capital ｜ MCJ約$1.3B ｜ 非公開化・消費財", body:"Bainが上場企業MCJの$13億規模の非公開化とFineToday(消費財)の取得を推進。ガバナンス改革下でのテイクプライベートと消費財ロールアップという2つの定番戦略を同時展開。", sig:"P2Pと消費財カーブアウトが日本PEの二枚看板に", searchKey:"Bain Capital MCJ take private FineToday Japan 2026" },
+        { title:"TOBの攻防が高度化 — アクティビスト介在で不成立/価格引き上げが増加", tag:"トレンド", tagCls:"t-purple", meta:"市場全体 ｜ TOBプレミアム60〜80% ｜ アクティビズム", body:"TOB発表後もアクティビストが割安と見れば買い増し、結果として不成立TOBが増加。逆に成立案件でも当初提示価格から大幅な引き上げが起きるケースが目立つ。テイクプライベートのプレミアムは60〜80%が標準化。", sig:"買収側のプロセス設計力と価格規律が案件成否を左右", searchKey:"Japan TOB tender offer activist failed price bump 2026" }
+      ],
+      outlook: "💡 外資PEのラージキャップ攻勢(Apollo/Bain)と、アクティビスト介在によるTOBの高度化が並走。豊富な案件パイプラインの中で、値付けの規律とプロセス設計力を備えたマネジャーがリターン格差を生む局面が続く。"
+    },
+    takeaway: "本日(7/13月)は週末の米イラン軍事衝突再燃が主役。原油が3%超高の$74台へ急伸し、Dowは小幅高もS&P(-0.27%)・Nasdaq(-0.70%)は軟調と、エネルギー/ディフェンシブへのローテーションが鮮明。金曜に華々しく上場したSK HynixのADRが-8%と急反落し、AIメモリ・トレードの持続性に疑問符。明日7/14はCPI・大手銀行決算・Warsh議長証言が同日集中する今月最大の山場。プライベートクレジットではCrescent($108億)・Barings($190億超)の大型調達が続く一方、デプロイ55%減とBDCの与信ストレスが構造的な影を落とす。日本ではApollo(日本板硝子$3.7B)・Bain(MCJ$1.3B)の外資ラージキャップが記録的なPE市場を牽引する。",
+    narrative: "7月13日(月)の米国市場は、週末に再燃した米イランの軍事衝突というリスクイベントで幕を開けた。米国がイラン近辺で再び攻撃を実施し、イランがクウェート・ヨルダン・カタールなど米同盟国へ報復したことで、ホルムズ海峡の供給途絶懸念が一気に高まった。WTI原油は3%超上昇して$74台を回復。株式はDowが小幅高を保つ一方、S&P500は-0.27%、Nasdaqは-0.70%と軟調で、資金はハイテクからエネルギー・ディフェンシブへローテーションした。VIXは15前後と依然低位で、地政学ショックが本格的なリスクオフには発展していない点も特徴的だ。||個別では、金曜に外国企業最大の$26.5B規模で華々しく上場したSK HynixのADRが-8%と急反落し、ソウル上場株は-15%超と史上最悪の一日となった。前日+12.8%からの急落は、AIメモリ・半導体トレードの過熱に対する市場の警戒を映す。Micron・NVIDIAなど関連銘柄にも売りが波及し、「AI収益化の実像」を問う調整局面が続いていることを示した。明日7/14には6月CPI・5大銀行決算・Warsh FRB議長証言が同日に集中し、史上最高値目前の相場が試される最大の山場を迎える。||米プライベートクレジットの構図は、表面的な好調と水面下のストレスが同居する。H1のダイレクトレンディングのファンドレイズはQ2に$162.5億(Q1$13億から急増)と2年ぶりの高水準に回復し、Crescentが単一ファンド最大の$108億、Baringsが2年間で$190億超を確保するなど、大手の調達力は桁を上げている。しかし同じ四半期のデプロイ(投資実行)は約55%減の$336億へ急減した。M&A低調・LBO減少・シンジケートローンとの競合が背景で、「集めるカネ」と「出せるカネ」の乖離が鮮明だ。BDCでは私募が解約増、上場はNAV割れで増資制約と、与信ストレスが静かに進行している。||日本PEは記録的な水準を土台に外資ラージキャップが牽引を続ける。2025年の案件総額4.8兆円(5年連続3兆円超)・Exit 2.4兆円という定量的な強さを背景に、2026年はApolloの日本板硝子買収($3.7B)、BainのMCJ非公開化($1.3B)とFineToday取得といった大型案件が相次ぐ。一方でTOBの攻防はアクティビストの介在で高度化し、割安と見れば買い増しによる不成立TOB、逆に成立案件での大幅な価格引き上げが増加。テイクプライベートのプレミアムは60〜80%が標準化し、買収側のプロセス設計力と価格規律が問われる局面が続く。||総じて本日は、地政学(原油高)・AIトレードの調整・イベント週待ちという3要素が重なる「様子見の中の局所的な波乱」の一日だった。クレジットはタイトなスプレッド下での質的選別、日本PEは外資主導の大型化とTOB高度化 — という構造テーマは不変のまま、市場は明日のCPIと銀行決算という2大データに向けて息を潜めている。低ボラティリティに織り込まれた楽観が、インフレと与信の現実に耐えられるかが目下の最大の焦点だ。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①週末の米イラン衝突再燃で原油3%超高$74台、株はエネルギー/ディフェンシブへローテーション、明日7/14はCPI・銀行決算・議長証言が集中する山場。②米プライベートクレジットはファンドレイズ回復(Crescent$108億・Barings$190億超)の裏でデプロイ55%減・BDC与信ストレスという乖離が鮮明。③日本PEはApollo(日本板硝子$3.7B)・Bain(MCJ$1.3B)の外資ラージキャップが記録的市場を牽引、TOBはアクティビスト介在で高度化。",
+      interviewQA: [
+        { q: "ダイレクトレンディングでファンドレイズが回復する一方デプロイが55%減、この乖離をどう読みますか", a: "資金調達と投資実行のタイミングのズレと、市場環境の悪化が同時に起きていると考えます。まずファンドレイズは過去のパフォーマンスとM&A回復期待を背景にした先行指標で、LPは中期の機会に賭けて大手にコミットしています。一方デプロイの急減はM&A・LBOの現実の低調さ、そしてブロードリー・シンジケートローン市場との競合が主因です。含意は二つ。第一にドライパウダーが積み上がりスプレッド低下圧力になること、第二に『調達できても出せない』マネジャーは将来のリターンとDPIで見劣りするため、オリジネーション能力が一段と差別化要因になることです。" },
+        { q: "BDCがNAV割れで取引される、あるいは私募BDCが解約増に直面することの意味は何ですか", a: "エバーグリーン/半流動性ビークルの構造的なミスマッチが表面化している状態だと理解しています。上場BDCのNAV割れは、市場が公表NAVよりもポートフォリオの実態を厳しく見ている、あるいは金利・与信環境への不安を織り込んでいるシグナルで、増資が困難になり成長が制約されます。私募BDCの解約増は、非流動資産に対して投資家が流動性を求めるという根本矛盾の顕在化です。対応としてゲート設定や解約制限が出てきますが、これは評判リスクと隣り合わせ。ノンアクルーアル比率・PIK比率・現金バッファーの厚みで個社のストレス耐性を見極めることが重要だと考えます。" },
+        { q: "外資PEによる日本のラージキャップ買収(Apollo/Bain)が増える構造的背景を説明してください", a: "三つの要因があると考えます。第一にコーポレートガバナンス改革とTSEのPBR1倍割れ改善要求で、非中核事業のカーブアウトや上場子会社の整理、非公開化が経営の選択肢として一般化したこと。第二に日本PEのリターン優位(TVM 2.5x、米国2.1x超)が外資の資本を呼び込み、各社が日本専任チームを拡充していること。第三に円安が外貨建てLPのエントリーを割安にしている面です。ApolloのNippon Sheet Glass、BainのMCJ・FineTodayはいずれもこの流れの典型で、伝統的製造業や消費財の再構築・ロールアップがバリューアップの中心テーマになっています。ただしFEFTA安保審査という新たな制約も加わっており、案件スクリーニングは複雑化しています。" }
+      ],
+      keyConceptToday: {
+        term: "ドライパウダー(Dry Powder)とデプロイメント・ペース",
+        definition: "ドライパウダーはファンドが調達済みだが未投資のコミット資本。デプロイメント・ペースはそれを実際の案件へ投じる速度。両者のバランスがファンドのリターン創出力を左右する。",
+        background: "PE/プライベートクレジットはコミットメント方式で、LPは資金を一度に払い込まず、GPがキャピタルコールで段階的に引き出す。調達(fundraise)と投資(deploy)は本質的にタイミングがズレるため、市場環境次第で未投資資本が積み上がる局面が生じる。",
+        practical: "ドライパウダーが過剰に積み上がると、案件獲得競争が激化しエントリー・マルチプルの上昇やスプレッド低下を招き、将来リターンを押し下げる。逆にデプロイが速すぎれば規律を欠くリスク。GPはヴィンテージ分散とペース管理でこれを最適化し、LPはIRRだけでなくペースとDPIを重視して評価する。",
+        context2026: "H1 2026はまさにこの論点が顕在化。ダイレクトレンディングの調達はQ2に急回復した一方、デプロイは約55%減。M&A・LBOの低調で資金の出し場が乏しく、ドライパウダーが積み上がってスプレッド低下圧力とマネジャー間のオリジネーション能力格差を生んでいる。『集めた後に出せるか』が今日の市場の核心的な問いである。"
+      },
+      dealAnalysis: {
+        title: "Apollo × 日本板硝子(Nippon Sheet Glass) — $37億の製造業バイアウト",
+        thesis: "コーポレートガバナンス改革を追い風にした外資PEによる伝統的製造業のバリューアップ案件。非中核事業のカーブアウト、グローバル販路・生産拠点の最適化、資本構成の効率化を通じたEBITDA改善とマルチプル拡大が投資テーマ。素材メーカーの技術・特許ポートフォリオの潜在価値も評価対象。",
+        timing: "TSEのPBR1倍割れ改善要求と株主エンゲージメント強化で、資本効率の低い製造業が再編・非公開化を選択肢とするタイミング。円安が外貨建てエントリーを割安にし、外資PEの日本専任チーム拡充とも重なる好機。ただしFEFTA安保審査という予測困難な規制リスクは製造業ほど顕在化しやすい。",
+        downside: "ガラス・素材事業は景気感応度が高く、グローバル建設・自動車需要の悪化で収益が急落するリスク。エネルギー価格上昇(足元の原油高)は製造コストを直撃する。加えてFEFTA審査による取得遅延・阻止、労使・地域社会との調整の難しさが日本の大型製造業バイアウト特有のリスク要因。",
+        valuation: "製造業バイアウトは一般にEV/EBITDA 6〜10xで評価され、成長性より安定CF・コスト構造改革・ROE向上でバリューを正当化する。日本では60〜80%のTOBプレミアムが標準化しエントリーが高くなりがちで、レバレッジは国内メザニンの活用拡大で総デット7〜8xも可能に。確実なオペレーショナル改善の実行がリターンの生命線となる。"
+      }
+    }
+  }
+];
+// ── END_DATA ──
+</script>
+
+<script>
+// ── RENDER ENGINE ──
+function fmtNum(v){
+  if (typeof v !== 'number') return v;
+  return v.toLocaleString('en-US', { maximumFractionDigits: 1 });
+}
+function dirClass(dir){ return dir === 'up' ? 'up' : dir === 'down' ? 'down' : 'flat'; }
+function cClass(dir){ return dir==='up'?'c-up':dir==='down'?'c-down':'c-flat'; }
+function macroValClass(dir){ return dir==='up'?'up':dir==='down'?'down':''; }
+function arrow(dir){ return dir==='up'?'▲':dir==='down'?'▼':'‒'; }
+
+function newsLinksEvent(searchKey){
+  if(!searchKey) return '';
+  const q = encodeURIComponent(searchKey);
+  const wsj = 'https://www.wsj.com/search?query=' + q + '&mod=searchresults_viewallresults';
+  const ft = 'https://www.ft.com/search?q=' + q;
+  const jp = 'https://news.google.com/search?q=' + q + '&hl=ja&gl=JP';
+  return '<a class="ev-link ev-link-wsj" href="' + wsj + '" target="_blank" rel="noopener">WSJで見る</a> ' +
+         '<a class="ev-link ev-link-ft" href="' + ft + '" target="_blank" rel="noopener">FTで見る</a> ' +
+         '<a class="ev-link ev-link-jp" href="' + jp + '" target="_blank" rel="noopener">関連ニュース</a>';
+}
+function newsLinksDeal(searchKey){
+  if(!searchKey) return '';
+  const q = encodeURIComponent(searchKey);
+  const wsj = 'https://www.wsj.com/search?query=' + q + '&mod=searchresults_viewallresults';
+  const ft = 'https://www.ft.com/search?q=' + q;
+  const jp = 'https://news.google.com/search?q=' + q + '&hl=ja&gl=JP';
+  return '<div class="deal-links">' +
+    '<a class="deal-link dl-wsj" href="' + wsj + '" target="_blank" rel="noopener">WSJ</a>' +
+    '<a class="deal-link dl-ft" href="' + ft + '" target="_blank" rel="noopener">FT</a>' +
+    '<a class="deal-link dl-jp" href="' + jp + '" target="_blank" rel="noopener">関連ニュース</a>' +
+  '</div>';
+}
+
+function renderIdxCard(idx){
+  if(!idx) return '';
+  const chg = (typeof idx.change === 'number') ? (idx.change>=0?'+':'') + fmtNum(idx.change) : idx.change;
+  const pct = (typeof idx.pct === 'number') ? (idx.pct>=0?'+':'') + idx.pct.toFixed(2) + '%' : idx.pct;
+  return '<div class="idx-card ' + dirClass(idx.dir) + '">' +
+    '<div class="idx-name">' + idx.flag + ' ' + idx.name + '</div>' +
+    '<div class="idx-val">' + fmtNum(idx.value) + '</div>' +
+    '<div class="idx-chg ' + cClass(idx.dir) + '">' + arrow(idx.dir) + ' ' + chg + ' (' + pct + ')</div>' +
+  '</div>';
+}
+
+function renderMacro(macro){
+  if(!macro) return '';
+  return Object.keys(macro).map(function(k){
+    const v = macro[k];
+    return '<div class="macro-item"><span class="macro-lbl">' + k + '</span>' +
+      '<span class="macro-val ' + macroValClass(v.dir) + '">' + arrow(v.dir) + ' ' + v.value + '</span></div>';
+  }).join('');
+}
+
+function moverRow(m){
+  return '<div class="mover-row">' +
+    '<div class="mover-ticker">' + m.ticker + '</div>' +
+    '<div class="mover-info"><div class="mover-name">' + m.name + '</div><div class="mover-why">' + m.why + '</div></div>' +
+    '<div class="mover-pct ' + m.dir + '">' + (m.pct>=0?'+':'') + m.pct.toFixed(1) + '%</div>' +
+  '</div>';
+}
+function renderMoversLayout(movers){
+  movers = movers || [];
+  const ups = movers.filter(function(m){ return m.dir === 'up'; });
+  const downs = movers.filter(function(m){ return m.dir === 'down'; });
+  const upsHtml = ups.length ? ups.map(moverRow).join('') : '<div style="font-size:12px;color:#94a3b8">上昇銘柄なし</div>';
+  const downsHtml = downs.length ? downs.map(moverRow).join('') : '<div style="font-size:12px;color:#94a3b8">下落銘柄なし</div>';
+  return '<div>' + upsHtml + '</div><div>' + downsHtml + '</div>';
+}
+
+function renderEvents(events){
+  events = events || [];
+  if(!events.length) return '<div style="font-size:12px;color:#94a3b8">本日のイベントなし</div>';
+  return events.map(function(e){
+    return '<div class="ev-item"><div class="ev-title">' + e.icon + ' ' + e.title + '</div>' +
+      '<div class="ev-detail">' + e.detail + '</div>' +
+      newsLinksEvent(e.searchKey) + '</div>';
+  }).join('');
+}
+
+function renderDeal(d){
+  return '<div class="deal">' +
+    '<span class="deal-tag ' + d.tagCls + '">' + d.tag + '</span>' +
+    '<div class="deal-ttl">' + d.title + '</div>' +
+    '<div class="deal-meta">' + d.meta + '</div>' +
+    '<div class="deal-body">' + d.body + '</div>' +
+    '<div class="deal-sig">' + d.sig + '</div>' +
+    newsLinksDeal(d.searchKey) +
+  '</div>';
+}
+function renderCreditBox(boxCls, flag, name, sub, data){
+  if(!data) return '';
+  const deals = data.deals || [];
+  return '<div class="pc-box ' + boxCls + '">' +
+    '<div class="pc-hdr"><span class="pc-flag">' + flag + '</span><span class="pc-name">' + name + '</span></div>' +
+    '<div class="pc-sub">' + sub + '</div>' +
+    '<div class="pc-summary">' + (data.summary || '') + '</div>' +
+    '<div class="deals-grid">' + deals.map(renderDeal).join('') + '</div>' +
+    '<div class="pc-outlook">' + (data.outlook || '') + '</div>' +
+  '</div>';
+}
+
+function renderNarrative(str){
+  if(!str) return '<p style="color:#94a3b8">本日はナラティブ未生成</p>';
+  return str.split('||').map(function(p){ return '<p>' + p.trim() + '</p>'; }).join('');
+}
+
+function renderPeTraining(pt){
+  if(!pt) return '<div style="font-size:12px;color:#94a3b8">本日のPEトレーニングコンテンツなし</div>';
+  const qaHtml = (pt.interviewQA || []).map(function(qa){
+    return '<div class="qa-item"><div class="qa-q">' + qa.q + '</div><div class="qa-a">' + qa.a + '</div></div>';
+  }).join('');
+  const kc = pt.keyConceptToday || {};
+  const da = pt.dealAnalysis || {};
+  return '<div class="pet-summary"><div class="pet-summary-lbl">30秒サマリー</div>' +
+    '<div class="pet-summary-txt">' + (pt.thirtySecSummary || '') + '</div></div>' +
+    '<div class="pet-grid">' +
+      '<div class="pet-card"><div class="pet-card-hdr">面接想定Q&amp;A</div>' + qaHtml + '</div>' +
+      '<div class="pet-card"><div class="pet-card-hdr">今日の重要概念：' + (kc.term || '') + '</div>' +
+        '<div class="concept-items">' +
+          '<div class="concept-item"><div class="concept-lbl">定義</div><div class="concept-val">' + (kc.definition || '') + '</div></div>' +
+          '<div class="concept-item"><div class="concept-lbl">背景</div><div class="concept-val">' + (kc.background || '') + '</div></div>' +
+          '<div class="concept-item"><div class="concept-lbl">実務での使われ方</div><div class="concept-val">' + (kc.practical || '') + '</div></div>' +
+          '<div class="concept-item"><div class="concept-lbl">2026年の文脈</div><div class="concept-val">' + (kc.context2026 || '') + '</div></div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="pet-card" style="grid-column:1/-1"><div class="pet-card-hdr">ディール分析：' + (da.title || '') + '</div>' +
+        '<div class="da-items">' +
+          '<div class="da-item thesis"><div class="da-lbl">投資テーマ</div><div class="da-val">' + (da.thesis || '') + '</div></div>' +
+          '<div class="da-item timing"><div class="da-lbl">なぜ今か</div><div class="da-val">' + (da.timing || '') + '</div></div>' +
+          '<div class="da-item downside"><div class="da-lbl">ダウンサイド</div><div class="da-val">' + (da.downside || '') + '</div></div>' +
+          '<div class="da-item valuation"><div class="da-lbl">バリュエーション</div><div class="da-val">' + (da.valuation || '') + '</div></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+let chartInstance = null;
+function renderChart(reports, uptoIdx){
+  const el = document.getElementById('idxChart');
+  if(!el || typeof Chart === 'undefined') return;
+  const start = Math.max(0, uptoIdx - 14);
+  const slice = reports.slice(start, uptoIdx + 1);
+  const labels = slice.map(function(r){ return r.dateLabel; });
+  function mk(key){ return slice.map(function(r){ return (r.indices && r.indices[key]) ? r.indices[key].value : null; }); }
+  if(chartInstance){ chartInstance.destroy(); }
+  chartInstance = new Chart(el, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        { label:'S&P 500', data:mk('sp500'), borderColor:'#3b82f6', backgroundColor:'transparent', tension:.3, yAxisID:'y0' },
+        { label:'Nasdaq', data:mk('nasdaq'), borderColor:'#8b5cf6', backgroundColor:'transparent', tension:.3, yAxisID:'y1' },
+        { label:'Dow', data:mk('dow'), borderColor:'#10b981', backgroundColor:'transparent', tension:.3, yAxisID:'y1' },
+        { label:'Nikkei 225', data:mk('nikkei'), borderColor:'#ef4444', backgroundColor:'transparent', tension:.3, yAxisID:'y2' }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+      scales: {
+        y0: { display: false },
+        y1: { display: false },
+        y2: { display: false },
+        x: { ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+let currentIdx = MARKET_REPORTS.length - 1;
+
+function dowLabel(dateStr){
+  const d = new Date(dateStr + 'T00:00:00');
+  return ['日','月','火','水','木','金','土'][d.getDay()];
+}
+
+function renderTabs(){
+  const nav = document.getElementById('tab-nav-inner');
+  nav.innerHTML = MARKET_REPORTS.map(function(r, i){
+    return '<button class="tab-btn' + (i === currentIdx ? ' active' : '') + '" data-idx="' + i + '">' +
+      r.dateLabel + '<span class="dow">' + dowLabel(r.date) + '</span></button>';
+  }).join('');
+  Array.prototype.forEach.call(nav.querySelectorAll('.tab-btn'), function(btn){
+    btn.addEventListener('click', function(){
+      currentIdx = parseInt(btn.getAttribute('data-idx'), 10);
+      renderAll();
+    });
+  });
+}
+
+function renderPanel(r){
+  const idxCards = ['sp500','nasdaq','dow','nikkei'].map(function(k){ return renderIdxCard(r.indices[k]); }).join('');
+  return '' +
+  '<div class="section"><div class="idx-grid">' + idxCards + '</div></div>' +
+  '<div class="section two-col">' +
+    '<div class="card"><div class="card-title">📈 主要指数推移</div><div class="chart-wrap"><canvas id="idxChart"></canvas></div></div>' +
+    '<div class="card"><div class="card-title">🌐 マクロ指標</div><div class="macro-grid">' + renderMacro(r.macro) + '</div></div>' +
+  '</div>' +
+  '<div class="section"><div class="sec-title">値動き銘柄</div>' +
+    '<div class="movers-card"><div class="movers-layout">' + renderMoversLayout(r.movers) + '</div></div>' +
+  '</div>' +
+  '<div class="section"><div class="sec-title">本日の注目イベント</div>' +
+    '<div class="events-list">' + renderEvents(r.events) + '</div>' +
+  '</div>' +
+  '<div class="section"><div class="sec-title">🇺🇸 US Private Credit</div>' +
+    renderCreditBox('us-box', '🇺🇸', 'US Private Credit', 'ダイレクトレンディング・プライベートクレジット', r.usCredit) +
+  '</div>' +
+  '<div class="section"><div class="sec-title">🇯🇵 Japan PE / Private Credit</div>' +
+    renderCreditBox('jp-box', '🇯🇵', 'Japan PE / Private Credit', 'バイアウト・TOB・メザニン', r.jpCredit) +
+  '</div>' +
+  '<div class="section"><div class="sec-title">本日のナラティブ</div>' +
+    '<div class="narrative-box">' + renderNarrative(r.narrative) + '</div>' +
+  '</div>' +
+  '<div class="section"><div class="sec-title">PEトレーニング</div>' + renderPeTraining(r.peTraining) + '</div>' +
+  '<div class="section"><div class="takeaway"><div class="takeaway-lbl">本日の総括</div>' +
+    '<div class="takeaway-txt">' + (r.takeaway || '') + '</div></div></div>';
+}
+
+function renderAll(){
+  renderTabs();
+  const r = MARKET_REPORTS[currentIdx];
+  const main = document.getElementById('main-content');
+  main.innerHTML = '<div class="report-panel active">' + renderPanel(r) + '</div>';
+  renderChart(MARKET_REPORTS, currentIdx);
+  const tokenInfo = document.getElementById('token-info');
+  if(tokenInfo){
+    const total = MARKET_REPORTS.reduce(function(s, x){ return s + (x.tokenEstimate || 0); }, 0);
+    tokenInfo.textContent = '本日のトークン概算: ' + (r.tokenEstimate || 0).toLocaleString() + ' ｜ 累計: ' + total.toLocaleString();
+  }
+  document.title = '🇺🇸 US Market Morning Brief (' + r.dateLabel + ') | Private Credit Focus';
+  const nav2 = document.getElementById('tab-nav-inner');
+  const activeBtn = nav2.querySelector('.tab-btn.active');
+  if(activeBtn && activeBtn.scrollIntoView){ activeBtn.scrollIntoView({ inline: 'center', block: 'nearest' }); }
+}
+
+renderAll();
+</script>
+</body>
+</html>
