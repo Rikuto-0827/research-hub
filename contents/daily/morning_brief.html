@@ -774,9 +774,88 @@ const MARKET_REPORTS = [
         valuation: "製造業バイアウトは一般にEV/EBITDA 6〜10xで評価され、成長性より安定CF・コスト構造改革・ROE向上でバリューを正当化する。日本では60〜80%のTOBプレミアムが標準化しエントリーが高くなりがちで、レバレッジは国内メザニンの活用拡大で総デット7〜8xも可能に。確実なオペレーショナル改善の実行がリターンの生命線となる。"
       }
     }
+  },
+  {
+    date: "2026-07-15",
+    dateLabel: "Jul 15",
+    tokenEstimate: 21000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7572.4,  change:28.7,   pct:0.38,  dir:"up"   },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:26269.2, change:161.9,  pct:0.62,  dir:"up"   },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52658.6, change:150.4,  pct:0.29,  dir:"up"   },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:67743.0, change:497.0,  pct:0.74,  dir:"up"   }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.58%",   dir:"down" },
+      "2Y米国債":     { value:"4.19%",   dir:"down" },
+      "VIX":          { value:"~16.8",   dir:"up"   },
+      "DXY":          { value:"~100.5",  dir:"down" },
+      "WTI原油":      { value:"~$73.5",  dir:"down" },
+      "Gold金":       { value:"~$4,120", dir:"up"   },
+      "ドル円":       { value:"¥162.0",  dir:"flat" },
+      "日10年国債":   { value:"~2.80%",  dir:"down" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.6%",  dir:"down" }
+    },
+    movers: [
+      { ticker:"GS",   name:"Goldman Sachs",  pct: 9.0,  dir:"up",   why:"157年で最高の四半期。EPS$20.98・売上$20.34B、IBフィー+55%・株式収入+72%で予想を大幅超" },
+      { ticker:"AAPL", name:"Apple",          pct: 4.0,  dir:"up",   why:"CitiがPTを$315→$365に引き上げ。cool CPIでメガキャップに資金流入、7/30決算控え" },
+      { ticker:"GOOGL",name:"Alphabet",       pct: 3.2,  dir:"up",   why:"利上げ懸念後退でメガキャップ・グロース株が主導、Nasdaqを牽引" },
+      { ticker:"META", name:"Meta Platforms", pct: 3.1,  dir:"up",   why:"AI関連メガキャップ買いの一角。低インフレ確認でリスクオン" },
+      { ticker:"NVDA", name:"NVIDIA",         pct: 2.0,  dir:"up",   why:"IBMが明かした『企業がソフト予算をAIハード(メモリ等)へ移す』構図は半導体の追い風。予想PER19倍は2015年以来最低" },
+      { ticker:"IBM",  name:"IBM",            pct:-25.0, dir:"down", why:"過去最悪の一日。Q2業績警告(EPS$2.93・売上$17.2B)で時価$68.8B消失。ソフト/インフラ弱く1987年-23.7%を上回る暴落" }
+    ],
+    events: [
+      { icon:"📊", title:"6月CPIが予想以上に減速 — 前年比3.5%(予想3.8%)、7月利上げ確率が42%→17%へ急低下", detail:"6月CPIは前月比-0.4%・前年比3.5%と、5月の3年ぶり高水準4.2%から急減速し予想3.8%を下回った。コアは前月比フラット・前年比2.6%(予想2.9%)。CMEのFedWatchでは7月の0.25%利上げ確率が月曜の42%から17%へ急低下(ただし9月利上げは依然約60%織り込み)。10年債は4.58%・2年債は4.19%へ低下。", searchKey:"June CPI 3.5 percent July 2026 Fed rate hike odds cool" },
+      { icon:"🏦", title:"大手銀行Q2決算が記録的 — Goldman 157年で最高・Morgan Stanley株式$6.3Bで過去最高", detail:"Goldman Sachsが創業157年で最高の四半期(EPS$20.98・純収益$20.34B、IBフィー+55%・株式収入+72%)を記録し+9%。Morgan Stanleyの株式トレーディング収入は過去最高の$6.3B(予想を約$1.9B超)、JPMorgan・BofAも堅調。AIブームが資本市場を活況にし、GoldmanとJPMの株式トレーディングは合計で予想を$44億上回った。", searchKey:"Goldman Sachs Morgan Stanley record Q2 2026 earnings trading" },
+      { icon:"💻", title:"IBM株が過去最悪の-25% — Q2警告で時価$68.8B消失、AIハードへの予算移転が主因", detail:"IBMが予備的Q2結果(EPS$2.93・売上$17.2B、いずれも予想未達)を警告し-25%と過去最悪の一日を記録。1987年ブラックマンデーの-23.7%を上回った。Krishna CEOはソフトウェア/インフラの弱さを認め、企業がメモリチップ等のAIハードウェアへ予算をシフトしていることが背景と説明。AIソフト需要への懸念がテックに波及。", searchKey:"IBM stock crash 25 percent Q2 warning AI hardware July 2026" },
+      { icon:"🎯", title:"主要3指数が史上最高値圏 — cool CPIとメガキャップ・銀行決算が追い風", detail:"低インフレ確認で利上げ懸念が後退し、Nasdaq+0.62%・S&P+0.38%・Dow+0.29%と主要3指数が最高値圏で推移。Apple(+4.0%)・Alphabet(+3.2%)・Meta(+3.1%)・Amazon・MicrosoftなどメガキャップとGoldman主導の銀行株が相場を押し上げた。", searchKey:"S&P 500 Nasdaq record high cooling inflation megacap July 15 2026" }
+    ],
+    usCredit: {
+      summary: "私募BDCの解約請求がQ2にピークに達しつつある(BofA分析)。ApolloのDebt Solutionsが$24億(ファンドの16.8%)、BlackstoneのBCREDがQ1$37億、AresはStrategic Income Fund($21.5B)で解約を5%に制限(申請11.6%)。BDCの加重平均ノンアクルーアル率はQ4'25の1.42%→Q1'26の1.99%へ上昇。『集める力』(Blackstone opportunistic $10B+、Barings 2年$19B+)と『個社の与信劣化』が同時進行する二極化局面。",
+      deals: [
+        { title:"Apollo Debt Solutions：Q2に$24億(16.8%)の解約請求 — 私募BDC解約がピークへ", tag:"流動性リスク", tagCls:"t-red", meta:"Apollo Global ｜ $2.4B(16.8%)解約 ｜ 私募BDC", body:"BofAは私募BDCの解約請求がQ2にピークと分析。ApolloのDebt Solutionsで$24億(16.8%)、BCREDはQ1$37億、AresはStrategic Income Fund($21.5B)で解約を5%上限に制限(申請11.6%)。エバーグリーン構造の流動性ミスマッチが表面化している。", sig:"半流動性ビークルの構造的弱点が鮮明に", searchKey:"Apollo Debt Solutions BDC redemptions Q2 2026 16.8 percent" },
+        { title:"BDCノンアクルーアル率が1.99%へ上昇 — 個社の与信劣化が進行", tag:"与信ストレス", tagCls:"t-red", meta:"公開/非公開BDC ｜ 1.42%→1.99% ｜ ノンアクルーアル率", body:"BDCの加重平均ノンアクルーアル率がQ4'25の1.42%からQ1'26の1.99%へ上昇。Blue Owl OBDCが16%減配、FS KKRのノンアクルーアルはコストベースで最大8.1%、Blackstone Secured Lendingは4.7%へ急上昇しNAVは前四半期比-2%超。", sig:"ファンドレイズの数字の裏で進む与信劣化に注意", searchKey:"BDC non-accrual rate rising Q1 2026 Blue Owl FS KKR" },
+        { title:"上位マネジャーの調達力は健在 — Blackstone $10B+・Barings 2年$19B+", tag:"ファンドレイズ", tagCls:"t-blue", meta:"Blackstone/Barings ｜ $10B+/$19B+ ｜ opportunistic credit/グローバルDL", body:"与信ストレスの一方で上位マネジャーの調達は継続。BlackstoneはQ2に第5号opportunistic creditで$100億超を調達、Baringsは2年間で$190億超のグローバルDLを確保。資金はトラックレコードのある大手に一段と集中している。", sig:"強者集中と与信劣化が同時進行", searchKey:"Blackstone opportunistic credit fund Barings direct lending 2026" }
+      ],
+      outlook: "💡 7/29のAres Capital決算を皮切りにFS KKR・Blue Owl・Blackstone Secured LendingのBDC決算が続く。ノンアクルーアル率とNAVトレンドが市場のトーンを決める。cool CPIで利上げ懸念は後退したが、個社の与信劣化は静かに進行しており、ABF/Specialty Financeへの資金シフトが引き続き加速する見込み。"
+    },
+    jpCredit: {
+      summary: "日本PEは記録的水準を維持。2025年の案件総額4.8兆円、PEリターンが米国を上回り約$30Bのディールバリューを生む。外資ラージキャップ(Apollo日本板硝子$3.7B、BainのMCJ$1.3B/FineToday)に加え、Kakaku.com争奪戦(EQT vs Bain+LY Corp)やTEPCOを巡るJIP/KKR/Blackstone/GIPの協議など大型案件が続々。競争激化でプロセス設計力と価格規律が問われる。",
+      deals: [
+        { title:"Kakaku.com争奪戦：EQT vs Bain Capital + LY Corp連合", tag:"争奪戦", tagCls:"t-purple", meta:"EQT / Bain+LY Corp ｜ 入札競争 ｜ インターネット・メディア", body:"価格比較大手Kakaku.comを巡りEQTと、Bain Capital+LY Corp連合が競合。事業会社(LY)とPEが組む新形態が登場し、TOB高度化とアクティビズムの潮流の中で入札競争が激化している。", sig:"事業会社×PE連合という新たな買収形態の台頭", searchKey:"Kakaku.com EQT Bain LY Corp bidding Japan 2026" },
+        { title:"TEPCO関連：JIP・KKR・Blackstone・GIPが協議と報道", tag:"インフラ", tagCls:"t-blue", meta:"JIP/KKR/Blackstone/GIP ｜ 大型インフラ ｜ 電力・エネルギー", body:"TEPCO関連資産を巡りJapan Industrial Partners・KKR・Blackstone・GIPが協議と報道。インフラ/エネルギーへの外資PE・インフラファンドの関心が高まり、日本の大型インフラ案件が新たな主戦場に。", sig:"インフラ/エネルギーが外資PEの新たな標的に", searchKey:"TEPCO Japan Industrial Partners KKR Blackstone GIP talks 2026" },
+        { title:"外資ラージキャップ継続 — Apollo日本板硝子$3.7B・Bain MCJ$1.3B/FineToday", tag:"バイアウト", tagCls:"t-orange", meta:"Apollo/Bain ｜ $3.7B/$1.3B ｜ 製造業・消費財", body:"外資ラージキャップの流れは継続。Apolloの日本板硝子(素材)、BainのMCJ非公開化とCVCからのFineToday(消費財)取得。伝統的製造業のカーブアウトと消費財ロールアップが二枚看板となっている。", sig:"外資PE第三波のラージキャップ化が定着", searchKey:"Apollo Nippon Sheet Glass Bain MCJ FineToday Japan 2026" }
+      ],
+      outlook: "💡 Bainのレポートは日本PEが強いリターンで競争激化と指摘。外資ラージキャップ攻勢、TOB高度化、そして事業会社×PE連合という新形態が並走する。豊富なパイプラインの中で、値付けの規律とプロセス設計力を備えたマネジャーがリターン格差を生む局面が続く。"
+    },
+    takeaway: "本日(7/15水)は6月CPIが前年比3.5%(予想3.8%)と大幅減速し、CMEでの7月利上げ確率が42%→17%へ急低下。megacap主導でNasdaq+0.62%・S&P+0.38%・Dow+0.29%と主要3指数が史上最高値圏へ。Goldmanが157年で最高の四半期(+9%)、Morgan Stanleyの株式トレーディングが過去最高$6.3Bと大手銀行決算はAI資本市場ブームを映す一方、IBMは過去最悪の-25%(時価$68.8B消失)——企業がソフト予算をAIハード(メモリ)へ移す構図が浮き彫りに。プライベートクレジットは私募BDCの解約がQ2ピーク(Apollo$24億・16.8%)、ノンアクルーアル率1.99%へ上昇と与信劣化が進行。日本ではKakaku.com争奪戦(EQT vs Bain+LY)やTEPCO協議など外資ラージキャップ案件が続く。",
+    narrative: "7月15日(水)の米国市場は、前日発表の6月CPIが示した『インフレ鎮静化』を素直に好感する一日となった。ヘッドラインは前月比-0.4%・前年比3.5%と、5月の3年ぶり高水準4.2%から急減速し予想3.8%を下回った。コアも前年比2.6%と予想2.9%を下回り、CMEのFedWatchでは7月利上げ確率が月曜の42%から17%へ急低下した。10年債は4.58%、2年債は4.19%へ低下し、Apple(+4.0%)・Alphabet(+3.2%)・Meta(+3.1%)などメガキャップが主導してNasdaqは+0.62%、S&P・Dowも最高値圏で引けた。||相場の主役はもう一つ、大手銀行決算だった。Goldman Sachsは創業157年で最高の四半期を記録し、EPS$20.98・純収益$20.34B、IBフィー+55%・株式収入+72%という数字で+9%急騰した。Morgan Stanleyの株式トレーディング収入は過去最高の$6.3Bに達し、JPMorgan・BofAも堅調。AIブームが資本市場を活況にし、GoldmanとJPMの株式トレーディングは合計で予想を$44億上回った。低インフレと好決算という二つの追い風が、記録的な株高を正当化した格好だ。||だが同じAIブームが、正反対の悲劇も生んだ。IBMは予備的Q2結果(EPS$2.93・売上$17.2B、いずれも予想未達)を警告し-25%と過去最悪の一日を記録、1987年ブラックマンデーの-23.7%を超えて時価$68.8Bを消失した。Krishna CEOはソフト/インフラの弱さを認め、『企業がメモリチップ等のAIハードウェアへ予算をシフトしている』ことを主因に挙げた。AI投資が加速するほど、レガシーなソフト・インフラ支出が食われる——この構図はNVIDIA(予想PER19倍は2015年以来最低)ら半導体には追い風だが、旧来型IT企業には逆風という『AI二極化』を鮮明にした。||プライベートクレジットの水面下では、逆のストレスが進行している。BofAは私募BDCの解約請求がQ2にピークに達すると分析し、ApolloのDebt Solutionsで$24億(16.8%)、BCREDはQ1$37億、AresはStrategic Income Fund($21.5B)で解約を5%上限に制限した。BDCの加重平均ノンアクルーアル率はQ4'25の1.42%からQ1'26の1.99%へ上昇し、Blue Owl OBDCは16%減配、FS KKRのノンアクルーアルは最大8.1%に達した。一方でBlackstone(opportunistic $10B+)やBarings(2年$19B+)の調達は堅調で、『強者集中と個社の与信劣化』という二極化が一段と鮮明になっている。||日本PEは記録的水準を土台に、案件の多様化と競争激化が同時進行する。Apolloの日本板硝子($3.7B)、BainのMCJ非公開化($1.3B)とFineToday取得という外資ラージキャップに加え、Kakaku.comを巡るEQT対Bain+LY Corp連合の争奪戦、TEPCOを巡るJIP・KKR・Blackstone・GIPの協議と、事業会社×PE連合やインフラ案件という新形態が登場した。市場は『growth(株高)とcredit stress(与信劣化)の共存』という2026年の基調を保ちながら、次はGoogleやテック大手の決算、そしてFedの9月会合へと視線を移していく。低インフレが確認された今、焦点は『利上げ回避後も企業の与信は持ちこたえるか』へと移りつつある。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①6月CPIが前年比3.5%(予想3.8%)と急減速し7月利上げ確率が42%→17%へ低下、megacap主導で主要3指数が史上最高値圏へ。②大手銀行決算が記録的(Goldman 157年最高+9%、Morgan Stanley株式$6.3B過去最高)な一方、IBMは過去最悪-25%——AIハードへの予算移転がソフト/インフラを直撃する『AI二極化』が鮮明。③プライベートクレジットは私募BDC解約がQ2ピーク(Apollo$24億・16.8%)、ノンアクルーアル率1.99%へ上昇と与信劣化が進行。",
+      interviewQA: [
+        { q: "cool CPIで利上げ懸念が後退したことは、プライベートクレジットにどう影響しますか", a: "短期と構造の二層で考える必要があります。短期的には、利上げ回避は借り手の利払い負担の上振れリスクを和らげ、ポートフォリオ企業のデフォルト・PIK行使圧力をいくらか緩和します。株高・スプレッドタイト化はエクイティ調達環境も改善させ、上場BDCのNAV割れ是正にもプラスです。ただ構造面では、フローティングレート資産中心のダイレクトレンディングにとって金利低下はスプレッド収益の減少を意味し、リターン圧縮要因にもなります。より本質的なのは、足元のノンアクルーアル率上昇(1.42%→1.99%)は金利水準そのものより個社の事業劣化・オリジネーション品質の問題であり、マクロが和らいでも与信選別の巧拙が引き続きリターンを左右するという点です。" },
+        { q: "IBMの暴落が象徴する『AIハードへの予算移転』を、投資家としてどう解釈しますか", a: "AIの価値が『ソフトウェア/サービス』から『コンピュート/ハードウェア』へ一時的に強く傾いている局面と捉えます。IBM CEOが認めたように、企業はメモリ・半導体の供給逼迫と値上げを見越して予算をハードへ前倒ししており、これはNVIDIAやメモリ各社には追い風、レガシーIT・SaaSには逆風です。投資含意は二つ。第一に、AIインフラ(データセンター・チップファイナンス)への資金需要が引き続き旺盛で、プライベートクレジットのAIインフラ向け大型案件(例:ApolloのAIコンピュート・ファイナンス)の追い風になること。第二に、ソフト依存度が高いポートフォリオ企業は収益前提の再検証が必要で、クレジット・エクイティ双方でセクター選別が一段と重要になることです。" },
+        { q: "ノンアクルーアル率とは何か、なぜ今それが重要な監視指標なのか説明してください", a: "ノンアクルーアル(non-accrual)とは、借り手の債務不履行や信用悪化により、貸し手が利息収益の計上(accrual)を停止した貸付を指します。ノンアクルーアル率はポートフォリオに占めるその比率で、BDCやプライベートクレジット・ファンドの与信健全性を測る最重要指標の一つです。重要なのは、これがデフォルトの一歩手前——利息が実際に入ってこなくなった状態を示す先行指標だからです。足元でBDC加重平均が1.42%→1.99%へ上昇し、FS KKRでは最大8.1%に達した個社もあります。これは配当カバレッジの悪化(Blue Owlの16%減配)やNAV低下に直結し、上場BDCのNAV割れの根本原因でもあります。私はノンアクルーアル率をPIK比率・現金払い比率・NAVトレンドと併せて、ファンドの真の与信ストレスを見極める指標として重視しています。" }
+      ],
+      keyConceptToday: {
+        term: "ノンアクルーアル率(Non-Accrual Rate)",
+        definition: "貸し手が信用悪化を理由に利息収益の計上を停止した貸付が、ポートフォリオ全体(公正価値または簿価ベース)に占める比率。BDC・プライベートクレジットファンドの与信健全性を測る中核指標。",
+        background: "会計上、利息の回収が見込めなくなった貸付は『non-accrual(未計上)』に分類され、以後は利息を収益認識しない。デフォルト(元本の実際の毀損)の一歩手前の段階であり、収益とNAVの双方に影響するため、投資家が最も注視する早期警戒指標の一つ。",
+        practical: "ノンアクルーアル率の上昇は①ファンドの実効利回り低下、②配当カバレッジ悪化(減配リスク)、③NAV下押しに直結する。上場BDCのNAV割れは市場がこの劣化を織り込んでいるシグナル。アナリストは率の水準だけでなく、コストベースvs公正価値ベースの差、増加ペース、上位借り手の集中度を併せて評価する。",
+        context2026: "Q1'26にBDC加重平均ノンアクルーアル率が1.42%→1.99%へ上昇。Blue Owl OBDCが16%減配、FS KKRはコストベースで最大8.1%、Blackstone Secured Lendingは4.7%でNAVは前四半期比-2%超。cool CPIで利上げ懸念が後退した今も、個社の与信劣化は金利要因と独立に進行しており、ファンドレイズの好調(Blackstone/Barings)と与信ストレスの二極化を象徴する指標となっている。"
+      },
+      dealAnalysis: {
+        title: "Kakaku.com争奪戦 — EQT vs Bain Capital + LY Corp連合",
+        thesis: "日本のインターネット/価格比較大手を巡る入札競争。純粋PE(EQT)と、事業会社(LY Corp)×PE(Bain)の連合という新形態が対峙する点が最大の注目。事業シナジー(LYの検索・EC・広告基盤との統合)を織り込める連合側と、オペレーショナル改善とロールアップで勝負するEQT側とで、バリューアップの前提が根本的に異なる。TOB高度化とアクティビズムの潮流の中で、価格規律とプロセス設計力が試される案件。",
+        timing: "コーポレートガバナンス改革とTSEのPBR改善要求で優良デジタル資産の非公開化・再編が加速する局面。日本PEのリターンが米国を上回り外資の資本が流入する好機で、事業会社がPEと組んで買収に参加する『ストラテジック×スポンサー』連合が新たな競争軸として登場している。",
+        downside: "入札競争の激化はエントリー・マルチプルを押し上げ、勝者の呪い(overpayment)リスクを高める。事業会社連合は独禁法・利益相反の審査が複雑化しやすく、純粋PE側は事業シナジーで劣後するため価格でしか対抗できない。デジタル広告・EC市況の悪化や、アクティビストの介在による更なる価格引き上げも収益前提を揺るがす。",
+        valuation: "インターネット・プラットフォームは成長性・ネットワーク効果を織り込みEV/EBITDA二桁前半〜半ばで評価されることが多く、安定CFの製造業(6〜10x)より高い。日本のTOBプレミアム60〜80%が上乗せされるとエントリーはさらに切り上がる。連合側は事業シナジーの現在価値で高値を正当化できるが、PE単独では規律ある価格上限の設定が生命線となる。"
+      }
+    }
   }
 ];
-// ── END_DATA ──  (last sync: 2026-07-13 / rev2)
+// ── END_DATA ──  (last sync: 2026-07-15 / rev3)
 </script>
 
 <script>
