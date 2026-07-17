@@ -859,9 +859,9 @@ const MARKET_REPORTS = [
     dateLabel: "Jul 16",
     tokenEstimate: 21000,
     indices: {
-      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7557.3,  change:-15.1,   pct:-0.20, dir:"down" },
-      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:26059.0, change:-210.2,  pct:-0.80, dir:"down" },
-      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52580.0, change:-78.6,   pct:-0.15, dir:"down" },
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7533.8,  change:-38.6,   pct:-0.51, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:25882.0, change:-386.4,  pct:-1.47, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52553.0, change:-105.7,  pct:-0.20, dir:"down" },
       nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:66960.0, change:-1795.0, pct:-2.61, dir:"down" }
     },
     macro: {
@@ -879,14 +879,15 @@ const MARKET_REPORTS = [
     movers: [
       { ticker:"PYPL", name:"PayPal",          pct: 18.0, dir:"up",   why:"Stripe+Advent Internationalが$53B(1株$60.50・28%プレミアム)のTOBを提示。約$500億のコミット済み銀行融資付き。取締役会は7/20に協議へ" },
       { ticker:"BABA", name:"Alibaba ADR",     pct: 5.0,  dir:"up",   why:"独自AIモデルQwenが中国版Apple Intelligenceに統合と国営メディア報道。中国AIエクスポージャーに買い" },
-      { ticker:"ASML", name:"ASML",            pct: 3.0,  dir:"up",   why:"2026年ガイダンスを年内2度目の上方修正。EUV露光装置需要が堅調でチップ設備投資の底堅さを示す" },
-      { ticker:"TSM",  name:"TSMC ADR",        pct: 1.0,  dir:"up",   why:"Q2はEPS$4.31(予想比+$0.37)・売上$40.2B(+33.7%YoY)・粗利率67.7%と好決算。ただ対中半導体規制の不透明感で上値限定" },
-      { ticker:"NVDA", name:"NVIDIA",          pct: -2.5, dir:"down", why:"対中半導体規制強化の不透明感で半導体に利益確定売り。アジア株安に連動し先物軟調" },
+      { ticker:"GOOGL",name:"Alphabet",        pct: -4.2, dir:"down", why:"最強AIモデルGemini 3.5 Proの提供が遅延との報道(Bloomberg)。AI開発競争での出遅れ懸念でDowを押し下げ" },
+      { ticker:"TSM",  name:"TSMC ADR",        pct: -1.5, dir:"down", why:"Q2はEPS$4.31・売上$40.2B(+33.7%)・粗利67.7%と好決算も、通期設備投資見通しを$52-56B→$60-64Bへ引き上げ。過剰投資懸念が好決算を相殺しチップ株安を主導" },
+      { ticker:"NVDA", name:"NVIDIA",          pct: -2.5, dir:"down", why:"対中半導体規制強化の不透明感とTSMC capex増による過剰投資懸念で半導体に売り。引けにかけ下げ拡大" },
       { ticker:"AMD",  name:"AMD",             pct: -2.8, dir:"down", why:"半導体セクター全体の調整。TSMCの好決算も相殺できず、China規制懸念でチップ売り優勢" }
     ],
     events: [
-      { icon:"📉", title:"半導体主導のリスクオフ — 日経-2.63%(66,960)、米先物もNDX-0.8%と軟調", detail:"前日の米半導体株安と、対中半導体規制強化を巡る不透明感が重なり東京市場でチップ株に利益確定売りが波及。日経225は-2.63%の66,960へ急落し67,000を割り込んだ。米株先物もS&P-0.2%・Nasdaq100-0.8%と軟調で、cool CPI後の史上最高値圏からの反落局面。紙パルプ・輸送・通信も安い。", searchKey:"Nikkei 225 drop semiconductor selloff July 16 2026 China chip restrictions" },
-      { icon:"🏭", title:"TSMC Q2決算が好調 — EPS$4.31(予想比+$0.37)・売上$40.2B(+33.7%YoY)・粗利率67.7%", detail:"世界最大のファウンドリTSMCがQ2決算を発表。EPS$4.31で予想を$0.37上回り、売上は$40.2Bと予想を$900M超過・前年比+33.7%。粗利率67.7%・営業利益率60.3%とAI/HPC向け需要が牽引。ただ対中規制の不透明感と半導体全体の調整で、好決算にもかかわらず株価反応は限定的。", searchKey:"TSMC TSM Q2 2026 earnings beat revenue 40.2 billion gross margin" },
+      { icon:"📉", title:"半導体主導のリスクオフで米株続落 — S&P-0.51%(7,533.8)・Nasdaq-1.47%(25,882)・Dow-0.20%(52,553)で引け", detail:"TSMCの通期設備投資見通し引き上げ($52-56B→$60-64B)が過剰投資懸念を呼び、好決算にもかかわらずチップ株が続落。日経も-2.63%(66,960)と急落した流れを引き継ぎ、米主要3指数は揃って下落して取引を終えた。cool CPI後の史上最高値圏からの明確な反落局面で、AI関連の設備投資規律に市場の視線が向かう。", searchKey:"stock market close July 16 2026 Nasdaq S&P chip selloff TSMC capex" },
+      { icon:"🏭", title:"TSMC Q2は好決算も通期capexを$60-64Bへ引き上げ — 過剰投資懸念でチップ株安を主導", detail:"世界最大のファウンドリTSMCはQ2でEPS$4.31(予想比+$0.37)・売上$40.2B(+33.7%YoY)・粗利率67.7%と好決算。しかし通期設備投資見通しを従来の$52-56Bから$60-64Bへ大幅上方修正したことで、AIブームの持続性と投資回収を巡る警戒が優勢に。好決算を相殺して半導体セクター全体が売られ、TSM ADRも下落した。", searchKey:"TSMC TSM Q2 2026 capex guidance 60 64 billion chip stocks slide" },
+      { icon:"🤖", title:"Alphabet -4%超 — 最強AIモデルGemini 3.5 Proが提供遅延との報道", detail:"BloombergがGoogleの最上位AIモデルGemini 3.5 Proの提供が予定より遅れていると報道し、Alphabet株は4%超下落。AI開発競争での出遅れ懸念がDow・Nasdaqを押し下げる一因となった。半導体安と重なり、AIバリューチェーン全体のセンチメント悪化を象徴する材料に。", searchKey:"Alphabet Google Gemini 3.5 Pro delay behind schedule July 2026" },
       { icon:"💳", title:"PayPalに$53BのTOB — Stripe+Adventが1株$60.50(28%プレミアム)提示、+18%急騰", detail:"決済大手StripeとPE大手Advent Internationalが共同でPayPalに$53B(1株$60.50、火曜終値比+28%プレミアム)のTOBを提示。約$500億のコミット済み銀行融資が付き、両者が折半で保有・解体はしない方針。PayPal株はプレマーケットで+18%の$56.10へ。取締役会は7/20に協議予定。フィンテック再編とPE大型テイクプライベートの象徴。", searchKey:"PayPal Stripe Advent 53 billion takeover bid 60.50 per share" },
       { icon:"📊", title:"決算ラッシュ — NFLX(引け後)・UNH・GE・ABT・USB・ISRGが本日発表", detail:"本日はNetflix(引け後、Q2売上$12.57B・EPS$0.78見込み)を筆頭に、UnitedHealth・GE Aerospace・Abbott・US Bancorp・Intuitive Surgicalなど大型決算が集中。銀行決算の記録的な流れ(Goldman/MS/BlackRock)が続くか、AI・ヘルスケア・消費のガイダンスに注目が集まる。", searchKey:"earnings July 16 2026 Netflix UnitedHealth GE Aerospace Abbott" }
     ],
@@ -908,7 +909,7 @@ const MARKET_REPORTS = [
       ],
       outlook: "💡 日本は競合TOBが常態化し、事業会社×PE連合(Bain+LY)という新形態が入札を高度化。外資ラージキャップ(KKR/Bain/EQT/Apollo)の攻勢が続く中、価格規律とプロセス設計力を備えたマネジャーがリターン格差を生む。$33B/年の市場は『early innings』であり、メザニン/ジュニア資本の厚みが大型化を後押しする。"
     },
-    takeaway: "本日(7/16木)は半導体主導のリスクオフで始まる。前日の米チップ株安と対中半導体規制強化への不透明感が重なり、日経225は-2.63%(66,960)と急落、米株先物もNasdaq100-0.8%と軟調で史上最高値圏から反落。TSMCはQ2でEPS$4.31・売上$40.2B(+33.7%)・粗利率67.7%と好決算だが、規制懸念で株価反応は限定的。個別ではPayPalがStripe+Adventの$53B(1株$60.50・28%プレミアム、コミット融資$50B)TOBで+18%急騰——フィンテック再編とPE大型テイクプライベートの象徴。本日はNFLX(引け後)・UNH・GE・ABT・USB・ISRGの決算ラッシュ。プライベートクレジットはH1'26でCrescent $10.8B・ジュニアデット$50B+目標と記録的調達が続く一方、BDCの与信劣化が併走。日本PEはKKRの太陽HD非公開化やKakaku.com争奪戦(EQT vs Bain+LY)が進み、Goldmanは日本を買収の『early innings』と評価。",
+    takeaway: "本日(7/16木)は半導体主導のリスクオフで米株が続落して引けた——S&P-0.51%(7,533.8)・Nasdaq-1.47%(25,882)・Dow-0.20%(52,553)。TSMCはQ2でEPS$4.31・売上$40.2B(+33.7%)・粗利率67.7%と好決算だったが、通期設備投資見通しを$52-56B→$60-64Bへ引き上げたことで過剰投資懸念が優勢となり、好決算を相殺してチップ株安を主導。さらにAlphabetが最強AIモデルGemini 3.5 Proの遅延報道で-4%超と下落し、AIバリューチェーン全体のセンチメントが悪化した。個別ではPayPalがStripe+Adventの$53B(1株$60.50・28%プレミアム、コミット融資$50B)TOBで+18%急騰——フィンテック再編とPE大型テイクプライベートの象徴。本日はNFLX(引け後)・UNH・GE・ABT・USB・ISRGの決算ラッシュ。プライベートクレジットはH1'26でCrescent $10.8B・ジュニアデット$50B+目標と記録的調達が続く一方、BDCの与信劣化が併走。日本PEはKKRの太陽HD非公開化やKakaku.com争奪戦(EQT vs Bain+LY)が進み、Goldmanは日本を買収の『early innings』と評価。",
     narrative: "7月16日(木)の市場は、前日のcool CPIがもたらした史上最高値圏の高揚から一転、半導体主導のリスクオフで幕を開けた。震源は米国の対中半導体規制強化を巡る不透明感だ。前日の米チップ株安を受け、東京市場では利益確定売りが噴き出し、日経225は-2.63%の66,960へ急落して67,000を割り込んだ。米株先物もS&P-0.2%・Nasdaq100-0.8%と軟調で、NVIDIA・AMDなどAI半導体に売りが先行している。低インフレという『追い風』が確認された直後だけに、地政学と規制という別種のリスクが相場の主導権を握り直した格好だ。||皮肉なのは、この半導体安が世界最大のファウンドリTSMCの好決算と同じ日に起きたことだ。TSMCはQ2でEPS$4.31(予想比+$0.37)・売上$40.2B(前年比+33.7%)・粗利率67.7%と、AI/HPC需要の底堅さを改めて証明した。それでも株価反応が限定的なのは、市場が『足元の業績』より『対中規制がサプライチェーンとエンド需要をどう変えるか』という先行きの不確実性を重く見ているためだ。ファンダメンタルズとマクロ・地政学が綱引きする、2026年後半らしい構図である。||個別で相場を沸かせたのはPayPalだ。決済大手StripeとPE大手Advent Internationalが共同で$53B(1株$60.50、火曜終値比+28%プレミアム)のTOBを提示し、株価はプレマーケットで+18%急騰した。約$500億のコミット済み銀行融資が付き、事業会社(Stripe)×スポンサー(Advent)が折半保有・解体しない方針だ。これは単なるフィンテック再編にとどまらず、金利が高止まりする環境でも超大型テイクプライベートが成立する『資金の供給力』を象徴する。取締役会は7/20に協議する。||その資金供給力は、プライベートクレジットのファンドレイズ統計にも表れている。H1 2026ではCrescent Capitalが第4号US Direct Lendingで自社最大の$10.8B(目標$2.5B超過)を調達し、Barings($19B/2年)・Churchill($16B)・Antares/Ares(各$8.5B)も続いた。ジュニアデット上位7ファンドは合計$50B超を目標に掲げ、2023-24合計を30%上回る。PayPal級の大型P2Pを支えるシニア+ジュニア+コミット融資の厚みが着実に増している。ただしBDCのノンアクルーアル率上昇や私募BDC解約という与信ストレスは併走しており、『集める力』と『個社の与信劣化』の二極化という基調は変わらない。焦点は調達額から『デプロイの質』へと移りつつある。||日本PEもまた、同じ『事業会社×PE連合』と『競合TOB』のテーマを共有する。KKRは太陽ホールディングスの非公開化に動き、Kakaku.comを巡ってはEQTとBain Capital+LY Corp連合が競合を続ける。Goldman Sachsは日本を買収活動の『early innings』と評し、2025年の案件$33Bは成長余地の入り口に過ぎないと見る。ガバナンス改革・事業承継・カーブアウト・円安という四つの追い風は健在で、メザニン/ジュニア資本の厚みが大型化を後押しする。市場は今日、『AIの構造的成長』と『規制・地政学リスク』の綱引きを映しながら、NetflixやUnitedHealthの決算、そして次のマクロイベントへと視線を移していく。",
     peTraining: {
       thirtySecSummary: "本日のポイントは3点。①対中半導体規制強化への不透明感で半導体主導のリスクオフ——日経-2.63%(66,960)、米先物Nasdaq100-0.8%と史上最高値圏から反落。②TSMCはQ2好決算(EPS$4.31・売上$40.2B・+33.7%・粗利67.7%)も規制懸念で株価反応は限定的、ファンダとマクロ・地政学の綱引き。③PayPalがStripe+Adventの$53B(1株$60.50・28%プレミアム、コミット融資$50B)TOBで+18%急騰——事業会社×PE連合の超大型テイクプライベート。プライベートクレジットはH1'26でCrescent $10.8B・ジュニアデット$50B+と記録的調達が資金供給力を裏付ける。",
@@ -934,7 +935,7 @@ const MARKET_REPORTS = [
     }
   }
 ];
-// ── END_DATA ──  (last sync: 2026-07-16 / rev4)
+// ── END_DATA ──  (last sync: 2026-07-16 / rev5)
 </script>
 
 <script>
