@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KKR × 太陽ホールディングス PE投資ケーススタディ｜面接対策レポート</title>
+<style>
+  :root{
+    --navy:#0f2a43; --navy2:#16395c; --accent:#c9a13b; --bg:#f7f8fa;
+    --text:#26303a; --muted:#6b7683; --line:#dde3e9; --red:#b23a48; --green:#2f7d5b; --blue:#2b6cb0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background:var(--bg); color:var(--text); line-height:1.75; font-size:15px;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 28px 80px;}
+  header.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 70%); color:#fff; padding:56px 28px 44px;}
+  .hero-inner{max-width:980px; margin:0 auto;}
+  .hero .tag{display:inline-block; border:1px solid var(--accent); color:var(--accent); font-size:12px; letter-spacing:.15em; padding:3px 12px; margin-bottom:16px;}
+  .hero h1{font-size:29px; font-weight:700; line-height:1.4; margin-bottom:10px;}
+  .hero p.sub{color:#c8d4e0; font-size:14px;}
+  .hero .meta{margin-top:18px; font-size:12px; color:#9fb2c4;}
+  nav.toc{background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px 26px; margin:-26px auto 40px; max-width:980px; position:relative; box-shadow:0 2px 10px rgba(15,42,67,.08);}
+  nav.toc strong{font-size:13px; color:var(--navy); letter-spacing:.1em;}
+  nav.toc ol{margin:8px 0 0 20px; columns:2; font-size:13.5px;}
+  nav.toc a{color:var(--navy2); text-decoration:none;}
+  nav.toc a:hover{text-decoration:underline;}
+  section{margin-top:52px;}
+  h2{font-size:21px; color:var(--navy); border-left:5px solid var(--accent); padding-left:14px; margin-bottom:20px;}
+  h3{font-size:16.5px; color:var(--navy2); margin:26px 0 10px;}
+  h4{font-size:14.5px; color:var(--navy2); margin:18px 0 8px;}
+  p{margin-bottom:12px;}
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:20px 0;}
+  .kpi{background:#fff; border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:6px; padding:16px 18px;}
+  .kpi .v{font-size:21px; font-weight:700; color:var(--navy);}
+  .kpi .l{font-size:12px; color:var(--muted); margin-top:4px;}
+  table{width:100%; border-collapse:collapse; background:#fff; margin:16px 0; font-size:13.5px;}
+  th{background:var(--navy); color:#fff; padding:9px 12px; text-align:left; font-weight:600;}
+  td{padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:nth-child(even) td{background:#fbfcfd;}
+  td.num, th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  .callout{background:#fff; border-left:4px solid var(--accent); border-radius:0 6px 6px 0; padding:16px 20px; margin:18px 0; box-shadow:0 1px 4px rgba(15,42,67,.06);}
+  .callout.insight{border-left-color:var(--green);}
+  .callout.risk{border-left-color:var(--red);}
+  .callout.learn{border-left-color:var(--blue);}
+  .callout b.title{display:block; font-size:13px; letter-spacing:.08em; margin-bottom:6px; color:var(--navy);}
+  .timeline{list-style:none; margin:20px 0; padding-left:0;}
+  .timeline li{position:relative; padding:0 0 22px 30px; border-left:2px solid var(--line); margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 2px var(--accent);}
+  .timeline .d{font-weight:700; color:var(--navy); font-size:13.5px;}
+  .qa{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .qa .q{background:#eef2f6; padding:12px 18px; font-weight:700; color:var(--navy); font-size:14px;}
+  .qa .a{padding:14px 18px; font-size:13.8px;}
+  .glossary{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .glossary .term{background:#f0f4f8; padding:11px 18px; font-weight:700; color:var(--navy2); font-size:14px; border-bottom:1px solid var(--line);}
+  .glossary .def{padding:14px 18px; font-size:13.8px;}
+  .glossary .def p{margin-bottom:10px;}
+  .note{font-size:12px; color:var(--muted);}
+  .est{color:var(--red); font-size:11px; font-weight:700; border:1px solid var(--red); border-radius:3px; padding:0 4px; margin-left:4px; vertical-align:middle;}
+  .bar-row{display:flex; align-items:center; gap:10px; margin:4px 0; font-size:12.5px;}
+  .bar-row .y{width:76px; color:var(--muted); text-align:right; flex-shrink:0;}
+  .bar-row .bar{height:16px; background:linear-gradient(90deg,var(--navy2),#3d6a99); border-radius:2px;}
+  .bar-row .bar.hi{background:linear-gradient(90deg,var(--green),#5aa985);}
+  .bar-row .val{color:var(--navy); font-weight:600; flex-shrink:0;}
+  footer{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted);}
+  footer a{color:var(--navy2); word-break:break-all;}
+  ul.clean{margin:0 0 12px 22px;}
+  ul.clean li{margin-bottom:6px;}
+  @media print{ body{background:#fff;} nav.toc{box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="tag">PE INTERVIEW CASE STUDY</span>
+    <h1>KKR × 太陽ホールディングス：世界シェア6割の半導体材料「隠れた巨人」を<br>ディスカウントTOBで非公開化</h1>
+    <p class="sub">2026年3月発表・1株4,750円（約5,285億円）のTOB → 積水化学を戦略パートナーに迎えるハイブリッド型バイアウト → 2026年10月TOB開始予定の「進行中案件」</p>
+    <div class="meta">作成日：2026年7月17日｜面接想定：日系・外資系PEファンド アソシエイト採用｜推定値は<span class="est" style="border-color:#c9a13b;color:#c9a13b;">推定</span>と明記｜本件はTOB未開始の進行中案件（本資料は2026年7月17日時点の公開情報に基づく）</div>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>CONTENTS</strong>
+  <ol>
+    <li><a href="#s1">エグゼクティブサマリー</a></li>
+    <li><a href="#s2">ディール概要とストラクチャー</a></li>
+    <li><a href="#s3">事業・財務ディープダイブ</a></li>
+    <li><a href="#s4">投資テーゼ（なぜKKRは買うのか）</a></li>
+    <li><a href="#s5">想定バリュークリエーション</a></li>
+    <li><a href="#s6">ディスカウントTOB論点と出口シナリオ</a></li>
+    <li><a href="#s7">リターン構造の考察</a></li>
+    <li><a href="#s8">リスクと批判的視点</a></li>
+    <li><a href="#s9">難解ポイント徹底解説</a></li>
+    <li><a href="#s10">FA未経験者のための基礎知識</a></li>
+    <li><a href="#s11">面接で差がつくインサイト</a></li>
+    <li><a href="#s12">想定Q&A</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<!-- 1 -->
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>本件は、米系PE最大手<b>KKR</b>が、プリント配線板（PCB）用ソルダーレジストで<b>世界シェア6割超</b>を握る太陽ホールディングス（東証プライム・4626）を、SPC「KJ005HD」を通じて<b>1株4,750円・総額約5,285億円</b>で非公開化する案件である。2026年3月31日に発表され、TOBは2026年10月上旬の開始が予定されている（＝本稿執筆時点では<b>未開始の進行中案件</b>）。最大の特徴は2点——①買付価格が発表前日終値5,007円を約5%下回る<b>「ディスカウントTOB（takeunder）」</b>であること、②非公開化後に<b>積水化学工業が約10%の議決権（優先株式、約319億円）</b>を戦略パートナーとして引き受ける<b>ハイブリッド型バイアウト</b>であること。オリオンビール（消費財・地方ブランドの事業承継型）とは対照的に、本件は<b>AI・半導体材料という成長テーマ×アクティビスト圧力×ガバナンス危機</b>を背景とした、日本のミッドキャップPEの「新しい型」を象徴する。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">4,750円</div><div class="l">TOB価格（前日終値5,007円比 約▲5%）</div></div>
+    <div class="kpi"><div class="v">約5,285億円</div><div class="l">買収総額（発行済の100%取得ベース）</div></div>
+    <div class="kpi"><div class="v">+117%</div><div class="l">2025年5月までの6カ月平均終値比プレミアム</div></div>
+    <div class="kpi"><div class="v">世界シェア 60%超</div><div class="l">ソルダーレジスト（PCB絶縁材）</div></div>
+    <div class="kpi"><div class="v">42.2%</div><div class="l">応募合意済み株主（DIC・創業家・オアシス）</div></div>
+    <div class="kpi"><div class="v">積水化学 約10%</div><div class="l">戦略パートナー出資（優先株・約319億円）</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">■ 30秒で語るならこう言う</b>
+    「AI・半導体材料の世界トップ企業を、アクティビスト圧力とガバナンス危機を触媒に、KKRが『実力値』で非公開化する案件です。焦点は3つ。第一に、発表前日株価を下回るディスカウントTOB——アクティビストが押し上げた株価ではなく6カ月前の水準を基準に価格を正当化しており、少数株主保護と特別委員会の判断の妥当性が論点になります。第二に、積水化学を10%の優先株で戦略パートナーに迎えるハイブリッド設計——単なる財務投資家のLBOではなく、事業シナジーと非公開下の長期R&D投資を組み合わせています。第三に、皮肉にもTOB発表の1カ月後に出たFY2026/3決算がAI需要で営業利益+47%の過去最高——買い手は好決算が確定する前に価格を固定できた可能性があり、バリュエーションの基準点をどこに置くかという普遍的論点が凝縮されています。」
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <h2>2. ディール概要とストラクチャー</h2>
+
+  <h3>2-1. 対象会社：太陽ホールディングス（4626）</h3>
+  <ul class="clean">
+    <li><b>本業：</b>プリント配線板（PCB）用<b>ソルダーレジスト（絶縁保護インク）で世界シェア60%超</b>。スマホ・PC・車載ECU、そしてAIデータセンターのサーバー基板まで、あらゆる電子機器の基板に同社材料が使われる「半導体産業の黒子」。</li>
+    <li><b>事業構成：</b>①電子事業（本業）、②医療・医薬事業、③ICT&S事業の3セグメント（詳細は第3章）。</li>
+    <li><b>財務特性：</b>自己資本比率55.9%（FY2026/3）、現金393億円・長期借入433億円で<b>実質ネットデットは小さく（ほぼネットキャッシュ圏）、LBO適性が高い</b>。ROE 20.7%・営業利益率23.6%と高収益。</li>
+    <li><b>成長ドライバー：</b>AI・半導体需要でメモリ向けドライフィルム等が数量増。長期経営構想「Beyond Imagination 2030」を推進中。</li>
+  </ul>
+
+  <h3>2-2. ストラクチャー</h3>
+  <table>
+    <tr><th style="width:30%">項目</th><th>内容</th></tr>
+    <tr><td>買主体</td><td>KKRが設立するSPC「KJ005HD」。TOB→スクイーズアウトで100%子会社化・上場廃止</td></tr>
+    <tr><td>TOB価格</td><td>1株4,750円。買収総額 約5,285億円<span class="est">推定</span>（報道では「約5,000億円」）</td></tr>
+    <tr><td>価格の基準</td><td>発表前日終値5,007円に対し<b>約5%ディスカウント</b>／2025年5月27日までの6カ月平均終値に対し<b>+117%プレミアム</b></td></tr>
+    <tr><td>応募合意株主</td><td>DIC（筆頭株主）、創業家資産管理会社「光和」、アクティビストのオアシス・マネジメント（15.62%）＝合計 <b>約42.2%</b></td></tr>
+    <tr><td>戦略パートナー</td><td><b>積水化学工業</b>が公開買付者親会社の優先株式（議決権）を第三者割当で引受、<b>議決権約10%・出資額約319億円</b>を予定。絶縁材（太陽）×封止・接着材（積水）の技術補完</td></tr>
+    <tr><td>成立条件</td><td>議決権90%以上取得で株式併合により完全子会社化。成立後はDICとの資本業務提携を解消し全事業を再編する見込み<span class="est">推定</span></td></tr>
+    <tr><td>公正性担保</td><td>MBO類似の構造的利益相反はないが、ディスカウントTOBのため<b>特別委員会</b>が「妥当」と判断（2026年2月）。少数株主保護が最大の手続論点</td></tr>
+  </table>
+
+  <h3>2-3. タイムライン</h3>
+  <ul class="timeline">
+    <li><span class="d">2025年5月</span><br>KKRを含む複数陣営が買収提案。特別委員会が受入れ可否を検討（報道）</li>
+    <li><span class="d">2025年6月</span><br>定時株主総会で佐藤英志・前社長の取締役再任が否決。<b>アクティビスト圧力による「ガバナンス危機」が表面化</b></li>
+    <li><span class="d">2025年12月</span><br>KKRが最有力候補と報道。非上場化へ前進（株価は思惑で変動）</li>
+    <li><span class="d">2026年2月25日</span><br>特別委員会がKKR提案の妥当性を認める</li>
+    <li><span class="d">2026年3月31日</span><br>KKRが正式発表。1株4,750円・約5,285億円のディスカウントTOB、積水化学の戦略出資を公表</li>
+    <li><span class="d">2026年4〜5月</span><br>FY2026/3決算：売上1,378億円（+15.8%）・営業利益325億円（+47.4%）と<b>AI需要で過去最高</b>。TOB価格固定後に好決算が確定</li>
+    <li><span class="d">2026年10月上旬（予定）</span><br>TOB開始予定。<span class="note">本稿執筆時点（7/17）は未開始</span></li>
+  </ul>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ</h2>
+
+  <h3>3-1. セグメント構造（FY2025/3、総売上1,190億円）</h3>
+  <table>
+    <tr><th style="width:20%">セグメント</th><th class="num" style="width:16%">売上高</th><th class="num" style="width:10%">構成比</th><th>内容とPE的論点</th></tr>
+    <tr><td><b>電子事業</b></td><td class="num">817億円</td><td class="num">68.6%</td><td>本業のソルダーレジスト・PCB材料。世界シェア6割の高収益コア。AI/HPCサーバー基板向けの高機能品が成長ドライバー。<b>KKRが囲い込みたい「代替不可能な資産」</b></td></tr>
+    <tr><td><b>医療・医薬事業</b></td><td class="num">315億円</td><td class="num">26.5%</td><td>医薬品の製造・受託。本業と無関係の多角化事業で、アクティビストが「非中核」として整理を求めてきた領域。<b>カーブアウト（分離売却）の最有力候補</b>。FY2026は同事業が増収増益に貢献</td></tr>
+    <tr><td><b>ICT&S事業</b></td><td class="num">57億円</td><td class="num">4.8%</td><td>ICT・ソリューション。規模は小さい</td></tr>
+  </table>
+
+  <h3>3-2. 業績推移：AI需要による「非連続の飛躍」</h3>
+  <p class="note">単位：億円。連結・日本基準。出所：決算短信（IRBANK集計）。FY2027/3は会社予想。</p>
+  <table>
+    <tr><th>決算期</th><th class="num">売上高</th><th class="num">営業利益</th><th class="num">OPM</th><th class="num">純利益</th><th class="num">ROE</th><th>コメント</th></tr>
+    <tr><td>2019/3</td><td class="num">593.9</td><td class="num">81.0</td><td class="num">13.6%</td><td class="num">44.0</td><td class="num">6.3%</td><td>—</td></tr>
+    <tr><td>2020/3</td><td class="num">706.3</td><td class="num">91.4</td><td class="num">12.9%</td><td class="num">37.5</td><td class="num">5.4%</td><td>—</td></tr>
+    <tr><td>2021/3</td><td class="num">809.9</td><td class="num">139.4</td><td class="num">17.2%</td><td class="num">95.3</td><td class="num">12.5%</td><td>コロナ下のデジタル需要</td></tr>
+    <tr><td>2022/3</td><td class="num">979.7</td><td class="num">179.6</td><td class="num">18.3%</td><td class="num">118.0</td><td class="num">13.8%</td><td>—</td></tr>
+    <tr><td>2023/3</td><td class="num">973.4</td><td class="num">159.7</td><td class="num">16.4%</td><td class="num">114.1</td><td class="num">12.3%</td><td>半導体調整局面</td></tr>
+    <tr><td>2024/3</td><td class="num">1,047.8</td><td class="num">182.0</td><td class="num">17.4%</td><td class="num">86.5</td><td class="num">8.6%</td><td>—</td></tr>
+    <tr><td>2025/3</td><td class="num">1,190.1</td><td class="num">220.7</td><td class="num">18.5%</td><td class="num">107.8</td><td class="num">10.5%</td><td>買収提案が持ち上がった期</td></tr>
+    <tr><td><b>2026/3</b></td><td class="num"><b>1,378.5</b></td><td class="num"><b>325.3</b></td><td class="num"><b>23.6%</b></td><td class="num"><b>240.1</b></td><td class="num"><b>20.7%</b></td><td><b>AI需要で過去最高。TOB発表の翌月に確定</b></td></tr>
+    <tr><td>2027/3（予）</td><td class="num">1,463.0</td><td class="num">343.0</td><td class="num">23.4%</td><td class="num">241.0</td><td class="num">20.8%</td><td>増収増益継続を計画</td></tr>
+  </table>
+
+  <h4>営業利益の推移（AIによる段差）</h4>
+  <div>
+    <div class="bar-row"><span class="y">2023/3</span><div class="bar" style="width:47%"></div><span class="val">160億</span></div>
+    <div class="bar-row"><span class="y">2024/3</span><div class="bar" style="width:53%"></div><span class="val">182億</span></div>
+    <div class="bar-row"><span class="y">2025/3</span><div class="bar" style="width:64%"></div><span class="val">221億</span></div>
+    <div class="bar-row"><span class="y">2026/3</span><div class="bar hi" style="width:95%"></div><span class="val">325億（過去最高）</span></div>
+    <div class="bar-row"><span class="y">2027/3予</span><div class="bar hi" style="width:100%"></div><span class="val">343億</span></div>
+  </div>
+
+  <h3>3-3. バランスシートとバリュエーション</h3>
+  <table>
+    <tr><th style="width:26%">項目（FY2026/3）</th><th class="num" style="width:20%">値</th><th>PE的な読み解き</th></tr>
+    <tr><td>純資産／自己資本比率</td><td class="num">1,070億円／55.9%</td><td>健全。<b>レバレッジ余地が大きくLBO適性が高い</b></td></tr>
+    <tr><td>現金及び預金</td><td class="num">393億円</td><td>長期借入433億円に対しほぼ見合い＝<b>実質ネットデットは僅少</b>。買収後のレバレッジ・資本効率化余地大</td></tr>
+    <tr><td>EPS（FY2026/3実績）</td><td class="num">215.92円</td><td>TOB価格4,750円ベースの<b>PERは約22倍</b>（AI好決算後の実績EPS基準）</td></tr>
+    <tr><td>参考：FY2025/3 EPS</td><td class="num">96.59円</td><td>好決算「前」の基準では<b>PER約49倍</b>。基準点で見え方が激変する（第6章）</td></tr>
+    <tr><td>発行済株式数<span class="est">推定</span></td><td class="num">約1.11億株</td><td>4,750円×約1.11億株＝約5,285億円</td></tr>
+  </table>
+  <div class="callout insight">
+    <b class="title">■ インサイト：この会社の本質は「AI材料の唯一無二性」×「非中核の医薬」の二層構造</b>
+    電子事業（世界シェア6割・OPM高）はAIで非連続に伸びる希少資産。一方で医薬事業（売上の約4分の1）は本業と無関係でアクティビストが整理を求めてきた。<b>KKRのバリューアップの核心は「コアの成長投資を最大化しつつ、非中核をカーブアウトしてコングロマリット・ディスカウントを解消する」</b>——サム・オブ・ザ・パーツ（SOTP）で語れると鋭い。
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <h2>4. 投資テーゼ（なぜKKRは買うのか）</h2>
+  <table>
+    <tr><th style="width:33%">テーゼ</th><th>内容</th></tr>
+    <tr><td>① 代替不可能なAI材料資産</td><td>ソルダーレジスト世界シェア6割。AI/HPCサーバー基板の高機能化で需要は構造成長。半導体サプライチェーン再編の中で、日本の世界トップ素材を「争奪戦が本格化する前に」囲い込む戦略的タイミング</td></tr>
+    <tr><td>② ガバナンス危機の解消</td><td>2025年6月に社長再任否決という異例の事態。アクティビストの「四面楚歌」の中で、経営陣は長期投資に集中できる安定株主基盤を必要としていた。非公開化はその解</td></tr>
+    <tr><td>③ 長期R&D投資と四半期開示の矛盾解消</td><td>次世代材料開発は数年単位の巨額投資。上場下では「コスト増」として株価の重しになる。非公開下でBeyond Imagination 2030を加速</td></tr>
+    <tr><td>④ 非中核事業の整理余地</td><td>医薬・ICTなど非本業の分離・再編で、コアの高収益電子事業にフォーカスしバリュエーションを引き上げる</td></tr>
+    <tr><td>⑤ LBO適性＋ディスカウント取得</td><td>実質ネットキャッシュ圏の健全BSでレバレッジ余地大。かつ「実力値」での取得により入口が相対的に安い（第6章）</td></tr>
+    <tr><td>⑥ 事業パートナーとの共創</td><td>積水化学の封止・接着材との技術補完で、非公開下の共同開発によるアップサイド</td></tr>
+  </table>
+  <div class="callout insight">
+    <b class="title">■ インサイト：オリオンとの対比で日本PEの「2つの型」を語る</b>
+    オリオンビールは「地方名門・事業承継・利益率改善型（プレミアム化）」の消費財バイアウト。太陽HDは「グローバルニッチトップ・アクティビスト起点・成長投資＋事業再編型」のテック素材バイアウト。<b>前者は割高に入り保守的に出た案件、後者は割安（ディスカウント）に入る案件</b>——入口バリュエーションの正反対の2事例を並べて論じられると、日本PE市場の幅を理解していることが伝わる。
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <h2>5. 想定バリュークリエーション（プロスペクティブ）</h2>
+  <p>本件はTOB未開始・PMI前のため、以下は<b>KKRが実行するとみられる想定レバー</b>である。オリオンが「実績」を語る案件だったのに対し、本件は「仮説」を構造的に語れるかが問われる。</p>
+  <table>
+    <tr><th style="width:26%">レバー</th><th>具体施策の想定</th></tr>
+    <tr><td>① コア成長投資の加速</td><td>AI/HPC向け高機能ソルダーレジスト・ドライフィルムの増産設備投資とR&D。四半期プレッシャーから解放された長期capex</td></tr>
+    <tr><td>② ポートフォリオ再編（SOTP）</td><td>医薬・ICT等の非中核事業のカーブアウト／売却で、コア電子事業へ資本を集中。コングロマリット・ディスカウント解消</td></tr>
+    <tr><td>③ 積水化学との共同開発</td><td>絶縁材×封止・接着材の技術補完で次世代パッケージ材料を共創。非公開下だからこそ可能な深い協業</td></tr>
+    <tr><td>④ ガバナンス刷新</td><td>安定株主基盤の下で経営陣を再構築（社長再任否決の混乱を収束）、KKRのオペレーショナル・チームがハンズオン支援</td></tr>
+    <tr><td>⑤ 資本効率化・レバレッジ</td><td>実質ネットキャッシュのBSにLBOレバレッジを導入し資本コストを最適化。余剰資産の効率化</td></tr>
+    <tr><td>⑥ グローバル展開・M&A</td><td>KKRのグローバルネットワークを活用した海外顧客深耕・ボルトオン買収</td></tr>
+  </table>
+  <div class="callout learn">
+    <b class="title">■ 面接での見せ方：EBITDAブリッジを「仮説」で描く</b>
+    「入口EBITDA約380億円<span class="est">推定</span>を、①コア数量成長（AI）、②ミックス改善（高機能品）、③非中核カーブアウトによる利益率改善、④ボルトオン、の4本で5年後に大きく引き上げる絵をKKRは描いていると考えます」——と、実績がないなりに<b>ドライバーを分解して仮説を構造化</b>できるかが差になる。
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <h2>6. ディスカウントTOB論点と出口シナリオ</h2>
+
+  <h3>6-1. 「株価以下で買う」TOBはなぜ成立したのか</h3>
+  <p>TOBの大原則は「市場価格＋プレミアム」。本件は発表前日終値5,007円に対し4,750円と<b>約5%のディスカウント（takeunder）</b>で、日本のM&A常識を覆す。成立の論理を分解すると：</p>
+  <ul class="clean">
+    <li><b>（a）基準点のすり替え：</b>アクティビスト介入で株価が「実力値以上」に押し上げられていたとの見立て。6カ月平均（2025年5月まで）比では<b>+117%プレミアム</b>となり、「歪んだ直近株価ではなく正常価格を基準にする」ロジックで正当化。</li>
+    <li><b>（b）大株主の事前合意：</b>DIC・創業家・オアシス（アクティビスト自身）で42.2%が応募合意済み。<b>価格を吊り上げてきた当のアクティビストが4,750円で降りる</b>という構図が価格の「妥当性」を担保。</li>
+    <li><b>（c）経営陣の切迫：</b>社長再任否決という「四面楚歌」で、非公開化は経営陣にとって選ばざるを得ない選択肢だった。</li>
+    <li><b>（d）特別委員会の承認：</b>2026年2月に「妥当」と判断。第三者算定・独立委員会という手続で少数株主保護の形式を整えた。</li>
+  </ul>
+
+  <div class="callout risk">
+    <b class="title">■ 批判的視点：少数株主は「はしごを外された」のか</b>
+    ディスカウントTOBの最大の批判は<b>少数株主保護</b>。直近で市場が付けた5,007円を下回る価格を「妥当」とする論理は、<b>アクティビストと大株主が合意すれば少数株主は市場価格未満で締め出せる</b>という前例になりかねない。さらに、TOB発表の翌月に<b>AI需要で営業利益+47%・過去最高</b>の決算が出た事実は、「買い手は好決算が織り込まれる前に価格を固定できた（＝バリュエーションの情報非対称）」という疑義を強める。面接で「特別委員会の独立性と算定基準日をどう評価するか」まで踏み込めると鋭い。
+  </div>
+
+  <h3>6-2. 出口シナリオ（KKRの想定エグジット）</h3>
+  <table>
+    <tr><th style="width:24%">シナリオ</th><th>内容</th></tr>
+    <tr><td>① 再上場（IPO）</td><td>コア集中・成長投資で企業価値を高めた数年後に再上場。KKRの典型パターン（例：日立系・パナ系のカーブアウト再生後の再上場）</td></tr>
+    <tr><td>② ストラテジックセール</td><td>積水化学、あるいは国内外の素材大手への売却。10%を握る積水が将来の買い手候補となる設計とも読める</td></tr>
+    <tr><td>③ 事業分割エグジット</td><td>医薬等を分離売却し、コア電子を別途IPO/売却する分割回収</td></tr>
+    <tr><td>目線</td><td>分析記事では<b>「現評価額の2〜3倍での出口」</b>を狙う可能性が指摘される<span class="est">推定</span>。AI材料の構造成長を取り込めれば十分射程</td></tr>
+  </table>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <h2>7. リターン構造の考察</h2>
+  <p>本件は未クローズのため実現リターンは存在しない。<b>入口条件からのシナリオ分析</b>で語るのが正しい。</p>
+  <table>
+    <tr><th style="width:30%">ドライバー</th><th>評価</th></tr>
+    <tr><td>入口マルチプル</td><td>TOB価格PER約22倍（FY2026実績EPS）。ただし<b>ディスカウントTOBで市場価格未満</b>、かつ好決算確定前の価格固定という「安く入れた」可能性。EV/EBITDAでは実質ネットキャッシュのため対EBITDA倍率は時価総額倍率より低い<span class="est">推定</span></td></tr>
+    <tr><td>EBITDA成長</td><td><b>最大のドライバー。</b>AI材料の構造成長＋非中核カーブアウトによる利益率改善。実績で営業利益はFY2025→26で+47%</td></tr>
+    <tr><td>レバレッジ</td><td>実質ネットキャッシュのBSにLBOレバレッジを導入する余地大。デット返済がエクイティ価値に転化</td></tr>
+    <tr><td>マルチプル拡大</td><td>コア集中でコングロ・ディスカウント解消。再上場時にAIテーマのプレミアムを取れれば出口倍率も拡大余地</td></tr>
+    <tr><td>出口目線</td><td>現評価の2〜3倍<span class="est">推定</span>。5年で2.5倍ならMOIC約2.5倍・IRR約20%と、PEの合格ラインに乗る絵</td></tr>
+  </table>
+  <div class="callout insight">
+    <b class="title">■ インサイト：「勝ち筋」はオリオンと真逆</b>
+    オリオンは「入口が高く出口が安い（マルチプル収縮）を、レバレッジと資本政策で下値を守った」案件。太陽HDは<b>「入口がディスカウントで安く、EBITDA成長とマルチプル拡大の両方が効きうる」上振れ型</b>。ただし成長前提が崩れれば入口の割安さだけでは守り切れない——AI需要の持続性がリターンの生命線、と締められると分析の対称性が光る。
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <h2>8. リスクと批判的視点（DD論点）</h2>
+  <table>
+    <tr><th style="width:28%">リスク</th><th>内容と評価</th></tr>
+    <tr><td>① AI需要の循環性</td><td>FY2026の飛躍はAI/半導体の強い需要が前提。半導体は歴史的にシリコンサイクルで振れる。<b>入口が好況ピーク近辺</b>のため、循環反転時のEBITDA下振れが最大リスク</td></tr>
+    <tr><td>② 少数株主・訴訟リスク</td><td>ディスカウントTOBは価格の公正性を巡る反対・株式買取請求・訴訟の火種。特別委の独立性と算定基準日が争点</td></tr>
+    <tr><td>③ 技術・競争リスク</td><td>世界シェア6割でも、次世代パッケージ（ガラス基板等）の技術変化や中韓台の追い上げでシェア浸食の可能性</td></tr>
+    <tr><td>④ 顧客・地政学集中</td><td>半導体・基板サプライチェーンは特定地域・大口顧客に集中しがち。米中摩擦・輸出規制の影響</td></tr>
+    <tr><td>⑤ 事業再編の実行リスク</td><td>医薬カーブアウトは買い手・価格・従業員・許認可の各面で実行難度が高い。想定シナジー（積水）も未実証</td></tr>
+    <tr><td>⑥ レバレッジ×金利</td><td>LBOレバレッジ導入後は金利上昇局面でのデットコストが重石。日本の金利正常化が逆風になり得る</td></tr>
+  </table>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説</h2>
+  <p class="note">本件特有の、実務未経験者がつまずきやすい概念を噛み砕く。</p>
+
+  <div class="glossary">
+    <div class="term">① ディスカウントTOB（takeunder）とは何か。なぜ許されるのか</div>
+    <div class="def">
+      <p>通常のTOBは市場価格に<b>プレミアム</b>を乗せる。ディスカウントTOBは逆に<b>市場価格を下回る価格</b>で買い付ける。本件は前日終値5,007円に対し4,750円（▲5%）。</p>
+      <p><b>成立する条件は「大株主の事前合意」。</b>TOBに応募するかは株主の自由なので、少数株主は応募しなければよい——しかし90%以上が集まればスクイーズアウトで強制的に同価格で買い取られる。本件はDIC・創業家・アクティビスト（オアシス）で42.2%が合意済みで、成立の蓋然性が高い。</p>
+      <p><b>正当化ロジックは「基準点の付け替え」。</b>アクティビストが吊り上げた直近株価ではなく、介入前（6カ月平均）を「実力値」とみなせば、4,750円は+117%プレミアムになる。この論理を特別委員会が「妥当」と追認した。<b>面接での使い方：</b>「ディスカウントTOBは、アクティビストが上げた株価をPEが実力値で買い戻す新しい連鎖。少数株主保護と基準日設定の妥当性が最大の論点」と整理できれば十分。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">② なぜ好業績なのに非公開化するのか（「強いほど上場廃止」の逆説）</div>
+    <div class="def">
+      <p>直感に反して、<b>強い会社ほど非公開化を選ぶ</b>ケースが増えている。理由は2つ。（a）<b>長期投資と四半期開示の矛盾</b>：AI材料の次世代開発は数年・巨額のR&D/capexを要するが、上場下では短期利益を削る「コスト」として株価の重しになる。（b）<b>アクティビスト圧力からの解放</b>：本件は社長再任否決というガバナンス危機に至った。非公開化＋PEの安定資本で、短期株主圧力を断ち長期戦略に集中する。「上場のメリット（資金調達・信用）よりデメリット（開示コスト・短期圧力）が上回った」と読む。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">③ 戦略パートナーの「優先株式による10%出資」とは</div>
+    <div class="def">
+      <p>積水化学はSPCの親会社の<b>優先株式（議決権付）</b>を第三者割当で引き受け、議決権約10%・約319億円を出資する。ポイントは、<b>普通株でのマイノリティ出資ではなく優先株を使う</b>点。優先株は配当・残余財産で普通株に優先し、議決権や転換条件を柔軟に設計できるため、①KKRの支配権を保ちつつ、②積水に事業パートナーとしての経済的・戦略的持分を与える、という利害調整に適する。<b>単独LBOではなく事業会社を巻き込む「ハイブリッド型バイアウト」</b>の典型的なストラクチャリング手法。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">④ アクティビスト → PE非公開化の「連鎖」構造</div>
+    <div class="def">
+      <p>近年の日本で定着しつつあるパターン：<b>①アクティビストが株を買い増し経営に圧力→②株価上昇＆経営混乱→③経営陣が安定を求め非公開化を模索→④PEが買収、アクティビストは（時に割安でも）応募して利益確定して退出</b>。本件はオアシスが15.62%を保有し圧力をかけつつ、最終的にTOBに応募合意という「マッチポンプ」的な構図。2026年は日本板硝子（アポロ、約3,000億円）、MCJ（MBO、約2,000億円）など大型非公開化が続く潮流の一部。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑤ 特別委員会とMoM（マジョリティ・オブ・マイノリティ）</div>
+    <div class="def">
+      <p>支配株主取引やMBO類似・ディスカウントTOBでは、少数株主保護のため<b>独立社外取締役等による特別委員会</b>が価格・プロセスの妥当性を検証する（経産省「公正なM&Aの在り方に関する指針」）。<b>MoM条件</b>は「利害関係のない一般株主の過半数の応募」を成立要件に課すもので、少数株主が拒否権を持つ設計。ディスカウントTOBでは特にこれらの手続の実質性が問われる。面接では「本件で特別委が何を根拠に妥当と判断したか（算定基準日・DCF前提）」を掘れると差がつく。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑥ EV/EBITDAと時価総額 — 「約5,285億円」の中身</div>
+    <div class="def">
+      <p>4,750円×約1.11億株＝約5,285億円は<b>エクイティバリュー（株式価値）</b>。太陽HDは現金393億円・借入433億円で<b>実質ネットデットがほぼゼロ</b>のため、<b>EV≒エクイティバリュー</b>。EV/EBITDA（EBITDA約380億円<span class="est">推定</span>）で約14倍<span class="est">推定</span>。PER22倍より低く見えるのは、無借金に近くBSに資産余力があるため。<b>LBOではこのEVを起点にSources&Usesを組み、レバレッジをどこまで乗せられるかを検討する</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識キャッチアップ</h2>
+  <p class="note">オリオン版の基礎知識に加え、本件（上場企業の非公開化・ディスカウントTOB）で特に効く論点を整理。</p>
+
+  <h3>10-1. 上場企業の非公開化（Public-to-Private）の型</h3>
+  <table>
+    <tr><th style="width:26%">型</th><th>内容</th><th style="width:26%">本件・関連例</th></tr>
+    <tr><td>PEによるTOB非公開化</td><td>PEがSPCでTOB→スクイーズアウト→上場廃止。友好的（事前調整）が主流</td><td><b>太陽HD×KKR</b>、日本板硝子×アポロ</td></tr>
+    <tr><td>MBO</td><td>経営陣が出資して非公開化。構造的利益相反が強く公正性担保が重い</td><td>MCJ、（オリオンも経営陣出資のMBO類似）</td></tr>
+    <tr><td>事業会社による完全子会社化</td><td>ストラテジックがTOB。シナジー前提</td><td>—</td></tr>
+    <tr><td>ハイブリッド（PE＋事業会社）</td><td>PE主導＋事業会社が戦略出資。本件の積水化学10%が典型</td><td><b>太陽HD</b></td></tr>
+  </table>
+
+  <h3>10-2. TOBプレミアム／ディスカウントの基準点</h3>
+  <ul class="clean">
+    <li><b>プレミアムの計算基準：</b>通常「①発表前日終値」「②直近1カ月/3カ月/6カ月の平均終値」に対して何%か、を複数併記する。基準日が変わればプレミアムは激変する。</li>
+    <li><b>本件の肝：</b>前日終値比は▲5%（ディスカウント）だが6カ月平均比は+117%。<b>どの基準を「フェア」とみなすかが価格の正当性そのもの</b>。アクティビスト介入で株価が歪んだという主張が、6カ月基準の採用を支える。</li>
+    <li><b>プロの視点：</b>特別委員会・第三者算定機関は市場株価法・類似会社比較法・DCFを併用し、算定レンジと基準日を開示する。ディスカウントTOBではこの開示の説得力が全て。</li>
+  </ul>
+
+  <h3>10-3. バリュエーション3手法＋LBO法（本件版）</h3>
+  <table>
+    <tr><th style="width:26%">手法</th><th>本件での使い方</th></tr>
+    <tr><td>市場株価法</td><td>基準日をどこに置くかで結論が真逆に（前日 vs 6カ月平均）。ディスカウントTOBの論争の中心</td></tr>
+    <tr><td>類似会社比較法</td><td>味の素ファインテクノ・レゾナック等の電子材料や、グローバル半導体材料のEV/EBITDAと比較</td></tr>
+    <tr><td>DCF法</td><td>AI材料の長期成長と設備投資、医薬カーブアウトを織り込む。前提次第でレンジが大きい</td></tr>
+    <tr><td>LBO法</td><td>実質ネットキャッシュのBSにどこまでレバレッジを乗せ、5年で2〜3倍の出口を狙えるか逆算。<b>「安く入れた」入口はIRRを底上げする</b></td></tr>
+  </table>
+
+  <h3>10-4. スクイーズアウトの数字（再掲・暗記）</h3>
+  <ul class="clean">
+    <li><b>3分の1超：</b>市場外取得でTOB義務（金商法）。<b>3分の2：</b>特別決議・株式併合の可決ライン。<b>90%：</b>特別支配株主の株式等売渡請求（総会不要）。</li>
+    <li>本件は42.2%を事前確保済み。TOBで90%到達→株式併合で100%子会社化・上場廃止、という段取り。</li>
+  </ul>
+
+  <h3>10-5. DD（本件で重い論点）</h3>
+  <table>
+    <tr><th style="width:22%">種類</th><th>本件での重要論点</th></tr>
+    <tr><td>ビジネスDD</td><td>ソルダーレジストのシェア持続性、AI需要の循環性、次世代基板（ガラス等）の技術リスク、医薬の分離可能性</td></tr>
+    <tr><td>財務DD</td><td>正常収益力（AIブースト分の持続性の見極め）、設備投資計画、運転資本</td></tr>
+    <tr><td>法務DD</td><td>DICとの資本業務提携解消の条件、少数株主対応・訴訟リスク、輸出管理</td></tr>
+  </table>
+
+  <div class="callout learn">
+    <b class="title">■ キャッチアップの学習動線</b>
+    ①本件の<b>公開買付届出書・意見表明報告書・特別委員会の答申</b>（EDINET）を読む——ディスカウントTOBの算定根拠と基準日の論理が1次情報で追える最良の教材。②同時期の非公開化（日本板硝子/アポロ、MCJ）を同フレームで比較。③LBOモデルを「実質ネットキャッシュ企業にレバレッジを乗せる」前提で自作。④半導体材料セクター（レゾナック、味の素、AGC等）のEV/EBITDAを並べてコンプス感覚を作る。
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト</h2>
+  <ul class="clean">
+    <li><b>① ディスカウントTOBを「基準点問題」として構造化する。</b>前日比▲5% vs 6カ月比+117%。どの基準がフェアか、特別委はなぜ後者を採ったか、を自分の言葉で説明できると強い。</li>
+    <li><b>② 「アクティビスト→PE非公開化」の連鎖を理解している。</b>オアシスが株価を上げ、最後は自ら応募して降りる構図。日本のガバナンス改革が生んだ新しいディールソーシング経路。</li>
+    <li><b>③ タイミングの皮肉を指摘する。</b>TOB価格固定の翌月にAI好決算（営業利益+47%・過去最高）。買い手の情報優位と少数株主の不利益という論点。</li>
+    <li><b>④ ハイブリッド型（PE＋事業会社）を評価する。</b>積水化学の10%優先株出資は、単独LBOにはない事業シナジーと出口の複線化（将来の買い手候補）を内包。</li>
+    <li><b>⑤ バリューアップを「成長投資＋SOTP再編」で語る。</b>コア電子への集中投資と、非中核医薬のカーブアウトによるコングロ・ディスカウント解消。</li>
+    <li><b>⑥ オリオンとの対比で日本PEの2つの型を提示する。</b>「割高に入り保守的に出た消費財の事業承継案件」vs「割安（ディスカウント）に入る成長テック素材案件」——入口バリュエーションの正反対。</li>
+    <li><b>⑦ リターンの生命線はAI需要の持続性。</b>入口の割安さはIRRを底上げするが、成長前提が崩れれば守り切れない。循環性リスクを併記できるとフェア。</li>
+  </ul>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+  <h2>12. 想定Q&A</h2>
+
+  <div class="qa">
+    <div class="q">Q1. なぜ市場価格を下回るディスカウントTOBが「妥当」とされたのですか。あなたはどう評価しますか。</div>
+    <div class="a">「論理は基準点の付け替えです。アクティビスト介入で直近株価が実力値以上に押し上げられていたとの見立てに立てば、介入前の6カ月平均比では+117%プレミアムとなり、4,750円は正常価格への回帰と説明できます。DIC・創業家・オアシス自身の42.2%が応募合意し、特別委員会も妥当と判断しました。ただ私は、少数株主保護の観点では議論の余地が大きいと考えます。市場が現に付けた5,007円を下回る価格を『妥当』とする前例は、大株主が合意すれば少数株主を市場価格未満で締め出せることを意味します。特にTOB発表の翌月にAI需要で過去最高益が出たことを踏まえると、算定基準日と特別委の独立性・情報開示の実質性が、この案件の評価を分けると見ています。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q2. KKRはこの会社で何をして企業価値を上げると思いますか。</div>
+    <div class="a">「二層構造で捉えます。コアの電子事業（世界シェア6割）はAI/HPC基板向けの高機能材料で構造成長するので、四半期プレッシャーから解放された長期の増産capexとR&Dを最大化します。一方、売上の約4分の1を占める医薬などの非中核事業はカーブアウトし、コングロマリット・ディスカウントを解消してコアに資本を集中させます。加えて積水化学との封止・接着材の共同開発でアップサイドを狙い、実質ネットキャッシュのBSにレバレッジを導入して資本効率を上げる。EBITDAブリッジで言えば、コア数量成長・ミックス改善・非中核整理・ボルトオンの4本で5年後に大きく引き上げ、再上場かストラテジックセールで現評価の2〜3倍を狙う絵だと考えます。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q3. この投資の最大のリスクは何ですか。</div>
+    <div class="a">「AI需要の循環性です。FY2026の営業利益+47%という飛躍はAI・半導体の強い需要が前提で、入口は好況ピーク近辺の可能性があります。半導体はシリコンサイクルで振れる歴史があり、循環反転でEBITDAが下振れすれば、いくら入口がディスカウントでも守り切れません。次に、次世代パッケージ（ガラス基板等）への技術シフトでシェアが浸食されるリスク、そしてディスカウントTOB特有の少数株主訴訟リスク。DDでは、AIブースト分の正常収益力の見極めと、シェアの技術的持続性の検証を最優先にします。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q4. 積水化学が10%出資する意味は何ですか。単純なLBOと何が違いますか。</div>
+    <div class="a">「ハイブリッド型バイアウトで、財務投資家のLBOに事業シナジーと出口の複線化を足した設計です。太陽の絶縁材と積水の封止・接着材は技術補完性が高く、非公開下でこそ深い共同開発ができます。優先株を使うのは、KKRの支配権を保ちつつ積水に経済的・戦略的持分を与える利害調整のためです。さらに積水は将来のストラテジックな買い手候補にもなり得るので、KKRにとっては出口の選択肢を1つ確保する意味もあります。単独LBOに比べ、バリューアップの実現性と出口の確実性の両面で厚みが増す構造です。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q5. オリオンビールの案件と比べて、この案件をどう位置づけますか。</div>
+    <div class="a">「日本PEの対照的な2つの型です。オリオンは地方名門ブランドの事業承継型で、割高に入り、値上げ・プレミアム化による利益率改善で価値を作り、保守的なIPOで出た『守りの案件』。太陽HDはグローバルニッチトップの成長テック素材で、アクティビスト圧力を起点にディスカウントで安く入り、AI成長投資と事業再編でマルチプル拡大まで狙える『攻めの案件』です。入口バリュエーションが正反対（割高 vs 割安）で、価値創造の源泉も違う（利益率改善 vs 成長＋SOTP再編）。両者を並べると、日本PEが事業承継から成長・カーブアウト・アクティビスト起点へと投資機会を広げていることが分かります。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q6.（基礎確認）この案件のEVはいくらですか。時価総額とどう違いますか。</div>
+    <div class="a">「時価総額（エクイティバリュー）は4,750円×約1.11億株で約5,285億円。太陽HDは現金約393億円・借入約433億円で実質ネットデットがほぼゼロなので、EV＝時価総額＋純有利子負債はほぼ同額の約5,300億円弱です。EBITDA約380億円<span class="est">推定</span>ならEV/EBITDAは約14倍。PER約22倍より低く見えるのは、ほぼ無借金でBSに資産余力があるためで、この余力こそLBOでレバレッジを乗せられる原資になります。」</div>
+  </div>
+
+  <footer>
+    <b>主要ソース（公開情報）</b><br>
+    <a href="https://www.bloomberg.com/jp/news/articles/2026-03-31/TCRRIQKK3NYM00">Bloomberg「KKR、太陽HDを買収し非上場化へ－1株4750円で公開買い付け計画」(2026/3)</a>／
+    <a href="https://maonline.jp/news/20260331p">M&A Online「太陽ホールディングス＜4626＞、KKRによるTOBで株式を非公開化」(2026/3)</a>／
+    <a href="https://www.nikkei.com/article/DGXZQOUC18A2F0Y5A211C2000000/">日本経済新聞「太陽HD、米KKRが5000億円で非公開化へ オアシスや創業家が賛同」</a>／
+    <a href="https://www.nikkei.com/article/DGXZQOUC042360U6A200C2000000/">日本経済新聞「太陽HD、株主からの四面楚歌で迫られた非公開化 KKRが主導」</a>／
+    <a href="https://www.bloomberg.com/jp/news/articles/2026-02-25/T8UF2DKJH6V700">Bloomberg「太陽HDが非上場化へ、特別委がKKR買収提案の妥当性認める」(2026/2)</a>／
+    <a href="https://www.sekisui.co.jp/news/2026/1450716_42699.html">積水化学工業「太陽ホールディングス株式取得を目的とするSPCへの出資に関するお知らせ」</a>／
+    <a href="https://marketrepo.tokyo/articles/d20260225_c4626_taiyo_hd_kkr_tob.php">Market Repo「太陽HD、KKRによる非上場化TOBで急落 — ディスカウントTOBとは何か」</a>／
+    <a href="https://note.com/ma_mado/n/na32c49d4b20b">M&A Do「KKRが太陽HDを『株価以下』で買う──5000億円ディスカウントTOB」</a>／
+    <a href="https://note.com/ma_mado/n/n708021625152">M&A Do「KKRが太陽HDを非上場化──世界シェア60%隠れた巨人が選んだ5000億円の賭け」</a>／
+    <a href="https://finance.logmi.jp/articles/381524">ログミーFinance「太陽HD、26年3月期は医薬事業が増収増益に貢献」</a>／
+    <a href="https://irbank.net/4626/pl">IRBANK 太陽HD（4626）業績推移（長期時系列）</a>／
+    <a href="https://www.taiyo-hd.co.jp/jp/investor/highlight.html">太陽ホールディングス IR 財務ハイライト</a>／
+    <a href="https://www.taiyo-hd.co.jp/_cms/wp-content/uploads/2025/04/20250430_01.pdf">太陽HD 2025年3月期 決算短信</a>
+    <br><br>
+    <span class="note">※本件はTOB未開始の進行中案件であり、条件・スケジュールは今後変動し得る。「推定」表記の数値は公開情報からの逆算・推計。財務数値は連結・日本基準。本資料は2026年7月17日時点の公開情報に基づく面接対策用の分析であり、投資勧誘を目的とするものではない。</span>
+  </footer>
+
+</div>
+</body>
+</html>
