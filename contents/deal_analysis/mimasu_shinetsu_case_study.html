@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>信越化学 × 三益半導体 TOBケーススタディ｜面接対策レポート</title>
+<style>
+  :root{
+    --navy:#0f2a43; --navy2:#16395c; --accent:#c9a13b; --bg:#f7f8fa;
+    --text:#26303a; --muted:#6b7683; --line:#dde3e9; --red:#b23a48; --green:#2f7d5b; --blue:#2b6cb0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background:var(--bg); color:var(--text); line-height:1.75; font-size:15px;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 28px 80px;}
+  header.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 70%); color:#fff; padding:56px 28px 44px;}
+  .hero-inner{max-width:980px; margin:0 auto;}
+  .hero .tag{display:inline-block; border:1px solid var(--accent); color:var(--accent); font-size:12px; letter-spacing:.15em; padding:3px 12px; margin-bottom:16px;}
+  .hero h1{font-size:29px; font-weight:700; line-height:1.4; margin-bottom:10px;}
+  .hero p.sub{color:#c8d4e0; font-size:14px;}
+  .hero .meta{margin-top:18px; font-size:12px; color:#9fb2c4;}
+  nav.toc{background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px 26px; margin:-26px auto 40px; max-width:980px; position:relative; box-shadow:0 2px 10px rgba(15,42,67,.08);}
+  nav.toc strong{font-size:13px; color:var(--navy); letter-spacing:.1em;}
+  nav.toc ol{margin:8px 0 0 20px; columns:2; font-size:13.5px;}
+  nav.toc a{color:var(--navy2); text-decoration:none;}
+  nav.toc a:hover{text-decoration:underline;}
+  section{margin-top:52px;}
+  h2{font-size:21px; color:var(--navy); border-left:5px solid var(--accent); padding-left:14px; margin-bottom:20px;}
+  h3{font-size:16.5px; color:var(--navy2); margin:26px 0 10px;}
+  h4{font-size:14.5px; color:var(--navy2); margin:18px 0 8px;}
+  p{margin-bottom:12px;}
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:20px 0;}
+  .kpi{background:#fff; border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:6px; padding:16px 18px;}
+  .kpi .v{font-size:21px; font-weight:700; color:var(--navy);}
+  .kpi .l{font-size:12px; color:var(--muted); margin-top:4px;}
+  table{width:100%; border-collapse:collapse; background:#fff; margin:16px 0; font-size:13.5px;}
+  th{background:var(--navy); color:#fff; padding:9px 12px; text-align:left; font-weight:600;}
+  td{padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:nth-child(even) td{background:#fbfcfd;}
+  td.num, th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  .callout{background:#fff; border-left:4px solid var(--accent); border-radius:0 6px 6px 0; padding:16px 20px; margin:18px 0; box-shadow:0 1px 4px rgba(15,42,67,.06);}
+  .callout.insight{border-left-color:var(--green);}
+  .callout.risk{border-left-color:var(--red);}
+  .callout.learn{border-left-color:var(--blue);}
+  .callout b.title{display:block; font-size:13px; letter-spacing:.08em; margin-bottom:6px; color:var(--navy);}
+  .timeline{list-style:none; margin:20px 0; padding-left:0;}
+  .timeline li{position:relative; padding:0 0 22px 30px; border-left:2px solid var(--line); margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 2px var(--accent);}
+  .timeline .d{font-weight:700; color:var(--navy); font-size:13.5px;}
+  .qa{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .qa .q{background:#eef2f6; padding:12px 18px; font-weight:700; color:var(--navy); font-size:14px;}
+  .qa .a{padding:14px 18px; font-size:13.8px;}
+  .glossary{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .glossary .term{background:#f0f4f8; padding:11px 18px; font-weight:700; color:var(--navy2); font-size:14px; border-bottom:1px solid var(--line);}
+  .glossary .def{padding:14px 18px; font-size:13.8px;}
+  .glossary .def p{margin-bottom:10px;}
+  .note{font-size:12px; color:var(--muted);}
+  .est{color:var(--red); font-size:11px; font-weight:700; border:1px solid var(--red); border-radius:3px; padding:0 4px; margin-left:4px; vertical-align:middle;}
+  .bar-row{display:flex; align-items:center; gap:10px; margin:4px 0; font-size:12.5px;}
+  .bar-row .y{width:76px; color:var(--muted); text-align:right; flex-shrink:0;}
+  .bar-row .bar{height:16px; background:linear-gradient(90deg,var(--navy2),#3d6a99); border-radius:2px;}
+  .bar-row .bar.hi{background:linear-gradient(90deg,var(--green),#5aa985);}
+  .bar-row .val{color:var(--navy); font-weight:600; flex-shrink:0;}
+  footer{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted);}
+  footer a{color:var(--navy2); word-break:break-all;}
+  ul.clean{margin:0 0 12px 22px;}
+  ul.clean li{margin-bottom:6px;}
+  @media print{ body{background:#fff;} nav.toc{box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="tag">M&A / TAKE-PRIVATE CASE STUDY</span>
+    <h1>信越化学 × 三益半導体：世界首位のシリコンウエハー企業による<br>「親子上場解消」型の完全子会社化TOB</h1>
+    <p class="sub">2024年4月発表・1株3,700円（プレミアム+35%・少数株主分 約680億円）→ 2024年11月 上場廃止 → シリコンウエハー・サプライチェーンの垂直統合</p>
+    <div class="meta">作成日：2026年7月17日｜面接想定：日系・外資系PEファンド／M&A アソシエイト採用｜推定値は<span class="est" style="border-color:#c9a13b;color:#c9a13b;">推定</span>と明記｜本件は<b>PEではなく事業会社（親会社）による戦略的買収</b>——ディール分析の「第3の型」として整理</div>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>CONTENTS</strong>
+  <ol>
+    <li><a href="#s1">エグゼクティブサマリー</a></li>
+    <li><a href="#s2">ディール概要とストラクチャー</a></li>
+    <li><a href="#s3">事業・財務ディープダイブ</a></li>
+    <li><a href="#s4">戦略的合理性（なぜ今100%化か）</a></li>
+    <li><a href="#s5">シナジーと300mm投資の論理</a></li>
+    <li><a href="#s6">親子上場解消と少数株主保護論点</a></li>
+    <li><a href="#s7">ディール・エコノミクス（なぜPEでないか）</a></li>
+    <li><a href="#s8">リスクと批判的視点</a></li>
+    <li><a href="#s9">難解ポイント徹底解説</a></li>
+    <li><a href="#s10">FA未経験者のための基礎知識</a></li>
+    <li><a href="#s11">面接で差がつくインサイト</a></li>
+    <li><a href="#s12">想定Q&A</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<!-- 1 -->
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>本件は、シリコンウエハーで世界首位の<b>信越化学工業（4063）</b>が、既に43.87%を保有する持分法適用関連会社で、ウエハー加工を担う<b>三益半導体工業（8155）</b>を、TOBにより<b>1株3,700円（前日終値比+35.4%）</b>で完全子会社化・上場廃止にした案件である。2024年4月25日に発表、TOBは6〜8月に実施され、少数株主分（約56%）の買付総額は<b>約680億円</b>。11月に東証プライムから上場廃止となった。オリオンビール（PE・IPOエグジット）、太陽HD（PE・ディスカウントTOB）とは性格が異なり、本件は<b>PEではなく事業会社による戦略的な垂直統合</b>——日本のコーポレートガバナンス改革の中心テーマである<b>「親子上場の解消」</b>の代表例であり、少数株主保護と利益相反という論点が凝縮された「第3の型」である。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">3,700円</div><div class="l">TOB価格（前日終値2,732円比 +35.4%）</div></div>
+    <div class="kpi"><div class="v">約680億円</div><div class="l">買付総額（少数株主分・約56%）</div></div>
+    <div class="kpi"><div class="v">43.87% → 100%</div><div class="l">信越化学の保有比率（持分法→完全子会社）</div></div>
+    <div class="kpi"><div class="v">世界首位</div><div class="l">信越のシリコンウエハーシェア（子会社=信越半導体）</div></div>
+    <div class="kpi"><div class="v">約1,309億円</div><div class="l">上場廃止時 時価総額（PER約16.6倍）</div></div>
+    <div class="kpi"><div class="v">770億円</div><div class="l">三益の300mm新工場投資（2025年7月竣工予定）</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">■ 30秒で語るならこう言う</b>
+    「世界首位のシリコンウエハーメーカー信越化学が、加工を担う上場子会社を完全子会社化した垂直統合案件です。PEのバイアウトとは異なり、財務投資家のリターン最大化ではなく、①親子上場に伴う利益相反の解消、②AI・半導体需要に対応する300mm新工場（770億円）への一体的な設備投資、③技術・人材の統合、が狙いです。焦点は少数株主保護。親会社が価格を決め、シナジーは親会社に帰属するため、+35%のプレミアムが少数株主に対して本当にフェアかが問われます。東証・経産省が親子上場解消を促す潮流の中で、特別委員会の独立性と算定の妥当性が評価軸になります。オリオン（PE・IPO出口）、太陽HD（PE・ディスカウント）と並べると、日本の非公開化の3つの型が揃います。」
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <h2>2. ディール概要とストラクチャー</h2>
+
+  <h3>2-1. 対象会社：三益半導体工業（8155）</h3>
+  <ul class="clean">
+    <li><b>本業：</b>群馬県高崎市。<b>シリコンウエハーの加工（鏡面研磨・洗浄・再生等）</b>を主力とし、親会社系の信越半導体（世界首位のウエハーメーカー）向けを中心に受託加工を担う。従業員約1,166名。決算期は5月。</li>
+    <li><b>位置づけ：</b>信越グループのウエハー・サプライチェーンに深く組み込まれた<b>加工の中核パートナー</b>。単体では低〜中マージンの装置産業型。</li>
+    <li><b>成長投資：</b>高崎の既存工場隣接地に<b>300mmシリコンウエハー専用工場を770億円で新設</b>（2025年7月竣工予定）。AI・半導体需要への対応で巨額capexを実行中。</li>
+    <li><b>財務特性：</b>ROE 8.8%、営業利益率11.6%（FY2024/5）。装置産業として資産重め・レバレッジ低め<span class="est">推定</span>。</li>
+  </ul>
+
+  <h3>2-2. ストラクチャー</h3>
+  <table>
+    <tr><th style="width:30%">項目</th><th>内容</th></tr>
+    <tr><td>買主体</td><td>信越化学工業（4063）。既存の持分法適用関連会社を完全子会社化</td></tr>
+    <tr><td>買収前の保有</td><td><b>43.87%</b>（信越化学が直接42.75%＋子会社の信越半導体経由で1.12%）＝筆頭株主・持分法適用</td></tr>
+    <tr><td>TOB価格</td><td>1株3,700円。2024年4月25日終値2,732円に対し<b>+35.4%プレミアム</b></td></tr>
+    <tr><td>買付総額</td><td>少数株主分（約56%）で<b>約680億円</b>。100%換算の株式価値は約1,188億円<span class="est">推定</span></td></tr>
+    <tr><td>バリュエーション</td><td>TOB価格ベースのPERは約16.6倍<span class="est">推定</span>（FY2024/5 EPS 222.45円）</td></tr>
+    <tr><td>手法</td><td>TOB→スクイーズアウトで100%化。公開買付代理人は大和証券</td></tr>
+    <tr><td>公正性担保</td><td>親会社による上場子会社の買収＝<b>構造的利益相反</b>があるため、独立特別委員会・第三者算定・少数株主保護措置が手続の要</td></tr>
+  </table>
+
+  <h3>2-3. タイムライン</h3>
+  <ul class="timeline">
+    <li><span class="d">2005〜2006年</span><br>信越化学が三益株の27%超を取得、翌年40%超へ。以来、持分法適用関連会社として親子関係が継続</li>
+    <li><span class="d">2024年4月25日</span><br>信越化学が完全子会社化を発表。TOB価格3,700円（+35.4%）、買付総額約680億円</li>
+    <li><span class="d">2024年6月21日〜8月5日</span><br>TOB実施。応募が下限を上回り成立</li>
+    <li><span class="d">2024年8月13日</span><br>三益半導体が信越化学の連結子会社に</li>
+    <li><span class="d">2024年11月12日</span><br>東証プライム市場から<b>上場廃止</b>。親子上場を解消</li>
+    <li><span class="d">2025年7月（予定）</span><br>300mm専用新工場（770億円投資）竣工予定。完全子会社として一体的に増産</li>
+  </ul>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ</h2>
+
+  <h3>3-1. 事業構造：ウエハー・サプライチェーンの「加工」を担う</h3>
+  <p>信越化学の半導体シリコン事業（世界首位）は、子会社の信越半導体がウエハーを製造し、三益半導体がその<b>加工（研磨・洗浄・検査・再生）</b>の重要工程を担う——という垂直の分業構造。三益は「信越グループの加工エンジン」であり、単体の事業リスクは親会社の需要に強く連動する。装置産業ゆえ設備投資が重く、利益率は素材メーカー（例：太陽HDのOPM23%）より低い中位水準。</p>
+
+  <h3>3-2. 業績推移（単体・5月決算）</h3>
+  <p class="note">単位：億円。非連結（単体）・日本基準。出所：決算短信（IRBANK集計）。</p>
+  <table>
+    <tr><th>決算期</th><th class="num">売上高</th><th class="num">営業利益</th><th class="num">OPM</th><th class="num">純利益</th><th class="num">EPS(円)</th><th>コメント</th></tr>
+    <tr><td>2018/5</td><td class="num">741.8</td><td class="num">45.0</td><td class="num">6.1%</td><td class="num">30.7</td><td class="num">95.6</td><td>—</td></tr>
+    <tr><td>2019/5</td><td class="num">951.6</td><td class="num">56.5</td><td class="num">5.9%</td><td class="num">38.1</td><td class="num">118.5</td><td>ウエハー好況ピーク</td></tr>
+    <tr><td>2020/5</td><td class="num">920.8</td><td class="num">59.3</td><td class="num">6.4%</td><td class="num">38.7</td><td class="num">120.6</td><td>—</td></tr>
+    <tr><td>2021/5</td><td class="num">850.5</td><td class="num">60.9</td><td class="num">7.2%</td><td class="num">41.3</td><td class="num">128.7</td><td>調整局面でも増益</td></tr>
+    <tr><td>2022/5</td><td class="num">744.3</td><td class="num">75.6</td><td class="num">10.2%</td><td class="num">51.3</td><td class="num">159.6</td><td>採算改善</td></tr>
+    <tr><td>2023/5</td><td class="num">909.4</td><td class="num">111.8</td><td class="num">12.3%</td><td class="num">76.2</td><td class="num">237.1</td><td><b>過去最高益</b></td></tr>
+    <tr><td><b>2024/5</b></td><td class="num"><b>891.1</b></td><td class="num"><b>103.1</b></td><td class="num"><b>11.6%</b></td><td class="num"><b>71.5</b></td><td class="num"><b>222.5</b></td><td><b>TOB発表期。高採算を維持</b></td></tr>
+  </table>
+
+  <h4>営業利益率の推移（採算の構造改善）</h4>
+  <div>
+    <div class="bar-row"><span class="y">2019/5</span><div class="bar" style="width:41%"></div><span class="val">5.9%</span></div>
+    <div class="bar-row"><span class="y">2021/5</span><div class="bar" style="width:50%"></div><span class="val">7.2%</span></div>
+    <div class="bar-row"><span class="y">2022/5</span><div class="bar" style="width:71%"></div><span class="val">10.2%</span></div>
+    <div class="bar-row"><span class="y">2023/5</span><div class="bar hi" style="width:85%"></div><span class="val">12.3%</span></div>
+    <div class="bar-row"><span class="y">2024/5</span><div class="bar hi" style="width:80%"></div><span class="val">11.6%</span></div>
+  </div>
+
+  <h3>3-3. バリュエーション</h3>
+  <table>
+    <tr><th style="width:30%">項目</th><th class="num" style="width:20%">値</th><th>読み解き</th></tr>
+    <tr><td>TOB価格</td><td class="num">3,700円</td><td>前日終値2,732円比 +35.4%</td></tr>
+    <tr><td>PER（対FY2024/5 EPS）</td><td class="num">約16.6倍</td><td>装置産業として妥当レンジ。PBR約1.4倍</td></tr>
+    <tr><td>上場廃止時 時価総額</td><td class="num">約1,309億円</td><td>株価がTOB価格に収斂</td></tr>
+    <tr><td>100%株式価値<span class="est">推定</span></td><td class="num">約1,188億円</td><td>3,700円×約3,210万株</td></tr>
+    <tr><td>少数株主分の買付</td><td class="num">約680億円</td><td>100%−43.87%＝約56%相当</td></tr>
+  </table>
+  <div class="callout insight">
+    <b class="title">■ インサイト：本件の本質は「バリューアップ」ではなく「支配の完全化」</b>
+    PE案件が「安く買って高く売る（マルチプル×EBITDA×レバレッジ）」だとすれば、本件は<b>既に43.87%を握る親会社が、残り56%を買い取って意思決定と投資・キャッシュフローを完全に取り込む</b>取引。狙いはリターン倍率ではなく、①利益相反の解消、②300mm投資の一体最適化、③グループ内の技術・人材統合。<b>「PEの物差し（IRR/MOIC）で測る案件ではない」と最初に言い切れるかが理解度の証明</b>。
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <h2>4. 戦略的合理性（なぜ今100%化か）</h2>
+  <table>
+    <tr><th style="width:33%">理由</th><th>内容</th></tr>
+    <tr><td>① 親子上場の利益相反解消</td><td>東証・経産省が「上場子会社のガバナンス（少数株主との利益相反）」を問題視し解消を促す潮流。43.87%保有の持分法関連会社を残す合理性が低下していた</td></tr>
+    <tr><td>② 巨額capexの一体最適化</td><td>三益は300mm新工場に770億円を投資中。AI・半導体のウエハー需要に対し、親子で別会計・別ガバナンスのまま巨額投資を続けるより、100%化して<b>グループ全体で投資・稼働・在庫を最適化</b>する方が合理的</td></tr>
+    <tr><td>③ 技術・ノウハウ・人材の統合</td><td>加工技術と製造技術の共有、人材交流の深化。開示上の目的も「技術・知見の共有と人的交流の強化」</td></tr>
+    <tr><td>④ サプライチェーンの機密性</td><td>先端ウエハー加工の技術・顧客情報を、上場子会社の開示義務から切り離してグループ内に囲い込む</td></tr>
+    <tr><td>⑤ 完全なキャッシュフロー取り込み</td><td>持分法（43.87%）では利益の一部しか取り込めない。100%化で三益の全利益・全CFを連結に取り込む</td></tr>
+  </table>
+  <div class="callout insight">
+    <b class="title">■ インサイト：3つの型の対比で日本の非公開化を俯瞰する</b>
+    <b>①オリオン（PE・事業承継→IPO出口）</b>、<b>②太陽HD（PE・アクティビスト起点→ディスカウントTOB）</b>、<b>③三益（事業会社・親子上場解消→垂直統合・永久保有）</b>。買い手（財務 vs 事業）、動機（リターン vs 支配・シナジー）、出口（あり vs なし）が三者三様。<b>「非公開化」と一括りにせず買い手の性質で場合分けできると、面接での解像度が一段上がる</b>。
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <h2>5. シナジーと300mm投資の論理</h2>
+  <table>
+    <tr><th style="width:26%">シナジー領域</th><th>内容</th></tr>
+    <tr><td>① 設備投資の一体最適化</td><td>信越半導体の製造能力増強と三益の加工能力（300mm新工場）を、需要予測・稼働・在庫まで含めて統合計画。二重投資や能力ミスマッチを回避</td></tr>
+    <tr><td>② 研究開発・工程技術</td><td>ウエハー製造（親）と加工（子）の工程技術を垂直に融合し、先端ノード対応の品質・歩留まりを向上</td></tr>
+    <tr><td>③ 人材・組織</td><td>技術者の相互配置・育成、グループ人事の一体運用</td></tr>
+    <tr><td>④ 意思決定スピード</td><td>上場子会社としての独立ガバナンス・少数株主配慮を外し、親会社の戦略に直結した迅速な投資判断</td></tr>
+    <tr><td>⑤ 調達・購買</td><td>グループ購買の統合による材料・ユーティリティのコスト効率</td></tr>
+  </table>
+  <div class="callout learn">
+    <b class="title">■ 面接での見せ方：シナジーの「帰属先」を意識する</b>
+    垂直統合のシナジーは主として<b>親会社（信越化学）側</b>に帰属する。だからこそ、少数株主に払うプレミアム（+35%）が「本来子会社に帰属すべき将来価値・シナジーの対価として十分か」という論点に直結する。<b>シナジーの金額と帰属先を分けて語れると、単なる事実説明を超えた分析になる</b>。
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <h2>6. 親子上場解消と少数株主保護論点</h2>
+
+  <h3>6-1. なぜ「親子上場」が問題視されるのか</h3>
+  <ul class="clean">
+    <li><b>構造的利益相反：</b>親会社は子会社の支配株主であると同時に、取引先・親会社としての利害を持つ。子会社の少数株主の利益と、親会社グループの利益が対立し得る（例：グループ内取引条件、配当政策、資本配分）。</li>
+    <li><b>東証・経産省の圧力：</b>東証は「従属上場会社における少数株主保護」の枠組みを整備し、親子上場の合理性の継続的説明を求めている。経産省「公正なM&Aの在り方に関する指針」も支配株主による買収の公正性担保を要求。<b>親子上場解消はここ数年の大きな潮流</b>。</li>
+    <li><b>本件の位置づけ：</b>信越化学が43.87%を持ち続ける合理性が問われる中での100%化は、この潮流に沿った「解消」の一例。</li>
+  </ul>
+
+  <h3>6-2. 少数株主保護の手続</h3>
+  <table>
+    <tr><th style="width:30%">措置</th><th>内容</th></tr>
+    <tr><td>独立特別委員会</td><td>利害関係のない社外取締役等で構成。価格・プロセスの妥当性を検証し取締役会に答申</td></tr>
+    <tr><td>第三者算定機関</td><td>独立FA/評価機関が市場株価法・類似会社比較法・DCFで算定レンジを提示</td></tr>
+    <tr><td>プレミアム</td><td>前日終値比+35.4%。国内の支配株主による完全子会社化として一般的な水準<span class="est">推定</span></td></tr>
+    <tr><td>MoM等</td><td>少数株主の応募状況・買付下限の設定で、一般株主の意思を反映する設計</td></tr>
+  </table>
+
+  <div class="callout risk">
+    <b class="title">■ 批判的視点：+35%は「シナジーの分け前」として十分か</b>
+    親子上場解消TOBの本質的論点は<b>「シナジーは誰のものか」</b>。垂直統合の果実（一体投資・工程融合）は主に親会社に帰属する。少数株主は上場市場から強制的に退出させられる以上、<b>そのシナジー価値の一部を織り込んだ価格</b>を受け取るべき、という考え方がある。+35%は市場株価比では見栄えするが、DCFの本源的価値や300mm新工場が生む将来キャッシュフローを踏まえると「安い」との批判も成り立つ。<b>特別委員会がDCF前提と基準日をどう置いたか</b>が評価の分かれ目。<b>親会社は価格を吊り上げる誘因が弱い（自らが買い手）</b>ため、手続の実質性が唯一の歯止めになる。
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <h2>7. ディール・エコノミクス（なぜPEでないか）</h2>
+  <p>本件は財務スポンサーの案件ではないため、IRR/MOICで測る対象ではない。<b>戦略的買い手（strategic）と財務的買い手（financial/PE）の違い</b>を整理して語るのが正しい。</p>
+  <table>
+    <tr><th style="width:24%">観点</th><th>PE（財務的買い手）</th><th>本件＝信越化学（戦略的買い手）</th></tr>
+    <tr><td>目的</td><td>数年で企業価値を上げ売却し、IRR/MOICを最大化</td><td>永久保有前提。グループ全体の競争力・シナジー最大化</td></tr>
+    <tr><td>払える価格</td><td>LBOの返済制約で上限が決まる</td><td>シナジーを織り込め、事業戦略上必要なら高くても払える（が本件は親会社ゆえ価格抑制の誘因も）</td></tr>
+    <tr><td>レバレッジ</td><td>LBOローンを多用</td><td>信越化学の自己資金・信用力で実行（LBO不要）</td></tr>
+    <tr><td>出口</td><td>IPO/セカンダリー/ストラテジック売却</td><td><b>出口なし</b>（永久保有・グループ統合）</td></tr>
+    <tr><td>価値創造</td><td>オペ改善・レバレッジ・マルチプル</td><td>垂直統合・工程融合・投資最適化</td></tr>
+  </table>
+  <div class="callout insight">
+    <b class="title">■ インサイト：PE面接で本件をどう「使う」か</b>
+    「これはPE案件ではありません」と正しく峻別した上で、<b>PEの視点で逆算する</b>と面白い——もし三益がPEのターゲットだったら？装置産業で資産重・低〜中マージンだが、300mm投資後のキャッシュ創出とウエハー需要の構造成長を取れれば投資妙味はある。ただし顧客が事実上親会社系に集中し独立性がないため、<b>PEには不向き（スタンドアロン価値が立たない）</b>——だからこそ親会社による垂直統合が最も合理的な帰結、と論じられると立体的。
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <h2>8. リスクと批判的視点</h2>
+  <table>
+    <tr><th style="width:28%">リスク</th><th>内容と評価</th></tr>
+    <tr><td>① 少数株主の価格不満・訴訟</td><td>支配株主による買収は「安く買い叩いた」との批判・株式買取請求・価格決定申立ての火種。特別委の独立性と算定の実質性が争点</td></tr>
+    <tr><td>② 半導体シリコンの循環性</td><td>ウエハー需要はシリコンサイクルで振れる。770億円の300mm投資は需要前提で、循環反転時の稼働率・減価償却負担が重石</td></tr>
+    <tr><td>③ 単一グループ依存</td><td>三益の事業は信越グループ需要に依存。グループ戦略の変更が業績を直接左右（もっとも100%化でこのリスクは親会社が内部化）</td></tr>
+    <tr><td>④ 巨額capexの回収</td><td>300mm新工場の投資回収は需要と歩留まり次第。統合後の資本配分の巧拙が問われる</td></tr>
+    <tr><td>⑤ ガバナンス形式の後退懸念</td><td>非公開化で外部の規律（開示・市場）が外れる。統合効率と引き換えに透明性は低下</td></tr>
+  </table>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説</h2>
+
+  <div class="glossary">
+    <div class="term">① 「親子上場」とは何か。なぜ解消が潮流なのか</div>
+    <div class="def">
+      <p><b>親子上場＝親会社と子会社（または関連会社）がともに上場している状態</b>。日本に特有に多い。問題は<b>構造的利益相反</b>：親会社は子会社を支配しつつ、自らの利害（グループ内取引、資本配分、人材）も持つため、子会社の少数株主の利益と衝突し得る。東証・経産省がガバナンス改革の一環で「合理性の説明」や少数株主保護を強く求めるようになり、<b>①完全子会社化（本件）</b>か<b>②売却・切り離し（親離れ）</b>で解消する動きが加速。本件は①の典型例。面接では「日本のガバナンス改革→親子上場解消→TOB増加」という<b>ディールソーシングの構造</b>として語れると強い。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">② 持分法適用関連会社と連結子会社の違い（43.87%→100%の意味）</div>
+    <div class="def">
+      <p><b>持分法適用関連会社</b>（概ね20〜50%保有・重要な影響力）は、親会社の連結P/Lに<b>「持分法投資損益」として純利益の持分相当のみ</b>が反映される（売上や個別費用は連結されない）。一方<b>連結子会社</b>（過半数支配）は<b>売上・費用・資産・負債を全て取り込み（100%連結）、少数株主持分を控除</b>する。信越は43.87%（持分法）→100%（完全子会社）にすることで、<b>三益の全売上・全キャッシュフローを取り込み、少数株主持分もゼロになる</b>。垂直統合の会計上のインパクトを説明できるかがポイント。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">③ 支配株主によるTOBと「シナジーの帰属」問題</div>
+    <div class="def">
+      <p>通常の第三者TOBでは、買い手と売り手（少数株主）は独立当事者で、価格は交渉で決まる。しかし<b>支配株主（親会社）による買収は、買い手＝支配株主が実質的に価格決定権を握る</b>ため、少数株主は不利になりやすい。特に<b>統合シナジーは主に親会社に帰属</b>するのに、少数株主は市場株価＋一定プレミアムで退出させられる。「フェアなプレミアムとは、市場株価比だけでなく、DCFの本源的価値やシナジーの一部を織り込んだ水準か」が争点。これを担保するのが特別委員会・第三者算定・MoMという<b>公正性担保措置</b>。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">④ 特別委員会とMoM（マジョリティ・オブ・マイノリティ）</div>
+    <div class="def">
+      <p>支配株主取引・MBO等では、少数株主保護のため<b>独立社外取締役等による特別委員会</b>が価格・プロセスの妥当性を検証する（経産省「公正なM&Aの在り方に関する指針」）。<b>MoM条件</b>は「利害関係のない一般株主の過半数の応募」を成立要件に課し、少数株主に事実上の拒否権を与える設計。親子上場解消TOBでは、これらの手続の<b>実質性（形だけでないか）</b>が価格の公正性を担保する唯一の歯止めになる。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑤ 垂直統合（vertical integration）とスタンドアロン価値</div>
+    <div class="def">
+      <p><b>垂直統合＝サプライチェーンの上流・下流を同一資本に取り込むこと</b>。本件は「ウエハー製造（信越半導体）＋加工（三益）」の垂直統合。メリットは工程最適化・機密保持・投資協調。<b>スタンドアロン価値</b>とは「その会社が独立企業として単独で生む価値」。三益は顧客が事実上グループに集中し独立性が乏しいため<b>スタンドアロン価値が立ちにくく、PE（独立企業として磨いて売る）には不向き、親会社の統合が最適</b>——という論理が、なぜ買い手が信越化学なのかを説明する。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑥ プレミアムの基準（+35%はどう計算したか）</div>
+    <div class="def">
+      <p>TOBプレミアムは通常「①発表前日終値」「②直近1/3/6カ月平均終値」に対する上乗せ幅を併記する。本件は<b>前日終値2,732円に対し3,700円＝+35.4%</b>。国内の完全子会社化TOBのプレミアムは概ね30〜40%が一つの目安で、+35%はその中位。ただし<b>「どの基準日か」で見え方が変わる</b>（太陽HDのディスカウントTOBはこの基準点問題が極端化した例）。面接では「+35%はプレミアムの絶対値だけでなく、DCF本源価値・シナジー対比でどうか」まで踏み込めると鋭い。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識キャッチアップ</h2>
+
+  <h3>10-1. 買い手のタイプ（Strategic vs Financial）</h3>
+  <table>
+    <tr><th style="width:26%">タイプ</th><th>特徴</th><th style="width:24%">本ハブの事例</th></tr>
+    <tr><td>戦略的買い手（事業会社）</td><td>シナジー目的・永久保有・自己資金/信用力。シナジー分だけ高く払えるが、親子案件では価格抑制の誘因も</td><td><b>信越化学×三益</b></td></tr>
+    <tr><td>財務的買い手（PE）</td><td>リターン目的・数年で出口・LBO。払える上限は返済制約で決まる</td><td>オリオン×カーライル、太陽HD×KKR</td></tr>
+  </table>
+
+  <h3>10-2. 上場子会社の完全子会社化（親子上場解消）の型</h3>
+  <ul class="clean">
+    <li><b>①TOBによる100%化（本件）：</b>親会社が少数株主分をTOB＋スクイーズアウトで取得。</li>
+    <li><b>②株式交換：</b>親会社株を対価に子会社を完全子会社化（現金不要だが希薄化）。</li>
+    <li><b>③売却・スピンオフ（親離れ）：</b>親会社が保有株を第三者/市場に売却し資本関係を解消。</li>
+    <li>いずれも東証・経産省の少数株主保護フレーム（特別委員会・第三者算定・MoM）が前提。</li>
+  </ul>
+
+  <h3>10-3. バリュエーション（本件の見方）</h3>
+  <table>
+    <tr><th style="width:26%">手法</th><th>本件での使い方</th></tr>
+    <tr><td>市場株価法</td><td>前日終値・各期間平均に+35%。プレミアムの妥当性の出発点</td></tr>
+    <tr><td>類似会社比較法</td><td>SUMCO・信越半導体系や半導体製造装置・加工のEV/EBITDA・PERと比較</td></tr>
+    <tr><td>DCF法</td><td>300mm新工場が生む将来CFを織り込む。<b>ここが本源価値と+35%の妥当性を分ける</b></td></tr>
+  </table>
+
+  <h3>10-4. スクイーズアウトの数字（暗記）</h3>
+  <ul class="clean">
+    <li><b>3分の1超：</b>市場外取得でTOB義務。<b>3分の2：</b>特別決議・株式併合の可決ライン。<b>90%：</b>特別支配株主の株式等売渡請求（総会不要）。</li>
+    <li>本件は元々43.87%保有。TOBで大宗を取得→株式併合等で100%化・上場廃止。</li>
+  </ul>
+
+  <h3>10-5. DD（本件で重い論点）</h3>
+  <table>
+    <tr><th style="width:22%">種類</th><th>本件での重要論点</th></tr>
+    <tr><td>ビジネスDD</td><td>ウエハー需要の循環性、300mm投資の回収前提、グループ依存度、加工技術の競争力</td></tr>
+    <tr><td>財務DD</td><td>capex計画と減価償却、稼働率感応度、単体キャッシュ創出力</td></tr>
+    <tr><td>法務・ガバナンスDD</td><td>親子取引条件の適正性、少数株主対応、特別委員会プロセスの適法性</td></tr>
+  </table>
+
+  <div class="callout learn">
+    <b class="title">■ キャッチアップの学習動線</b>
+    ①本件の<b>公開買付届出書・意見表明報告書・特別委員会の答申</b>（EDINET）で、支配株主TOBの算定根拠と公正性担保措置を読む。②東証「従属上場会社における少数株主保護」・経産省「公正なM&A指針」に目を通す。③親子上場解消の類似案件（NTT×NTTドコモ、日立の上場子会社再編等）を同じフレームで比較。④「戦略的買い手 vs PE」の払える価格の違いを、シナジーとLBO返済制約の両面で説明できるようにする。
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト</h2>
+  <ul class="clean">
+    <li><b>① 「これはPE案件ではない」と峻別できる。</b>戦略的買い手による垂直統合・永久保有で、IRR/MOICでは測らない。買い手タイプの違いを最初に示せると理解度が伝わる。</li>
+    <li><b>② 親子上場解消をガバナンス潮流として理解している。</b>東証・経産省の少数株主保護強化→上場子会社の完全子会社化/親離れが増える、というディールソーシングの構造。</li>
+    <li><b>③ 「シナジーの帰属」を論点化できる。</b>垂直統合の果実は主に親会社へ。+35%プレミアムが少数株主にとってフェアか、を本源価値・シナジー対比で語れると鋭い。</li>
+    <li><b>④ 会計インパクト（持分法→連結）を説明できる。</b>43.87%（持分法投資損益のみ）→100%（全売上・全CF取り込み、少数株主持分ゼロ）。</li>
+    <li><b>⑤ スタンドアロン価値の欠如がPE不向き＝親会社統合が最適、と論理をつなげる。</b>顧客がグループ集中で独立価値が立たない。</li>
+    <li><b>⑥ 3つの型を並べて日本の非公開化を俯瞰する。</b>オリオン（PE・IPO出口）／太陽HD（PE・ディスカウント）／三益（事業会社・親子上場解消）。買い手・動機・出口の三軸で整理。</li>
+    <li><b>⑦ 循環性×巨額capexのリスクを併記する。</b>770億円の300mm投資はウエハー需要前提。フェアな分析として下方リスクも示す。</li>
+  </ul>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+  <h2>12. 想定Q&A</h2>
+
+  <div class="qa">
+    <div class="q">Q1. この案件はPEのバイアウトと何が違いますか。</div>
+    <div class="a">「買い手が財務投資家ではなく事業会社（親会社・信越化学）である点が本質的に違います。PEは数年で企業価値を上げて売却しIRR/MOICを最大化しますが、本件は永久保有前提の垂直統合で、目的はグループ全体のシナジーと競争力です。したがってLBOレバレッジも出口も存在せず、価値創造は工程融合・投資最適化・利益相反の解消。評価もIRRではなく、戦略合理性と少数株主保護の妥当性で見るべき案件です。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q2. なぜ信越化学は今、43.87%から100%に引き上げたのですか。</div>
+    <div class="a">「3点です。第一に、東証・経産省が親子上場の利益相反を問題視し解消を促す潮流の中で、持分法関連会社を残す合理性が薄れていた。第二に、三益が300mmウエハー新工場に770億円を投じており、AI・半導体需要への巨額投資を親子別会計・別ガバナンスで続けるより、100%化してグループ全体で投資・稼働・在庫を最適化する方が合理的。第三に、加工技術と製造技術の統合・人材交流の深化です。持分法では利益の一部しか取り込めませんが、100%化で全キャッシュフローを取り込めるという会計・資本効率上の意味もあります。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q3. +35%のプレミアムは少数株主にとってフェアだと思いますか。</div>
+    <div class="a">「市場株価比では一般的な水準ですが、本源的価値の観点では議論の余地があります。親会社による買収では統合シナジーが主に親会社に帰属し、少数株主は市場から強制退出させられます。したがって、フェアネスは前日終値比の+35%だけでなく、300mm新工場が生む将来キャッシュフローを織り込んだDCF本源価値や、シナジーの一部を反映しているかで測るべきです。買い手＝親会社は価格を吊り上げる誘因が弱いため、特別委員会の独立性・第三者算定の基準日・MoMといった手続の実質性が、フェアネスを担保する唯一の歯止めになると考えます。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q4. もし三益がPEのターゲットだったら、投資は成立しますか。</div>
+    <div class="a">「成立しにくいと考えます。装置産業で資産が重く利益率は中位、かつ顧客が事実上信越グループに集中しているため、独立企業としてのスタンドアロン価値が立ちにくい。PEは『独立企業として磨いて売る』モデルなので、顧客・技術・投資が親会社に依存する会社は出口が描けません。300mm投資後のキャッシュ創出やウエハー需要の構造成長は魅力ですが、独立性の欠如が致命的です。だからこそ、この資産は親会社による垂直統合が最も合理的な帰結で、PEではなく信越化学が買い手になったと整理できます。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q5. オリオン・太陽HDと並べて、この案件をどう位置づけますか。</div>
+    <div class="a">「日本の非公開化の3つの型として対比できます。オリオンはPEによる地方名門の事業承継で、IPOで出口を取った『財務×出口あり』型。太陽HDはPEがアクティビスト圧力を起点にディスカウントで入る『財務×成長×出口あり』型。三益は事業会社が親子上場を解消する『戦略×シナジー×出口なし（永久保有）』型です。買い手（財務 vs 事業）、動機（リターン vs 支配・シナジー）、出口（あり vs なし）の三軸で場合分けすると、日本のTOB・非公開化市場の全体像が立体的に見えます。共通するのは、いずれも少数株主保護と特別委員会の実質性が手続の要になっている点です。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q6.（基礎確認）持分法適用関連会社と連結子会社の会計上の違いは。</div>
+    <div class="a">「持分法適用関連会社は、親会社の連結損益に純利益の持分相当のみが『持分法投資損益』として反映され、売上や個別費用は連結されません。連結子会社は売上・費用・資産・負債を全て取り込み（100%連結）、非支配株主持分を控除します。本件で信越は43.87%（持分法）から100%（完全子会社）にしたので、三益の全売上・全キャッシュフローを連結に取り込み、少数株主持分もゼロになります。垂直統合の会計インパクトが最も大きく表れる部分です。」</div>
+  </div>
+
+  <footer>
+    <b>主要ソース（公開情報）</b><br>
+    <a href="https://www.nikkei.com/article/DGXZQOUC257DJ0V20C24A4000000/">日本経済新聞「信越化学、TOBで三益半導体工業を完全子会社へ 680億円」(2024/4)</a>／
+    <a href="https://eetimes.itmedia.co.jp/ee/articles/2404/26/news109.html">EE Times Japan「信越化学、三益半導体工業を完全子会社に 総額680億円」</a>／
+    <a href="https://www.nihon-ma.co.jp/news/20240425_4063-1/">日本M&Aセンター「信越化学工業、三益半導体工業をTOBで完全子会社へ」</a>／
+    <a href="https://www.nihon-ma.co.jp/news/20240806_4063-3/">日本M&Aセンター「信越化学工業、三益半導体工業へのTOBが成立」</a>／
+    <a href="https://www.shinetsu.co.jp/wp-content/uploads/2024/08/20240806J2.pdf">信越化学工業「公開買付けの結果及び特定子会社の異動に関するお知らせ」(2024/8)</a>／
+    <a href="https://kabukiso.com/apply/tob/2024/mimasu.html">かぶきそ「信越化学による三益半導体株のTOB解説」</a>／
+    <a href="https://newswitch.jp/p/37894">ニュースイッチ（日刊工業）「300mmシリコンウエハー専用新工場、三益半導体が770億円投入」</a>／
+    <a href="https://g-jumps.jp/closeup/41266/">上毛新聞「三益半導体、上場廃止に 信越化学が完全子会社化」(2024/11)</a>／
+    <a href="https://irbank.net/8155/pl">IRBANK 三益半導体工業（8155）業績推移（長期時系列）</a>／
+    <a href="https://www.mimasu.co.jp/company/outline.html">三益半導体工業 会社概要</a>／
+    <a href="https://www.jpx.co.jp/equities/improvements/study-group/nlsgeu000004acah-att/mklp77000000j2kb.pdf">JPX「従属上場会社における少数株主保護」</a>／
+    <a href="https://www.smd-am.co.jp/market/ichikawa/2023/12/irepo231218/">三井住友DSアセット「少数株主保護に関する東証の研究会～親子上場解消」</a>
+    <br><br>
+    <span class="note">※本件は完了済み案件（2024年11月上場廃止）。「推定」表記の数値は公開情報からの逆算・推計。財務数値は単体（非連結）・日本基準、決算期は5月。本資料は2026年7月17日時点の公開情報に基づく面接対策用の分析であり、投資勧誘を目的とするものではない。</span>
+  </footer>
+
+</div>
+</body>
+</html>
