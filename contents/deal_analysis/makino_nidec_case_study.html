@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牧野フライス争奪戦 ケーススタディ｜面接対策レポート</title>
+<style>
+  :root{
+    --navy:#0f2a43; --navy2:#16395c; --accent:#c9a13b; --bg:#f7f8fa;
+    --text:#26303a; --muted:#6b7683; --line:#dde3e9; --red:#b23a48; --green:#2f7d5b; --blue:#2b6cb0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background:var(--bg); color:var(--text); line-height:1.75; font-size:15px;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 28px 80px;}
+  header.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 70%); color:#fff; padding:56px 28px 44px;}
+  .hero-inner{max-width:980px; margin:0 auto;}
+  .hero .tag{display:inline-block; border:1px solid var(--accent); color:var(--accent); font-size:12px; letter-spacing:.15em; padding:3px 12px; margin-bottom:16px;}
+  .hero h1{font-size:28px; font-weight:700; line-height:1.4; margin-bottom:10px;}
+  .hero p.sub{color:#c8d4e0; font-size:14px;}
+  .hero .meta{margin-top:18px; font-size:12px; color:#9fb2c4;}
+  nav.toc{background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px 26px; margin:-26px auto 40px; max-width:980px; position:relative; box-shadow:0 2px 10px rgba(15,42,67,.08);}
+  nav.toc strong{font-size:13px; color:var(--navy); letter-spacing:.1em;}
+  nav.toc ol{margin:8px 0 0 20px; columns:2; font-size:13.5px;}
+  nav.toc a{color:var(--navy2); text-decoration:none;}
+  nav.toc a:hover{text-decoration:underline;}
+  section{margin-top:52px;}
+  h2{font-size:21px; color:var(--navy); border-left:5px solid var(--accent); padding-left:14px; margin-bottom:20px;}
+  h3{font-size:16.5px; color:var(--navy2); margin:26px 0 10px;}
+  h4{font-size:14.5px; color:var(--navy2); margin:18px 0 8px;}
+  p{margin-bottom:12px;}
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:20px 0;}
+  .kpi{background:#fff; border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:6px; padding:16px 18px;}
+  .kpi .v{font-size:21px; font-weight:700; color:var(--navy);}
+  .kpi .l{font-size:12px; color:var(--muted); margin-top:4px;}
+  table{width:100%; border-collapse:collapse; background:#fff; margin:16px 0; font-size:13.5px;}
+  th{background:var(--navy); color:#fff; padding:9px 12px; text-align:left; font-weight:600;}
+  td{padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:nth-child(even) td{background:#fbfcfd;}
+  td.num, th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  .callout{background:#fff; border-left:4px solid var(--accent); border-radius:0 6px 6px 0; padding:16px 20px; margin:18px 0; box-shadow:0 1px 4px rgba(15,42,67,.06);}
+  .callout.insight{border-left-color:var(--green);}
+  .callout.risk{border-left-color:var(--red);}
+  .callout.learn{border-left-color:var(--blue);}
+  .callout b.title{display:block; font-size:13px; letter-spacing:.08em; margin-bottom:6px; color:var(--navy);}
+  .timeline{list-style:none; margin:20px 0; padding-left:0;}
+  .timeline li{position:relative; padding:0 0 22px 30px; border-left:2px solid var(--line); margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 2px var(--accent);}
+  .timeline li.red::before{background:var(--red); box-shadow:0 0 0 2px var(--red);}
+  .timeline .d{font-weight:700; color:var(--navy); font-size:13.5px;}
+  .qa{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .qa .q{background:#eef2f6; padding:12px 18px; font-weight:700; color:var(--navy); font-size:14px;}
+  .qa .a{padding:14px 18px; font-size:13.8px;}
+  .glossary{background:#fff; border:1px solid var(--line); border-radius:6px; margin:14px 0; overflow:hidden;}
+  .glossary .term{background:#f0f4f8; padding:11px 18px; font-weight:700; color:var(--navy2); font-size:14px; border-bottom:1px solid var(--line);}
+  .glossary .def{padding:14px 18px; font-size:13.8px;}
+  .glossary .def p{margin-bottom:10px;}
+  .note{font-size:12px; color:var(--muted);}
+  .est{color:var(--red); font-size:11px; font-weight:700; border:1px solid var(--red); border-radius:3px; padding:0 4px; margin-left:4px; vertical-align:middle;}
+  .ladder{display:flex; align-items:flex-end; gap:12px; margin:18px 0; flex-wrap:wrap;}
+  .ladder .step{flex:1; min-width:110px; background:#fff; border:1px solid var(--line); border-radius:6px; padding:12px; text-align:center;}
+  .ladder .step .p{font-size:19px; font-weight:700; color:var(--navy);}
+  .ladder .step .w{font-size:11.5px; color:var(--muted); margin-top:3px;}
+  .ladder .step.hi{border-top:3px solid var(--green);}
+  .ladder .step.dead{border-top:3px solid var(--red); opacity:.75;}
+  footer{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--muted);}
+  footer a{color:var(--navy2); word-break:break-all;}
+  ul.clean{margin:0 0 12px 22px;}
+  ul.clean li{margin-bottom:6px;}
+  @media print{ body{background:#fff;} nav.toc{box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="tag">CONTESTED M&A / TAKEOVER-DEFENSE CASE STUDY</span>
+    <h1>牧野フライス争奪戦：ニデックの「同意なきTOB」から買収防衛・撤回、<br>そして外為法・初の中止勧告まで</h1>
+    <p class="sub">ニデック11,000円提案（+42%）→ 買収防衛策と東京地裁判断でニデック撤退 → MBK・NSSKの争奪戦（〜16,000円）→ 改正外為法・史上初の中止勧告という前代未聞の攻防</p>
+    <div class="meta">作成日：2026年7月17日｜面接想定：日系・外資系PEファンド／M&A アソシエイト採用｜推定値は<span class="est" style="border-color:#c9a13b;color:#c9a13b;">推定</span>と明記｜本件は<b>敵対的買収・買収防衛・経済安全保障が絡む「第4の型」</b>——2026年7月時点で進行中</div>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>CONTENTS</strong>
+  <ol>
+    <li><a href="#s1">エグゼクティブサマリー</a></li>
+    <li><a href="#s2">対象会社と全体像</a></li>
+    <li><a href="#s3">事業・財務ディープダイブ</a></li>
+    <li><a href="#s4">第1幕：ニデックの同意なきTOB</a></li>
+    <li><a href="#s5">第2幕：買収防衛策と司法判断</a></li>
+    <li><a href="#s6">第3幕：白馬の騎士と争奪戦</a></li>
+    <li><a href="#s7">第4幕：外為法・史上初の中止勧告</a></li>
+    <li><a href="#s8">リスクと批判的視点</a></li>
+    <li><a href="#s9">難解ポイント徹底解説</a></li>
+    <li><a href="#s10">FA未経験者のための基礎知識</a></li>
+    <li><a href="#s11">面接で差がつくインサイト</a></li>
+    <li><a href="#s12">想定Q&A</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<!-- 1 -->
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>本件は、モーター大手<b>ニデック（6594）</b>が工作機械の名門<b>牧野フライス製作所（6135）</b>に対し2024年12月に仕掛けた<b>「同意なき（敵対的）TOB」</b>（1株11,000円・約2,573億円）に端を発する、日本M&A史に残る争奪戦である。牧野は<b>買収防衛策（時間確保措置）</b>で対抗、<b>東京地裁がニデックの差止申立を却下</b>して防衛策を事実上追認し、2025年5月にニデックは<b>TOBを撤回</b>。その後<b>ホワイトナイトのMBKパートナーズ</b>（アジア系PE）が11,751円で名乗りを上げ牧野が賛同、さらに<b>日系ファンドNSSK</b>が16,000円前後まで価格を吊り上げる争奪戦に発展。ところが2026年4月、政府が<b>改正外為法に基づく史上初の「中止勧告」</b>を外資系MBKに発出し、案件は経済安全保障の壁に突き当たった——現在は外為規制の対象外である日系NSSKによる決着が有力視される<b>進行中案件</b>である。オリオン（PE・IPO）、太陽HD（PE・ディスカウント）、三益（事業会社・親子上場解消）とは全く異なる、<b>敵対的買収・買収防衛・経済安全保障が交錯する「第4の型」</b>。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">敵対的 → 防衛成功</div><div class="l">ニデックの同意なきTOBを牧野が撃退</div></div>
+    <div class="kpi"><div class="v">11,000円</div><div class="l">ニデック提案（前日7,750円比 +42%）</div></div>
+    <div class="kpi"><div class="v">東京地裁が却下</div><div class="l">ニデックの防衛策差止申立（2025/5/7）</div></div>
+    <div class="kpi"><div class="v">〜16,000円</div><div class="l">争奪戦での最終水準（NSSK再提案）</div></div>
+    <div class="kpi"><div class="v">史上初</div><div class="l">改正外為法の中止勧告（MBKへ・2026/4）</div></div>
+    <div class="kpi"><div class="v">約4,000億円</div><div class="l">NSSK案の買収規模（16,000円ベース）</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">■ 30秒で語るならこう言う</b>
+    「日本の同意なき買収時代を象徴する4幕構成の攻防です。第1幕、ニデックが事前協議なしに+42%のTOBを予告。第2幕、牧野が新株予約権型の時間確保措置で防衛し、東京地裁が『対抗提案を検討する合理的な時間の確保』として防衛策を追認、ニデックは撤退。第3幕、ホワイトナイトのMBKと日系NSSKによる価格の吊り上げ競争で、株価はプレ比2倍超の16,000円水準へ。第4幕、政府が改正外為法に基づき史上初の中止勧告を外資MBKに発出——牧野が輸出許可を要する高性能工作機械を作り、防衛装備にも使われることが理由です。経済安全保障が外資バイアウトを止め、規制対象外の日系ファンドが受け皿になる。買収防衛策の司法判断と経済安保の交錯という、2つの最新論点を1件で語れる稀有な教材です。」
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <h2>2. 対象会社と全体像</h2>
+
+  <h3>2-1. 対象会社：牧野フライス製作所（6135）</h3>
+  <ul class="clean">
+    <li><b>本業：</b>工作機械の名門。<b>マシニングセンタ（MC）と放電加工機</b>を主力とし、金型・精密加工で世界的な評価。売上の大半を占めるMCが成長ドライバー。</li>
+    <li><b>強み：</b>高精度・高性能機で、航空・自動車・半導体製造装置・金型など高付加価値分野に強い。<b>輸出に経産相許可を要する高性能機</b>を持ち、防衛装備メーカーでも広く使われる＝<b>デュアルユース（軍民両用）性</b>。</li>
+    <li><b>グローバル：</b>製造は日本・アジア、販売は海外重要拠点に子会社。海外売上比率が高い。</li>
+    <li><b>財務：</b>FY2025/3 売上2,342億円（+3.9%）、営業利益185億円（OPM 7.9%）、受注2,380億円（過去最高）。工作機械らしい景気循環性を持つ。</li>
+  </ul>
+
+  <h3>2-2. 買収価格の「はしご」——プレ比2倍超まで</h3>
+  <div class="ladder">
+    <div class="step"><div class="p">7,750円</div><div class="w">提案前株価（2024/12）</div></div>
+    <div class="step dead"><div class="p">11,000円</div><div class="w">ニデック（+42%）→撤回</div></div>
+    <div class="step"><div class="p">11,751円</div><div class="w">MBK（ホワイトナイト）→中止勧告</div></div>
+    <div class="step hi"><div class="p">〜16,000円</div><div class="w">NSSK再提案（プレ比+107%）</div></div>
+  </div>
+  <p class="note">同意なき買収が起点でも、防衛→争奪戦を経て、少数株主が受け取り得る価格はプレ比2倍超まで上昇した。「敵対的買収は株主価値を可視化する装置」という側面が鮮明に表れている。</p>
+
+  <h3>2-3. タイムライン（4幕）</h3>
+  <ul class="timeline">
+    <li class="red"><span class="d">2024年12月26〜27日</span><br>ニデックが<b>同意なきTOB</b>を予告。11,000円（前日終値7,750円比+42%）、総額約2,573億円、完全子会社化狙い。開始予定2025年4月4日・下限50%。牧野株はストップ高</li>
+    <li><span class="d">2025年1〜3月</span><br>両社が2回の面談・3回の公開質問状。牧野は<b>時間確保のための買収防衛策（新株予約権無償割当）</b>を導入（2025年5月9日より前の開始でニデックの持分が希薄化する設計）</li>
+    <li class="red"><span class="d">2025年4月4日</span><br>ニデックは予定通りTOB開始。防衛策の効力を巡り対立</li>
+    <li><span class="d">2025年5月7日</span><br><b>東京地方裁判所がニデックの差止申立を却下</b>。防衛策は「競合提案の受領・検討に合理的に必要な時間の確保にとどまる」と判断</li>
+    <li class="red"><span class="d">2025年5月8日</span><br><b>ニデック、TOBを撤回</b>。同意なき買収に区切り</li>
+    <li><span class="d">2025年5月27日</span><br>牧野が<b>MBKパートナーズ</b>（アジア系PE、運用資産300億ドル超）から法的拘束力ある提案を受領。ニデック超えの価格で、翌日株価は約11%高の11,400円へ。以後MBKのTOB価格は11,751円</li>
+    <li><span class="d">2025年6月〜</span><br>MBKとNSSKの争奪戦（「1円攻防」）。価格が段階的に上昇</li>
+    <li class="red"><span class="d">2026年4月22日</span><br>財務相・経産相が<b>改正外為法27条5項に基づく史上初の「中止勧告」</b>を外資系MBKに発出。牧野の高性能工作機械・技術の機微性（防衛装備への利用）が理由</li>
+    <li><span class="d">2026年4月〜6月</span><br>外為規制の対象外である日系<b>NSSK</b>が牧野に提案。価格を<b>16,000円前後</b>（MBK 11,751円比+約36%）に引き上げ再提案、買収規模約4,000億円。<span class="note">2026年7月時点で交渉進行中</span></li>
+  </ul>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ</h2>
+
+  <h3>3-1. 製品構成（工作機械の名門）</h3>
+  <table>
+    <tr><th style="width:26%">製品</th><th>内容</th></tr>
+    <tr><td>マシニングセンタ（MC）</td><td>売上の主力。金属を高精度に切削加工する複合工作機械。航空・半導体製造装置・金型・精密部品向けに強い</td></tr>
+    <tr><td>放電加工機（EDM）</td><td>金型加工の要。微細・硬質材の加工で世界的評価</td></tr>
+    <tr><td>その他</td><td>周辺・サービス・部品等。据付・保守のリカーリング収益</td></tr>
+  </table>
+
+  <h3>3-2. 業績推移（3月決算・連結）</h3>
+  <p class="note">単位：億円。工作機械は設備投資サイクルに連動する景気敏感業種。FY2026/3は会社予想。出所：決算短信・IR（各社集計）。年度対応は概数<span class="est">推定</span>。</p>
+  <table>
+    <tr><th>決算期</th><th class="num">売上高</th><th class="num">営業利益</th><th class="num">OPM</th><th>コメント</th></tr>
+    <tr><td>FY2022/3</td><td class="num">1,865<span class="est">概数</span></td><td class="num">113</td><td class="num">6.1%</td><td>回復局面</td></tr>
+    <tr><td>FY2023/3</td><td class="num">2,279<span class="est">概数</span></td><td class="num">174</td><td class="num">7.6%</td><td>設備投資好況</td></tr>
+    <tr><td>FY2024/3</td><td class="num">2,253</td><td class="num">163</td><td class="num">7.3%</td><td>調整局面</td></tr>
+    <tr><td><b>FY2025/3</b></td><td class="num"><b>2,342</b></td><td class="num"><b>185</b></td><td class="num"><b>7.9%</b></td><td><b>売上・受注(2,380億)とも過去最高圏。TOB渦中の期</b></td></tr>
+    <tr><td>FY2026/3（予）</td><td class="num">2,400</td><td class="num">215</td><td class="num">9.0%</td><td>増収増益計画（純利益180億）</td></tr>
+  </table>
+
+  <h3>3-3. バリュエーションと争奪戦の含意</h3>
+  <table>
+    <tr><th style="width:30%">項目</th><th>内容</th></tr>
+    <tr><td>提案前株価</td><td>7,750円（2024年12月）。工作機械の景気敏感性を織り込み市場は保守的だった</td></tr>
+    <tr><td>ニデック提案</td><td>11,000円（+42%）。それでも撤退後により高い提案が続出＝<b>市場が本源価値を過小評価していた</b></td></tr>
+    <tr><td>MBK / NSSK</td><td>11,751円 → 16,000円前後。<b>複数の買い手が競うと価格発見が加速</b>する典型例</td></tr>
+    <tr><td>NSSK案の規模</td><td>約4,000億円（16,000円ベース）。過去最高圏の業績・受注が価格を支える</td></tr>
+  </table>
+  <div class="callout insight">
+    <b class="title">■ インサイト：同意なき買収は「株主価値の可視化装置」</b>
+    敵対的な起点であっても、防衛と対抗提案を経て、株主が受け取り得る価格はプレ比2倍超に上昇した。<b>「経営陣が守ろうとした会社の本源価値を、皮肉にも買収圧力が市場に開示させた」</b>という構図。面接では「敵対的買収の是非」を善悪でなく、<b>価格発見・規律付けのメカニズム</b>として論じられると一段深い。
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <h2>4. 第1幕：ニデックの同意なきTOB</h2>
+  <ul class="clean">
+    <li><b>仕掛け：</b>2024年12月、ニデックが事前協議なしにTOBを予告。11,000円（+42%）、総額約2,573億円、完全子会社化、開始予定4月4日、下限50%。</li>
+    <li><b>ニデックの狙い<span class="est">推定</span>：</b>モーターに次ぐ柱として工作機械事業を強化。牧野の高精度加工技術・顧客基盤・ブランドの取り込み。永守流のスピード経営で企業価値を引き上げる青写真。</li>
+    <li><b>「同意なき」の意味：</b>2023年の経産省「企業買収における行動指針」で、真摯な買収提案は取締役会が誠実に検討すべきとされ、<b>敵対的買収のハードルが下がった</b>ことが背景。ニデックはこの潮流に乗った。</li>
+    <li><b>価格への一次評価：</b>+42%は一見十分だが、牧野側は「本源価値・成長を反映していない」と反発。過去最高圏の受注が交渉力の源泉になった。</li>
+  </ul>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <h2>5. 第2幕：買収防衛策と司法判断</h2>
+  <h3>5-1. 牧野の防衛策（時間確保措置）</h3>
+  <p>牧野は<b>新株予約権の無償割当</b>を柱とする対応方針を導入。ニデックが<b>2025年5月9日より前</b>にTOBを開始した場合、一般株主とニデックで条件の異なる新株予約権が割り当てられ、<b>ニデックの持分が希薄化（実質半減）し、必要な買付株式数が倍増</b>する設計。狙いは<b>買収の阻止そのものではなく「対抗提案を検討する時間の確保」</b>。</p>
+
+  <h3>5-2. 東京地裁の判断（2025年5月7日）</h3>
+  <p>ニデックは防衛策の差止を申し立てたが、<b>東京地裁は却下</b>。防衛策は「競合する提案の受領や検討等のための合理的に必要な時間を確保することを目的とした対応にとどまる」と評価した。翌8日、<b>ニデックはTOBを撤回</b>。</p>
+  <div class="callout learn">
+    <b class="title">■ 論点：ブルドックソース判例からの系譜</b>
+    日本の買収防衛策の適法性は、<b>必要性・相当性</b>（株主平等原則の趣旨に反しないか、過剰でないか）で判断される（ブルドックソース事件・最高裁2007年の系譜）。本件は<b>「時間確保」目的に限定した防衛策が司法に支持された</b>点で、実務上重要な先例。防衛策＝一律に悪ではなく、<b>目的と手段の相当性が鍵</b>という理解を示せると鋭い。
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <h2>6. 第3幕：白馬の騎士と争奪戦</h2>
+  <ul class="clean">
+    <li><b>MBKパートナーズ（ホワイトナイト）：</b>ニデック撤退直後の2025年5月27日、牧野が運用資産300億ドル超のアジア系PE・MBKから法的拘束力ある提案を受領。<b>ニデック超えの価格</b>で、株価は約11%高。以後MBKのTOB価格は<b>11,751円</b>。牧野経営陣が賛同するホワイトナイト。</li>
+    <li><b>NSSK（日本産業推進機構・日系PE）：</b>争奪戦に参入し「1円攻防」。最終的に<b>16,000円前後</b>まで価格を引き上げて再提案（買収規模約4,000億円）。</li>
+    <li><b>ダイナミクス：</b>複数の買い手が競うことで価格発見が加速。<b>敵対的買収の起点が、結果的に株主にとって最良の価格を引き出す競争的プロセスを生んだ</b>。</li>
+  </ul>
+  <div class="callout insight">
+    <b class="title">■ インサイト：ホワイトナイトは「防衛」であり「価格の最大化」でもある</b>
+    ホワイトナイトは経営陣にとって「望まぬ買い手を退ける手段」だが、株主にとっては「より高い価格の実現手段」。両者の利害が一致する場合にのみ成立する。牧野では<b>防衛策で時間を稼ぎ→競争的プロセスを作り→価格を吊り上げた</b>という、時間確保措置の教科書的な成功例になった。
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <h2>7. 第4幕：外為法・史上初の中止勧告</h2>
+  <p>争奪戦の勝者に見えたMBKだったが、2026年4月22日、<b>財務相・経済産業相が改正外為法27条5項に基づく「中止勧告」を発出</b>。これは<b>対内直接投資の審査で発動された史上初（同法の当該枠組みで初）の中止勧告</b>で、日本のM&Aと経済安全保障の分水嶺となった。</p>
+  <table>
+    <tr><th style="width:30%">論点</th><th>内容</th></tr>
+    <tr><td>理由</td><td>牧野が<b>輸出時に経産相許可を要する高性能工作機械</b>を製造し、関連技術・情報を保有。製品・情報が<b>日本の防衛装備品メーカーでも広く利用</b>されている（機微性）</td></tr>
+    <tr><td>対象</td><td>外資系のMBKパートナーズ。外国投資家による機微技術企業の取得が安全保障上の懸念とされた</td></tr>
+    <tr><td>NSSKの優位</td><td>NSSKは<b>日系ファンドで外為法の対内直投規制の対象外</b>。安全保障上の懸念をクリアしやすく、受け皿として有力に</td></tr>
+    <tr><td>含意</td><td>「無重力経営（国境を意識しない資本移動）」時代の終わり。<b>機微技術を持つ日本企業のM&Aでは、買い手の国籍が価格と同等の変数になる</b></td></tr>
+  </table>
+  <div class="callout risk">
+    <b class="title">■ 批判的視点：経済安保が「最高値の買い手」を排除するトレードオフ</b>
+    改正外為法の中止勧告は安全保障の観点では正当でも、<b>少数株主にとっては「最も高い価格を提示し得た買い手が排除される」</b>ことを意味し得る。株主価値の最大化と国益（機微技術の保全）が正面から衝突する構図。<b>「誰が牧野を持つべきか」は価格だけでは決まらない</b>——このトレードオフを冷静に両面から語れるかが問われる。なお日系NSSKが16,000円まで引き上げたことで、結果的に株主価値と安全保障が両立する着地が模索されている点も重要。
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <h2>8. リスクと批判的視点</h2>
+  <table>
+    <tr><th style="width:28%">リスク／論点</th><th>内容と評価</th></tr>
+    <tr><td>① 案件の不確実性</td><td>2026年7月時点で最終合意前。外為法審査・価格交渉・株主総会の各段階が残り、決着は流動的</td></tr>
+    <tr><td>② 工作機械の景気循環</td><td>設備投資サイクルに連動。過去最高圏の受注が高値提案を支えるが、循環反転で正常収益力が下振れするとバリュエーションの前提が崩れる</td></tr>
+    <tr><td>③ 高値づかみリスク</td><td>16,000円はプレ比2倍超。争奪戦の過熱で「勝者の呪い」に陥る恐れ。NSSKの想定IRRは価格上昇分だけ低下</td></tr>
+    <tr><td>④ 経済安保の不確実性</td><td>機微技術企業は今後も外資買収が止められ得る。買い手の国籍・出資構造が案件成立の前提条件に</td></tr>
+    <tr><td>⑤ 防衛策の副作用</td><td>時間確保措置は司法に支持されたが、多用されれば「経営陣の保身の道具」との批判もあり、濫用は市場の信認を損なう</td></tr>
+  </table>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説</h2>
+
+  <div class="glossary">
+    <div class="term">① 「同意なき買収（敵対的買収）」とは。なぜ日本で増えたのか</div>
+    <div class="def">
+      <p><b>同意なき買収＝対象会社の取締役会の賛同を得ずに仕掛けるTOB</b>。かつて日本ではタブー視されたが、<b>2023年の経産省「企業買収における行動指針」</b>が「真摯な買収提案は取締役会が誠実に検討すべき」との規範を示し、<b>敵対的提案のハードルが下がった</b>。ニデックの牧野への提案はこの潮流を象徴。面接では「同意なき買収の増加は、日本のコーポレートガバナンス改革（株主重視・資本効率）の一環」という<b>構造理解</b>を示せると強い。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">② 買収防衛策（時間確保措置）と新株予約権の仕組み</div>
+    <div class="def">
+      <p>代表的な防衛策は<b>新株予約権の無償割当（ポイズンピル）</b>。買収者<b>以外</b>の株主に新株を取得できる権利を配り、買収者の持分を希薄化させて買収コストを引き上げる。牧野の措置は<b>買収阻止ではなく「対抗提案を検討する時間の確保」に目的を限定</b>し、一定期日より前のTOB開始に希薄化のトリガーを設定した。目的を限定することで<b>司法の支持（必要性・相当性）を得やすくした</b>のが巧妙な設計。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">③ 買収防衛策の適法性——必要性・相当性（ブルドックソース判例）</div>
+    <div class="def">
+      <p>日本の裁判所は防衛策の適法性を<b>「必要性」（企業価値・株主共同の利益の毀損を防ぐ必要があるか）と「相当性」（手段が過剰でないか、株主平等原則の趣旨に反しないか）</b>で判断する（ブルドックソース事件・最高裁2007年）。牧野で東京地裁が差止を却下したのは、防衛策が<b>時間確保という限定目的にとどまり相当</b>と評価したため。<b>「防衛策＝悪」ではなく、目的と手段の相当性が全て</b>という理解が実務の要。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">④ ホワイトナイト（白馬の騎士）と競争的プロセス</div>
+    <div class="def">
+      <p><b>ホワイトナイト＝敵対的買収を仕掛けられた会社が招く、友好的な対抗買い手</b>。経営陣にとっては「望まぬ買い手を退ける手段」、株主にとっては「より高い価格の実現手段」。牧野はニデック撤退後にMBKを招き、さらにNSSKが加わって<b>競争入札的に価格が上昇</b>。防衛の成功と株主価値の最大化が両立した好例。ただしホワイトナイトも「買い手」である以上、経営の独立性は失われる点は同じ。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑤ 改正外為法と対内直接投資審査（中止勧告）</div>
+    <div class="def">
+      <p><b>外為法（外国為替及び外国貿易法）</b>は、外国投資家が安全保障上重要な日本企業（コア業種）の株式を一定以上取得する際に<b>事前届出・審査</b>を課す。2019年改正で審査が強化された。国が問題ありと判断すれば<b>「中止勧告」「変更命令」</b>を出せる。牧野は<b>高性能工作機械（輸出許可対象・防衛装備に利用）</b>を持つ機微技術企業のため、外資MBKの取得に<b>史上初の中止勧告</b>が出た。<b>ポイント：日系ファンド（NSSK）は対内直投規制の対象外</b>なので、同じ会社でも<b>買い手の国籍で結論が変わる</b>。経済安全保障がM&Aの成否を左右する新時代の象徴。</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">⑥ 「勝者の呪い」と競争入札の価格</div>
+    <div class="def">
+      <p><b>勝者の呪い（winner's curse）＝競争入札で最も高く評価した者が落札するため、勝者は往々にして本源価値以上を払ってしまう</b>現象。牧野はプレ7,750円→16,000円と2倍超に上昇。売り手（株主）には最良だが、<b>買い手（NSSK）にとっては高値づかみのリスク</b>。工作機械の景気循環を踏まえた正常収益力で16,000円が正当化できるかが、PE的な妙味の分かれ目。<b>価格上昇を「株主の勝利」と「買い手のIRR低下」の両面で見る</b>のがプロの視点。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識キャッチアップ</h2>
+
+  <h3>10-1. 友好的 vs 敵対的（同意なき）M&A</h3>
+  <table>
+    <tr><th style="width:26%">類型</th><th>特徴</th><th style="width:24%">本ハブの事例</th></tr>
+    <tr><td>友好的（合意）</td><td>取締役会の賛同を得て実施。大半のM&A</td><td>オリオン・太陽HD・三益</td></tr>
+    <tr><td>同意なき（敵対的）</td><td>取締役会の賛同なしに仕掛ける。防衛策・ホワイトナイト・委任状争奪等の攻防に発展し得る</td><td><b>牧野×ニデック</b></td></tr>
+  </table>
+
+  <h3>10-2. 買収防衛策の主な手段</h3>
+  <ul class="clean">
+    <li><b>ポイズンピル（新株予約権無償割当）：</b>買収者の持分を希薄化。本件の中核。</li>
+    <li><b>ホワイトナイト：</b>友好的な対抗買い手を招く。本件のMBK。</li>
+    <li><b>時間確保措置：</b>対抗提案の検討時間を確保する目的に限定した防衛策。司法に支持されやすい。本件の勝因。</li>
+    <li><b>その他：</b>ゴールデンパラシュート、クラウンジュエル、増配・自社株買い等。</li>
+  </ul>
+
+  <h3>10-3. 経済安全保障と外為法（PE/M&Aで必須の新常識）</h3>
+  <ul class="clean">
+    <li><b>コア業種：</b>武器・航空機・原子力・サイバー・電力・通信・<b>先端技術（工作機械等の機微技術）</b>等。外国投資家の取得に事前届出・審査。</li>
+    <li><b>買い手の国籍が変数：</b>外資は審査・中止勧告の対象、日系は対象外。<b>機微技術企業のディールでは、価格と同じくらい「誰が買うか」が重要</b>。</li>
+    <li><b>実務含意：</b>外資PEは機微技術企業の入札で不利になり得る。日系ファンド・事業会社が優位に立つ構造が強まる。</li>
+  </ul>
+
+  <h3>10-4. バリュエーション（争奪戦の見方）</h3>
+  <table>
+    <tr><th style="width:26%">手法</th><th>本件での使い方</th></tr>
+    <tr><td>市場株価法</td><td>提案前7,750円が出発点。ただし争奪戦で価格発見が進み、市場価格は本源価値を過小評価していたことが判明</td></tr>
+    <tr><td>類似会社比較法</td><td>DMG森精機・オークマ等の工作機械大手のEV/EBITDA・PERと比較</td></tr>
+    <tr><td>DCF法</td><td>設備投資サイクルを踏まえた正常収益力が鍵。16,000円がサイクル平均で正当化できるか</td></tr>
+  </table>
+
+  <div class="callout learn">
+    <b class="title">■ キャッチアップの学習動線</b>
+    ①経産省「企業買収における行動指針（2023）」で同意なき買収の規範を押さえる。②ブルドックソース事件・最高裁判決で防衛策の必要性・相当性の枠組みを理解。③外為法の対内直接投資審査（コア業種・事前届出・中止勧告）を確認。④本件の東京地裁決定・各社適時開示（IR）で一次情報を追う。⑤DMG森精機・オークマとのコンプスで工作機械のマルチプル感覚を作る。この5点で敵対的M&A・防衛・経済安保の最新論点を一通りカバーできる。
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト</h2>
+  <ul class="clean">
+    <li><b>① 同意なき買収を善悪でなく「規律付け・価格発見の装置」として論じる。</b>プレ7,750円→16,000円という価格上昇が、敵対的圧力の機能を雄弁に示す。</li>
+    <li><b>② 買収防衛策の司法判断を正確に理解している。</b>「阻止」ではなく「時間確保」に目的を限定したことが、必要性・相当性の観点で司法の支持を得た決め手。</li>
+    <li><b>③ 経済安全保障・外為法をM&Aの変数として組み込める。</b>史上初の中止勧告。<b>機微技術企業では買い手の国籍が価格と同格の成否要因</b>。</li>
+    <li><b>④ 「株主価値 vs 国益」のトレードオフを両面から語れる。</b>最高値の外資を排除する中止勧告の是非を、断定せず構造で議論できると成熟度が伝わる。</li>
+    <li><b>⑤ ホワイトナイトと競争的プロセスの二面性を理解している。</b>経営陣の防衛であり、株主の価格最大化でもある。</li>
+    <li><b>⑥ 4つの型を並べて日本のM&Aを俯瞰する。</b>オリオン（PE・IPO出口）／太陽HD（PE・ディスカウント）／三益（事業会社・親子上場解消）／牧野（敵対的→防衛→争奪→経済安保）。<b>合意の有無・買い手の性質・規制の関与という軸で整理</b>。</li>
+    <li><b>⑦ 「勝者の呪い」を意識する。</b>16,000円は株主に最良だが、買い手NSSKには工作機械の循環性を踏まえた正常収益力での正当化が問われる。</li>
+  </ul>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+  <h2>12. 想定Q&A</h2>
+
+  <div class="qa">
+    <div class="q">Q1. 牧野の買収防衛策はなぜ司法に支持され、ニデックは撤退したのですか。</div>
+    <div class="a">「防衛策の目的を『買収の阻止』ではなく『対抗提案を検討する合理的な時間の確保』に限定したことが決め手です。日本の裁判所は防衛策を必要性・相当性——株主共同の利益を守る必要があるか、手段が過剰でないか——で判断します（ブルドックソース判例の系譜）。牧野の新株予約権型の措置は、一定期日より前のTOB開始にのみ希薄化のトリガーを設ける限定的な設計で、東京地裁は『時間確保にとどまり相当』と評価し、ニデックの差止申立を却下しました。これでニデックは希薄化を避けられず、経済合理性を失って撤退したと理解しています。防衛策は一律に悪ではなく、目的と手段の相当性が全てだという好例です。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q2. 敵対的買収なのに、なぜ最終的に株主に有利な結果になったのですか。</div>
+    <div class="a">「同意なき買収が競争的プロセスを起動したからです。ニデックが+42%の11,000円を提示したことで牧野の本源価値が市場に意識され、防衛策で時間を確保する間にホワイトナイトのMBKが11,751円、さらに日系NSSKが16,000円前後まで価格を吊り上げました。提案前7,750円に対し2倍超です。つまり敵対的買収は、経営陣が守ろうとした本源価値を皮肉にも市場に開示させ、複数の買い手による価格発見を促した。敵対的買収を善悪ではなく、価格発見と経営規律のメカニズムとして捉えるべき事例だと考えます。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q3. 政府がMBKに中止勧告を出したことをどう評価しますか。</div>
+    <div class="a">「安全保障と株主価値が正面から衝突した象徴的な判断です。牧野は輸出許可を要する高性能工作機械を持ち、防衛装備にも使われる機微技術企業なので、外資による取得を止める改正外為法の中止勧告には安全保障上の正当性があります。一方で、少数株主から見れば最も高い価格を出し得た買い手が排除される面もあり、株主価値の最大化と国益のトレードオフが生じます。重要なのは、規制対象外の日系NSSKが16,000円まで引き上げたことで、結果的に株主価値と安全保障が両立し得る着地が模索されている点です。機微技術企業のM&Aでは、価格と同じくらい『誰が買うか（国籍・出資構造）』が成否を決める新時代に入ったと捉えています。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q4. あなたがNSSKの投資担当なら、16,000円をどう正当化しますか。</div>
+    <div class="a">「工作機械の景気循環を踏まえた正常収益力で検証します。FY2025/3は売上・受注とも過去最高圏で、営業利益185億円・OPM7.9%、翌期予想は営業利益215億円。ただしこれは設備投資好況の水準なので、サイクル平均のEBITDAに割り戻して、16,000円・買収規模約4,000億円がEV/EBITDAで妥当かを見ます。加えて、非公開下でのアジア展開・サービス収益の拡大・生産効率化によるバリューアップ余地、そして日系ゆえ外為規制をクリアできる希少性プレミアムを織り込みます。プレ比2倍超は株主に最良ですが、買い手としては『勝者の呪い』を避けるため、循環反転シナリオでもリターンが崩れないかを最重要でストレステストします。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q5. オリオン・太陽HD・三益と並べて、この案件をどう位置づけますか。</div>
+    <div class="a">「日本のM&Aの4つの型として対比できます。オリオンはPEの事業承継でIPO出口の『合意・財務・出口あり』型。太陽HDはPEがアクティビスト起点でディスカウント取得する『合意・財務・成長』型。三益は事業会社が親子上場を解消する『合意・戦略・永久保有』型。そして牧野は『同意なき（敵対的）→防衛→争奪戦→経済安保』という、合意の欠如・複数の買い手・規制の関与が絡む最も複雑な型です。合意の有無、買い手の性質（財務/事業/敵対）、規制（外為法）の関与という軸で並べると、日本のM&A市場が友好的なPE案件から、敵対的買収・経済安全保障まで一気に多様化していることが立体的に見えます。」</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q6.（基礎確認）外為法の対内直接投資審査とは何ですか。なぜNSSKは有利なのですか。</div>
+    <div class="a">「外為法は、外国投資家が安全保障上重要なコア業種（武器・航空・先端技術など）の日本企業株を一定以上取得する際に、事前届出と国の審査を課す制度です。問題があれば中止勧告や変更命令を出せます。牧野は高性能工作機械という機微技術を持つため、外資MBKの取得に史上初の中止勧告が出ました。NSSKは日系ファンドで対内直接投資規制の対象外なので、この安全保障審査をクリアしやすく、受け皿として有利です。つまり同じ会社でも、買い手が外資か日系かで案件の成否が変わる——これが経済安全保障時代のM&Aの新しい制約条件です。」</div>
+  </div>
+
+  <footer>
+    <b>主要ソース（公開情報）</b><br>
+    <a href="https://www.bloomberg.co.jp/news/articles/2024-12-26/SP4K5MDWLU6800">Bloomberg「ニデックが牧野フにTOB実施へ、買い付け価格は1万1000円」(2024/12)</a>／
+    <a href="https://ir.makino.co.jp/news/pdf/2025/20250319_2.pdf">牧野フライス「ニデックによる買収への対応方針（時間確保措置）の概要」(2025/3)</a>／
+    <a href="https://www.nikkei.com/article/DGXZQOUC099MM0Z00C25A5000000/">日本経済新聞「ニデック、牧野フライスへの同意なき買収に区切り TOB撤回の経緯」(2025/5)</a>／
+    <a href="https://www.nihon-ma.co.jp/news/20250508_6594-39/">日本M&Aセンター「ニデック、牧野フライスへのTOBを撤回」(2025/5)</a>／
+    <a href="https://toyokeizai.net/articles/-/877082">東洋経済「ニデック“同意なきTOB”を撤回へと追い込んだ地裁決定の重み」</a>／
+    <a href="https://www.nikkei.com/article/DGXZQOCD296CT0Z20C25A5000000/">日本経済新聞「牧野フライス、残るホワイトナイトMBKパートナーズ」(2025/5)</a>／
+    <a href="https://monoist.itmedia.co.jp/mn/articles/2505/29/news080.html">MONOist「牧野フライス、ホワイトナイト候補から買収提案」(2025/5)</a>／
+    <a href="https://forum.j-n.co.jp/narrative/9345/">実業之日本フォーラム「牧野フライス買収に待った――改正外為法、初の中止勧告」</a>／
+    <a href="https://www.nikkei.com/article/DGXZQOUC145U10U6A410C2000000/">日本経済新聞「牧野フライスに日系ファンドNSSKが買収提案へ MBKへの中止勧告で」(2026/4)</a>／
+    <a href="https://www.nikkei.com/article/DGXZQOUC210PD0R20C26A6000000/">日本経済新聞「NSSK、牧野フライスの買収価格引き上げ 1万6000円前後」(2026/6)</a>／
+    <a href="https://ailaw.co.jp/blog/gaitameho-makino-milling-cease-recommendation-2026/">赤坂国際法律会計事務所「MBKパートナーズによる牧野フライス公開買付け――外為法中止勧告」</a>／
+    <a href="https://kikai-news.net/2025/04/30/">機械ニュース「牧野フライス製作所、24年度売上は3.9％増の2,342億円」</a>／
+    <a href="https://ir.makino.co.jp/highlight/">牧野フライス製作所 IR 業績・財務ハイライト</a>
+    <br><br>
+    <span class="note">※本件は2026年7月時点で進行中。条件・スケジュール・当事者は今後変動し得る。「概数」「推定」表記の数値は公開情報からの概算・推計であり、年度対応・端数に差異があり得る。財務数値は連結・日本基準、決算期は3月。本資料は2026年7月17日時点の公開情報に基づく面接対策用の分析であり、投資勧誘を目的とするものではない。</span>
+  </footer>
+
+</div>
+</body>
+</html>
