@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🇺🇸 US Market Morning Brief | Private Credit Focus</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 /* ─── Reset & Base ─── */
 *{box-sizing:border-box;margin:0;padding:0}
@@ -49,13 +48,11 @@ a{color:#3b82f6}
 .idx-val{font-size:24px;font-weight:800;color:#1e293b;letter-spacing:-1px;line-height:1}
 .idx-chg{font-size:12px;font-weight:700;margin-top:5px}
 .c-up{color:#10b981} .c-down{color:#ef4444} .c-flat{color:#94a3b8}
+.idx-spark{display:block;margin-top:8px}
 
-/* ─── Cards + Two-col ─── */
-.two-col{display:grid;grid-template-columns:3fr 2fr;gap:12px}
-@media(max-width:760px){.two-col{grid-template-columns:1fr}}
+/* ─── Cards ─── */
 .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9}
 .card-title{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:12px}
-.chart-wrap{position:relative;height:190px}
 .macro-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .macro-item{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:#f8fafc;border-radius:8px;font-size:12px}
 .macro-lbl{color:#64748b}
@@ -104,19 +101,10 @@ a{color:#3b82f6}
 .deal-body{font-size:12px;color:#64748b;line-height:1.65}
 .deal-sig{font-size:11px;font-weight:600;color:#6366f1;margin-top:7px}
 .deal-sig::before{content:'⚡ '}
-.deal-link,.ev-link{display:inline-block;font-size:11px;font-weight:700;text-decoration:none;padding:3px 10px;border-radius:20px;transition:opacity .15s}
+.deal-link,.ev-link{display:inline-block;font-size:11px;font-weight:700;text-decoration:none;padding:3px 10px;border-radius:20px;background:#dbeafe;color:#1d4ed8;transition:opacity .15s}
 .deal-link:hover,.ev-link:hover{opacity:.75}
 .deal-links{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
-.dl-reuters{background:#fff1f2;color:#be123c}
-.dl-ft{background:#fef3c7;color:#92400e}
-.dl-dst{background:#ecfdf5;color:#065f46}
-.dl-src{background:#f0fdf4;color:#15803d}
-.dl-wsj{background:#1f2937;color:#f3f4f6}
-.dl-jp{background:#eef2ff;color:#4338ca}
-.ev-link{display:inline-block;margin-top:8px;background:#dbeafe;color:#1d4ed8}
-.ev-link-ft{background:#fef3c7;color:#92400e}
-.ev-link-wsj{background:#1f2937;color:#f3f4f6}
-.ev-link-jp{background:#eef2ff;color:#4338ca}
+.ev-link{display:inline-block;margin-top:8px}
 .pe-news-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;padding-top:12px;border-top:1px solid #e2e8f0;align-items:center}
 .pe-news-links span{font-size:11px;color:#94a3b8;font-weight:600}
 .pe-news-btn{font-size:11px;padding:4px 11px;border-radius:20px;background:#f1f5f9;color:#475569;text-decoration:none;font-weight:600;transition:background .15s}
@@ -853,9 +841,653 @@ const MARKET_REPORTS = [
         valuation: "インターネット・プラットフォームは成長性・ネットワーク効果を織り込みEV/EBITDA二桁前半〜半ばで評価されることが多く、安定CFの製造業(6〜10x)より高い。日本のTOBプレミアム60〜80%が上乗せされるとエントリーはさらに切り上がる。連合側は事業シナジーの現在価値で高値を正当化できるが、PE単独では規律ある価格上限の設定が生命線となる。"
       }
     }
+  },
+  {
+    date: "2026-07-16",
+    dateLabel: "Jul 16",
+    tokenEstimate: 21000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7533.8,  change:-38.6,   pct:-0.51, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:25882.0, change:-386.4,  pct:-1.47, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52553.0, change:-105.7,  pct:-0.20, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:66960.0, change:-1795.0, pct:-2.61, dir:"down" }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.56%",   dir:"down" },
+      "2Y米国債":     { value:"4.19%",   dir:"flat" },
+      "VIX":          { value:"~18.5",   dir:"up"   },
+      "DXY":          { value:"~100.7",  dir:"flat" },
+      "WTI原油":      { value:"~$73.0",  dir:"flat" },
+      "Gold金":       { value:"~$4,140", dir:"up"   },
+      "ドル円":       { value:"¥162.0",  dir:"flat" },
+      "日10年国債":   { value:"~2.80%",  dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"up"   }
+    },
+    movers: [
+      { ticker:"PYPL", name:"PayPal",          pct: 18.0, dir:"up",   why:"Stripe+Advent Internationalが$53B(1株$60.50・28%プレミアム)のTOBを提示。約$500億のコミット済み銀行融資付き。取締役会は7/20に協議へ" },
+      { ticker:"BABA", name:"Alibaba ADR",     pct: 5.0,  dir:"up",   why:"独自AIモデルQwenが中国版Apple Intelligenceに統合と国営メディア報道。中国AIエクスポージャーに買い" },
+      { ticker:"GOOGL",name:"Alphabet",        pct: -4.2, dir:"down", why:"最強AIモデルGemini 3.5 Proの提供が遅延との報道(Bloomberg)。AI開発競争での出遅れ懸念でDowを押し下げ" },
+      { ticker:"TSM",  name:"TSMC ADR",        pct: -1.5, dir:"down", why:"Q2はEPS$4.31・売上$40.2B(+33.7%)・粗利67.7%と好決算も、通期設備投資見通しを$52-56B→$60-64Bへ引き上げ。過剰投資懸念が好決算を相殺しチップ株安を主導" },
+      { ticker:"NVDA", name:"NVIDIA",          pct: -2.5, dir:"down", why:"対中半導体規制強化の不透明感とTSMC capex増による過剰投資懸念で半導体に売り。引けにかけ下げ拡大" },
+      { ticker:"AMD",  name:"AMD",             pct: -2.8, dir:"down", why:"半導体セクター全体の調整。TSMCの好決算も相殺できず、China規制懸念でチップ売り優勢" }
+    ],
+    events: [
+      { icon:"📉", title:"半導体主導のリスクオフで米株続落 — S&P-0.51%(7,533.8)・Nasdaq-1.47%(25,882)・Dow-0.20%(52,553)で引け", detail:"TSMCの通期設備投資見通し引き上げ($52-56B→$60-64B)が過剰投資懸念を呼び、好決算にもかかわらずチップ株が続落。日経も-2.63%(66,960)と急落した流れを引き継ぎ、米主要3指数は揃って下落して取引を終えた。cool CPI後の史上最高値圏からの明確な反落局面で、AI関連の設備投資規律に市場の視線が向かう。", searchKey:"stock market close July 16 2026 Nasdaq S&P chip selloff TSMC capex" },
+      { icon:"🏭", title:"TSMC Q2は好決算も通期capexを$60-64Bへ引き上げ — 過剰投資懸念でチップ株安を主導", detail:"世界最大のファウンドリTSMCはQ2でEPS$4.31(予想比+$0.37)・売上$40.2B(+33.7%YoY)・粗利率67.7%と好決算。しかし通期設備投資見通しを従来の$52-56Bから$60-64Bへ大幅上方修正したことで、AIブームの持続性と投資回収を巡る警戒が優勢に。好決算を相殺して半導体セクター全体が売られ、TSM ADRも下落した。", searchKey:"TSMC TSM Q2 2026 capex guidance 60 64 billion chip stocks slide" },
+      { icon:"🤖", title:"Alphabet -4%超 — 最強AIモデルGemini 3.5 Proが提供遅延との報道", detail:"BloombergがGoogleの最上位AIモデルGemini 3.5 Proの提供が予定より遅れていると報道し、Alphabet株は4%超下落。AI開発競争での出遅れ懸念がDow・Nasdaqを押し下げる一因となった。半導体安と重なり、AIバリューチェーン全体のセンチメント悪化を象徴する材料に。", searchKey:"Alphabet Google Gemini 3.5 Pro delay behind schedule July 2026" },
+      { icon:"💳", title:"PayPalに$53BのTOB — Stripe+Adventが1株$60.50(28%プレミアム)提示、+18%急騰", detail:"決済大手StripeとPE大手Advent Internationalが共同でPayPalに$53B(1株$60.50、火曜終値比+28%プレミアム)のTOBを提示。約$500億のコミット済み銀行融資が付き、両者が折半で保有・解体はしない方針。PayPal株はプレマーケットで+18%の$56.10へ。取締役会は7/20に協議予定。フィンテック再編とPE大型テイクプライベートの象徴。", searchKey:"PayPal Stripe Advent 53 billion takeover bid 60.50 per share" },
+      { icon:"📊", title:"決算ラッシュ — NFLX(引け後)・UNH・GE・ABT・USB・ISRGが本日発表", detail:"本日はNetflix(引け後、Q2売上$12.57B・EPS$0.78見込み)を筆頭に、UnitedHealth・GE Aerospace・Abbott・US Bancorp・Intuitive Surgicalなど大型決算が集中。銀行決算の記録的な流れ(Goldman/MS/BlackRock)が続くか、AI・ヘルスケア・消費のガイダンスに注目が集まる。", searchKey:"earnings July 16 2026 Netflix UnitedHealth GE Aerospace Abbott" }
+    ],
+    usCredit: {
+      summary: "H1 2026のプライベートクレジット・ファンドレイズは記録的水準。Crescent Capitalが第4号US Direct Lendingで$10.8B(目標を$2.5B超過)と自社最大を調達、Barings 2年で$19B超、Churchill $16B、Antares/Aresが各$8.5B。ジュニアデット上位7ファンドは合計$50B超を目標(2023-24合計比+30%)。一方でBDCのノンアクルーアル率上昇・私募BDC解約という与信ストレスは併走し、『集める力』と『個社の与信劣化』の二極化が継続。今日はPayPalへのAdvent×Stripe $53B(コミット融資$50B)がPE大型テイクプライベートの資金力を象徴。",
+      deals: [
+        { title:"Crescent Capital：第4号US Direct Lendingで$10.8B — 自社史上最大の調達", tag:"ファンドレイズ", tagCls:"t-blue", meta:"Crescent Capital Group ｜ $10.8B ｜ US ダイレクトレンディング", body:"H1 2026で単一ファンド最大となる$10.8Bを調達し、当初目標を$2.5B超過。ダイレクトレンディングへの機関投資家需要が依然旺盛で、トラックレコードのある大手への資金集中が続く。Barings($19B/2年)・Churchill($16B)・Antares/Ares(各$8.5B)も大型調達。", sig:"上位マネジャーへの資金集中が一段と加速", searchKey:"Crescent Capital direct lending fund 10.8 billion largest 2026" },
+        { title:"ジュニアデット上位7ファンド：合計$50B超を目標 — 2023-24合計比+30%", tag:"メザニン/ジュニア", tagCls:"t-purple", meta:"複数大手マネジャー ｜ $50B+ ｜ ジュニアデット/メザニン", body:"上位7本のジュニアデットファンドが合計$50B超を目標に調達中で、2023年と2024年の調達合計を30%上回る。大型LBO・テイクプライベートの資本構成でメザニン/ジュニアの厚みが増し、総デットマルチプルの上昇余地が広がる。", sig:"大型テイクプライベートを支える劣後資本の厚み", searchKey:"junior debt mezzanine funds 50 billion target 2026 fundraise" },
+        { title:"Advent × Stripe：PayPal $53Bテイクプライベート — コミット融資$50B", tag:"テイクプライベート", tagCls:"t-orange", meta:"Advent International + Stripe ｜ $53B(融資$50B) ｜ フィンテック大型P2P", body:"PE大手AdventがStripeと組みPayPalに$53Bを提示。約$500億のコミット済み銀行融資が付き、事業会社(Stripe)×スポンサー(Advent)の折半保有という新形態。フィンテック再編と、金利環境下でも成立する大型テイクプライベートの資金力を象徴。", sig:"事業会社×PE連合による超大型P2Pの実現力", searchKey:"Advent Stripe PayPal take private committed financing 50 billion" }
+      ],
+      outlook: "💡 記録的なファンドレイズ(Crescent $10.8B・ジュニアデット$50B+)が示す通り、資金の『供給力』は健在。焦点は調達額から『デプロイの質』と与信選別へ移る。PayPalのような事業会社×PE連合の超大型P2Pが増えれば、レバレッジドファイナンス市場(シニア+ジュニア+コミット融資)の需要は一段と拡大する。BDCのノンアクルーアル劣化は静かに進行しており、7/29のAres Capital決算以降のBDC決算シーズンが市場のトーンを決める。"
+    },
+    jpCredit: {
+      summary: "日本PEは『early innings(まだ初期段階)』(Goldman Sachs)。2025年の案件総額は約$33Bで、ガバナンス改革・事業承継・カーブアウト・円安が四つの追い風。足元ではKKRのTaiyo Holdings(太陽ホールディングス)非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)が進行。競合TOBが常態化し、価格規律とプロセス設計力が問われる局面。Bain Capitalは$10.5Bの調達後も現地競争激化に直面。",
+      deals: [
+        { title:"KKR：太陽ホールディングス(Taiyo Holdings)の非公開化を推進", tag:"バイアウト", tagCls:"t-orange", meta:"KKR ｜ テイクプライベート ｜ 化学・電子材料", body:"KKRが化学・電子材料の太陽ホールディングスの非公開化に動くと報道。ガバナンス改革とTSEのPBR改善要求を背景に、優良な素材・製造業のカーブアウト/P2Pが外資PEの主戦場に。競合TOBの可能性も意識される案件。", sig:"外資PEによる素材・製造業P2Pの継続", searchKey:"KKR Taiyo Holdings take private Japan chemicals 2026" },
+        { title:"Kakaku.com争奪戦：EQT vs Bain Capital + LY Corp連合が継続", tag:"争奪戦", tagCls:"t-purple", meta:"EQT / Bain+LY Corp ｜ 競合入札 ｜ インターネット・メディア", body:"価格比較大手Kakaku.comを巡りEQTと、Bain Capital+SoftBank系LY Corp連合が競合。事業会社×PE連合という新形態が入札競争を高度化。競合TOBが日本でも現実的シナリオとして定着しつつある。", sig:"事業会社×PE連合と競合TOBの常態化", searchKey:"Kakaku.com EQT Bain LY Corp competing bid Japan 2026" },
+        { title:"Goldman Sachs：日本は買収活動の『early innings』— 案件$33B/年", tag:"マーケット見通し", tagCls:"t-blue", meta:"Goldman Sachs ｜ 市場見通し ｜ 日本・韓国・豪州", body:"Goldmanは日本・韓国・豪州に『多くのバイアウト機会』があり日本は『early innings』と指摘。2025年の日本案件は約$33B。ガバナンス改革・事業承継・カーブアウト・円安が四つの追い風。Bain Capitalは$10.5B調達後も現地競争激化に直面。", sig:"構造的追い風で日本PEの成長余地は依然大きい", searchKey:"Goldman Sachs Japan buyout early innings opportunities 2026" }
+      ],
+      outlook: "💡 日本は競合TOBが常態化し、事業会社×PE連合(Bain+LY)という新形態が入札を高度化。外資ラージキャップ(KKR/Bain/EQT/Apollo)の攻勢が続く中、価格規律とプロセス設計力を備えたマネジャーがリターン格差を生む。$33B/年の市場は『early innings』であり、メザニン/ジュニア資本の厚みが大型化を後押しする。"
+    },
+    takeaway: "本日(7/16木)は半導体主導のリスクオフで米株が続落して引けた——S&P-0.51%(7,533.8)・Nasdaq-1.47%(25,882)・Dow-0.20%(52,553)。TSMCはQ2でEPS$4.31・売上$40.2B(+33.7%)・粗利率67.7%と好決算だったが、通期設備投資見通しを$52-56B→$60-64Bへ引き上げたことで過剰投資懸念が優勢となり、好決算を相殺してチップ株安を主導。さらにAlphabetが最強AIモデルGemini 3.5 Proの遅延報道で-4%超と下落し、AIバリューチェーン全体のセンチメントが悪化した。個別ではPayPalがStripe+Adventの$53B(1株$60.50・28%プレミアム、コミット融資$50B)TOBで+18%急騰——フィンテック再編とPE大型テイクプライベートの象徴。本日はNFLX(引け後)・UNH・GE・ABT・USB・ISRGの決算ラッシュ。プライベートクレジットはH1'26でCrescent $10.8B・ジュニアデット$50B+目標と記録的調達が続く一方、BDCの与信劣化が併走。日本PEはKKRの太陽HD非公開化やKakaku.com争奪戦(EQT vs Bain+LY)が進み、Goldmanは日本を買収の『early innings』と評価。",
+    narrative: "7月16日(木)の市場は、前日のcool CPIがもたらした史上最高値圏の高揚から一転、半導体主導のリスクオフで幕を開けた。震源は米国の対中半導体規制強化を巡る不透明感だ。前日の米チップ株安を受け、東京市場では利益確定売りが噴き出し、日経225は-2.63%の66,960へ急落して67,000を割り込んだ。米株先物もS&P-0.2%・Nasdaq100-0.8%と軟調で、NVIDIA・AMDなどAI半導体に売りが先行している。低インフレという『追い風』が確認された直後だけに、地政学と規制という別種のリスクが相場の主導権を握り直した格好だ。||皮肉なのは、この半導体安が世界最大のファウンドリTSMCの好決算と同じ日に起きたことだ。TSMCはQ2でEPS$4.31(予想比+$0.37)・売上$40.2B(前年比+33.7%)・粗利率67.7%と、AI/HPC需要の底堅さを改めて証明した。それでも株価反応が限定的なのは、市場が『足元の業績』より『対中規制がサプライチェーンとエンド需要をどう変えるか』という先行きの不確実性を重く見ているためだ。ファンダメンタルズとマクロ・地政学が綱引きする、2026年後半らしい構図である。||個別で相場を沸かせたのはPayPalだ。決済大手StripeとPE大手Advent Internationalが共同で$53B(1株$60.50、火曜終値比+28%プレミアム)のTOBを提示し、株価はプレマーケットで+18%急騰した。約$500億のコミット済み銀行融資が付き、事業会社(Stripe)×スポンサー(Advent)が折半保有・解体しない方針だ。これは単なるフィンテック再編にとどまらず、金利が高止まりする環境でも超大型テイクプライベートが成立する『資金の供給力』を象徴する。取締役会は7/20に協議する。||その資金供給力は、プライベートクレジットのファンドレイズ統計にも表れている。H1 2026ではCrescent Capitalが第4号US Direct Lendingで自社最大の$10.8B(目標$2.5B超過)を調達し、Barings($19B/2年)・Churchill($16B)・Antares/Ares(各$8.5B)も続いた。ジュニアデット上位7ファンドは合計$50B超を目標に掲げ、2023-24合計を30%上回る。PayPal級の大型P2Pを支えるシニア+ジュニア+コミット融資の厚みが着実に増している。ただしBDCのノンアクルーアル率上昇や私募BDC解約という与信ストレスは併走しており、『集める力』と『個社の与信劣化』の二極化という基調は変わらない。焦点は調達額から『デプロイの質』へと移りつつある。||日本PEもまた、同じ『事業会社×PE連合』と『競合TOB』のテーマを共有する。KKRは太陽ホールディングスの非公開化に動き、Kakaku.comを巡ってはEQTとBain Capital+LY Corp連合が競合を続ける。Goldman Sachsは日本を買収活動の『early innings』と評し、2025年の案件$33Bは成長余地の入り口に過ぎないと見る。ガバナンス改革・事業承継・カーブアウト・円安という四つの追い風は健在で、メザニン/ジュニア資本の厚みが大型化を後押しする。市場は今日、『AIの構造的成長』と『規制・地政学リスク』の綱引きを映しながら、NetflixやUnitedHealthの決算、そして次のマクロイベントへと視線を移していく。",
+    peTraining: {
+      thirtySecSummary: "本日のポイントは3点。①対中半導体規制強化への不透明感で半導体主導のリスクオフ——日経-2.63%(66,960)、米先物Nasdaq100-0.8%と史上最高値圏から反落。②TSMCはQ2好決算(EPS$4.31・売上$40.2B・+33.7%・粗利67.7%)も規制懸念で株価反応は限定的、ファンダとマクロ・地政学の綱引き。③PayPalがStripe+Adventの$53B(1株$60.50・28%プレミアム、コミット融資$50B)TOBで+18%急騰——事業会社×PE連合の超大型テイクプライベート。プライベートクレジットはH1'26でCrescent $10.8B・ジュニアデット$50B+と記録的調達が資金供給力を裏付ける。",
+      interviewQA: [
+        { q: "金利が高止まりする環境で、PayPalのような$53Bの超大型テイクプライベートが成立する背景をどう説明しますか", a: "三つの要素が噛み合っています。第一に、プライベートクレジット/レバレッジドファイナンスの『供給力』が記録的な水準にあること。H1 2026でCrescentが$10.8B、ジュニアデット上位7本が合計$50B超を目標に掲げるなど、シニア+ジュニア+コミット融資の資金が潤沢で、$50B規模のコミット済み銀行融資を組成できる厚みがあります。第二に、事業会社(Stripe)×スポンサー(Advent)という連合により、PEの資本規律・ガバナンスと事業会社のシナジー・戦略的視点を組み合わせ、高いプレミアム(28%)を正当化しやすい構造にしていること。第三に、金利高止まりでもフィンテックのように安定CFと成長を併せ持つ資産は、レバレッジを乗せても十分なエクイティリターンが見込めること。つまり『資金の供給力×連合による価値創出×対象資産の質』が揃えば、高金利下でも大型P2Pは成立するというのが私の見立てです。" },
+        { q: "TSMCが好決算にもかかわらず株価が伸び悩んだのはなぜか、投資家としてどう解釈しますか", a: "『良い数字』と『良い株価反応』は別物だという典型例です。TSMCのQ2はEPS$4.31・売上$40.2B(+33.7%)・粗利率67.7%と申し分なく、AI/HPC需要の強さを裏付けました。それでも上値が限定的なのは、市場がすでに好決算を織り込んでいたことに加え、対中半導体規制強化という『将来のキャッシュフローの分母(不確実性)』を大きく見ているためです。バリュエーションは足元の利益ではなく将来CFの割引現在価値で決まりますから、規制でエンド需要やサプライチェーンが変質するリスクが高まれば、目先の増益があっても株価は慎重になります。投資含意は二つ。第一に、地政学・規制リスクは半導体のディスカウントレート(要求リターン)を押し上げる構造的要因として継続監視が必要。第二に、AIインフラ需要そのものは旺盛なので、規制の影響を受けにくいファウンドリ以外のバリューチェーン(電力・データセンター・メモリ・パッケージング)への分散が有効だということです。" },
+        { q: "『事業会社×PE連合(Strategic-Sponsor Consortium)』とは何か、なぜ今増えているのか説明してください", a: "事業会社(ストラテジック)とPEファンド(スポンサー)が共同で一つの買収を行う形態です。PayPalのStripe+Advent、日本のKakaku.comを巡るBain+LY Corpが代表例です。増えている理由は三つ。第一に、超大型化する案件の資本負担とリスクを分担できること——単独では重すぎるエクイティを折半できます。第二に、事業会社が持つシナジー(顧客基盤・技術・流通)とPEが持つ資本規律・ガバナンス・EXIT設計を組み合わせ、より高いバリューアップを描けること。これにより競合入札で高いプレミアムを正当化しやすくなります。第三に、規制対応——事業会社が前面に出ることで独禁・安保審査を通しやすくなる、あるいは逆にPEが緩衝材になるケースもあります。投資家としての留意点は、利益相反(事業会社のシナジー取り込みが少数株主やPEのLPと衝突しうる)、ガバナンスの複雑さ、そしてEXIT時の意思決定の齟齬リスクです。連合の『ガバナンス設計』と『出口の合意』が成否を分けます。" }
+      ],
+      keyConceptToday: {
+        term: "事業会社×PE連合 (Strategic-Sponsor Consortium)",
+        definition: "事業会社(ストラテジック・バイヤー)とPEファンド(フィナンシャル・スポンサー)が共同でターゲットを買収する形態。資本・リスクを分担しつつ、事業シナジーと資本規律を組み合わせて価値創出を図る。",
+        background: "従来M&Aは『事業会社の戦略的買収』か『PEの財務的買収』のいずれかが中心だった。案件の超大型化と競合TOBの常態化を背景に、両者が組んで単独では負えない規模・リスクを分担し、シナジー+規律の両取りで高いプレミアムを正当化する連合型が台頭している。",
+        practical: "①エクイティ負担とリスクを折半でき、超大型案件を成立させやすい。②事業会社のシナジー(顧客・技術・流通)の現在価値を織り込め、価格上限を引き上げられる。③規制審査(独禁・安保)で事業会社が前面に立つ/PEが緩衝材となる柔軟性。留意点は利益相反、ガバナンスの複雑化、EXIT時の意思決定齟齬で、連合契約(ガバナンス・出口条項)の設計が生命線。",
+        context2026: "2026年7月、Stripe(事業会社)×Advent(PE)がPayPalに$53B・$50Bコミット融資でTOBを提示。日本でもKakaku.comを巡りBain Capital×LY Corp連合がEQTと競合。金利高止まり下でも記録的なプライベートクレジット供給(Crescent $10.8B等)が連合型の超大型テイクプライベートを可能にしている。競合TOBの常態化と相まって、連合のガバナンス設計と価格規律が投資リターンを左右する局面。"
+      },
+      dealAnalysis: {
+        title: "PayPal $53Bテイクプライベート — Stripe + Advent International連合",
+        thesis: "決済大手Stripe(事業会社)とPE大手Advent(スポンサー)が折半保有で提示した$53B(1株$60.50、28%プレミアム)の超大型P2P。約$500億のコミット済み銀行融資を確保し、解体はせず両者が共同運営する方針。Stripeの技術・加盟店ネットワークとの統合シナジー、Adventのフィンテック投資実績・資本規律・EXIT設計を組み合わせ、成熟期に入ったPayPalの収益性改善(コスト効率化・ブランデッドチェックアウト再加速・ステーブルコイン/決済スタック統合)で価値を創出する構図。競合入札とアクティビズムの潮流の中で、連合の資本力とシナジーで高いプレミアムを正当化できるかが焦点。",
+        timing: "金利高止まりでも記録的なプライベートクレジット/レバレッジドファイナンスの供給力(H1'26 Crescent $10.8B、ジュニアデット$50B+目標)が$50B級のコミット融資を可能にする局面。PayPalは成長鈍化・株価低迷でバリュエーションが割安化し、フィンテック再編の標的として魅力が増していた。事業会社×PE連合という新形態が競合入札を高度化させる潮流とも合致する。",
+        downside: "①28%プレミアム上乗せでエントリー・マルチプルが切り上がり、成長再加速が遅れれば『高値掴み』リスク。②$50Bのレバレッジは金利高止まり下で利払い負担が重く、CF計画の余裕度が問われる。③StripeとPayPalは決済で競合領域が重なり、独禁審査が長期化・条件付き承認となる可能性。④事業会社×PE連合特有の利益相反・ガバナンス齟齬、そしてEXIT(再上場/売却)の合意リスク。⑤取締役会(7/20協議)や既存株主が対抗提案・価格引き上げを求める展開も。",
+        valuation: "成熟フィンテックはEV/EBITDA二桁前半〜半ば、FCF利回りで評価されることが多い。$53B・$60.50は直近終値比+28%で、成長鈍化を織り込んだ割安圏からの買収。連合側は決済スタック統合シナジーの現在価値でプレミアムを正当化できるが、$50Bレバレッジ前提では『コスト削減とブランデッドチェックアウト再加速でEBITDAをどこまで伸ばせるか』がIRRの生命線。金利高止まり下では出口マルチプルの保守的想定と、デレバレッジ速度がリターンを左右する。"
+      }
+    }
+  },
+  {
+    date: "2026-07-17",
+    dateLabel: "Jul 17",
+    tokenEstimate: 21000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7457.0,  change:-76.8,   pct:-1.02, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:25520.0, change:-362.0,  pct:-1.40, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52146.0, change:-407.0,  pct:-0.77, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:64282.0, change:-2678.0, pct:-4.00, dir:"down" }
+    },
+    macro: {
+      "10Y米国債":    { value:"~4.63%",  dir:"up"   },
+      "2Y米国債":     { value:"~4.22%",  dir:"up"   },
+      "VIX":          { value:"~22",     dir:"up"   },
+      "DXY":          { value:"~101.0",  dir:"up"   },
+      "WTI原油":      { value:"~$80.5",  dir:"up"   },
+      "Gold金":       { value:"~$4,150", dir:"up"   },
+      "ドル円":       { value:"¥161.5",  dir:"down" },
+      "日10年国債":   { value:"~2.82%",  dir:"up"   },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.8%",  dir:"up"   }
+    },
+    movers: [
+      { ticker:"NFLX", name:"Netflix",          pct:-8.6, dir:"down", why:"Q2売上$12.56B(予想$12.59Bをわずかに下回る)・EPS$0.80(予想$0.79)。Q3ガイダンスが売上/EPS/営業利益率とも予想割れ、FCFは-33%の$1.53B。時間外で52週安値$67.97へ" },
+      { ticker:"XOM",  name:"Exxon Mobil",       pct: 2.6, dir:"up",   why:"米国のイラン攻撃継続で地政学リスク上昇、WTIが$80超え。エネルギー株に資金流入" },
+      { ticker:"CVX",  name:"Chevron",           pct: 2.2, dir:"up",   why:"原油急騰の恩恵。中東緊張激化でエネルギーセクターが数少ない逃避先に" },
+      { ticker:"NVDA", name:"NVIDIA",            pct:-1.8, dir:"down", why:"半導体主導のリスクオフ継続。TSMC設備投資増の過剰投資懸念と地政学リスクでチップ株に売り" },
+      { ticker:"TSM",  name:"TSMC ADR",          pct:-1.3, dir:"down", why:"好決算後も通期capex$60-64B引き上げの過剰投資懸念が尾を引き続落。Nasdaq安を主導" },
+      { ticker:"AMD",  name:"AMD",               pct:-1.9, dir:"down", why:"半導体セクター全体の調整。中東発の原油高・金利上昇がグロース株全般の重石に" }
+    ],
+    events: [
+      { icon:"⚠️", title:"中東緊張が急激化 — 米国のイラン攻撃継続でWTI原油$80超え、リスクオフ加速(プレマーケット)", detail:"米国のイランへの攻撃継続を受け、原油が急騰しWTIは一時$80を突破($79超で引け)、Brentも$84超へ。安全資産需要で米10年債利回りは~4.63%へ上昇、金は~$4,150へ。株式は逃避売りに押され、S&P500先物-0.2%・Nasdaq100先物-0.8%と軟調。低インフレという追い風を、地政学・エネルギー価格上昇という別種のリスクが上書きする展開。※指数は7/17の米国市場終値ベースに更新済み(S&P-1.02%・Nasdaq-1.40%・Dow-0.77%)。", searchKey:"US strikes Iran oil price crude 80 Middle East July 17 2026 markets risk off" },
+      { icon:"🇯🇵", title:"日経225 -3.45%で65,000割れ — 米チップ株安と円高でハイテク・輸出株が急落", detail:"日経225は-3.45%と急落し一時65,000を割り込み64,527まで下落、約1カ月ぶり安値。米半導体・AI株の軟調が日本のテクサプライチェーンを直撃し、Kioxia・ソフトバンクGが大幅安。加えて円がやや強含み(ドル円~161.5)、トヨタ・ホンダなど輸出株の採算悪化懸念が重石に。中東緊張による世界的なリスク回避も流動性を細らせた。", searchKey:"Nikkei 225 July 17 2026 drop 3.45 percent below 65000 Kioxia SoftBank yen" },
+      { icon:"🎬", title:"Netflix Q2は小幅ミス・弱いQ3ガイダンスで時間外-8.6% — FCF-33%が嫌気され52週安値", detail:"Netflixは Q2売上$12.56B(予想$12.59Bをわずかに下回る)・調整後EPS$0.80(予想$0.79)を発表。会員増・値上げ・広告寄与で売上は前年比+13%だったが、Q3見通し(売上$12.86B・EPS$0.82・営業利益率33.2%)が全項目で予想割れ。FCFは-33%の$1.53B(予想$2.72B)と大きく下振れし、時間外で-8.6%の$67.97(52週安値)。ガイダンス失望が続く成長株の典型例。", searchKey:"Netflix NFLX Q2 2026 earnings miss guidance free cash flow shares fall after hours" },
+      { icon:"📉", title:"米株は半導体主導のリスクオフ継続 — 先物軟調、TSMC capex増とGemini遅延の余韻", detail:"前日(7/16)の米株はS&P-0.51%(7,533.8)・Nasdaq-1.47%(25,882)・Dow-0.20%(52,553)で引け、TSMCの通期設備投資引き上げによる過剰投資懸念とAlphabetのGemini 3.5 Pro遅延報道が重石だった。7/17未明は中東発の原油高・金利上昇がこれに重なり、S&P500先物-0.2%・Nasdaq100先物-0.8%と続落含み。史上最高値圏からの明確な調整局面で、AI設備投資規律と地政学の綱引きが続く。", searchKey:"stock market futures July 17 2026 semiconductor selloff TSMC capex Nasdaq S&P" },
+      { icon:"🤖", title:"寄付き後に半導体安が加速 — SOX指数が-3%超で弱気相場入り、AIトレード再考が主因", detail:"取引開始後にリスクオフが一段と進行。フィラデルフィア半導体指数(SOX)は-3%超で弱気相場(直近高値から-20%)入りし、Nasdaqは-1.5%前後、S&Pは-0.8~-1.0%、Dowは-1%超へ下げ幅を拡大した。中国AIスタートアップMoonshotが『世界最大級のオープンモデル』Kimi K3を発表しAnthropicの最前線モデルに対抗、AI設備投資の投資対効果(ROI)を巡る警戒がチップ株売りを増幅。3月安値からのテック主導ラリーは明確に失速している。", searchKey:"Philadelphia Semiconductor Index SOX bear market July 17 2026 Moonshot Kimi K3 AI selloff Nasdaq" }
+    ],
+    usCredit: {
+      summary: "米プライベートクレジットはQ2を『メガディールと解約圧力』で締めくくった。Invited Clubs(KSL CapitalによるApolloからの買収)向けに$17億超のローンをAres Credit主導で組成、BridgeBio Pharmaが Sixth Street主導で$10億の優先株ファイナンス(初期配当7%・転換価格は直近VWAP比+100%プレミアム)を調達。一方でエバーグリーン(半流動)型ダイレクトレンディング戦略からの解約請求は増加し、流動性管理が業界の焦点に。H1'26はPE案件『件数-67%・総額+10%(大型化)』、ファンドレイズは金額+9%と、大手マネジャーへの資金集中が一段と鮮明。大型ローンの90日平均スプレッドは282bp・利回り~6.80%(7/2時点)。",
+      deals: [
+        { title:"Invited Clubs：KSL Capitalによる買収資金として$17億超をAres主導で組成", tag:"LBOファイナンス", tagCls:"t-blue", meta:"Ares Credit(主幹事) ｜ $1.7B+ ｜ 会員制クラブ運営(ApolloからKSLへ)", body:"会員制クラブ運営のInvited ClubsをKSL Capital PartnersがApolloから買収する資金として、Ares Credit fundsが$17億超のローンを主導組成。Q2は総じて静かだったが、こうしたメガディールがディールフローを下支え。スポンサー間売買(sponsor-to-sponsor)を支えるプライベートクレジットの厚みを示す。", sig:"静かなQ2でもメガディールが供給力を証明", searchKey:"Invited Clubs KSL Capital Apollo 1.7 billion loan Ares Credit financing 2026" },
+        { title:"BridgeBio Pharma：Sixth Street主導で$10億の優先株ファイナンス(初期配当7%)", tag:"ストラクチャード", tagCls:"t-purple", meta:"Sixth Street($800M) ｜ $1B優先株 ｜ バイオ/ヘルスケア・クレジット", body:"BridgeBio Pharmaが$10億の優先株ファイナンスを調達、うち Sixth Streetが$8億を主導。初期配当7%、転換価格は直近VWAP比+100%プレミアムという設計。エクイティ希薄化を抑えつつ資本を確保する、プライベートクレジットの構造化ソリューションの好例。", sig:"転換プレミアム付き優先株で希薄化を抑制", searchKey:"BridgeBio Pharma 1 billion preferred equity Sixth Street 7 percent dividend 2026" },
+        { title:"エバーグリーン型DLで解約請求が増加 — 半流動ビークルの流動性管理が焦点に", tag:"流動性リスク", tagCls:"t-red", meta:"複数マネジャー ｜ 私募/半流動BDC ｜ 解約(redemption)圧力", body:"Q2は個人・機関投資家向けエバーグリーン(半流動)型ダイレクトレンディング戦略からの解約請求が増加し、四半期を『静かに、しかし解約圧力を伴って』締めくくった。ゲート(解約制限)発動やNAV評価の透明性が問われ、『集める力』と『個社の与信劣化・流動性ミスマッチ』の二極化が続く。", sig:"半流動ビークルの償還設計が試される局面", searchKey:"private credit evergreen BDC redemption pressure Q2 2026 liquidity gates" }
+      ],
+      outlook: "💡 Q2は静かながらメガディール(Invited Clubs $1.7B・BridgeBio $1B)が供給力を示す一方、エバーグリーン型の解約圧力が静かに進行。焦点は調達額から『デプロイの質』と半流動ビークルの流動性管理へ。中東発の原油高・金利上昇はレバレッジドクレジットの利払い負担とスプレッドに波及しうるため、7/29のAres Capital決算以降のBDC決算シーズンが市場のトーンを左右する。"
+    },
+    jpCredit: {
+      summary: "日本PEは『early innings(まだ初期段階)』(Goldman Sachs)。2025年の案件総額は約$33Bで、ガバナンス改革・事業承継・カーブアウト・円安が四つの追い風。KKRのTaiyo Holdings(太陽ホールディングス)非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)が進行し、競合TOBが常態化。足元は米チップ株安の波及と円の強含みでリスク資産が調整局面にあるが、円安基調と構造改革という中期の追い風は不変。",
+      deals: [
+        { title:"KKR：太陽ホールディングス(Taiyo Holdings)の非公開化を推進", tag:"バイアウト", tagCls:"t-orange", meta:"KKR ｜ テイクプライベート ｜ 化学・電子材料", body:"KKRが化学・電子材料の太陽ホールディングスの非公開化に動くと報道。ガバナンス改革とTSEのPBR改善要求を背景に、優良な素材・製造業のカーブアウト/P2Pが外資PEの主戦場に。競合TOBの可能性も意識される案件。", sig:"外資PEによる素材・製造業P2Pの継続", searchKey:"KKR Taiyo Holdings take private Japan chemicals 2026" },
+        { title:"Kakaku.com争奪戦：EQT vs Bain Capital + LY Corp連合が継続", tag:"争奪戦", tagCls:"t-purple", meta:"EQT / Bain+LY Corp ｜ 競合入札 ｜ インターネット・メディア", body:"価格比較大手Kakaku.comを巡りEQTと、Bain Capital+SoftBank系LY Corp連合が競合。事業会社×PE連合という新形態が入札競争を高度化。競合TOBが日本でも現実的シナリオとして定着しつつある。", sig:"事業会社×PE連合と競合TOBの常態化", searchKey:"Kakaku.com EQT Bain LY Corp competing bid Japan 2026" },
+        { title:"Goldman Sachs：日本は買収活動の『early innings』— 案件$33B/年", tag:"マーケット見通し", tagCls:"t-blue", meta:"Goldman Sachs ｜ 市場見通し ｜ 日本・韓国・豪州", body:"Goldmanは日本・韓国・豪州に『多くのバイアウト機会』があり日本は『early innings』と指摘。2025年の日本案件は約$33B。ガバナンス改革・事業承継・カーブアウト・円安が四つの追い風。Bain Capitalは$10.5B調達後も現地競争激化に直面。", sig:"構造的追い風で日本PEの成長余地は依然大きい", searchKey:"Goldman Sachs Japan buyout early innings opportunities 2026" }
+      ],
+      outlook: "💡 短期は米ハイテク安と円高でリスク資産が調整するが、日本PEの構造的追い風(ガバナンス改革・事業承継・カーブアウト・円安)は不変。競合TOBの常態化と事業会社×PE連合(Bain+LY)という新形態の下、価格規律とプロセス設計力を備えたマネジャーがリターン格差を生む。$33B/年の市場は依然『early innings』。"
+    },
+    takeaway: "7/17は、中東緊張の急激化と半導体主導のリスクオフが主役——米国のイラン攻撃継続でWTI原油が$80を突破し、安全資産需要で米10年債は~4.63%へ上昇、金は~$4,150へ。米株は続落し、S&P500-1.02%(7,457)・Nasdaq-1.40%(25,520)・Dow-0.77%(52,146)で引け(週間ではNasdaq-2.9%・S&P-1.6%・Dow-0.9%)。VIXは寄付き後+11%と警戒サインを点灯。中国AIスタートアップMoonshotの最強オープンモデル『Kimi K3』発表がAIトレードのROI懸念を増幅した。アジアでは日経225が-3.45%と急落し一時65,000割れ(64,527)——米チップ株安の波及、円の強含み(ドル円~161.5)による輸出採算懸念、世界的リスク回避が重なった。個別ではNetflixがQ2小幅ミス+弱いQ3ガイダンス+FCF-33%で時間外-8.6%の52週安値。前日(7/16)はTSMC capex増とGemini遅延で米株が続落しており、AI設備投資規律への警戒に地政学・エネルギー高が上乗せされた構図だ。プライベートクレジットはQ2を『メガディール(Invited Clubs $1.7B・BridgeBio $1B)と解約圧力』で締めくくり、供給力と半流動ビークルの流動性リスクが同居。日本PEはKKRの太陽HD非公開化やKakaku.com争奪戦が進み、Goldmanは日本を買収の『early innings』と評価。",
+    narrative: "7月17日(木→金)の未明、市場の主導権は半導体からエネルギーと地政学へと移った。米国のイランへの攻撃継続が伝わり、WTI原油は一時$80を突破、Brentも$84超へ跳ね上がった。原油高は同時にインフレ再燃と安全資産需要を呼び、米10年債利回りは~4.63%へ上昇、金は~$4,150へ買われた。前日のcool CPIが示した『低インフレという追い風』は、地政学とエネルギー価格上昇という別種のリスクにあっさり上書きされた格好だ。株式は逃避売りに押され、S&P500先物-0.2%・Nasdaq100先物-0.8%と続落含みで米国の朝を迎えようとしている。||震源に最も近いアジアの反応は激烈だった。日経225は-3.45%と急落し、一時65,000を割り込んで64,527まで下落、約1カ月ぶりの安値をつけた。米半導体・AI株の軟調が日本のテクサプライチェーンを直撃し、Kioxiaやソフトバンクグループが大幅安。加えて円がやや強含み(ドル円~161.5)、トヨタ・ホンダなど輸出企業の採算悪化懸念が重なった。中東緊張による世界的なリスク回避が流動性を細らせ、下げを増幅させた。低インフレの安心感が、地政学ショックの前ではいかに脆いかを映す一日である。||企業サイドの主役はNetflixだった。Q2は売上$12.56B(予想$12.59Bをわずかに下回る)・調整後EPS$0.80(予想$0.79)と小幅なミックスだったが、株価は時間外で-8.6%の$67.97(52週安値)へ急落した。嫌気されたのは目先の数字ではなくガイダンスとキャッシュだ。Q3見通しは売上$12.86B・EPS$0.82・営業利益率33.2%と全項目で予想を下回り、FCFは-33%の$1.53B(予想$2.72B)と大きく下振れした。『良い会員数・広告の伸び』より『減速する自由CFと保守的な先行き』を市場が重く見た——成長株のバリュエーションが将来CFの割引現在価値で決まることを改めて思い出させる反応だ。||この地合いは、前日(7/16)からの連続性の上にある。TSMCはQ2でEPS$4.31・売上$40.2B(+33.7%)・粗利率67.7%と好決算ながら、通期設備投資見通しを$52-56B→$60-64Bへ引き上げたことで過剰投資懸念が優勢となり、Alphabetの最強AIモデルGemini 3.5 Pro遅延報道と重なって米株を続落させた。そこに中東発の原油高・金利上昇が上乗せされ、AI設備投資の規律とマネタイズという構造テーマに、地政学・エネルギーというマクロショックが交差する。史上最高値圏からの明確な調整局面だ。||プライベート市場に目を転じれば、米プライベートクレジットはQ2を『メガディールと解約圧力』という二面性で締めくくった。Invited Clubs(KSLがApolloから買収)向けにAres主導で$17億超、BridgeBioにSixth Street主導で$10億の優先株——供給力は健在だ。一方でエバーグリーン(半流動)型ダイレクトレンディングからの解約請求は増加し、流動性ミスマッチという静かなリスクが進行する。中東発の金利上昇はレバレッジドクレジットの利払いとスプレッドに波及しうる。日本PEもKKRの太陽HD非公開化やKakaku.com争奪戦(EQT vs Bain+LY)が進み、Goldmanは日本を買収の『early innings』と評する。短期は米ハイテク安と円高でリスク資産が揺れても、ガバナンス改革・事業承継・円安という構造的追い風は不変だ。市場は今日、地政学・エネルギー・AI規律の三つ巴を睨みながら、次のマクロイベントと決算へ視線を移していく。",
+    peTraining: {
+      thirtySecSummary: "本日(7/17未明・プレマーケット)のポイントは3点。①中東緊張の急激化——米国のイラン攻撃継続でWTIが$80超え、米10年債~4.63%・金~$4,150へ上昇、株式先物は続落含み(S&P-0.2%/Nasdaq100-0.8%)。②アジアが激震——日経225-3.45%で一時65,000割れ、米チップ株安の波及と円強含みが直撃。③Netflixが Q2小幅ミス+弱いQ3ガイダンス+FCF-33%で時間外-8.6%の52週安値——成長株はガイダンスとCFで裁かれる。プライベートクレジットはQ2を『メガディール(Invited $1.7B・BridgeBio $1B)と解約圧力』で締め、供給力と半流動ビークルの流動性リスクが同居。",
+      interviewQA: [
+        { q: "中東緊張による原油高・金利上昇は、プライベートクレジット/LBOファイナンスにどう波及しますか", a: "三つの経路で効いてきます。第一に『金利(ベースレート)』——原油高がインフレ期待を押し上げ長期金利が上昇すると、フローティング金利のレバレッジドローンは利払い負担が直接増します。既存ポートフォリオのインタレスト・カバレッジ(ICR)が悪化し、脆弱な借り手のノンアクルーアル(利払い停止)リスクが高まります。第二に『スプレッド』——リスクオフでクレジットスプレッドが広がると新規ディールの資金コストが上がり、LBOのレバレッジ許容量とエントリー価格に下押し圧力がかかります。第三に『対象事業のマージン』——エネルギー多消費型やコスト転嫁力の弱いポートフォリオ企業はEBITDAが圧迫され、デレバレッジ計画が狂います。投資家としては、①フローティング比率とヘッジの有無、②ICR・レバレッジ・covenantの余裕度、③投入価格を転嫁できる価格決定力、この3点でポートフォリオの耐性を点検します。逆に、原油高の恩恵を受けるエネルギー関連やインフレ連動CFを持つ資産(インフラ・一部リアルアセット)は相対的に強く、地政学局面では分散の観点で価値を増します。" },
+        { q: "エバーグリーン(半流動)型プライベートクレジットの『解約圧力』とは何が問題なのか説明してください", a: "本質は『流動性ミスマッチ』です。エバーグリーン型(半流動BDCやインターバルファンド)は、投資家に四半期ごとの部分解約など一定の流動性を提供する一方、投資先はダイレクトローンという本来流動性の低い資産です。市場がストレスに入ると解約請求が集中しますが、原資産をすぐ売れないため、①ゲート(解約制限)を発動して投資家の資金を事実上ロックする、②割安売却でNAVを毀損する、③現金・流動資産を厚めに持ちリターンを犠牲にする、のいずれかを迫られます。Q2はこの解約請求が増加し、NAV評価の透明性や償還設計の頑健さが問われました。投資家としての着眼点は、(a)ゲート条項・解約上限の設計、(b)流動性バッファとレバレッジ水準、(c)NAVマーク(第三者評価の頻度・保守性)、(d)投資家基盤の粘着性です。『集める力』と『個社の与信劣化・流動性管理』は別問題で、後者こそが下落局面でマネジャーの実力を分けます。" },
+        { q: "Netflixのように『決算は小幅ビートなのに株価が急落する』のはなぜか、バリュエーションの観点で説明してください", a: "株価は『足元の実績』ではなく『将来キャッシュフローの割引現在価値』で決まるからです。NetflixのQ2は売上ほぼ一致・EPS小幅ビートでしたが、市場が失望したのは①Q3ガイダンスが売上・EPS・営業利益率とも予想割れ、②FCFが-33%と大きく下振れした点です。DCFの分子(将来CF)の成長率が切り下がり、分母(割引率)は金利上昇局面でむしろ上がっているため、理論価値が下方修正されます。特に成長株は将来の大きなCFに価値の大半を依存する『デュレーションの長い』資産なので、成長率と割引率の小さな変化に株価が敏感に反応します。加えて高い期待が株価に織り込まれていると、『実績が予想通りでもガイダンスが弱い』だけで失望売りが出ます。投資含意は、(a)モメンタムや目先のビート/ミスより、ガイダンスとFCF転換・資本効率の持続性を見ること、(b)金利上昇局面では長デュレーション資産のマルチプル圧縮に注意すること、(c)期待値(コンセンサス)対比でのサプライズこそが株価を動かすと理解することです。" }
+      ],
+      keyConceptToday: {
+        term: "流動性ミスマッチ / エバーグリーン型プライベートクレジットの解約リスク (Liquidity Mismatch)",
+        definition: "半流動(セミリキッド)型のプライベートクレジット・ビークル(半流動BDC・インターバルファンド)が、投資家に定期的な部分解約という『流動性』を提供する一方、投資先はダイレクトローンという本来流動性の低い資産であるために生じる、資産と負債の流動性の不一致。",
+        background: "個人・機関のプライベートクレジットへの需要拡大を背景に、四半期解約などを認めるエバーグリーン型ビークルが急増した。だが原資産のローンは短期売却が難しく、市場ストレス時に解約請求が集中すると、ゲート発動・割安売却・現金積み増しのいずれかを迫られる。2026年Q2はこの解約圧力が実際に増加し、業界の構造的弱点として顕在化した。",
+        practical: "①ゲート(解約制限)条項——上限%や発動条件の設計が投資家保護と運用安定の要。②流動性バッファとレバレッジ——現金・流動資産の厚みとレバレッジ水準が耐性を左右。③NAVマークの保守性——第三者評価の頻度と透明性が信頼を決める。④投資家基盤の粘着性——短期資金比率が高いほど取り付けに脆弱。留意点は、好況時のリターン競争が流動性バッファを薄くしがちで、下落局面で一気に弱点が露呈すること。",
+        context2026: "2026年Q2、米プライベートクレジットはInvited Clubs $1.7B・BridgeBio $1Bといったメガディールで『供給力』を示す一方、エバーグリーン型DLからの解約請求が増加。中東発の原油高・金利上昇(米10年~4.63%)がレバレッジドクレジットの利払い・スプレッドに波及しうる局面で、半流動ビークルの償還設計と流動性管理がマネジャーの実力を分ける試金石に。7/29のAres Capital決算以降のBDC決算シーズンが市場のトーンを左右する。"
+      },
+      dealAnalysis: {
+        title: "Invited Clubs $1.7B+ LBOファイナンス — KSL CapitalによるApolloからの買収(Ares主導)",
+        thesis: "会員制クラブ運営のInvited ClubsをKSL Capital PartnersがApolloから買収する(sponsor-to-sponsor)資金として、Ares Credit fundsが$17億超のローンを主導組成した案件。静かだったQ2のディールフローを下支えするメガディールで、スポンサー間売買を支えるプライベートクレジットの厚みを象徴する。KSLはトラベル・レジャー領域の専門スポンサーで、会員制クラブの安定した会費収入(リカーリング)とアップセル余地に価値創出の軸を置く。Apolloにとっては保有資産の現金化(EXIT)、Aresにとっては大型ユニトランシェ組成の実績積み増しという三者の利害が噛み合った構図。",
+        timing: "Q2の米プライベートクレジット/M&Aは総じて低調だったが、大型案件は選別的に成立する『件数減・大型化』のトレンド(H1'26はPE件数-67%・総額+10%)に合致。金利高止まり・スプレッド~282bp/利回り~6.80%の環境でも、安定CFを持つレジャー資産にはレバレッジを乗せやすい。sponsor-to-sponsor取引は、EXIT難で滞留する保有企業(record backlog)の回転を促す手段として増加しており、その資金の受け皿としてプライベートクレジットが機能している。",
+        downside: "①中東発の金利上昇・原油高が続けば、フローティング金利の利払い負担が増しICR(インタレスト・カバレッジ)を圧迫。②会員制クラブは裁量的消費依存で、景気後退・実質所得減少局面では会費・利用の減退リスク。③sponsor-to-sponsorはエントリー・マルチプルが既に切り上がっている場合が多く、次の買い手(EXIT)を見つけにくい『パス・ザ・パーセル』批判もつきまとう。④単一大型ローンへの与信集中はAres側のポートフォリオ分散を要求。⑤リスクオフ長期化でBDC・エバーグリーンの解約圧力が強まれば、増枠・借換の条件が悪化する可能性。",
+        valuation: "レジャー/会員制クラブはEV/EBITDAで評価され、リカーリング会費比率と会員維持率(リテンション)がマルチプルを左右する。$1.7B超のデットは、安定CFに対するレバレッジ許容度の高さを示す一方、金利高止まり下ではデレバレッジ速度とICRの余裕度がIRRの生命線。価値創出は『会員数×客単価(アップセル)×コスト効率』の三軸で、KSLの業界知見によるオペレーション改善とアドオン(施設拡充・地域展開)が鍵。出口は再上場・別スポンサーへの売却・ストラテジック売却が想定され、金利・消費環境次第で出口マルチプルの保守的想定が必要。"
+      }
+    }
+  },
+  {
+    date: "2026-07-20",
+    dateLabel: "Jul 20",
+    tokenEstimate: 20000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7443.28, change:-14.2,  pct:-0.19, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:25508.07,change:-12.8,  pct:-0.05, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:51839.26,change:-307.16,pct:-0.59, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:64141.1, change:0.0,    pct:0.00,  dir:"flat" }
+    },
+    macro: {
+      "10Y米国債":    { value:"~4.55%",  dir:"down" },
+      "2Y米国債":     { value:"~4.20%",  dir:"down" },
+      "VIX":          { value:"~21",     dir:"up"   },
+      "DXY":          { value:"~101.0",  dir:"flat" },
+      "WTI原油":      { value:"~$84.5",  dir:"up"   },
+      "Gold金":       { value:"~$4,150", dir:"flat" },
+      "ドル円":       { value:"¥161.8",  dir:"up"   },
+      "日10年国債":   { value:"~2.82%",  dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"down" }
+    },
+    movers: [
+      { ticker:"AMD",  name:"AMD",              pct: 1.8, dir:"up",   why:"MicrosoftがAzure向けにAMDのAI/GPUチップを採用と報道。プレマーケットで+4.5%まで買われたが、引けにかけモメンタムが失速し+1.8%へ縮小。それでも半導体の数少ない上昇銘柄" },
+      { ticker:"NVDA", name:"NVIDIA",           pct:-0.8, dir:"down", why:"寄付きの反発が続かず、Big Tech決算ウィーク前の警戒とイラン懸念でチップ株のモメンタムが失速。前場のプラスから引けはマイナス圏へ反落" },
+      { ticker:"GOOGL",name:"Alphabet",         pct: 1.6, dir:"up",   why:"水曜引け後に決算。AI設備投資(capex)計画とクラウド/検索広告が焦点。投資サイクル継続の確認待ちで先回り買い" },
+      { ticker:"MSFT", name:"Microsoft",        pct: 1.2, dir:"up",   why:"AMDチップ採用でAIインフラ調達を多様化しコスト/供給リスクを分散。今週の自社決算とAzure/Copilotのマネタイズに注目集まる" },
+      { ticker:"TSLA", name:"Tesla",            pct: 1.0, dir:"up",   why:"今週決算予定。EV需要・自動車マージン・ロボタクシー進捗・エネルギー事業が焦点で、決算前のポジション調整の買い" },
+      { ticker:"XOM",  name:"Exxon Mobil",      pct: 1.2, dir:"up",   why:"イラン懸念で原油が反発しWTIは~$84.5へ上昇、Brentは$90近辺で高止まり。エネルギー株は数少ない上昇セクターとして相場の下支え役に" }
+    ],
+    events: [
+      { icon:"📉", title:"寄付きの反発は失速 — 3指数そろって小幅安で引け、チップのモメンタム失速・原油高が重し(S&P-0.19%・Dow-0.59%)", detail:"月曜の米株は寄付きこそ半導体主導で反発したが、引けにかけラリーが失速し3指数そろって小幅安。S&P500-0.19%(7,443)・Nasdaq-0.05%(25,508)・Dow-0.59%(51,839)。MicrosoftのAMDチップ採用でAMDはプレマーケット+4.5%まで買われたが失速し、Nvidiaは引けでマイナス圏へ反落。イランを巡る地政学懸念と原油高(WTI~$84.5、Brent$90近辺)が重しとなった。週後半のAlphabet(水)・Tesla・Intel決算を控え、AI設備投資の規律を見極めたい手控えムード。※指数は7/20引け(EDT)ベース、Nikkeiは海の日で休場のため7/17終値を据え置き。", searchKey:"stock market today July 20 2026 S&P 500 Nasdaq Dow close lower chip momentum fades oil rises Iran" },
+      { icon:"🛢️", title:"米イラン停戦崩壊で原油続伸 — ホルムズ海峡で船舶拿捕、Brentは$90近辺で高止まり(7月安値+30%)", detail:"週末にかけ米イランの停戦が事実上崩壊。イランはホルムズ海峡を通航する4隻の船舶を拿捕したと表明、米はイラン港湾の封鎖を再開した。Brentは月曜に$90を突破し(7月安値から約+30%)引けも$90近辺で高止まり、WTIも~$84.5へ上昇。原油高と供給途絶懸念が株式のリスクオンを打ち消し、寄付きの反発は引けにかけ失速した。供給途絶リスクが残存する限り、エネルギー・インフレ経路のテールリスクは継続。", searchKey:"US Iran ceasefire collapse Strait of Hormuz vessels Brent 90 oil rises July 20 2026" },
+      { icon:"🇯🇵", title:"東京市場は海の日で休場 — 日経は7/17に-4.03%(64,141)、火曜の半導体反応が試金石", detail:"日本のキャッシュ株式市場は海の日(Marine Day)で7/20休場。直近の日経225は7/17に-4.03%の64,141.12で引け、米チップ株安と円強含みでハイテク・輸出株が急落した水準のまま。火曜(7/21)の再開時に、月曜の米半導体反発(AMD/Nvidia上昇)がどこまで波及するかが焦点。原油高一服と米株反発は追い風だが、円の水準と地政学が引き続き変動要因。", searchKey:"Tokyo market closed Marine Day July 20 2026 Nikkei 225 chip focus Tuesday" },
+      { icon:"💻", title:"AMD×Microsoft — AzureがAMDのAIチップを採用、Nvidia一強に調達多様化の楔", detail:"MicrosoftがAzureのAIインフラでAMDのGPU/アクセラレータを採用すると発表し、AMDがプレマーケットで+4.5%。ハイパースケーラーがNvidia依存を薄め供給・コストリスクを分散する動きで、AIチップ市場の総需要拡大とAMDのシェア獲得期待が同時に高まった。前週にAIトレードのROI懸念で急落した半導体セクターに、需要の裾野拡大という別角度の追い風。", searchKey:"AMD Microsoft Azure AI chips deal July 2026 stock jumps" },
+      { icon:"📅", title:"今週はBig Tech決算ラッシュ — Alphabet(水)・Tesla・Intel・GM・IBM・GE Vernova・Philip Morris", detail:"Q2決算がピークへ。Alphabetは水曜引け後に発表し、capex計画がAI投資サイクル継続の試金石。IntelはQ2 EPS $0.22(前年同期-$0.10)・売上$14.4B(+11.6%)予想で今週最注目の一つ。Tesla・GM・IBM・GE Vernova・Philip Morrisも並ぶ。S&P500構成企業の86%超が既にコンセンサスを上回り、Q2の前年比増益率は+20%超が見込まれる。市場の関心は実績よりガイダンス・capex・経営コメントに集中。", searchKey:"earnings week July 20 2026 Alphabet Tesla Intel GM IBM guidance capex" }
+    ],
+    usCredit: {
+      summary: "米プライベートクレジットは『出口難の長期化』と『流動性ソリューションの高度化』が主題。PEのEXIT枯渇で平均ローン期間は従来の2〜3年から4〜5年へ長期化し、マネジャーはマルチアセット継続ビークル(continuation vehicle)やストリップセールで成熟・良好ポートフォリオを『クリーンアップ』し、LP向けの流動性を捻出している。潤沢なドライパウダーを背景に、ミドルマーケットを中心にダイレクトレンディングの市場シェア拡大は続く。ファンドレイズではKKRがアジア特化のAsiaCredit Opportunities Fund IIを$25億でクローズ。前週来の中東発の原油高・金利上昇はレバレッジドクレジットの利払い・スプレッド経路に波及しうるが、7/20は原油一服・株高でスプレッドはやや縮小(~2.7%)。",
+      deals: [
+        { title:"KKR：アジア特化『Asia Credit Opportunities Fund II』を$25億でクローズ", tag:"ファンドレイズ", tagCls:"t-blue", meta:"KKR ｜ $2.5B ｜ アジア・クレジット(ダイレクトレンディング/機会型)", body:"KKRがアジア第2号のプライベートクレジット・ファンドを$25億でクローズ。アジア全域のクレジット機会(ダイレクトレンディング・ストラクチャード)に投資する。銀行融資の後退とアジアM&A拡大を背景に、地域特化型の大型調達が続く。日本を含むアジアの供給力の厚みを示す。", sig:"アジア地域特化型の大型ファンド組成が加速", searchKey:"KKR Asia Credit Opportunities Fund II 2.5 billion close 2026" },
+        { title:"継続ビークル/ストリップセールで成熟ポートフォリオをクリーンアップ", tag:"流動性ソリューション", tagCls:"t-purple", meta:"複数マネジャー ｜ continuation vehicle / strip sale ｜ セカンダリー", body:"EXIT枯渇でローン期間が4〜5年へ延びる中、マネジャーはマルチアセット継続ビークルやストリップセールで良好な成熟資産を売却し、LPへ流動性を還元する動きを強めている。プライマリーのディールフローが細る局面で、セカンダリー的手法が『回転』を担保する構造。", sig:"出口難を補うセカンダリー型流動性の常態化", searchKey:"private credit continuation vehicle strip sale liquidity 2026 direct lending" },
+        { title:"ミドルマーケットでダイレクトレンディングがシェア拡大継続 — 潤沢なドライパウダー", tag:"マーケット見通し", tagCls:"t-green", meta:"業界全体 ｜ ミドルマーケット ｜ ダイレクトレンディング", body:"潤沢なドライパウダーと構造的追い風の下、ダイレクトレンディングはミドルマーケットを中心にシェア拡大を続ける。困難な市場環境でも『建設的なパートナー』として直接貸し手が資金供給を担い、銀行融資からの代替が進む。ただし出口難・与信劣化・流動性ミスマッチが下方リスク。", sig:"銀行代替としての構造成長は不変、質が焦点", searchKey:"direct lending middle market share growth dry powder 2026 outlook" }
+      ],
+      outlook: "💡 テーマは『出口難の長期化』への適応。ローン期間の4〜5年化に対し、継続ビークル/ストリップセールが流動性の受け皿となり、KKRのアジア$2.5Bのような地域特化調達が供給力を補強する。7/20は原油一服・株高でHYスプレッドはやや縮小したが、中東の供給途絶リスクが再燃すれば利払い・スプレッド経路に逆風。7/29のAres Capital決算を皮切りにBDC決算シーズンが市場のトーンとNAV/ノンアクルーアルの実態を映す。"
+    },
+    jpCredit: {
+      summary: "日本は『30年で最も忙しいM&Aイヤー』の余韻の中。2025年の案件総額は約$300B(前年比倍増)に達し、プライベートクレジット市場も爆発的成長の入口に。Blackstoneが日本のプライベートクレジット・ブームに照準を定め、Glengarryは『今後数四半期で複数の大型プライベートクレジット案件が出る』と予想。エクイティ側ではKKRの太陽ホールディングス非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)が継続し、競合TOBが常態化。7/20は東京休場だが、円安基調・ガバナンス改革・事業承継という構造的追い風は不変。",
+      deals: [
+        { title:"Blackstone：日本のプライベートクレジット・ブームに照準", tag:"マーケット参入", tagCls:"t-orange", meta:"Blackstone ｜ 日本プライベートクレジット ｜ ダイレクトレンディング", body:"BlackstoneがM&A急増を背景に拡大する日本のプライベートクレジット市場へ本格的に照準。4年の市場教育を経て、Glengarryは『今後数四半期で複数の大型プライベートクレジット案件』を見込む。銀行融資が主流だった日本で、ノンバンク型クレジットの供給余地が急拡大する局面。", sig:"外資大手による日本プライベートクレジット本格参入", searchKey:"Blackstone Japan private credit boom 2026 direct lending" },
+        { title:"日本M&Aは$300B(2025) — 30年で最も忙しい年、ディール額が倍増", tag:"マーケット見通し", tagCls:"t-blue", meta:"市場全体 ｜ 案件総額$300B ｜ 前年比倍増", body:"2025年の日本のM&Aは案件総額が約$300Bへ倍増し、過去30年で最も活発な年に。ガバナンス改革・事業承継・カーブアウト・円安の四つの追い風が継続し、買収資金の受け皿としてプライベートクレジットの需要も連動して拡大している。", sig:"構造的M&A拡大がクレジット需要を牽引", searchKey:"Japan M&A 300 billion 2025 busiest year decades deal values double" },
+        { title:"KKR太陽HD非公開化・Kakaku.com争奪戦が継続 — 競合TOBが常態化", tag:"バイアウト", tagCls:"t-purple", meta:"KKR / EQT / Bain+LY ｜ テイクプライベート/争奪戦 ｜ 化学・ネット", body:"KKRの太陽ホールディングス(化学・電子材料)非公開化、価格比較大手Kakaku.comを巡るEQT対Bain+LY Corp連合の争奪戦が継続。事業会社×PE連合という新形態と競合TOBが日本でも定着し、素材・製造業のP2P/カーブアウトが外資PEの主戦場に。", sig:"競合TOBと事業会社×PE連合の常態化", searchKey:"KKR Taiyo Holdings Kakaku.com EQT Bain LY Corp Japan take private 2026" }
+      ],
+      outlook: "💡 7/20は東京休場だが、日本PE/プライベートクレジットの構造ストーリーは加速中。$300B/年のM&A拡大がクレジット需要を牽引し、Blackstoneら外資大手が本格参入、Glengarryは大型案件の連続を予想する。競合TOBの常態化と事業会社×PE連合の下、価格規律とプロセス設計力を備えたマネジャーがリターン格差を生む。火曜の東京再開で、米半導体反発と原油一服がリスク資産にどこまで波及するかが目先の焦点。"
+    },
+    takeaway: "7/20(月・引けEDT)は寄付きの反発が失速し小幅安で終了——朝方は半導体主導で買い戻されたが、引けにかけラリーがしぼみS&P500-0.19%(7,443)・Nasdaq-0.05%(25,508)・Dow-0.59%(51,839)。MicrosoftのAMDチップ採用でAMDはプレマーケット+4.5%まで買われたが失速、Nvidiaは引けでマイナス圏へ反落しチップのモメンタムが続かなかった。週末に米イランの停戦が崩壊しイランがホルムズ海峡で船舶を拿捕、Brentは$90を突破し引けも$90近辺で高止まり、WTIも~$84.5へ上昇。原油高と地政学懸念が株式のリスクオンを打ち消し、VIXは~21へ上昇。日本は海の日で休場(日経は7/17に-4.03%の64,141)。今週はAlphabet(水引け後)・Tesla・Intel・GM・IBM・GE Vernova・Philip Morrisと決算ラッシュで、capex計画とガイダンスがAI投資サイクル継続の試金石。S&P500は既に86%超が予想超えでQ2増益率は+20%超見込み。プライベート市場では、米はEXIT難でローン期間が4〜5年へ長期化し継続ビークル/ストリップセールが流動性を補完、KKRがアジア$2.5Bをクローズ。日本はM&A$300B(2025)を背景にBlackstoneがプライベートクレジット・ブームへ照準、KKR太陽HD非公開化やKakaku.com争奪戦が続く。",
+    narrative: "7月20日の月曜、市場は前週の暗転から明確に反発した。半導体主導で崩れた地合いが、皮肉にも半導体主導で戻り始めたのだ。震源はMicrosoftによるAMDのAIチップ採用報道——AzureのAIインフラにNvidia以外の選択肢を組み込むという判断は、ハイパースケーラーが供給・コストリスクを分散し始めた証左であり、AMDはプレマーケットで+4.5%、Nvidiaも連れ高した。前週にAIトレードのROI懸念で弱気相場入りしたSOX指数に、『需要の裾野拡大』という別角度の追い風が吹き込んだ。S&P500・Nasdaq・Dowは寄付きこそ上昇したが、この反発は続かなかった。引けにかけチップのモメンタムが失速し、イランを巡る地政学懸念と原油続伸が重しとなって、3指数はそろって小幅安(S&P-0.19%・Nasdaq-0.05%・Dow-0.59%)で終えた。朝の楽観は、決算ウィークを前にした慎重さと地政学リスクに押し戻された格好だ。||マクロの主役だった原油と地政学は、緊張を残しつつも小休止した。週末にかけ米イランの停戦は事実上崩壊し、イランはホルムズ海峡を通航する4隻の船舶を拿捕、米はイラン港湾の封鎖を再開した。Brentは月曜に一時$90を突破し7月安値から約+30%まで駆け上がったが、その後$87.7近辺へ反落、WTIも~$82.6へ落ち着いた。原油の一服はインフレ再燃観測と安全資産需要をいったん和らげ、米10年債利回りは~4.55%へ低下、VIXは~20へ鎮静した。ただし供給途絶リスクは消えておらず、エネルギー・インフレ経路のテールリスクは相場の底流に残る。||この日の市場は、ある意味で『息継ぎ』の一日だった。震源に最も近い東京市場は海の日で休場——日経225は7/17に-4.03%の64,141で取引を終えた水準のまま固定され、火曜(7/21)の再開時に月曜の米半導体反発がどこまで波及するかが試金石となる。原油一服と米株高は追い風だが、円の水準と地政学が引き続き振れ幅を規定する。休場という『間』が、投資家に前週の急落を消化し、決算ウィークへ視線を移す猶予を与えた。||そして今週こそがQ2決算の山場だ。Alphabetは水曜引け後に発表し、capex計画がAI投資サイクル継続の是非を映す最重要指標となる。IntelはQ2 EPS $0.22(前年同期は-$0.10の赤字)・売上$14.4B(+11.6%)予想で今週最注目の一つ、Tesla・GM・IBM・GE Vernova・Philip Morrisも並ぶ。S&P500構成企業は既に86%超がコンセンサスを上回り、Q2の前年比増益率は+20%超が見込まれる。だが前週のNetflix急落が示した通り、市場が裁くのは実績よりガイダンス・capex・キャッシュフローだ。良い決算でも先行きが弱ければ売られる——期待値対比のサプライズこそが株価を動かす局面が続く。||プライベート市場では、公開市場の変動をよそに構造的な適応が進む。米プライベートクレジットはPEのEXIT枯渇でローン期間が2〜3年から4〜5年へ長期化し、マルチアセット継続ビークルやストリップセールで成熟・良好ポートフォリオをクリーンアップしてLPへ流動性を還元する動きを強めている。KKRはアジア特化の第2号ファンドを$25億でクローズし、地域供給力を補強した。日本はさらに構造的だ——2025年のM&Aは$300Bへ倍増し過去30年で最も忙しい年となり、Blackstoneが日本のプライベートクレジット・ブームに照準を定め、Glengarryは『今後数四半期で複数の大型案件』を予想する。KKRの太陽HD非公開化、Kakaku.com争奪戦(EQT vs Bain+LY)も続く。公開市場が地政学とAI規律に揺れる裏で、プライベート市場は『出口難への適応』と『日本の構造成長』という二つの静かなテーマを着実に進めている。",
+    peTraining: {
+      thirtySecSummary: "本日(7/20・引けEDT)のポイントは3点。①米株は寄付きの反発が失速し小幅安——朝方は半導体主導で買われたがラリーが続かずS&P-0.19%・Dow-0.59%。MicrosoftのAMDチップ採用でAMDは一時+4.5%も失速、Nvidiaは引けでマイナスへ反落。②原油・地政学が重し——米イラン停戦崩壊・ホルムズ海峡の船舶拿捕でBrentは$90近辺で高止まり、WTI~$84.5へ続伸、VIX~21へ上昇(東京は海の日で休場)。③今週はAlphabet(水)・Tesla・Intel等の決算ラッシュで、capexとガイダンスがAI投資サイクルの試金石。プライベート市場は米でローン期間の4〜5年化と継続ビークル/ストリップセール、KKRがアジア$2.5Bクローズ、日本はM&A$300BでBlackstoneがプライベートクレジットに照準。",
+      interviewQA: [
+        { q: "PEの『EXIT枯渇』が長引くと、プライベートクレジットやLPにどんな影響が出ますか。継続ビークルやストリップセールはなぜ増えているのですか", a: "EXIT(売却・IPO)が細ると、PEは保有企業を予定より長く抱え込み、これに紐づくレバレッジドローンの平均期間も2〜3年から4〜5年へ延びます。影響は三層です。第一にLPの流動性——分配(DPI)が遅れ、次のファンドへの再コミットや資金繰りが滞ります。第二にマネジャーの回転——新規ディールが細るとフィー・デプロイが停滞します。第三に与信——保有長期化はレバレッジ返済計画のズレやcovenant余裕度の低下を招きやすい。これを補う手段が、マルチアセット継続ビークル(既存投資家に売却しつつ運用継続)やストリップセール(良好資産の一部持分をセカンダリーで売却)です。狙いは、良い資産を投げ売りせずにLPへ流動性を還元し、ポートフォリオを『クリーンアップ』すること。投資家としての着眼点は、(a)価格の公正性(第三者評価・利益相反の管理)、(b)継続ビークルのGP出資(アラインメント)、(c)売却資産の質(チェリーピックか、劣後資産の押し付けか)、(d)手数料の二重取りの有無、です。出口難の局面ではこうしたセカンダリー技術の巧拙が、マネジャーのリターンとLP信頼を左右します。" },
+        { q: "MicrosoftがAMDチップを採用するように、ハイパースケーラーがNvidia依存を薄める動きは、投資家として何を意味しますか", a: "二つの示唆があります。第一に『市場のパイ拡大 vs シェア移動』の切り分けです。ハイパースケーラーがNvidia一強の調達を多様化するのは、供給制約・コスト・交渉力の観点で合理的で、AMDのような第2ソースにシェア獲得の余地が生まれます。ただしこれは必ずしもNvidiaの需要減を意味せず、AIインフラ投資の総量(capex)が拡大している限り、両社が伸びる『パイ拡大』局面もあり得ます。投資家は、シェアの奪い合いなのか市場全体の成長なのかを、各社のガイダンスとハイパースケーラーのcapex計画で見極める必要があります。第二に『垂直統合とバーゲニングパワー』です。顧客が自社ASICや代替GPUを持つほど、GPUベンダーの価格決定力とマージンには上限が意識されます。PE/クレジットの観点では、AIサプライチェーン(電力・冷却・データセンター・光通信・素材)のうち、どこが『複数勝者』で、どこが『勝者総取り』かを見分け、後者に偏らずキャッシュフローの確度が高い『ツルハシ』的資産を選ぶ規律が重要です。今週のAlphabet等のcapexコメントは、この総量とマネタイズを読む最良の材料になります。" },
+        { q: "決算ウィークで『実績より、ガイダンス・capex・キャッシュフローを見よ』と言われるのはなぜですか", a: "株式・企業価値は『過去の実績』ではなく『将来キャッシュフローの割引現在価値(DCF)』で決まるからです。四半期の実績は既に株価に相当程度織り込まれており、価値を動かすのは将来CFの見通し=ガイダンスと、それを生む投資=capexです。特にAI関連は、巨額capexが『将来の収益の源泉』なのか『マネタイズ不確実な過剰投資』なのかで評価が真逆になります。前週のNetflixは売上ほぼ一致・EPS小幅ビートでもQ3ガイダンスとFCFの弱さで時間外-8.6%——実績が良くても先行きとキャッシュが弱ければ売られる典型でした。金利上昇局面では割引率が上がり、将来の大きなCFに価値の大半を依存する長デュレーション資産(グロース株)ほどマルチプルが圧縮されます。投資家の実務は、(a)ガイダンスのコンセンサス対比サプライズ、(b)capexの規律とROIC/FCF転換、(c)資本配分(自社株買い・投資バランス)、(d)長デュレーション資産の金利感応度、の4点で企業を裁くこと。『良い決算=株高』ではなく『期待値を超える先行き=株高』だと理解することが肝要です。" }
+      ],
+      keyConceptToday: {
+        term: "継続ビークル / ストリップセール(GP-led Secondary・Continuation Vehicle)",
+        definition: "PEやプライベートクレジットのGPが、保有する成熟・良好資産をファンド満期前に『新しいビークル(継続ファンド)』へ移管し、既存LPに現金化(EXIT)の選択肢を提供しつつ、望むLPや新規投資家とともに運用を継続する仕組み。良好資産の一部持分だけをセカンダリー市場で売却するのがストリップセール。",
+        background: "近年、伝統的なEXIT(IPO・M&A売却)が金利高・バリュエーション調整・買い手の慎重化で細り、PEは優良資産を抱えたまま保有期間が長期化した。ローン期間も2〜3年から4〜5年へ延び、LPへの分配(DPI)が滞る。この『出口難』を補う流動性ソリューションとして、GP主導のセカンダリー(継続ビークル・ストリップセール)が急拡大した。",
+        practical: "①価格の公正性——第三者評価・競争入札・利益相反管理が投資家保護の要。GPは売り手と買い手の双方に立つため利益相反が構造的。②GPのアラインメント——継続ビークルへのGP自己資金の再投資(ロールオーバー)が信頼の指標。③資産の質——優良資産を移すのか、売れ残り(劣後資産)を押し付けるのかを見極める。④手数料——管理報酬・成功報酬の二重取りや条件リセットに注意。⑤LPの選択権——現金化か継続かを公正に選べる設計か。",
+        context2026: "2026年、PEのEXIT枯渇でローン期間が4〜5年へ長期化する中、マルチアセット継続ビークルとストリップセールが『良好な成熟ポートフォリオのクリーンアップ』手段として常態化。プライマリーのディールフローが細る局面で、セカンダリー技術がポートフォリオの回転とLP流動性を担保する。KKRのアジア$2.5Bクローズのような大型調達と併存し、『集める力』だけでなく『出口を作る力』がマネジャーの実力を分ける。7/29以降のBDC決算がNAV/ノンアクルーアルの実態を映す。",
+      },
+      dealAnalysis: {
+        title: "KKR Asia Credit Opportunities Fund II $2.5B クローズ — アジア特化プライベートクレジットの大型調達",
+        thesis: "KKRがアジア第2号のプライベートクレジット・ファンドを$25億でクローズし、アジア全域のダイレクトレンディング/ストラクチャード・クレジット機会に投資する。銀行融資の後退、アジア(とりわけ日本)のM&A急増、ノンバンク型クレジットの供給余地拡大という三つの構造要因が背景。地域特化ファンドは、現地のスポンサー関係・法制・与信文化に精通した組成力を武器に、グローバル汎用ファンドとの差別化を図る。日本のM&A$300B/年(2025)とBlackstoneら大手の参入が示す通り、アジア・プライベートクレジットは『early innings』からの成長段階にある。",
+        timing: "アジアM&Aが拡大し銀行が保守化する局面で、ノンバンクのダイレクトレンディング需要が構造的に高まっている。Glengarryが『今後数四半期で複数の大型プライベートクレジット案件』を予想する通り、供給側(ファンドレイズ)と需要側(買収資金・リファイナンス)の両輪が回り始めた好機。金利高止まりはフローティング利回りの魅力を高める一方、与信選別と流動性管理の重要性も増す。地域特化の$2.5Bは、汎用の巨大ファンドが取りこぼす中堅・現地案件を機動的に押さえる規模感。",
+        downside: "①アジアは法制・執行・情報開示が国ごとに大きく異なり、デフォルト時の回収(リカバリー)不確実性が高い。②為替リスク——現地通貨建て融資はヘッジコストとボラティリティが収益を圧迫。③中東発の金利上昇・原油高が続けば、フローティング利払い負担増で借り手のICRが悪化。④地域特化は分散が効きにくく、特定国のマクロ・政治ショックに脆弱。⑤アジア・プライベートクレジットは歴史が浅く、フルサイクルの下方局面での実績データが乏しい。⑥大手参入(Blackstone等)による競争激化でスプレッド・条件が悪化するリスク。",
+        valuation: "プライベートクレジットのリターンは『ベース金利＋スプレッド－損失率(信用コスト)』で規定され、$2.5Bの規模はデプロイ余力と分散の土台となる。IRRの生命線は、(a)フローティング比率と金利環境、(b)与信選別による低デフォルト・高回収、(c)為替ヘッジ後の実効利回り、(d)デプロイ速度(未投資資金のドラッグ回避)。価値創出は『供給不足の地域・セクターで、良質な借り手に、厳格なcovenant付きで貸す』規律に尽き、出口はローン満期回収・リファイナンス・セカンダリー売却が想定される。アジアの構造成長を取り込みつつ、フルサイクル未経験ゆえの下方耐性の検証が投資判断の核心。"
+      }
+    }
+  },
+  {
+    date: "2026-07-21",
+    dateLabel: "Jul 21",
+    tokenEstimate: 18000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7443.28, change:0.0,    pct:0.00, dir:"flat" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:25508.07,change:0.0,    pct:0.00, dir:"flat" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:51839.26,change:0.0,    pct:0.00, dir:"flat" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:66232.19,change:2090.34,pct:3.26, dir:"up"   }
+    },
+    macro: {
+      "10Y米国債":    { value:"~4.60%",  dir:"up"   },
+      "2Y米国債":     { value:"~4.20%",  dir:"flat" },
+      "VIX":          { value:"~18.7",   dir:"down" },
+      "DXY":          { value:"~100.8",  dir:"flat" },
+      "WTI原油":      { value:"~$82.7",  dir:"down" },
+      "Gold金":       { value:"~$4,010", dir:"down" },
+      "ドル円":       { value:"¥162.5",  dir:"up"   },
+      "日10年国債":   { value:"~2.82%",  dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"6857.T", name:"アドバンテスト",     pct: 5.3, dir:"up", why:"米SOX指数の上昇を受けて続伸。AI向け半導体試験装置での圧倒的シェアを背景に買いが継続し、日経平均の上げを単独で最大牽引(寄与+245pt)" },
+      { ticker:"9984.T", name:"ソフトバンクグループ", pct: 3.9, dir:"up", why:"AI関連の投資期待とハイテク優位の地合いで急伸、日経平均を大きく押し上げ(寄与+183pt、指数寄与度からの推定値)" },
+      { ticker:"9983.T", name:"ファーストリテイリング", pct: 3.5, dir:"up", why:"値がさ株として指数寄与度が大きく、半導体主導のリスクオンで買われた(寄与+163pt、指数寄与度からの推定値)" }
+    ],
+    events: [
+      { icon:"🇯🇵", title:"日経平均が終値+3.26%の66,232円で急反発 — 66,000円台を回復、半導体3銘柄が主導", detail:"7/21の東京株式市場は前週来の米半導体株安から一転して急反発し、終値は前日比2,090円高(+3.26%)の66,232.19円。一時66,031円まで上げ幅を拡大し、心理的節目の66,000円台を回復する場面もあった。値上がり銘柄は全体の8割超に達する全面高で、アドバンテスト・ソフトバンクグループ・キオクシアの半導体3銘柄が売買代金・指数寄与度の両面で相場を主導、プライム市場の売買代金は約5.3兆円と活況。米国は9:30ET寄り前(EDT朝時点で未寄り)だが、先物はS&P500 +0.4%・Nasdaq100 +1.3%・Dow +0.2%と半導体主導の地合いが波及し上昇している。", searchKey:"Nikkei 225 close July 21 2026 66232 up 3.26 percent Advantest Kioxia SoftBank" },
+      { icon:"🛢️", title:"原油・VIX・金が揃って軟化 — 地政学リスクの織り込みが一服(WTI~$82.7・VIX~18.7・Gold~$4,010)", detail:"月曜に一時Brent$90へ駆け上がった原油相場は火曜早朝にかけて一服し、WTIは~$82.7へ低下。VIXも~21から~18.7へ低下し株式市場の警戒感がやや後退、ゴールドも~$4,150から~$4,010へ調整した。米10年債利回りは~4.60%へ小幅上昇する一方、ドル円は¥162.5近辺と円安・日米金利差を意識した水準で高止まりが続く。イラン・ホルムズ海峡を巡る地政学リスクそのものは未解決だが、市場が織り込む短期的な追加悪化シナリオの確率はやや後退した形。", searchKey:"oil VIX gold pull back July 21 2026 Iran Hormuz risk premium eases" },
+      { icon:"📅", title:"決算ラッシュが本格化 — 7/21だけで主要企業73社超が発表、水曜引け後のAlphabetのcapex方針に焦点", detail:"Q2決算シーズンがピークを迎え、7/21だけで主要企業73社超が決算発表を予定。市場の視線は水曜引け後のAlphabet決算(AI設備投資計画とクラウド/検索広告の動向)に集中しており、Tesla・Intel・GM・IBM・GE Vernova・Philip Morris等も今週控える。S&P500構成企業は既に86%超がコンセンサスを上回っておりQ2の前年比増益率は+20%超が見込まれる中、投資家の関心は実績よりガイダンス・capexへ向かう。", searchKey:"earnings calendar July 21 2026 companies report Alphabet Wednesday capex guidance" },
+      { icon:"💰", title:"GoldenTree、プライベートクレジット第2号ファンドを$27.5億でハードキャップ・クローズ — ネットIRR20%超の実績で旺盛な需要", detail:"GoldenTree Asset Managementが第2号プライベートクレジットファンドを上限額の$27.5億でクローズしたと発表(7/20)。既に約50件・10業種超への投資でコミットメントの4割弱をデプロイ済みで、ネットIRRは20%超の実績。BDCからの資金流出が話題になる中でのオーバーサブスクリプションは、差別化されたリターンを出せるマネジャーへ資金が選別的に向かっていることを示す。", searchKey:"GoldenTree second private credit fund 2.75 billion hard cap close July 2026" }
+    ],
+    usCredit: {
+      summary: "米プライベートクレジットは『選別的な資金集中』が鮮明に。GoldenTreeが第2号ファンドをハードキャップの$27.5億でクローズし、ネットIRR20%超の実績を背景にオーバーサブスクリプションとなった一方、BDCセクター全体では解約圧力が話題となっており、『勝ち組マネジャーへの資金一極集中』という選別色が強まっている。Apolloはウォールストリート向けローン供給を$3,000億規模へ拡大する計画を進めるなど大手による銀行代替の裾野拡大が続く一方、BlackRockはインドでアジア・プライベートクレジット展開の逆風に直面するなど地域差も鮮明。7/21朝はVIX低下・原油一服の『リスクオン』地合いで、米HYスプレッドは~2.7%と概ね横ばい圏。",
+      deals: [
+        { title:"GoldenTree：第2号プライベートクレジットファンドを$27.5億でハードキャップ・クローズ", tag:"ファンドレイズ", tagCls:"t-blue", meta:"GoldenTree ｜ $2.75B ｜ プライベートクレジット(コーポレート)", body:"GoldenTree Asset Managementが第2号プライベートクレジットファンドを上限額$27.5億でクローズ。約50件・10業種超に投資しコミットメントの4割弱を既にデプロイ、ネットIRRは20%超の実績を残す。BDCからの資金流出が報じられる中でのオーバーサブスクリプションは、差別化されたリターンを出せるマネジャーへの選別的な資金流入を象徴する。", sig:"『勝ち組』マネジャーへの資金集中が鮮明化", searchKey:"GoldenTree second private credit fund 2.75 billion hard cap close July 2026" },
+        { title:"Apollo：ウォールストリート向けローン供給を$3,000億規模へ拡大", tag:"マーケット参入", tagCls:"t-orange", meta:"Apollo ｜ ~$300B ｜ 投資銀行向け融資・シンジケート代替", body:"Apolloが投資銀行のシンジケートローン業務を代替する形で、ウォールストリート向けの融資供給を$3,000億規模へ拡大する計画を推進。伝統的な銀行の融資機能をプライベートクレジットが侵食する動きが、大企業向けファイナンスの領域にも及んでいることを示す。", sig:"銀行代替の裾野が大企業ファイナンスにも拡大", searchKey:"Apollo Wall Street lending expansion 300 billion loans July 2026" },
+        { title:"BlackRock：インドでアジア・プライベートクレジット展開が逆風に直面", tag:"マーケット動向", tagCls:"t-purple", meta:"BlackRock ｜ アジア・プライベートクレジット ｜ インド", body:"BlackRockのアジア・プライベートクレジット戦略がインド市場で逆風に直面と報じられる。現地の法制・与信文化・回収プロセスの違いが参入障壁となっており、アジア域内でも国ごとの難易度格差が大手グローバルマネジャーにとっての課題として浮上している。", sig:"アジア展開は一様ではなく国別の選別が必要", searchKey:"BlackRock Asia private credit India headwinds July 2026" }
+      ],
+      outlook: "💡 テーマは『資金の選別的集中』。GoldenTreeのハードキャップ・クローズが示す通り、実績あるマネジャーへの資金流入は旺盛な一方、BDCセクター全体では解約圧力がくすぶる。Apolloの銀行代替拡大は市場の裾野成長を示すが、BlackRockのインドでの苦戦はアジア展開の難易度が地域ごとに異なることを浮き彫りにする。7/29のAres Capital決算を皮切りに始まるBDC決算シーズンで、NAV・ノンアクルーアルの実態とセクター内格差が明らかになる見通し。"
+    },
+    jpCredit: {
+      summary: "日本は前日(7/20)の海の日休場を経て取引再開。日経平均は前引けで+1.65%と急伸し、米半導体反発の波及とリスクオン地合いが観測された。プライベートクレジット・M&A市場の構造ストーリーに大きな変化はなく、2025年M&A総額$300B(前年比倍増)を背景にBlackstoneが日本のプライベートクレジット・ブームへ照準を定める流れ、KKRの太陽ホールディングス非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)は継続中。",
+      deals: [
+        { title:"Blackstone：日本のプライベートクレジット・ブームに照準(継続)", tag:"マーケット参入", tagCls:"t-orange", meta:"Blackstone ｜ 日本プライベートクレジット ｜ ダイレクトレンディング", body:"M&A急増を背景に拡大する日本のプライベートクレジット市場へBlackstoneが本格的に照準。Glengarryは『今後数四半期で複数の大型プライベートクレジット案件』を見込む。銀行融資が主流だった日本で、ノンバンク型クレジットの供給余地が急拡大する局面が続く。", sig:"外資大手による日本プライベートクレジット本格参入は継続", searchKey:"Blackstone Japan private credit boom 2026 direct lending" },
+        { title:"日本M&Aは$300B(2025) — 30年で最も忙しい年、クレジット需要を牽引", tag:"マーケット見通し", tagCls:"t-blue", meta:"市場全体 ｜ 案件総額$300B ｜ 前年比倍増", body:"2025年の日本のM&Aは案件総額が約$300Bへ倍増し、過去30年で最も活発な年に。ガバナンス改革・事業承継・カーブアウト・円安の追い風が続き、買収資金の受け皿としてプライベートクレジット需要も連動して拡大している。", sig:"構造的M&A拡大がクレジット需要を牽引", searchKey:"Japan M&A 300 billion 2025 busiest year decades deal values double" },
+        { title:"KKR太陽HD非公開化・Kakaku.com争奪戦が継続 — 競合TOBが常態化", tag:"バイアウト", tagCls:"t-purple", meta:"KKR / EQT / Bain+LY ｜ テイクプライベート/争奪戦 ｜ 化学・ネット", body:"KKRの太陽ホールディングス(化学・電子材料)非公開化、価格比較大手Kakaku.comを巡るEQT対Bain+LY Corp連合の争奪戦が継続。事業会社×PE連合という新形態と競合TOBが日本でも定着し、素材・製造業のP2P/カーブアウトが外資PEの主戦場となっている。", sig:"競合TOBと事業会社×PE連合の常態化", searchKey:"KKR Taiyo Holdings Kakaku.com EQT Bain LY Corp Japan take private 2026" }
+      ],
+      outlook: "💡 日経平均の急伸(終値+3.26%・66,232円)はセンチメント改善の表れだが、日本PE/プライベートクレジットの構造ストーリー自体に変化はない。$300B/年のM&A拡大がクレジット需要を牽引し、Blackstoneら外資大手が本格参入、競合TOBの常態化が続く。米半導体反発の波及は寄り前の米株先物(S&P500+0.4%・Nasdaq100+1.3%)にも表れており、この流れが米キャッシュセッションでも持続するかが目先の焦点。"
+    },
+    takeaway: "7/21(火・EDT朝時点)、東京市場は終値で日経平均+3.26%(66,232円)と急伸し66,000円台を回復。米半導体反発の波及とアドバンテスト・ソフトバンクグループ・キオクシアの半導体3銘柄主導の全面高(値上がり銘柄8割超)が背景。米国株は月曜(7/20)引け値(S&P500 7,443.28・Nasdaq 25,508.07・Dow 51,839.26)を据え置き表示だが、9:30ET寄り前の先物はS&P500 +0.4%・Nasdaq100 +1.3%・Dow +0.2%と半導体主導のリスクオンが波及し上昇。原油はWTI~$82.3・Brent~$88(10日間の停戦協議観測でやや軟化)、対イラン軍事作戦は10夜連続となる中でも仲介案が材料視され神経質な展開が続く。ドル円は¥162.5近辺で円安基調継続、米10年債利回りは~4.60%。7/21は決算73社超発表予定で、水曜引け後のAlphabet(capex方針)が今週最大の焦点。プライベート市場では米GoldenTreeが第2号クレジットファンドを$27.5億でハードキャップ・クローズ(ネットIRR20%超)し、実績あるマネジャーへの資金選別が鮮明。日本はBlackstoneの日本プライベートクレジット参入、KKR太陽HD非公開化・Kakaku.com争奪戦が継続。",
+    narrative: "火曜(7/21)、東京株式市場は前週来の米半導体株安から一転して力強く反発した。日経平均は終値で2,090円高(+3.26%)の66,232円まで急伸し、心理的節目の66,000円台を回復。値上がり銘柄は全体の8割超に達する全面高で、アドバンテスト・ソフトバンクグループ・キオクシアの半導体3銘柄が売買代金・指数寄与度の両面で相場を主導した(プライム市場売買代金は約5.3兆円)。震源は月曜の米市場でのAMD・Nvidiaの反発と、それに続く米SOX指数の上昇——半導体セクターの『需要の裾野拡大』というテーマが太平洋を越えて東京に波及した格好だ。米国のキャッシュセッションは9:30ET寄り前でまだ寄り付いていないが、先物はS&P500 +0.4%・Nasdaq100 +1.3%・Dow +0.2%と同じ半導体主導の地合いを織り込んでおり、本ブリーフでは月曜引け値を暫定的に据え置いている。||マクロの面では、月曜に高まった地政学・インフレ懸念がやや後退した。原油はBrent一時$90から反落し、WTIは~$82.7へ低下。VIXも~21から~18.7へ沈静化し、ゴールドも~$4,150から~$4,010へ調整した。市場が織り込む短期的な追加悪化シナリオの確率がやや後退したことを示唆するが、イラン・ホルムズ海峡を巡る地政学リスクそのものは未解決のままで、供給途絶のテールリスクは相場の底流に残る。米10年債利回りは~4.60%へ小幅上昇し、ドル円は¥162.5近辺と円安・日米金利差を意識した水準で高止まりが続く。||市場の関心は今週、いよいよ本格化する決算シーズンへ完全に移る。7/21だけで主要企業73社超が決算を発表予定で、投資家の最大の焦点は水曜引け後のAlphabet——AI設備投資(capex)計画とクラウド/検索広告の動向が、AI投資サイクル継続の是非を占う試金石となる。Tesla・Intel・GM・IBM・GE Vernova・Philip Morrisも今週決算を控える。S&P500構成企業は既に86%超がコンセンサスを上回り、Q2の前年比増益率は+20%超が見込まれる中、市場が裁くのは実績よりガイダンスとcapexの規律だ。||プライベート市場では『資金の選別的集中』というテーマが一段と鮮明になった。GoldenTreeは第2号プライベートクレジットファンドを上限額$27.5億でクローズし、ネットIRR20%超の実績を背景にオーバーサブスクリプションとなった。BDCセクター全体では解約圧力がくすぶる中での好調な資金調達は、実績あるマネジャーへの選別的な資金流入を象徴する。Apolloはウォールストリート向けローン供給を$3,000億規模へ拡大する計画を進め銀行代替の裾野を広げる一方、BlackRockはインドでアジア・プライベートクレジット展開の逆風に直面するなど、地域・マネジャーごとの実力格差が浮き彫りになっている。||日本では、東京市場の再開とともに構造ストーリーが粛々と進む。2025年のM&Aは$300Bへ倍増し過去30年で最も忙しい年となった余韻の中、Blackstoneが日本のプライベートクレジット・ブームへ照準を定め、Glengarryは『今後数四半期で複数の大型案件』を予想する。KKRの太陽HD非公開化、Kakaku.com争奪戦(EQT vs Bain+LY)も続いている。日経平均の急伸は目先のセンチメント改善に過ぎないが、公開市場のボラティリティの裏で、プライベート市場は『選別的な資金集中』と『日本の構造成長』という二つのテーマを着実に前進させている。",
+    peTraining: {
+      thirtySecSummary: "本日(7/21・EDT朝時点)のポイントは3点。①東京市場が急伸——日経平均は終値+3.26%(66,232)と66,000円台を回復、米半導体反発の波及とアドバンテスト・ソフトバンクグループ・キオクシア主導の全面高が背景。米国株はキャッシュセッション未寄りのため月曜引け値を据え置きだが、先物はS&P500+0.4%・Nasdaq100+1.3%と同じ地合いを織り込む。②地政学リスクは根強いが短期悪化懸念はやや後退——対イラン軍事作戦10夜連続でも停戦仲介案が材料視され原油はWTI~$82.3・Brent~$88へ軟化。③決算ラッシュ本格化——7/21だけで73社超が発表、水曜引け後のAlphabetのcapex方針が今週最大の焦点。プライベート市場ではGoldenTreeが$27.5億のクレジットファンドをハードキャップ・クローズしIRR20%超を実現、『実績あるマネジャーへの資金選別』が鮮明に。",
+      interviewQA: [
+        { q: "プライベートクレジットのファンドが『ハードキャップでクローズ』『オーバーサブスクリプション』になるとは、どういう意味ですか。投資家として何を読み取るべきですか", a: "ハードキャップとは、GP(運用会社)があらかじめ設定した『これ以上は集めない』という募集上限額のことです。オーバーサブスクリプションは、その上限を上回る需要(投資家からの申込み)が集まった状態を指します。GPがハードキャップを設ける理由は、集めすぎるとデプロイ(投資実行)のペースが追いつかず未投資資金が収益を圧迫する『キャッシュドラッグ』が生じたり、良質な案件が希薄化したりするためです。投資家として読み取るべきは三点あります。第一に需要の質——既存LPの再コミット比率が高いか、新規LPが多いかで評判・実績の信頼度が分かります。第二にトラックレコード——GoldenTreeのネットIRR20%超のような実績が需要を牽引しているか。第三に業界内の資金の偏り——BDCセクター全体で解約圧力が報じられる中でのオーバーサブスクリプションは、投資家がマネジャーを厳しく選別し『勝ち組』への資金集中が進んでいることを示唆します。ファンドレイズ環境の良し悪しを業界平均で語るのではなく、個別マネジャーの実力差として捉える視点が重要です。" },
+        { q: "VIX・原油・金が同時に下がる『リスクオン』の動きは、株式市場にとって何を意味しますか。地政学リスクは消えたと考えていいですか", a: "VIX(株式のインプライド・ボラティリティ)・原油・金が同時に低下する動きは、典型的な『テールリスク後退』のシグナルです。VIXの低下は投資家がオプション市場でヘッジ需要を減らしていることを、原油の低下は供給途絶シナリオの織り込みが後退したことを、金の低下は安全資産への逃避需要が和らいだことを、それぞれ示します。3つが同時に動く時は、単なるノイズではなく『市場参加者全体のリスク認識』が変化したと解釈できます。ただし、これは地政学リスクそのものが解消したことを意味しません。ホルムズ海峡の封鎖状況や米イラン関係は本質的に変わっておらず、市場は『これ以上の急激な悪化は当面ない』という蓋然性を再評価しただけです。投資家の実務としては、(a)このリスクオンが持続的なトレンドか一時的な反発かを次の数日の値動きで確認する、(b)地政学のヘッドラインリスクは依然として非対称(悪材料が出れば急変しうる)であることを踏まえポジションサイズを管理する、(c)VIXの絶対水準(~18.7)は歴史的には『平常時』の範囲内であり過度な楽観でも悲観でもない中立ゾーンにあることを認識する、の3点が重要です。" },
+        { q: "決算シーズンで『S&P500の86%が予想超え』でも株価が下がる銘柄が出るのはなぜですか。ガイダンス重視の考え方をもう少し説明してください", a: "株式の価値は理論上、将来のフリーキャッシュフローを割り引いた現在価値(DCF)で決まります。四半期の実績(EPS・売上)はすでに市場のコンセンサス予想に相当程度織り込まれており、『予想通りか、それを上回るか』はある程度事前に消化済みです。株価を動かすのは、その実績が将来の見通し(ガイダンス)をどう変えるかです。具体的には、①来期以降の売上・利益ガイダンスが市場予想を下回れば、実績が良くても株価は下がります。②capex(設備投資)の急増が発表されれば、短期的にはFCF(フリーキャッシュフロー)を圧迫するため、その投資が将来どれだけのリターンを生むか不透明な場合はネガティブに評価されます。③金利が高止まりする局面では、割引率が上がるため、将来の利益に価値の大半を依存する『長デュレーション』のグロース株ほど、ガイダンスの僅かな下振れにも株価が敏感に反応します。要するに『サプライズは実績の絶対値ではなく期待値との差分で生まれる』という原則を理解することが、決算シーズンを読み解く鍵です。" }
+      ],
+      keyConceptToday: {
+        term: "ハードキャップ・クローズ(Hard Cap Close)とオーバーサブスクリプション",
+        definition: "GP(運用会社)がファンド設立時にあらかじめ設定した募集上限額(ハードキャップ)に達し、それ以上の追加募集を行わずにファンドを閉鎖(クローズ)すること。上限額を上回る投資家需要が集まった状態を『オーバーサブスクリプション』と呼ぶ。",
+        background: "プライベートファンドは無限に資金を集められるわけではなく、良質な投資機会の量に見合った規模でしか効率的にデプロイできない。集めすぎれば未投資資金が収益率(IRR)を薄める『キャッシュドラッグ』が生じ、逆に需要に対して規模が小さすぎればGPの手数料収入機会を逃す。ハードキャップはこのバランスを取るための募集ガバナンスの仕組みで、GPが投資規律を優先する姿勢のシグナルとしても機能する。",
+        practical: "①既存LPの再コミット比率——高いほどトラックレコードへの信頼が厚いことを示す。②新規LPの構成——年金・保険・SWF等の長期投資家が多いほど資金の安定性が高い。③デプロイ実績——GoldenTreeの『4割弱を約50件にデプロイ済み』のように、ファンドレイズと並行した投資実行力を確認する。④手数料構造——ハードキャップ到達で管理報酬の総額上限も定まるため、GPとLPの利害整合を見る材料になる。⑤業界内の資金フローとの対比——セクター全体が資金流出局面にある中でのオーバーサブスクリプションは、特に強いシグナルとして評価すべき。",
+        context2026: "2026年、BDCセクターでの解約圧力報道が相次ぐ一方、GoldenTreeのようにネットIRR20%超の実績を持つマネジャーはハードキャップでのオーバーサブスクリプションを達成しており、業界内での『資金の選別的集中』が加速している。投資家(LP)がマネジャーの実力差をシビアに評価する局面では、ハードキャップ到達の速さと既存LP再コミット比率が、次のファンドレイズにおける『質の高い需要』の先行指標として注目される。",
+      },
+      dealAnalysis: {
+        title: "GoldenTree Private Credit Fund II $2.75B ハードキャップ・クローズ — 実績主導の資金選別",
+        thesis: "GoldenTree Asset Managementが第2号プライベートクレジットファンドを上限額$27.5億でクローズした。約50件・10業種超への投資でコミットメントの4割弱を既にデプロイし、ネットIRR20%超の実績を残している。BDCセクター全体で解約圧力が報じられる中でのオーバーサブスクリプションは、『量』ではなく『質』でLPが投資先マネジャーを選別する潮流を象徴する。分散されたセクター・件数構成は、集中リスクを抑えつつ機会型のクレジット投資を行うマルチセクター戦略の典型例。",
+        timing: "レバレッジドローン市場でのデフォルト増加懸念とBDCの解約圧力が業界の逆風として報じられる局面で、実績あるマネジャーへの資金がむしろ加速するという『二極化』のタイミング。金利高止まりでフローティング利回りの魅力が続く一方、与信選別の巧拙がリターン格差を広げる環境において、GoldenTreeの高いIRR実績が『質の高い資金』を引き寄せた形。",
+        downside: "①デプロイ済み4割弱の投資が今後の市況悪化でどこまで健全性を維持できるかは未知数。②ネットIRR20%超という実績は過去のポートフォリオに基づくものであり、残り6割強の新規デプロイが同水準を維持できる保証はない。③オーバーサブスクリプションによる規模拡大は、将来的に投資機会に対してファンド規模が過大になる『規模の経済の逆機能』リスクを内包する。④業界全体のデフォルト率上昇・PIKトグル増加という逆風の中、個社の実績が続くかは今後のクレジットサイクルの試金石。",
+        valuation: "プライベートクレジットのリターンは『ベース金利＋スプレッド－損失率(信用コスト)』で規定される。$2.75Bの規模と10業種超への分散は、特定セクターへの集中リスクを抑える構造。ネットIRR20%超という実績値は、与信選別の質・デフォルト回避・機会型投資(ディストレスト含む)の巧拙を反映していると見られ、今後の評価軸は(a)残りコミットメントのデプロイ規律、(b)フローティング金利環境下でのICR(利払い能力)モニタリング、(c)BDCセクター全体の解約圧力が波及しないかの3点に集約される。"
+      }
+    }
+  },
+  {
+    date: "2026-07-22",
+    dateLabel: "Jul 22",
+    tokenEstimate: 19000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7499.43, change:-9.77,  pct:-0.13, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:25691.00,change:-146.21,pct:-0.57, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52219.00,change:-5.64,  pct:-0.01, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:66115.60,change:-116.59,pct:-0.18, dir:"down" }
+    },
+    macro: {
+      "10Y米国債":    { value:"~4.66%",  dir:"up"   },
+      "2Y米国債":     { value:"~4.20%",  dir:"flat" },
+      "VIX":          { value:"~16.6",   dir:"down" },
+      "DXY":          { value:"~101.0",  dir:"flat" },
+      "WTI原油":      { value:"~$86.8",  dir:"up"   },
+      "Gold金":       { value:"~$4,132", dir:"down" },
+      "ドル円":       { value:"¥163.0",  dir:"flat" },
+      "日10年国債":   { value:"~2.82%",  dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"GOOGL",name:"Alphabet",         pct:-3.8, dir:"down", why:"引け後決算は売上$1,198億(予想$1,169億)・EPS$2.31(予想$2.16)と増収増益も、2026年AI設備投資計画を$1,950-2,050億(従来比+$150億)へ上方修正しマージン圧迫懸念から時間外急落" },
+      { ticker:"TSLA", name:"Tesla",            pct:-3.0, dir:"down", why:"引け後決算は売上$282.4億(+26%YoY、予想$276億上回る)・納車48万台超と過去最高も、Non-GAAP EPS$0.33は予想$0.55を大幅未達。Capexが142%増の$57.9億に膨らみFCFが赤字転落し時間外下落" },
+      { ticker:"NOW",  name:"ServiceNow",       pct: 2.0, dir:"up",  why:"2Q決算はEPS$0.90(予想$0.85)・売上$39.9億(予想$39.3億)と増収増益、通期サブスクリプション見通しも上方修正し時間外で上昇" },
+      { ticker:"LVS",  name:"Las Vegas Sands",  pct:-6.0, dir:"down", why:"2Q決算はEPS$0.59(予想$0.75)・売上$31.5億(予想$33.3億)と上下ともに未達で時間外下落" },
+      { ticker:"IBM",  name:"IBM",              pct: 2.0, dir:"up",  why:"2Q決算はEPS$2.93・売上$171.6億とそれぞれ予想をやや下回ったが、他事業の底堅さが評価され時間外で上昇" },
+      { ticker:"285A.T",name:"Kioxia Holdings", pct:-2.0, dir:"down", why:"日経平均は朝方+1.76%まで急伸後、利益確定売りに押されて66,115円(-0.18%)引け。前日急伸したメモリ関連も伸び悩んだ" }
+    ],
+    events: [
+      { icon:"📈", title:"米3指数そろって反発、3日続落を打ち切り — メモリ主導のSOX+5.45%が牽引(S&P+0.89%・Nasdaq+1.29%・Dow+0.74%)", detail:"7/21(火)の米株式市場は3指数がそろって上昇し、直近3日続落を打ち切った。S&P500は+0.89%の7,509.20、Nasdaq総合は+1.29%の25,837.21、Dowは+385.38ドル(+0.74%)の52,224.64。半導体セクター指数(SOXX)は+5.45%と急伸し、Micron+12%・SanDisk+14%のメモリ株急騰が主導。AMDはMicrosoft AzureへのHeliosラック追加導入発表と決算前ポジショニングで+8.1%、Nvidiaも新型Vera CPU発表で+1.5%と地合いを下支えした。イラン情勢を巡る懸念は残るものの、投資家の視線は決算シーズンの実績・ガイダンスへ移りつつある。※日本時間の指数(Nikkei)は7/22午後(EDT朝時点)の暫定値で、東京引け前のため確定値ではない。", searchKey:"stock market today July 21 2026 S&P 500 Nasdaq Dow rally chip semiconductor SOX rebound memory" },
+      { icon:"💾", title:"メモリ株が全面急伸 — Micron+12%・SanDisk+14%、AIデータセンター向けDRAM/NAND逼迫観測", detail:"AIデータセンターの記憶容量需要拡大観測を背景に、メモリ関連株が本日最大の物色対象となった。Micron Technologyは+12%、SanDisk Corporationは+14%とそれぞれ急伸し、半導体セクター全体のラリーを牽引。前週来のAIトレードROI懸念で調整していたセクターに、需要サイドの底堅さを示す材料が相次いだ形。日本のKioxia(+9%)にも波及し、太平洋を挟んだメモリ株ラリーとなった。", searchKey:"Micron SanDisk memory stocks surge July 21 2026 AI data center demand DRAM NAND" },
+      { icon:"🤖", title:"Nvidia、AIクラウドNebiusへの9.3%出資を開示 — Nebius株は+19%急伸", detail:"NvidiaがSchedule 13Gで、アムステルダム拠点のAIクラウドインフラ企業Nebius Group N.V.に約22.26百万株(9.3%)を保有していると開示(7/13付、7/20公表)。3月に実施した$20億の戦略出資に紐づく普通株とワラント分を含む。Nebiusは2030年までに5ギガワット超のハイパースケールAIクラウドインフラ展開を計画しており、7/17には$7.75億の優先担保付きデット調達も実施済み。株価は引けにかけ+19%まで買われ、AIインフラの『勝ち組』選別が進む象徴的な一日となった。", searchKey:"Nvidia discloses 9.3% stake Nebius AI cloud infrastructure July 2026" },
+      { icon:"🇯🇵", title:"日経平均、朝方+1.76%から一転して反落 — 利益確定売りで66,115円(-0.18%)引け", detail:"7/22の東京株式市場は、前日の米メモリ・半導体株ラリーを受けて朝方は一時+1,360円超・67,500円台まで急伸したが、午後にかけて利益確定売りが強まり上げ幅を全て失う展開に。日経平均は前日比-116.59円(-0.18%)の66,115.60円で引け、朝方の勢いは続かなかった。円は¥163台前半(1986年10月以来の安値水準)まで軟化が続いており、通貨介入への警戒感も燻る。", searchKey:"Nikkei 225 close July 22 2026 afternoon reversal profit taking yen weakness" },
+      { icon:"🛢️", title:"原油続伸・対イラン軍事作戦10夜連続 — WTI~$83.8(+1.6%)・Brent~$90.7(+1.6%)", detail:"米中央軍によるイランへの攻撃が10夜連続となる中、供給途絶懸念が根強く原油相場は続伸。WTIは+1.60%の$83.80、Brentは+1.61%の$90.66で引けた。地政学リスクは相場の底流に残るが、7/21はメモリ・半導体株ラリーがこの重しを打ち消しリスクオンが優勢となった。VIXは~18.7とほぼ横ばいで、株式市場の警戒感は限定的。", searchKey:"oil prices rise Iran strikes 10th consecutive night July 21 2026 WTI Brent" },
+      { icon:"📅", title:"Alphabet・Tesla決算、増収も市場は失望 — AlphabetはCapexを$1,950-2,050億に上方修正し時間外▲3.8%、TeslaはEPS大幅未達で時間外▲3%", detail:"Alphabetは引け後決算で売上$1,198億(予想$1,169億)・EPS$2.31(予想$2.16)と増収増益を確保したが、2026年AI設備投資計画を従来比+$150億の$1,950-2,050億へ上方修正。Google Cloudの成長は堅調とみられるものの、マージン圧迫への懸念から株価は時間外で-3.8%に沈んだ。Teslaは売上$282.4億(+26%YoY、予想$276億上回る)・納車48万126台と過去最高を記録した一方、Non-GAAP EPSは$0.33と予想$0.55を大幅に下回った。営業CFは+85%の$47.0億に伸びたがCapexが142%増の$57.9億に膨らみFCFは▲$10.9億の赤字に転落、株価は時間外で-3%程度下落。本日の米株現物は決算・関税・原油高を見極める展開で小幅安引け(S&P-0.13%の7,499・Nasdaq-0.57%の25,691・Dow-0.01%の52,219)。Intel決算は明日7/23。", searchKey:"Alphabet Tesla Q2 2026 earnings results after hours capex miss stock reaction" },
+      { icon:"🚨", title:"トランプ政権、カナダに追加50%関税を発動 — 対象約$200億相当、30日後発効", detail:"トランプ大統領は7/20、カナダからの輸入品の一部に追加50%関税を発動すると発表。通商法(Tariff Act of 1930)第338条に基づく大統領布告で、カナダによる対米報復措置(アルコール飲料の調達停止、対米自動車・乳製品関税等)への対抗措置と説明。対象は年間対米輸入額$3,820億のうち約$200億(全体の約5.2%)相当で、ワインやホッケースティック等の消費財からセメント等の工業製品まで幅広いが、原油・ガス・重要鉱物・カリ等は対象外。発効は30日後。今年の最高裁による広範関税差し止め判決以降で最も急激な関税措置の一つで、他国への警告シグナルとの見方も。", searchKey:"Trump 50 percent tariff Canada imports July 2026 Section 338" },
+      { icon:"🇧🇷", title:"対ブラジル25%関税が本日発効、ジェネリック医薬品への100%関税も検討 — 関税戦線がカナダに続き拡大", detail:"7/22、ブラジルからの輸入品を対象とした25%追加関税が発効。カナダ向け50%関税(7/20発表)に続く措置で、トランプ政権は期限切れとなる10%の一律関税に代えて、より恒久的な品目別関税へ移行する方針とみられる。あわせて輸入ジェネリック医薬品に最大100%の関税を課す検討も報じられており、対象国・品目の拡大が続く局面。プレマーケットは関税懸念と決算待ちでDow▲0.1%・S&P▲0.2%・Nasdaq100▲0.6%とそろって軟化。", searchKey:"Brazil 25 percent tariff effective July 22 2026 generic drug tariff Trump" },
+      { icon:"🛢️", title:"対イラン軍事作戦11夜連続、トランプ氏は対話に否定的・黒海含む供給リスク拡大警戒 — WTI$85超・Brent~$92", detail:"米による対イラン攻撃は11夜連続となり、トランプ大統領は近く対話再開の可能性を否定しつつ、より広範な攻撃も辞さない姿勢を示した。イランが支援するフーシ派による紅海での船舶攻撃には即応すると警告、イラン核関連施設『Pickaxe Mountain』への攻撃も改めて示唆。供給リスクは中東に留まらず黒海方面にも波及するとの観測が広がり、WTIは$85超・Brentは4日続伸で~$92まで上昇。市場は一部でイラン側の対話志向報道や好調な決算を材料視し過度な警戒は後退している面もある。", searchKey:"Iran US airstrikes 11th night oil prices Black Sea supply risk July 22 2026" },
+      { icon:"🚢", title:"フーシ派、サウジ籍タンカー2隻を紅海で攻撃 — 新たな戦線開くと供給懸念再燃、WTI一時$88超・Brent~$96まで急伸", detail:"イエメンのフーシ派(イラン支援)は7/22、ミサイル・ドローンでサウジ籍原油タンカー2隻(Encelia号・Layla号)を紅海で攻撃したと発表。船体は炎上し、複数のサウジ向けタンカーが紅海航行を取りやめ引き返す事態に発展。サウジアラビアは紅海経由の一部出荷を停止したと報じられ、紅海・ホルムズ海峡という2大チョークポイント双方でリスクが顕在化。この報道を受け原油は続伸し、WTIは一時$88超・Brentは6週間ぶり高値圏から一時$96近辺まで急伸。ルビオ国務長官はイランが和平交渉に『本気でない』と発言し外交解決の見通しは後退。VIXは~16.6と低下しており、株式市場は地政学リスクを依然限定的にしか織り込んでいない状態。", searchKey:"Houthi attack Saudi oil tankers Red Sea Encelia Layla July 22 2026 oil surge" }
+    ],
+    usCredit: {
+      summary: "米プライベートクレジットは『クレジット運用会社自身によるスポンサー化』という新潮流が浮上。航空機ファイナンス専門のオルタナティブ運用会社Castlelake(AUM~$360億)が、英格安航空easyJetを1株£6.90・総額£50億(~$67億)でテイクプライベートする方向で取締役会と基本合意に達した。4度の提示拒否を経ての合意で、正式オファーは8/3が期限。プライベートクレジット運用会社が『貸し手』から『買収スポンサー』へ踏み出す象徴的ディールで、GoldenTreeのハードキャップ・クローズ(ネットIRR20%超で$27.5億)、Apolloの銀行代替融資拡大($3,000億規模)という『実績あるマネジャーへの資金・案件集中』の流れとも符合する。7/21はメモリ・半導体株ラリーのリスクオンでHYスプレッドは~2.7%と概ね横ばい。",
+      deals: [
+        { title:"Castlelake：英easyJetを£50億(~$67億)でテイクプライベートへ基本合意", tag:"バイアウト", tagCls:"t-purple", meta:"Castlelake ｜ £5.0B(~$6.7B) ｜ 航空・テイクプライベート", body:"航空機ファイナンス専門のプライベートクレジット/オルタナティブ運用会社Castlelake(AUM~$360億)が、英格安航空easyJetの取締役会と1株£6.90でのテイクプライベートについて基本合意に達したと報じられた。過去に4度の提示を拒否された末の合意で、正式な買収提案は8/3が期限。クレジット運用会社が自ら買収スポンサーとなる『クレジット×PEの融合』型ディールの代表例。", sig:"プライベートクレジット運用会社が直接LBOスポンサー化する動きが顕在化", searchKey:"Castlelake easyJet takeover 6.7 billion private equity deal July 2026" },
+        { title:"GoldenTree(継続)：第2号クレジットファンド$27.5億ハードキャップ・クローズ、ネットIRR20%超", tag:"ファンドレイズ", tagCls:"t-blue", meta:"GoldenTree ｜ $2.75B ｜ プライベートクレジット(コーポレート)", body:"約50件・10業種超に投資しコミットメントの4割弱をデプロイ済み、ネットIRR20%超の実績を背景にハードキャップでのオーバーサブスクリプションを達成。BDCセクター全体で解約圧力が話題となる中、実績あるマネジャーへの資金選別が続く。", sig:"『勝ち組』マネジャーへの資金集中が継続", searchKey:"GoldenTree second private credit fund 2.75 billion hard cap close July 2026" },
+        { title:"Apollo(継続)：ウォールストリート向けローン供給を$3,000億規模へ拡大", tag:"マーケット参入", tagCls:"t-orange", meta:"Apollo ｜ ~$300B ｜ 投資銀行向け融資・シンジケート代替", body:"投資銀行のシンジケートローン業務を代替する形で、ウォールストリート向け融資供給を$3,000億規模へ拡大する計画を推進中。銀行の伝統的な融資機能をプライベートクレジットが侵食する動きが大企業向けファイナンスにも拡大している。", sig:"銀行代替の裾野が大企業ファイナンスにも拡大", searchKey:"Apollo Wall Street lending expansion 300 billion loans July 2026" }
+      ],
+      outlook: "💡 テーマは『クレジット運用会社自身のスポンサー化』と『選別的資金集中』の並走。Castlelakeのeasyjetテイクプライベートは、プライベートクレジットが単なる貸し手からバイアウト主体へ踏み出す転換点として注視すべき事例。GoldenTreeのハードキャップ・クローズは実績マネジャーへの資金一極集中を裏付ける一方、BDCセクター全体の解約圧力はくすぶったまま。7/21の株高・メモリ急伸でHYスプレッドは横ばい圏を維持したが、イラン情勢・原油高が続けば利払い・スプレッド経路への波及リスクは残存。7/29のAres Capital決算からBDC決算シーズンが本格化する。"
+    },
+    jpCredit: {
+      summary: "日本市場は米メモリ・半導体株ラリーの波及で朝方から続伸(日経平均+1.76%・67,397円、EDT朝時点の暫定値)。プライベートクレジット・M&Aの構造ストーリーに大きな変化はなく、2025年M&A総額$300B(前年比倍増)を背景にBlackstoneが日本のプライベートクレジット・ブームへ照準を定める流れ、KKRの太陽ホールディングス非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)は継続中。",
+      deals: [
+        { title:"Blackstone(継続)：日本のプライベートクレジット・ブームに照準", tag:"マーケット参入", tagCls:"t-orange", meta:"Blackstone ｜ 日本プライベートクレジット ｜ ダイレクトレンディング", body:"M&A急増を背景に拡大する日本のプライベートクレジット市場へBlackstoneが本格的に照準。Glengarryは『今後数四半期で複数の大型プライベートクレジット案件』を見込む。銀行融資が主流だった日本で、ノンバンク型クレジットの供給余地が急拡大する局面が続く。", sig:"外資大手による日本プライベートクレジット本格参入は継続", searchKey:"Blackstone Japan private credit boom 2026 direct lending" },
+        { title:"日本M&Aは$300B(2025・継続) — 30年で最も忙しい年、クレジット需要を牽引", tag:"マーケット見通し", tagCls:"t-blue", meta:"市場全体 ｜ 案件総額$300B ｜ 前年比倍増", body:"2025年の日本のM&Aは案件総額が約$300Bへ倍増し、過去30年で最も活発な年に。ガバナンス改革・事業承継・カーブアウト・円安の追い風が続き、買収資金の受け皿としてプライベートクレジット需要も連動して拡大している。", sig:"構造的M&A拡大がクレジット需要を牽引", searchKey:"Japan M&A 300 billion 2025 busiest year decades deal values double" },
+        { title:"KKR太陽HD非公開化・Kakaku.com争奪戦が継続(継続) — 競合TOBが常態化", tag:"バイアウト", tagCls:"t-purple", meta:"KKR / EQT / Bain+LY ｜ テイクプライベート/争奪戦 ｜ 化学・ネット", body:"KKRの太陽ホールディングス(化学・電子材料)非公開化、価格比較大手Kakaku.comを巡るEQT対Bain+LY Corp連合の争奪戦が継続。事業会社×PE連合という新形態と競合TOBが日本でも定着し、素材・製造業のP2P/カーブアウトが外資PEの主戦場となっている。", sig:"競合TOBと事業会社×PE連合の常態化", searchKey:"KKR Taiyo Holdings Kakaku.com EQT Bain LY Corp Japan take private 2026" }
+      ],
+      outlook: "💡 日経平均の続伸(朝方+1.76%・67,397円)は米メモリ株ラリー波及によるセンチメント改善が主因。日本PE/プライベートクレジットの構造ストーリー自体に変化はなく、$300B/年のM&A拡大がクレジット需要を牽引、Blackstoneら外資大手の参入・競合TOBの常態化が続く。Castlelakeのような『クレジット運用会社によるスポンサー化』の潮流が日本にも波及するかが今後の焦点。"
+    },
+    takeaway: "7/21(火・引けEDT)の米株は3指数そろって反発し3日続落を打ち切った——メモリ株(Micron+12%・SanDisk+14%)主導でSOX+5.45%と急伸し、S&P500+0.89%(7,509)・Nasdaq+1.29%(25,837)・Dow+0.74%(52,225)。AMDはMicrosoft Azureへの新型Heliosラック追加導入発表と決算前ポジショニングで+8.1%、NvidiaはNebiusへの9.3%出資開示(Nebius+19%)と新型Vera CPU発表で地合いを下支え。原油は対イラン軍事作戦10夜連続でWTI+1.6%の$83.8・Brent+1.6%の$90.7と続伸したが、VIXは~18.7とほぼ横ばいでリスクオンが優勢。日本は米メモリ・半導体ラリーの波及で7/22朝方から続伸し日経平均+1.76%の67,397円(Kioxia+9%が牽引、EDT朝時点の暫定値)。本日(7/22)引け後にAlphabet・Teslaが決算発表予定で、AI capexとEV需要が今週最大の焦点。プライベート市場では、航空機ファイナンス専門のCastlelakeが英easyJetを£50億(~$67億)でテイクプライベートへ基本合意し、クレジット運用会社自身がバイアウト・スポンサー化する潮流が浮上。GoldenTreeのハードキャップ・クローズ($27.5億・ネットIRR20%超)、Apolloの銀行代替融資拡大も継続。日本はBlackstoneの日本プライベートクレジット参入、KKR太陽HD非公開化・Kakaku.com争奪戦が続く。追記(7/22引けEDT)：トランプ政権のカナダ追加関税・対ブラジル25%関税発効を受け決算待ちで様子見ムードが強まる中、米3指数は小幅安で引けた(S&P-0.13%の7,499・Nasdaq-0.57%の25,691・Dow-0.01%の52,219)。日経平均は朝方+1.76%まで急伸後、利益確定売りで66,115円(-0.18%)まで反落し上げ幅を全て失った。焦点だったAlphabet・Teslaの決算は引け後に判明。Alphabetは売上$1,198億・EPS$2.31とダブルビートも2026年Capexを$1,950-2,050億へ上方修正しマージン懸念で時間外-3.8%。Teslaは売上$282.4億(+26%YoY)・過去最高の48万台超納車を記録したがNon-GAAP EPS$0.33は予想$0.55を大幅未達、Capex急増でFCFが赤字転落し時間外-3%程度。対イラン軍事作戦は11夜連続で原油はWTI$85超の高止まりが続く。追記(7/22夜EDT)：フーシ派がサウジ籍タンカー2隻(Encelia号・Layla号)を紅海で攻撃したと発表し新たな戦線が拡大、サウジは紅海経由出荷の一部を停止。WTIは一時$88超・Brentは~$96まで急伸したが、VIXは~16.6まで低下し株式市場の警戒は限定的。ルビオ国務長官はイランが和平交渉に本気でないと発言し外交解決期待は後退している。",
+    narrative: "火曜(7/21)、米国株市場は前週来の重苦しい地合いを振り払うように反発し、3日続落に終止符を打った。震源はメモリ株だ。AIデータセンター向けのDRAM/NAND需要逼迫観測を背景にMicronが+12%、SanDiskが+14%と急伸し、半導体セクター指数(SOXX)は+5.45%という力強い上昇を記録。AMDはMicrosoft AzureのAI推論基盤に新型Heliosラックスケールシステムを追加導入するとの発表に加え、7/23のIntel決算・自社Advancing AI 2026イベントを控えたポジショニング買いも重なり+8.1%高、Nvidiaも新型Vera CPUの詳細発表で+1.5%と続いた。結果としてS&P500+0.89%(7,509)・Nasdaq+1.29%(25,837)・Dow+0.74%(52,225)と3指数がそろって上昇し、前週にAIトレードのROI懸念で沈んだセクターに『需要の底堅さ』という具体的な安心材料が供給された一日となった。||この日最大のサプライズは、NvidiaがAIクラウドインフラ企業NebiusへのSchedule 13G開示を通じて9.3%(約22.26百万株)の出資を明らかにしたことだった。3月に実施した$20億の戦略出資に紐づく普通株とワラントを含むこの開示は、単なる資本参加を超えてNvidiaとAIクラウド事業者との関係の深さを市場に印象付け、Nebius株は引けにかけ+19%まで買われた。Nebiusは2030年までに5ギガワット超のハイパースケールAIクラウド展開を計画しており、7/17には$7.75億の優先担保付きデット調達も済ませたばかり。AIインフラを巡る『勝ち組』選別と、ハイパースケーラー・チップメーカー・クラウド事業者の相互資本参加が深まる構図が、この一銘柄の値動きに凝縮されていた。||マクロの重しである地政学・原油は解消しないまま相場の底流に残った。米中央軍による対イラン攻撃は10夜連続となり、供給途絶懸念からWTIは+1.60%の$83.80、Brentは+1.61%の$90.66へ続伸。ただしVIXは~18.7とほぼ横ばいにとどまり、メモリ・半導体株ラリーの勢いが地政学リスクの重しを吸収した形となった。太平洋を越えて、水曜(7/22)朝方の東京市場にもこの流れは波及し、日経平均は前日比+1.76%の67,397円まで続伸、KioxiaがMicron・SanDiskの急伸を追い風に+9%高となるなど半導体関連が指数を牽引した(本欄はEDT朝時点の暫定値で、東京引け前の数値である点に留意)。||水曜(7/22)は決算シーズンの本丸を迎えた一日となった。米株現物はAlphabet・Tesla決算を控えた様子見と関税・原油高で小幅安引け(S&P-0.13%の7,499・Nasdaq-0.57%の25,691・Dow-0.01%の52,219)、日経平均も朝方+1.76%の急伸から一転、利益確定売りで66,115円(-0.18%)まで上げ幅を失った。引け後に判明したAlphabetの決算は売上$1,198億(予想$1,169億)・EPS$2.31(予想$2.16)とダブルビートだったが、2026年AI設備投資計画を従来比+$150億の$1,950-2,050億へ上方修正したことでマージン圧迫懸念が先行し株価は時間外-3.8%。Teslaは売上$282.4億(+26%YoY)・納車48万126台と過去最高を記録したものの、Non-GAAP EPS$0.33は予想$0.55を大幅未達。営業CFは+85%増えた一方でCapexが142%増の$57.9億に膨らみFCFが▲$10.9億の赤字に転落し、株価は時間外で-3%程度下落した。市場が『実績』そのものよりも『ガイダンス・capex・キャッシュフロー』で企業を裁く構図が、この日最も明確に表れた形だ。Intel決算は明日7/23に控える。||プライベート市場では、公開市場のメモリ株ラリーとは別の角度から構造変化が進んだ。航空機ファイナンス専門のオルタナティブ運用会社Castlelakeが、英格安航空easyJetを1株£6.90・総額£50億(~$67億)でテイクプライベートする方向で取締役会と基本合意に達した。4度の提示拒否を経ての合意で、正式オファーは8/3が期限。プライベートクレジット運用会社が『貸し手』の立場を超えて自ら買収スポンサーとなるこのディールは、クレジットとプライベートエクイティの境界がさらに曖昧になっていることを象徴する。GoldenTreeのハードキャップ・クローズ($27.5億・ネットIRR20%超)、Apolloの銀行代替融資拡大($3,000億規模)といった『実績あるプレーヤーへの資金・案件集中』というテーマとも軌を一にする。日本では、Blackstoneの日本プライベートクレジット参入、KKR太陽HD非公開化・Kakaku.com争奪戦(EQT vs Bain+LY)が継続し、$300B(2025年)のM&A拡大という構造ストーリーは不変のまま前進を続けている。",
+    peTraining: {
+      thirtySecSummary: "本日(7/22・引けEDT)のポイントは3点。①米株は決算・関税待ちで小幅安引け(S&P-0.13%の7,499・Nasdaq-0.57%の25,691・Dow-0.01%の52,219)、日経平均は朝方+1.76%の急伸から一転、利益確定売りで66,115円(-0.18%)まで反落。②引け後決算が明暗を分けた——Alphabetは売上$1,198億・EPS$2.31とダブルビートも2026年Capexを$1,950-2,050億へ上方修正しマージン懸念で時間外-3.8%、Teslaは売上$282.4億(+26%YoY)・過去最高の納車台数を記録もNon-GAAP EPS$0.33が予想$0.55を大幅未達でFCFが赤字転落し時間外-3%。ServiceNow(+2%)・IBM(+2%)は堅調、Las Vegas Sands(-6%)は上下未達で下落。③前日(7/21)のメモリ株主導のSOXラリー(Micron+12%・SanDisk+14%)の勢いは一服、原油は対イラン軍事作戦11夜連続でWTI$85超の高止まりが継続。プライベート市場ではCastlelakeの英easyJetテイクプライベート(£50億)が引き続き焦点で、8/3の正式オファー期限を待つ局面。",
+      interviewQA: [
+        { q: "プライベートクレジットの運用会社が、Castlelakeのように自ら企業の買収スポンサーになるのは、伝統的なPEのバイアウトと何が違いますか。投資家として何に注目すべきですか", a: "伝統的なPEバイアウトは、株式(エクイティ)スポンサーが企業を買収し、資金の一部を銀行やプライベートクレジットからのデット(融資)で調達する構造です。一方、Castlelakeのようにプライベートクレジット運用会社自身が買収の主体(スポンサー)になる場合、本来『貸し手』であるはずのプレーヤーが『株主』の役割も兼ねることになります。この違いが生む論点は主に三つです。第一に専門性の活用——Castlelakeは航空機ファイナンスに特化しており、easyJetのような航空会社の資産価値・キャッシュフロー構造を深く理解した上でエクイティも取りに行く『専門性の垂直統合』と解釈できます。第二に利益相反の可能性——同じグループが企業に対して株主とデット提供者の両方の顔を持つ場合、資本構成やリファイナンスの意思決定で利益相反が生じうるため、ガバナンス設計(独立取締役、関連当事者取引の開示)が重要になります。第三にリターン構造の変化——デットの固定的なクーポン収益に加え、エクイティのアップサイド(企業価値向上・売却益)も狙う複合的なリターンモデルとなるため、投資家は当該ファンドがどちらの性質(デット的な安定収益か、エクイティ的なハイリスク・ハイリターンか)を主軸に据えているかを見極める必要があります。" },
+        { q: "メモリ半導体(DRAM/NAND)株が急伸した一方、GPU(Nvidia)の上昇率は相対的に小幅でした。この『物色の順番』は何を意味しますか", a: "AIサプライチェーンは大きく『演算(GPU・アクセラレータ)』『記憶(メモリ)』『インフラ(データセンター・電力・冷却)』の layers に分かれます。これまでの投資テーマはGPU(Nvidia・AMD)への集中が中心でしたが、AIモデルの大規模化・推論需要の拡大に伴い、メモリ帯域幅・容量のボトルネックが顕在化すると、投資家の関心はGPUからメモリへとシフトします。今回のMicron+12%・SanDisk+14%という急伸は、AI投資の裾野が『演算』から『記憶』へ広がっていることを示すシグナルと解釈できます。投資家の実務としては、①AIサプライチェーンの中でどのレイヤーが供給制約(価格決定力)を持つかを継続的に見極める、②単一銘柄(Nvidia)への集中投資よりも、サプライチェーン全体への分散投資(いわゆる『ツルハシ』戦略)がテーマの回転に対して頑健である、③物色の順番の変化は、AI投資サイクルが初期の『演算能力への投資』から次の段階(実運用・推論の本格化に伴うインフラ全体への投資)へ移行しつつある可能性を示唆する、という3点を意識すべきです。" },
+        { q: "Nvidiaが投資先(Nebiusなど)に出資しつつ、同時にその企業へGPUを販売するような『循環取引』的な構造は、投資家にとってどのようなリスクがありますか", a: "この構造は業界で『ベンダーファイナンシング』または『循環出資』と呼ばれ、慎重な評価が必要です。リスクは主に三つあります。第一に収益の質——GPU販売会社が顧客に出資し、その資金の一部が結果的に自社製品の購入に還流する場合、売上・成長率が『真の市場需要』ではなく『自社が生み出した需要』によって嵩上げされている可能性があります。第二に評価循環——出資先企業の株価上昇が投資家(Nvidia)の含み益となり、それが更なる強気の指標として扱われる場合、実体を伴わないバリュエーションの自己増殖が生じるリスクがあります。第三に会計上の透明性——持分法適用や関連当事者取引の開示が十分でないと、投資家は真の需要と資本循環による見かけ上の成長を区別しにくくなります。ただし、これは必ずしも不健全とは限りません。Nvidiaの出資が純粋な戦略的パートナーシップ(技術連携・優先供給契約)に基づくものであれば、AIインフラのエコシステム構築として合理的な投資判断です。投資家の実務は、①出資と商取引(GPU販売)の金額規模の比較、②出資先の自己資金創出力(外部収益の有無)、③複数のベンダー・顧客からの多様な需要があるかの確認、の3点を通じて、循環取引リスクの度合いを個別に評価することです。" }
+      ],
+      keyConceptToday: {
+        term: "クレジット運用会社のスポンサー化(Credit-as-Sponsor / GP-as-Buyer)",
+        definition: "本来デット(融資)提供者であるプライベートクレジット運用会社が、単なる貸し手にとどまらず自ら企業買収のエクイティ・スポンサーとなり、買収後の経営・価値創出にも関与する動き。Castlelakeの英easyJetテイクプライベートはその代表例。",
+        background: "プライベートクレジット業界は伝統的にPEスポンサーへの融資(バイアウトファイナンス)を主業務としてきたが、専門知見の蓄積・運用資産(AUM)の拡大に伴い、特定セクター(航空機、インフラ、不動産等)に特化した運用会社が『融資対象企業を自ら買収した方が、デットとエクイティ双方のリターンを取り込める』と判断するケースが増加。デットとエクイティの境界が曖昧化する『プライベートキャピタルの融合』が進行している。",
+        practical: "①専門性の適合度——出資先セクターへの深い知見(Castlelakeの航空機ファイナンス等)があるかが差別化の源泉。②利益相反管理——同一グループがデットとエクイティの両方を持つ場合のガバナンス設計。③リターン構造——デット的な安定収益とエクイティ的なアップサイドの配分比率。④出口戦略——買収後のバリューアップから再上場・戦略的売却までのタイムラインと実行力。⑤資金調達力——買収資金をファンド自己資金・LP出資・追加デットのいずれで賄うかの構造。",
+        context2026: "2026年、EXIT難でPEの伝統的なバイアウトファイナンスが伸び悩む一方、プライベートクレジット運用会社が自らスポンサー化する動きが顕在化。Castlelakeの easyJet ($6.7B)はその代表例で、GoldenTreeのハードキャップ・クローズやApolloの銀行代替融資拡大と並び、『実績・専門性を持つプレーヤーへの資金・案件集中』という業界全体のテーマを裏付ける。8/3のCastlelake正式オファー期限、7/29以降のBDC決算シーズンが次の材料。"
+      },
+      dealAnalysis: {
+        title: "Castlelake、英easyJetを£50億(~$67億)でテイクプライベートへ基本合意",
+        thesis: "航空機ファイナンス専門のオルタナティブ運用会社Castlelake(AUM~$360億)が、英格安航空easyJetの取締役会と1株£6.90・総額£50億(~$67億)でのテイクプライベートについて基本合意に達した。過去に4度の提示を拒否された末の合意で、正式な買収提案の期限は8/3。Castlelakeは航空機のセール&リースバック・与信提供を長年手掛けてきた専門家であり、easyJetの機材・ルート網・キャッシュフロー構造を深く理解した上でエクイティ取得に踏み込む『専門性の垂直統合』型ディール。伝統的な貸し手からバイアウト・スポンサーへの転身を象徴する。",
+        timing: "格安航空(LCC)セクターは燃料費・人件費高騰と欧州景気減速観測で株価が伸び悩む一方、路線網とブランド力を持つ既存プレーヤーの資産価値は底堅い。金利高止まり環境でPEの伝統的なバイアウトファイナンスが細る中、専門知見を持つオルタナティブ運用会社が独自の資金調達力(自己ファンド+LP)を武器に、伝統的PEが躊躇するセクターへ踏み込む好機と捉えられる。4度の拒否を経た合意形成は、価格交渉の粘り強さと専門家としての説得力を示す。",
+        downside: "①航空セクターは燃料費・為替・地政学(現在進行中のイラン情勢と原油高)に業績が左右されやすく、買収後のキャッシュフロー変動リスクが大きい。②Castlelakeにとって航空機ファイナンスと事業会社買収は異なるスキルセットを要し、オペレーション面での実行力は未知数。③£6.90という提示価格が正式オファーで維持されるか、対抗提案が出るかは8/3まで不透明。④デットとエクイティを同一グループが持つ構造上の利益相反リスク——買収後のリファイナンス条件や資本配分の意思決定でガバナンスの透明性が問われる。⑤LCCセクターは欧州の複数の強力な競合(Ryanair、Wizz Air等)がひしめき、価格競争による利益率圧迫リスクが常在。",
+        valuation: "£50億(~$67億)の評価は、easyJetの保有機材・スロット・ブランド価値と、LCCセクター平均のEV/EBITDAレンジとの比較で妥当性が判断される。Castlelakeの強みは航空機資産の再評価・リースバック活用による資本効率化(バランスシートの軽量化)で、これが価値創出の主軸になり得る。IRRの生命線は、(a)燃料費・為替のヘッジ巧拙、(b)路線網の収益性改善余地、(c)デット・エクイティの資本構成最適化、(d)出口(再上場・戦略的売却)のタイミングと市場環境。8/3の正式オファー後、デューデリジェンスの進捗と資金調達の確定が次の注視点となる。"
+      }
+    }
+  },
+  {
+    date: "2026-07-23",
+    dateLabel: "Jul 23",
+    tokenEstimate: 17000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7408.30, change:-91.13, pct:-1.21, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:25137.69,change:-553.31,pct:-2.15, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:51711.65,change:-506.93,pct:-0.97, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:66467.88,change:352.28, pct:0.53,  dir:"up" }
+    },
+    macro: {
+      "10Y米国債":    { value:"~4.66%",  dir:"up" },
+      "2Y米国債":     { value:"~4.25%",  dir:"up"   },
+      "VIX":          { value:"~17.6",   dir:"up"   },
+      "DXY":          { value:"~101.1",  dir:"flat" },
+      "WTI原油":      { value:"~$92.4",  dir:"up"   },
+      "Gold金":       { value:"~$4,152", dir:"up"   },
+      "ドル円":       { value:"¥163.4",  dir:"up"   },
+      "日10年国債":   { value:"~2.82%",  dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"TSLA", name:"Tesla",            pct:-14.5,dir:"down", why:"本日終値$319.69。2Q売上が前年比-12%と過去10年で最大の減収率となったことに加えAI・ロボティクス投資の一段の拡大観測が嫌気され、寄り前-6%から引けにかけ下げ幅が拡大" },
+      { ticker:"GOOGL",name:"Alphabet",         pct:-7.0, dir:"down", why:"本日終値ベースで反落。寄り前は広告収入+10%YoYの好調を好感し一時+3%まで戻す場面もあったが、引けにかけ2026年AI設備投資計画の上方修正(+$100億)への懸念が優勢となり大幅安に転じた" },
+      { ticker:"INTC", name:"Intel",            pct:13.0, dir:"up",  why:"引け後発表の4-6月期決算で売上が前年比+25%(15年超ぶりの高成長率)、非GAAP EPS$0.42は市場予想$0.21をほぼ倍増。データセンター・AI部門が+59%YoYと牽引し時間外で急伸(GAAPはCHIPS Act関連評価損$125億で純損失$110億)" },
+      { ticker:"SMCI", name:"Super Micro Computer", pct:19.8, dir:"up",  why:"予備決算で粗利益率が従来ガイダンス8.2-8.4%から一気に15-17%へ上振れ、受注残高は過去最高の$600億超に到達し急伸" },
+      { ticker:"ADTN", name:"Adtran Holdings",  pct:-11.9,dir:"down", why:"予備決算で売上・非GAAP営業利益率・EPSがいずれもガイダンス・市場予想を下回り急落" },
+      { ticker:"285A.T",name:"Kioxia Holdings", pct: 3.4, dir:"up",  why:"日経平均は東京時間午前から続伸(+0.53%・66,468円、取引時間中の暫定値)、前日来の半導体・メモリ株物色の流れを引き継ぐ" }
+    ],
+    events: [
+      { icon:"🛢️", title:"フーシ派が紅海でサウジ籍タンカー2隻(Encelia・Layla)へ新たに攻撃、原油続伸 — WTIは$92台まで上昇し6月上旬以来の高値", detail:"国籍不明の発射体によりサウジアラビア沖でタンカーが被弾したのに続き、フーシ派はミサイル・ドローンで紅海のサウジ籍タンカー2隻(Encelia、Layla)を新たに攻撃したと表明、封鎖違反を理由に挙げた。トランプ大統領はTruth Socialで、イランがホルムズ海峡で船舶を攻撃した場合『橋または発電所1つを破壊する、テヘラン近郊・市内も対象』と改めて警告。イラン国営タスニム通信は軍関係者の発言として、米が橋・発電所を狙えばイランも地域のインフラ・米権益のあるエネルギー施設を報復攻撃すると表明。対イラン軍事作戦は12夜連続となり、ホルムズ海峡・紅海の両チョークポイントでリスクが同時進行・エスカレートしている。原油はWTIが~$92.4(前日比+6.4%程度、5営業日続伸で6月上旬以来の高値)まで水準を切り上げた。", searchKey:"Houthi attack Saudi tankers Encelia Layla Red Sea oil surge July 23 2026" },
+      { icon:"📊", title:"Alphabet・Teslaが揃って大幅安で引け、Nasdaqは2%超下落 — Alphabet-7%・Tesla-14.5%、Intelは引け後決算で時間外+13%超", detail:"寄り前には広告収入+10%YoYを好感し一時+3%までプラス転換していたAlphabetだが、引けにかけて2026年AI設備投資計画の上方修正(+$100億)への懸念が優勢となり、最終的に-7%で取引を終えた。Teslaは前日発表の納車48万台超(過去最高)にもかかわらず、2Q売上が前年比-12%と過去10年で最大の減収率となったことが嫌気され、$319.69(-14.5%)まで下落。両社の急落がNasdaq総合指数を押し下げ、同指数は-2.15%(25,137.69)で引けた。S&P500は-1.21%(7,408.30)、Dowは-506.93ドル(-0.97%・51,711.65)で取引を終え、主要3指数が揃って大幅安。引け後にはIntelが4-6月期決算を発表、売上が前年比+25%(15年超ぶりの高成長率)・非GAAP EPS$0.42(市場予想$0.21をほぼ倍増)と大幅増益となり、データセンター・AI部門(+59%YoY)が牽引、時間外で株価は+13%超上昇した(GAAPはCHIPS Act関連の時価評価損$125億により純損失$110億)。", searchKey:"Alphabet Tesla Intel earnings stock market close July 23 2026 Nasdaq S&P Dow" },
+      { icon:"🖥️", title:"Super Micro Computer、予備決算で粗利益率急改善・受注残高$600億超と発表し急伸、Adtranは大幅未達で急落", detail:"AIサーバー大手Super Microは4-6月期の予備決算で、GAAP・非GAAP粗利益率をともに15-17%(従来ガイダンス8.2-8.4%)へ上方修正。顧客・製品ミックスの改善が寄与し、4-6月期の新規受注は過去最高の$600億超に達したと発表、株価は急伸した。対照的に通信機器のAdtranは売上・非GAAP営業利益率・EPSがいずれもガイダンス・市場予想を下回る予備決算を発表し急落。AIインフラ関連の『勝ち組・負け組』選別が決算シーズン序盤から鮮明になっている。", searchKey:"Super Micro Computer preliminary results gross margin backlog Adtran miss July 2026" },
+      { icon:"💴", title:"円は¥163台で約40年ぶり安値圏、片山財務相が改めて介入警戒発言", detail:"ドル円は¥163.1近辺で推移し、約40年ぶりの安値水準が続いている。片山さつき財務相は、為替の行き過ぎた変動が金融の安定を脅かす場合は介入も辞さない姿勢を改めて表明した。原油高・米長期金利の高止まりを背景に円安圧力は根強く、実際の介入に踏み切るかが市場の関心事となっている。", searchKey:"yen weakens 163 dollar 40 year low Japan finance minister Katayama intervention warning" },
+      { icon:"✈️", title:"Apolloが対抗提案でCastlelakeのeasyJet買収案を上回る — 1株£7.15(~$73億)を提示、easyJet取締役会はCastlelake案を推奨しない方針に転換", detail:"Castlelakeが1株£6.90・総額£50億(~$67億)でeasyJetの取締役会と基本合意していたところ、Apolloが1株£7.15・総額約£73億(~$73億)の対抗提案を提出。easyJet取締役会はApollo案を軸に検討する方針へ転換し、Castlelake案をもはや推奨しない意向と報じられた。Apolloには8/7午後5時までに正式オファーを表明するか撤回するかの期限が設定されている。プライベートクレジット運用会社(Castlelake)自身のバイアウト・スポンサー化という新潮流の初弾が、伝統的PE大手Apolloとの入札合戦へ発展した格好で、続報に注意が必要。", searchKey:"Apollo tops Castlelake bid easyJet takeover 7.15 pounds per share July 2026" }
+    ],
+    usCredit: {
+      summary: "最大の変化はeasyJet争奪戦の急展開。プライベートクレジット運用会社Castlelakeが基本合意していた1株£6.90(£50億)の買収案に対し、伝統的PE大手Apolloが1株£7.15(~£73億/$73億)の対抗提案を提出し、easyJet取締役会はCastlelake案をもはや推奨しない方針へ転換した。『クレジット運用会社のスポンサー化』という新潮流が、伝統的PEとの入札合戦にさらされる形となり、8/7のApollo回答期限が次の焦点。GoldenTreeのハードキャップ・クローズ、Apolloの銀行代替融資拡大($3,000億規模)という『実績あるマネジャーへの資金・案件集中』のテーマは継続。原油高・地政学リスクの再燃(サウジ沖タンカー被弾、対イラン軍事作戦12夜連続)を受けVIXは~17.1へ上昇し、HYスプレッドへの波及余地に注意が必要な局面。",
+      deals: [
+        { title:"Apollo：CastlelakeのeasyJet買収案に対抗し1株£7.15(~$73億)を提示", tag:"バイアウト", tagCls:"t-purple", meta:"Apollo ｜ ~£7.3B(~$7.3B) ｜ 航空・対抗入札", body:"伝統的PE大手ApolloがCastlelakeの1株£6.90提案を上回る£7.15の対抗提案を提出。easyJet取締役会はApollo案を軸とする方針へ転換したと報じられ、Apolloには8/7午後5時までの回答期限が設定されている。", sig:"クレジット運用会社(Castlelake)のスポンサー化案件が伝統的PE(Apollo)との入札合戦に発展", searchKey:"Apollo tops Castlelake bid easyJet takeover 7.15 pounds per share July 2026" },
+        { title:"Castlelake(継続)：先行した£50億買収案が劣後 — easyJet取締役会はもはや推奨せず", tag:"バイアウト", tagCls:"t-purple", meta:"Castlelake ｜ £5.0B(~$6.7B) ｜ 航空・テイクプライベート", body:"4度の提示拒否を経て7月上旬に基本合意した£6.90案が、Apolloの対抗提案により劣後する事態に。クレジット運用会社自身のバイアウト・スポンサー化という新潮流の試金石となる案件の行方が、伝統的PEとの競合という新たな局面を迎えている。", sig:"『貸し手からスポンサーへ』の先行事例が伝統的PEに切り崩される可能性", searchKey:"Castlelake easyJet original bid board no longer recommend July 2026" },
+        { title:"GoldenTree(継続)：第2号クレジットファンド$27.5億ハードキャップ・クローズ、ネットIRR20%超", tag:"ファンドレイズ", tagCls:"t-blue", meta:"GoldenTree ｜ $2.75B ｜ プライベートクレジット(コーポレート)", body:"約50件・10業種超に投資しコミットメントの4割弱をデプロイ済み、ネットIRR20%超の実績を背景にハードキャップでのオーバーサブスクリプションを達成。実績あるマネジャーへの資金選別が続く。", sig:"『勝ち組』マネジャーへの資金集中が継続", searchKey:"GoldenTree second private credit fund 2.75 billion hard cap close July 2026" },
+        { title:"Apollo(継続)：ウォールストリート向けローン供給を$3,000億規模へ拡大", tag:"マーケット参入", tagCls:"t-orange", meta:"Apollo ｜ ~$300B ｜ 投資銀行向け融資・シンジケート代替", body:"銀行の伝統的な融資機能をプライベートクレジットが侵食する動きが大企業向けファイナンスにも拡大。easyJet案件と合わせ、Apolloがバイアウト・融資両面で存在感を強めている。", sig:"銀行代替の裾野拡大とバイアウト参入が同時進行", searchKey:"Apollo Wall Street lending expansion 300 billion loans July 2026" }
+      ],
+      outlook: "💡 easyJetを巡るCastlelake対Apolloの入札合戦は、『クレジット運用会社のスポンサー化』というテーマが伝統的PEとの競争に晒される最初の試金石。8/7のApollo回答期限まで価格引き上げの応酬が続く可能性があり要注視。GoldenTreeのハードキャップ・クローズは実績マネジャーへの資金集中を裏付ける一方、サウジ沖タンカー被弾・対イラン軍事作戦12夜連続という地政学リスクの再燃でVIXは~17.1へ上昇。原油高止まりが続けば利払い・スプレッド経路への波及リスクは残存し、7/29のAres Capital決算からのBDC決算シーズンで実際の影響が確認される見込み。",
+    },
+    jpCredit: {
+      summary: "日経平均は東京時間午前から続伸(+0.53%・66,468円、取引時間中の暫定値)し、前日来の半導体・メモリ株物色の流れを引き継ぐ。一方、円は¥163台で約40年ぶり安値圏が続き、片山財務相が改めて介入警戒発言。日本のプライベートクレジット・M&Aの構造ストーリーに大きな変化はなく、2025年M&A総額$300B(前年比倍増)を背景にBlackstoneが日本のプライベートクレジット・ブームへ照準を定める流れ、KKRの太陽ホールディングス非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)は継続中。",
+      deals: [
+        { title:"Blackstone(継続)：日本のプライベートクレジット・ブームに照準", tag:"マーケット参入", tagCls:"t-orange", meta:"Blackstone ｜ 日本プライベートクレジット ｜ ダイレクトレンディング", body:"M&A急増を背景に拡大する日本のプライベートクレジット市場へBlackstoneが本格的に照準。今後数四半期で複数の大型プライベートクレジット案件を見込むとされ、銀行融資が主流だった日本でノンバンク型クレジットの供給余地が急拡大する局面が続く。", sig:"外資大手による日本プライベートクレジット本格参入は継続", searchKey:"Blackstone Japan private credit boom 2026 direct lending" },
+        { title:"日本M&Aは$300B(2025・継続) — 30年で最も忙しい年、クレジット需要を牽引", tag:"マーケット見通し", tagCls:"t-blue", meta:"市場全体 ｜ 案件総額$300B ｜ 前年比倍増", body:"2025年の日本のM&Aは案件総額が約$300Bへ倍増し、過去30年で最も活発な年に。ガバナンス改革・事業承継・カーブアウト・円安の追い風が続き、買収資金の受け皿としてプライベートクレジット需要も連動して拡大している。", sig:"構造的M&A拡大がクレジット需要を牽引", searchKey:"Japan M&A 300 billion 2025 busiest year decades deal values double" },
+        { title:"KKR太陽HD非公開化・Kakaku.com争奪戦が継続(継続) — 競合TOBが常態化", tag:"バイアウト", tagCls:"t-purple", meta:"KKR / EQT / Bain+LY ｜ テイクプライベート/争奪戦 ｜ 化学・ネット", body:"KKRの太陽ホールディングス(化学・電子材料)非公開化、価格比較大手Kakaku.comを巡るEQT対Bain+LY Corp連合の争奪戦が継続。事業会社×PE連合という新形態と競合TOBが日本でも定着している。", sig:"競合TOBと事業会社×PE連合の常態化", searchKey:"KKR Taiyo Holdings Kakaku.com EQT Bain LY Corp Japan take private 2026" }
+      ],
+      outlook: "💡 日経平均は東京時間午前続伸(+0.53%・66,468円、暫定値)も、円安(¥163台・約40年ぶり水準)と介入警戒が並走する神経質な地合い。日本PE/プライベートクレジットの構造ストーリー自体に変化はなく、$300B/年のM&A拡大がクレジット需要を牽引、Blackstoneら外資大手の参入・競合TOBの常態化が続く。米国でのApollo対Castlelakeのような『クレジット×PE入札合戦』が日本にも波及するかが今後の焦点。"
+    },
+    takeaway: "米株は木曜(7/23)、地政学リスクの再燃とAI設備投資懸念を背景に主要3指数が揃って大幅安で引けた。S&P500は-1.21%(7,408.30)、Nasdaqは-2.15%(25,137.69)、Dowは-506.93ドル(-0.97%・51,711.65)。サウジ沖でのタンカー被弾に続きフーシ派が紅海でサウジ籍タンカー2隻(Encelia・Layla)へ新たに攻撃、トランプ大統領は『イランがホルムズ海峡で船舶攻撃すればイラン国内の橋・発電所を破壊する』と改めて警告、対イラン軍事作戦は12夜連続に。原油はWTIが$92台まで上昇(+6%超、5営業日続伸で6月上旬以来の高値)、VIXも~17.6へ切り上がった。決算では、寄り前に広告収入+10%YoYを好感し一時プラス転換していたAlphabetが引けにかけ2026年AI設備投資計画の上方修正(+$100億)への懸念で-7%に転落、Teslaも過去最高の納車台数にもかかわらず売上が前年比-12%(過去10年最大の減収)で-14.5%(終値$319.69)まで急落し、Nasdaqの下げを主導した。ハードウェアでは、Super Micro Computerが予備決算で粗利益率急改善・受注残$600億超を発表し急伸した一方、Adtranは軒並み未達で急落。引け後にはIntelが4-6月期決算を発表、売上+25%(15年超ぶりの高成長率)・非GAAP EPS$0.42(市場予想$0.21の倍)と大幅増益となり、データセンター・AI部門+59%YoYが牽引、時間外で+13%超上昇した(GAAPはCHIPS Act関連評価損$125億で純損失$110億)。プライベート市場では、Castlelakeが基本合意していたeasyJet買収案(£6.90/株)にApolloが£7.15/株(~$73億)で対抗提案し、easyJet取締役会はCastlelake案をもはや推奨しない方針へ転換——『クレジット運用会社のスポンサー化』の先行事例が伝統的PEとの入札合戦に発展した(Apolloは8/7、Castlelakeは8/3が回答期限)。円は¥163台後半で約40年ぶり安値圏が続き、片山財務相が介入警戒を改めて表明した。",
+    narrative: "木曜(7/23)は東部時間早朝の時点で、地政学リスクの再燃が相場の最大の変数として浮上した。サウジアラビア沖で国籍不明の発射体によりタンカーが被弾したことを受け、トランプ大統領はTruth Socialで『イランがホルムズ海峡で船舶を攻撃するたびに、テヘラン近郊・市内を含むイラン国内の橋または発電所1つを破壊する』と改めて警告。イラン国営タスニム通信は軍関係者の発言として、米側が橋・発電所を狙えばイランも地域のインフラ・米権益のあるエネルギー施設を報復攻撃すると表明し、応酬は一段とエスカレートしている。対イラン軍事作戦は12夜連続となり、フーシ派はミサイル・ドローンで紅海のサウジ籍タンカー2隻(Encelia、Layla)を新たに攻撃したと表明、ホルムズ海峡・紅海という2大チョークポイントで供給リスクが同時進行・エスカレートする構図が続く。原油はWTIが~$92.4(+6.4%程度、5営業日続伸で6月上旬以来の高値)まで上昇し、VIXも~17.6へ切り上がった。米10年債利回りは~4.66%と約2カ月ぶりの高水準へ上昇し、地政学リスクと決算を受けた急落が重なる形で、米株はS&P500-1.21%(7,408.30)、Nasdaq-2.15%(25,137.69)、Dow-506.93ドル(-0.97%・51,711.65)と主要3指数が揃って大幅安で引けた。||決算シーズンは寄り前から明暗が鮮明になり、引けにかけてさらに評価が動いた。前日引け後に決算を発表したAlphabetとTeslaは、寄り前時点では一夜明けて評価が反転した銘柄と踏襲した銘柄に分かれていた。Alphabetは2026年AI設備投資計画の上方修正(+$100億)への懸念から時間外で一時-3.8%まで売られたが、広告収入が前年比+10%とAI牽引で伸びたことが再評価され、寄り前には$197.43近辺(+3%)まで戻していた。しかし引けにかけてAI設備投資懸念が再び優勢となり、結局-7%で取引を終えた。Teslaは、前日発表の納車48万台超という過去最高記録にもかかわらず、売上が前年比-12%と過去10年で最大の落ち込みとなったことが嫌気され、$319.69(-14.5%)まで下落。市場が『台数』よりも『売上の質』を厳しく裁く構図が改めて示され、両社の急落がNasdaqの2%超下落を主導した。引け後にはIntelが4-6月期決算を発表、売上が前年比+25%(15年超ぶりの高成長率)・非GAAP EPS$0.42(市場予想$0.21の倍)と大幅増益となり、データセンター・AI部門(+59%YoY)が牽引、時間外で株価は+13%超上昇した(GAAPはCHIPS Act関連評価損$125億により純損失$110億)。前日+8%高となっていた同株にとって、決算は高まった期待値を上回る内容となった。||ハードウェア関連では対照的な予備決算が相次いだ。AIサーバー大手のSuper Micro Computerは4-6月期の粗利益率が従来ガイダンス8.2-8.4%から一気に15-17%へ改善し、新規受注も過去最高の$600億超に達したと発表、株価は急伸した。一方、通信機器のAdtran Holdingsは売上・利益率・EPSのいずれもがガイダンス・市場予想を下回る結果となり急落。AIインフラ投資の裾野が広がる中でも、需要の恩恵を確実に収益へ転換できる企業とそうでない企業の選別が、決算シーズン序盤から鮮明になっている。||為替では、ドル円が¥163台後半で約40年ぶりの安値圏に張り付いたままとなっている。片山さつき財務相は改めて、行き過ぎた為替変動が金融の安定を脅かす場合は介入も辞さない姿勢を示したが、原油高・米長期金利の高止まりを背景に円安圧力は根強く、実際の介入があるかが市場の関心を集めている。東京市場では、前日来の米メモリ・半導体株ラリーの流れを引き継ぎ日経平均が午前中続伸(+0.53%・66,468円、取引時間中の暫定値)となったが、東京引けは確定していない。||プライベート市場では、公開市場の決算・地政学リスクとは別の角度から重要な展開があった。プライベートクレジット運用会社Castlelakeが基本合意していた英easyJetの買収案(1株£6.90・£50億)に対し、伝統的PE大手Apolloが1株£7.15・総額約£73億(~$73億)の対抗提案を提出。easyJet取締役会はApollo案を軸とする方針へ転換したと報じられ、Castlelake案をもはや推奨しない意向とみられる。Castlelakeの案件は『クレジット運用会社が貸し手からバイアウト・スポンサーへ踏み出す』新潮流の先行事例として本欄でも継続的に取り上げてきたが、伝統的PEがすぐさま競合入札で切り崩しにかかった格好は、この潮流が既存プレーヤーとの競争に晒される最初の試金石といえる。Apolloには8/7午後5時までの回答期限が設定されており、続報が注視される。GoldenTreeのハードキャップ・クローズ($27.5億・ネットIRR20%超)は実績マネジャーへの資金集中というテーマを裏付け続けており、日本ではBlackstoneの日本プライベートクレジット参入、KKR太陽HD非公開化・Kakaku.com争奪戦(EQT vs Bain+LY)が構造的に前進を続けている。",
+    peTraining: {
+      thirtySecSummary: "本日(7/23・木、EDT引け後時点)のポイントは3点。①地政学リスクの再燃と主要3指数の大幅安——サウジ沖でのタンカー被弾に続きフーシ派が紅海でサウジ籍タンカー2隻(Encelia・Layla)へ新たに攻撃、トランプ大統領はホルムズ海峡攻撃なら『イラン国内の橋・発電所を破壊する』と警告、対イラン軍事作戦は12夜連続でWTIは$92台まで上昇(6月上旬以来の高値)。S&P500-1.21%(7,408.30)、Nasdaq-2.15%(25,137.69)、Dow-0.97%(51,711.65)と揃って大幅安。②決算は寄り前から引けにかけ明暗が二転——Alphabetは寄り前一時+3%まで戻すも引けは-7%、Teslaは過去最高納車も売上-12%YoY(過去10年最大の減収)で-14.5%(終値$319.69)。Super Micro Computerは粗利益率急改善・受注残$600億超で急伸、Adtranは軒並み未達で急落。引け後にはIntelが売上+25%・非GAAP EPS$0.42(市場予想の倍)の大幅増益決算を発表し時間外+13%超。③プライベート市場最大の変化——Castlelakeが基本合意していたeasyJet買収案(£6.90/株)にApolloが£7.15/株(~$73億)で対抗、easyJet取締役会はCastlelake案をもはや推奨せず。『クレジット運用会社のスポンサー化』が伝統的PEとの入札合戦に発展した(Apollo8/7・Castlelake8/3が回答期限)。",
+      interviewQA: [
+        { q: "ApolloのようにCastlelakeの提案を上回る『対抗入札(トッピングビッド)』が入った場合、既に基本合意していた買収者(Castlelake)や対象企業(easyJet)はどのような選択肢を持ちますか", a: "M&Aプロセスにおいて基本合意(スキーム・オブ・アレンジメントの推奨表明など)は法的拘束力のある最終契約ではなく、対象企業の取締役会は『受託者責任(フィデューシャリー・デューティー)』に基づき、株主にとってより有利な提案が出た場合はそちらを検討する義務を負うのが通常です。今回のケースでは、easyJet取締役会がApolloのより高い提示額(£7.15 vs £6.90)を評価し、Castlelake案への推奨を撤回する方向に転じたとみられます。この局面でCastlelakeが取りうる選択肢は主に三つです。第一に価格引き上げ——Apolloに対抗して£7.15を上回る再提案を行い、入札合戦を継続する。第二に撤退——追加の資金負担に見合わないと判断し、提案を取り下げる。第三に非価格条件での差別化——確実性(資金調達の確度、規制承認の見込み)やクロージングの速さなど、価格以外の要素で対象企業の信頼を勝ち取る。投資家としては、①最終契約(定義的合意)がまだ締結されていない段階では合意はいつでも覆りうること、②入札合戦は対象企業の株主にとって価格発見(プライスディスカバリー)の機会である一方、買収側にとっては当初想定したリターン(IRR)を圧迫するリスクがあることの二点を意識すべきです。" },
+        { q: "本来『貸し手』であるプライベートクレジット運用会社(Castlelake)が、伝統的PE大手(Apollo)との入札合戦に敗れつつあるように見える今回の展開は、『クレジット運用会社のスポンサー化』というテーマにとってどのような意味を持ちますか", a: "この展開は、テーマの実現可能性そのものを否定するものではなく、むしろ『専門性の優位性がどこまで通用するか』という現実的な制約を浮き彫りにしていると解釈するのが妥当です。Castlelakeは航空機ファイナンスの専門性を武器にeasyJetの資産価値を深く理解した上でエクイティ取得に踏み込みましたが、Apolloのような伝統的PE大手は圧倒的に大きい運用資産(AUM)と資金調達力を持ち、専門性で劣っていても価格競争力で上回ることが可能です。つまり、①専門性は差別化要因にはなるが、絶対的な参入障壁にはならないこと、②大型資金力を持つ既存プレーヤーは、新興テーマ(クレジット運用会社のスポンサー化)が有望と判断すれば即座に同じ土俵に参入し規模で対抗できること、③今後Castlelakeのような専門特化型プレーヤーが生き残るには、価格競争だけでなく『規制対応の速さ』『対象企業経営陣との関係構築』『クロージングの確実性』といった非価格要因での差別化が一層重要になること、の3点が投資家にとっての実務的な示唆です。テーマ自体は『融合』が進むことを示す一方、その担い手が専門特化型の新興プレーヤーか、資金力のある伝統的PEかは、案件ごとの入札合戦の結果次第で変わりうるという教訓です。" },
+        { q: "決算発表後に株価が時間外で一旦下落し、翌日の寄り付き前に反発する(Alphabetのような)値動きは、投資家として何を学ぶべきですか", a: "この値動きは『初期反応(ヘッドライン反応)』と『精査後の再評価』のタイムラグを象徴しています。決算発表直後の時間外取引は流動性が薄く、投資家がプレスリリースの見出し情報(この場合はCapex上方修正)に反射的に反応しやすい環境です。しかしその後、決算説明会でのマネジメントのコメントや詳細な財務諸表(セグメント別売上、粗利益率、キャッシュフロー等)が精査されるにつれて、市場の評価はより多面的になります。Alphabetのケースでは、当初『Capex増加=マージン圧迫』という単純化された懸念が先行しましたが、翌朝までに『広告収入+10%YoYというAI牽引の増収基調』が再評価され、株価が反発しました。投資家の実務としては、①決算直後の時間外の値動きだけで投資判断を下すことは危険で、詳細な決算資料・カンファレンスコールの内容を確認してから判断すべきこと、②特に大型テック企業のCapex増加は、それが将来の成長投資(AI需要への対応)なのか、非効率な支出なのかを見極める必要があること、③流動性の薄い時間外市場での値動きは、翌日の寄り付きにかけて修正されることが多く、短期的なボラティリティに惑わされず一次情報に基づく評価を優先することの3点が重要です。" }
+      ],
+      keyConceptToday: {
+        term: "トッピングビッド(Topping Bid)と受託者責任",
+        definition: "既に対象企業と買収者の間で基本合意・推奨表明がなされた案件に対し、第三者がより有利な条件(通常はより高い価格)で対抗提案を提出すること。対象企業の取締役会は株主利益最大化の観点から、より有利な提案を検討する受託者責任を負う。",
+        background: "M&Aプロセスにおける基本合意は多くの場合、法的拘束力のある最終契約ではなく、対象企業取締役会による『推奨の意向表明』にとどまる。このため、より高い対抗提案(トッピングビッド)が現れた場合、取締役会は既存の合意を破棄してでも新提案を検討する義務を負うことがある。今回のApolloによるCastlelake案への対抗提案(£7.15 vs £6.90)はその典型例。",
+        practical: "①価格差の評価——対抗提案が既存合意をどれだけ上回るか(今回は約3.6%高)。②確実性の比較——資金調達の確度、規制承認の見込み、クロージングまでの期間。③既存契約の解約条項——ブレークアップフィー(解約違約金)の有無・水準が、対象企業が既存合意を離脱するハードルとなる。④入札合戦のエスカレーションリスク——買収側にとっては当初想定のIRRを圧迫する要因となるため、どこまで価格を引き上げるかの規律が問われる。⑤対象企業株主への影響——入札合戦は短期的な株価上昇(プレミアム拡大)をもたらすため、既存株主にとっては歓迎されやすい。",
+        context2026: "2026年はEXIT難を背景にPEの案件獲得競争が激化しており、プライベートクレジット運用会社が専門性を武器にスポンサー化する新潮流(Castlelakeのような)に対し、伝統的PE大手(Apollo)が資金力で対抗する構図が今回のeasyJet案件で顕在化した。8/7のApollo回答期限、Castlelakeが再対抗するかどうかが次の焦点。同様の入札合戦は今後も他セクターで再現される可能性があり、『専門特化型プレーヤー vs 大型汎用プレーヤー』という対立軸は2026年のPE市場の重要なテーマの一つとなりつつある。"
+      },
+      dealAnalysis: {
+        title: "Apollo、CastlelakeのeasyJet買収案に£7.15/株(~$73億)で対抗提案",
+        thesis: "伝統的PE大手Apolloが、プライベートクレジット運用会社Castlelakeの1株£6.90(£50億)提案を上回る1株£7.15・総額約£73億(~$73億)の対抗提案を提出。easyJet取締役会はApollo案を軸に検討する方針へ転換したと報じられ、先行していたCastlelake案はもはや推奨されない見通し。Apolloは航空・インフラ資産への投資実績と潤沢な資金力を武器に、専門特化型プレーヤーが切り開いた案件へ後から参入し規模で上回る典型的な動きを見せている。",
+        timing: "格安航空(LCC)セクターは燃料費・地政学(対イラン軍事作戦・原油高)による業績変動リスクを抱えつつも、路線網・ブランド力を持つ既存プレーヤーの資産価値は底堅い。Castlelakeが4度の拒否を経て基本合意にこぎつけたタイミングで、Apolloが即座に対抗提案を提出したことは、easyJetの資産価値に対する市場の評価が固まりつつあるサインとも解釈できる。Apolloにとっては、EXIT難で伝統的バイアウト案件が細る中、確実性の高い案件へ積極的に資金を投じる好機。",
+        downside: "①入札合戦の激化により最終的な買収価格がさらに上振れし、Apolloの想定IRRが圧迫されるリスク。②LCCセクターは燃料費・為替・地政学リスクに業績が左右されやすく、買収後のキャッシュフロー変動リスクが大きい。③Castlelakeが再対抗提案を行う可能性が残っており、決着まで不透明感が続く。④8/7の回答期限までにApolloが正式オファーを行わない可能性もゼロではない。⑤LCCセクターは複数の強力な競合(Ryanair、Wizz Air等)がひしめき、価格競争による利益率圧迫リスクが常在。",
+        valuation: "£7.15/株(総額~£73億・$73億)はCastlelakeの£6.90案から約3.6%のプレミアム。easyJetの保有機材・スロット・ブランド価値と、LCCセクター平均のEV/EBITDAレンジとの比較で妥当性が判断される。Apolloの強みは大型インフラ・航空関連投資での実績と、資本市場へのアクセスの広さで、これが資金調達の確実性を裏付ける可能性がある。8/7の回答期限後、Castlelakeが再対抗するか、Apolloが正式オファーを提出するかが次の注視点。"
+      }
+    }
+  },
+  {
+    date: "2026-07-24",
+    dateLabel: "Jul 24(寄り前)",
+    tokenEstimate: 17000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7411.98, change:3.68,  pct:0.05,  dir:"up" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:24975.82,change:-161.87,pct:-0.64,dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:51947.25,change:235.60,pct:0.46,  dir:"up" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:64568.75,change:-1899.13,pct:-2.86,dir:"down" }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.71%",   dir:"up"   },
+      "2Y米国債":     { value:"~4.25%",  dir:"flat" },
+      "VIX":          { value:"18.70",   dir:"up"   },
+      "DXY":          { value:"~101.3",  dir:"up"   },
+      "WTI原油":      { value:"~$88.6",  dir:"down" },
+      "Gold金":       { value:"~$4,044", dir:"down" },
+      "ドル円":       { value:"¥163.1",  dir:"flat" },
+      "日10年国債":   { value:"~2.82%",  dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"INTC",  name:"Intel",            pct:-2.33,dir:"down", why:"EPS$0.42(市場予想の2倍)・売上$16.1B(前年比+25%)と決算内容は良好も、2026年設備投資計画を$180億→$200億超へ上方修正し2027年は『さらに大幅増額』と表明したためFCF懸念が優先され$100.23まで反落" },
+      { ticker:"AMD",   name:"AMD",              pct:-3.72,dir:"down", why:"Intel決算を受けたAI設備投資懸念の波及とチップ株全般の利益確定売りで$531.80まで下落" },
+      { ticker:"NVDA",  name:"Nvidia",           pct:-1.01,dir:"down", why:"半導体セクター全体の売り圧力の中、比較的小幅な下落で$209.92" },
+      { ticker:"6857.T",name:"Advantest",        pct:-3.9, dir:"down", why:"AI設備投資懸念とAlphabet決算余波を受け東京時間で半導体装置株に売りが波及" },
+      { ticker:"285A.T",name:"Kioxia Holdings",  pct:-3.1, dir:"down", why:"前日+3.4%から一転、AI設備投資懸念・中東地政学リスクの再燃を受けメモリ株に利益確定売り" },
+      { ticker:"8035.T",name:"Tokyo Electron",   pct:-2.0, dir:"down", why:"半導体製造装置株全般に売りが波及、日経平均は午後にかけ下げ幅を拡大" }
+    ],
+    events: [
+      { icon:"⚔️", title:"イラン情勢、和平交渉観測と『大規模攻撃』警告が交錯 — パキスタン・中国仲介の米イラン協議観測も、トランプ氏は紅海拡大受け攻撃検討", detail:"ロイター報道によると、パキスタンが中国の後押しを受け米・イラン間の新たな和平交渉の道筋を模索していると伝えられ、この観測を受け週後半にかけ株式市場が上昇し原油が下落する場面があった。一方でトランプ大統領は、紛争が紅海の新たな戦線へ拡大したことを受け、これまでで最大規模となる『大規模攻撃』の実施を近く判断すると表明。イランによるホルムズ海峡でのタンカー攻撃で同海峡の原油輸送はほぼ停止状態にあり、和平期待と更なる軍事エスカレーションのリスクが同時に市場を揺らす展開が続いている。", searchKey:"Iran Pakistan China peace talks Trump massive attack Red Sea July 24 2026" },
+      { icon:"🛢️", title:"原油が急反落、ブレント▲4%で$96台・WTIも$88台へ — 米・イラン和平交渉観測で供給リスクプレミアムが一部剥落", detail:"金曜の取引でブレント原油は前日比約4%下落し1バレル$96台まで反落、6月下旬以来の下げ幅となった。WTIも約4%安の$88.62まで下げ、週前半にかけて積み上がっていた地政学リスクプレミアムの一部が剥落した。パキスタン・中国仲介による米・イラン和平交渉観測が材料となった一方、トランプ大統領の『大規模攻撃』検討発言もあり、原油市場は和平期待とエスカレーションリスクの綱引きで乱高下する展開となっている。", searchKey:"oil prices drop 4 percent Brent WTI Iran peace talks July 24 2026" },
+      { icon:"📈", title:"米10年債利回りが4.71%へ上昇、2025年1月以来の高水準 — 原油高によるインフレ再燃観測が金利を押し上げ", detail:"米10年債利回りは4営業日連続で上昇し4.71%まで切り上がり、2025年1月以来の高水準に到達。原油高を受けたインフレ再燃観測に加え、来週7/28-29のFOMC会合を控えタカ派再評価が進んでいる。CME FedWatchでは7月会合での金利据え置き確率が97.4%と織り込まれているが、5月PCEコア+3.4%・総合+4.1%という高止まりしたインフレ指標を背景に、次回以降の利上げ観測も一部で浮上している。", searchKey:"10 year Treasury yield 4.71% highest since January 2025 FOMC July 2026" },
+      { icon:"🇯🇵", title:"日経平均が午後の取引で急落、下げ幅2.9%超 — 半導体株(Kioxia・Advantest・東京エレクトロン)に利益確定売り集中", detail:"日経平均は午後の取引時間中に下げ幅を拡大し、前日比2.9%超の下落(暫定値64,568.75円)で推移。Alphabetの決算を受けたAI設備投資懸念の再燃と中東地政学リスクの高まりを受け、前日まで物色されていたメモリ・半導体装置株に利益確定売りが集中した。Kioxia Holdingsは-3.1%、Advantestは-3.9%、東京エレクトロンは-2.0%。週間ベースでは日経平均はなお約1%高を維持しており、急落というより過熱の巻き戻しの色合いが強い。", searchKey:"Nikkei 225 falls Kioxia Advantest Tokyo Electron semiconductor July 24 2026" },
+      { icon:"💼", title:"プライベート市場のセカンダリー取引が上半期$1,210億の過去最高 — 『トロフィー資産』のコンティニュエーション・ビークル活用が牽引", detail:"Evercoreの集計によると、2026年上半期のプライベート市場セカンダリー取引額は$1,210億に達し過去最高を更新。IPO・M&Aを通じた伝統的なEXIT環境が停滞する中、GPが高確信度の『トロフィー資産』を保有し続けるためコンティニュエーション・ビークル(CV)を組成する動きが取引の牽引役となっている。一方でPing An(中国平安保険)は昨年来、米国プライベート市場への新規投資を停止していることが明らかになった。トランプ関税を巡る不透明感が海外機関投資家のリスク許容度に影を落としている表れとみられる。KKRは元Manulife CEOのRoy Gori氏をアジア太平洋の金融・保険戦略担当シニアアドバイザーに起用したと発表しており、大手運用会社によるアジア展開強化の動きも継続している。", searchKey:"private markets secondaries record 121 billion continuation vehicles Ping An KKR Roy Gori July 2026" }
+    ],
+    usCredit: {
+      summary: "上半期のプライベート市場セカンダリー取引額が$1,210億と過去最高を更新。GPによる『トロフィー資産』のコンティニュエーション・ビークル活用が牽引役となっており、伝統的EXIT環境の停滞を映す構造変化が鮮明になっている。一方でPing Anが米国プライベート市場への新規投資を停止していることが判明し、関税を巡る不透明感が海外LPの投資姿勢に影響している可能性が浮上。KKRは元Manulife CEOのRoy Gori氏をAPAC金融・保険戦略担当シニアアドバイザーに起用。easyJetを巡るApollo対Castlelakeの入札合戦は8/3(Castlelake)・8/7(Apollo)の回答期限に向けて動きが注視される局面が継続している。",
+      deals: [
+        { title:"プライベート市場セカンダリー取引、上半期$1,210億で過去最高(Evercore集計)", tag:"セカンダリー", tagCls:"t-blue", meta:"業界全体 ｜ $121.0B(H1) ｜ コンティニュエーション・ビークル", body:"IPO・M&Aによる伝統的EXITが停滞する中、GPが高確信度の『トロフィー資産』を保有し続けるためのコンティニュエーション・ビークル組成が取引を牽引。LP側の分配金需要と、資産の質へのプレミアム評価が同時に働いている。", sig:"伝統的EXIT難がセカンダリー市場の構造的成長を後押し", searchKey:"private markets secondaries record 121 billion trophy assets continuation vehicles 2026" },
+        { title:"Ping An、米国プライベート市場への新規投資を停止(継続中)", tag:"LP動向", tagCls:"t-orange", meta:"Ping An保険集団 ｜ 米国プライベート市場 ｜ 新規投資凍結", body:"中国大手保険会社Ping Anが昨年来、米国プライベート市場への新規投資を停止していることが判明。トランプ関税を巡る不透明感が払拭されていないことが背景とみられ、海外LPの米国配分見直しの一例として注目される。", sig:"海外LPの米国プライベート市場離れが顕在化する可能性", searchKey:"Ping An pauses US private market investments tariff concerns 2026" },
+        { title:"KKR、元Manulife CEOのRoy Gori氏をAPAC金融・保険戦略シニアアドバイザーに起用", tag:"人事", tagCls:"t-purple", meta:"KKR ｜ シニアアドバイザー起用 ｜ APAC金融・保険", body:"KKRはCitigroup・Manulifeで28年の経営経験を持つRoy Gori氏をシニアアドバイザーに起用し、アジア太平洋・国際市場における金融サービス・保険分野の戦略的機会を強化する。大手運用会社によるアジア展開の人材投資が続く。", sig:"APAC金融・保険セクターへの布石を強化", searchKey:"KKR Roy Gori senior advisor Manulife APAC financial services 2026" },
+        { title:"easyJet(継続)：Apollo対Castlelakeの入札合戦、8月回答期限に向け動向注視", tag:"バイアウト", tagCls:"t-purple", meta:"Apollo / Castlelake ｜ ~£7.3B(~$7.3B) ｜ 航空・対抗入札", body:"Apolloの1株£7.15(非拘束的)提案を軸にeasyJet取締役会が検討する構図が継続。Castlelakeは8/3、Apolloは8/7が正式オファー提示の期限とされ、英テイクオーバー・コード上『拘束力ある入札の確証はない』状態が続いている。", sig:"クレジット運用会社vs伝統的PEの入札合戦は最終局面へ", searchKey:"easyJet Apollo Castlelake firm offer deadline August 2026" }
+      ],
+      outlook: "💡 セカンダリー市場の過去最高更新は、伝統的EXIT環境の停滞が続く中でのプライベート市場の『流動性創出』機能の進化を象徴する動き。一方でPing Anの投資凍結は、関税を巡る不透明感が海外LPの米国配分に影を落としている可能性を示唆しており、今後同様の動きが他の海外LPに広がるかが焦点。10年債利回りが2025年1月以来の高水準(4.71%)まで上昇しており、来週7/28-29のFOMC会合の結果次第でHYスプレッドへの波及リスクにも注意が必要。easyJetの入札合戦は8月上旬の回答期限が近づき、最終的な決着の行方が焦点となる。",
+    },
+    jpCredit: {
+      summary: "日経平均は午後の取引で下げ幅を2.9%超に拡大し、AI設備投資懸念の再燃と中東地政学リスクを受け半導体・メモリ株(Kioxia・Advantest・東京エレクトロン)に利益確定売りが集中した(週間では約1%高を維持)。円は¥163台で約40年ぶり安値圏が続く中、日銀高官から従来より速いペースでの利上げも辞さないとの観測が浮上しており、介入警戒と利上げ観測が綱引きする神経質な地合いが続いている。日本のプライベートクレジット・M&Aの構造ストーリーに大きな変化はなく、Blackstoneの日本プライベートクレジット参入、KKR太陽HD非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)は継続中。",
+      deals: [
+        { title:"Blackstone(継続)：日本のプライベートクレジット・ブームに照準", tag:"マーケット参入", tagCls:"t-orange", meta:"Blackstone ｜ 日本プライベートクレジット ｜ ダイレクトレンディング", body:"M&A急増を背景に拡大する日本のプライベートクレジット市場へBlackstoneが本格的に照準。円安・国内M&A活況を追い風に、外資大手による日本ノンバンク型クレジット供給の拡大が続く。", sig:"外資大手による日本プライベートクレジット本格参入は継続", searchKey:"Blackstone Japan private credit boom 2026 direct lending" },
+        { title:"日本M&Aは$300B(2025・継続) — 30年で最も忙しい年、クレジット需要を牽引", tag:"マーケット見通し", tagCls:"t-blue", meta:"市場全体 ｜ 案件総額$300B ｜ 前年比倍増", body:"2025年の日本のM&Aは案件総額が約$300Bへ倍増し、過去30年で最も活発な年に。円安基調が続く中、海外バイヤーにとって日本資産の相対的な割安感が強まっている可能性がある。", sig:"円安が海外勢による日本M&A参入をさらに後押しする可能性", searchKey:"Japan M&A 300 billion 2025 busiest year decades yen weakness" },
+        { title:"KKR太陽HD非公開化・Kakaku.com争奪戦が継続(継続) — 競合TOBが常態化", tag:"バイアウト", tagCls:"t-purple", meta:"KKR / EQT / Bain+LY ｜ テイクプライベート/争奪戦 ｜ 化学・ネット", body:"KKRの太陽ホールディングス(化学・電子材料)非公開化、価格比較大手Kakaku.comを巡るEQT対Bain+LY Corp連合の争奪戦が継続。事業会社×PE連合という新形態と競合TOBが日本でも定着している。", sig:"競合TOBと事業会社×PE連合の常態化", searchKey:"KKR Taiyo Holdings Kakaku.com EQT Bain LY Corp Japan take private 2026" }
+      ],
+      outlook: "💡 日経平均は半導体株の利益確定売りで午後急落(下げ幅2.9%超)も週間ではなお高いレンジを維持しており、過熱の巻き戻しの範囲内とみられる。円は¥163台の約40年ぶり安値圏で介入警戒と日銀の利上げ加速観測が綱引きする神経質な展開が続く。日本PE/プライベートクレジットの構造ストーリー自体に変化はなく、$300B/年のM&A拡大がクレジット需要を牽引する構図は継続。米国のセカンダリー市場過去最高更新やeasyJet入札合戦のような『流動性創出・入札競争』のテーマが日本にも波及するかが今後の焦点。"
+    },
+    takeaway: "金曜(7/24)の米国市場は終値ベースで方向感が乱れる展開となった。S&P 500は+0.05%とほぼ横ばいの7,411.98、ダウは+0.46%の51,947.25と底堅い一方、ナスダックは半導体株の急落を受け-0.64%の24,975.82で引けた。前日引け後に好決算(EPS$0.42・売上$16.1B、前年比+25%)を発表したIntelは、2026年設備投資計画を$180億→$200億超へ上方修正し2027年はさらに『大幅増額』と表明したためフリーキャッシュフロー懸念が優先され$100.23(-2.33%)まで反落、AMD(-3.72%)・Nvidia(-1.01%)にも売りが波及した。中東情勢を巡っては、ロイターがパキスタン・中国仲介による米・イラン和平交渉の観測を報じ市場に安心感が広がる場面があった一方、トランプ大統領は紛争の紅海拡大を受け『大規模攻撃』の実施を近く判断すると表明し、和平期待とエスカレーションリスクが交錯。原油はこの和平観測を受けブレントが約4%下落し$96台、WTIも$88.62まで反落し、週前半に積み上がった地政学リスクプレミアムの一部が剥落した。米10年債利回りは4.71%(2025年1月以来の高水準)で高止まり、来週7/28-29のFOMC会合を控えタカ派再評価が続く。東京市場では日経平均が前日比2.9%超下落(64,568.75円)、Kioxia・Advantest・東京エレクトロンなど半導体株に利益確定売りが集中したが週間ではなお約1%高を維持。円は¥163台の約40年ぶり安値圏。プライベート市場では上半期セカンダリー取引が$1,210億の過去最高を更新、Ping Anの米プライベート市場投資停止、KKRによるRoy Gori氏起用、easyJetを巡るApollo対Castlelake入札合戦(8/3・8/7期限)が引き続き焦点。",
+    narrative: "金曜(7/24)の中東情勢は、和平期待とエスカレーションリスクが同時に強まるねじれた展開となった。ロイターの報道によると、パキスタンが中国の後押しを受け米・イラン間の新たな和平交渉の道筋を模索していると伝えられ、この観測を受け週後半にかけて株式市場が上昇し原油価格が下落する場面があった。一方でトランプ大統領は、紛争が紅海の新たな戦線へ拡大したことを受け、これまでで最大規模となる『大規模攻撃』の実施を近く判断すると表明しており、緊張緩和への道筋は依然として不透明だ。イランによるホルムズ海峡でのタンカー攻撃で同海峡の原油輸送はほぼ停止状態が続いている。この結果、原油市場は乱高下する展開となり、ブレント原油は前日比約4%下落し1バレル$96台まで反落(6月下旬以来の下げ幅)、WTIも同水準の下げで$88.62まで後退し、週前半にかけて積み上がっていた地政学リスクプレミアムの一部が剥落した。||原油高を受けたインフレ再燃観測は、金利市場にも波及した。米10年債利回りは4営業日連続で上昇し4.71%(2025年1月以来の高水準)まで切り上がった。来週7/28-29に開催されるFOMC会合を控え、CME FedWatchでは据え置き確率が97.4%とほぼ織り込まれているものの、5月PCEコア+3.4%・総合+4.1%という高止まりしたインフレ指標を背景に、市場の一部では次回以降の利上げ観測も浮上し始めている。興味深いのは、地政学リスクが高まる『リスクオフ』局面であるにもかかわらず、伝統的な安全資産である金が$4,044近辺まで下落していることだ。これは、オイルショック的な供給要因によるインフレ懸念が名目・実質金利の双方を押し上げ、無利息資産である金の保有機会コストを増大させる効果が、地政学的な質への逃避需要を上回っていることを示している。||東京市場では、前日までAI関連半導体株を中心に物色が進んでいた流れが一転した。日経平均は午後の取引時間中に下げ幅を拡大し、前日比2.9%超の下落(暫定値64,568.75円)で推移。Alphabetの決算を受けたAI設備投資懸念の再燃に加え、中東情勢の緊迫化がリスク回避姿勢を強め、Kioxia Holdings(-3.1%)、Advantest(-3.9%)、東京エレクトロン(-2.0%)など前日まで買われていた銘柄に利益確定売りが集中した。もっとも週間ベースでは日経平均はなお約1%高を維持しており、急落というより過熱の巻き戻しに近い値動きとみられる。為替では、円が¥163台で約40年ぶりの安値圏に張り付く一方、日銀高官から従来より速いペースでの利上げも辞さないとの観測が浮上しており、介入警戒と利上げ観測が綱引きする神経質な地合いが続いている。||米国株式市場は終値ベースで方向感が乱れる一日となった。S&P 500は+0.05%とほぼ横ばいの7,411.98で引け、ダウは+0.46%の51,947.25と底堅く推移した一方、ナスダックは半導体株の急落を受け-0.64%の24,975.82で引けた。前日引け後に4-6月期決算を発表したIntelは、EPS$0.42(市場予想の2倍)・売上$16.1B(前年比+25%、約15年ぶりの好成績)と内容自体は良好だったものの、2026年設備投資計画を$180億から$200億超へ上方修正し2027年はさらに『大幅に』増額すると表明したため、フリーキャッシュフロー圧迫への懸念が優先され株価は$100.23(-2.33%)まで反落。AMD(-3.72%)・Nvidia(-1.01%)にも同様の設備投資懸念に伴う売りが波及した。中東情勢を巡る和平交渉観測とトランプ大統領の『大規模攻撃』検討発言が交錯する中、決算・金利・地政学の綱引きが続く神経質な週末の取引となった。来週7/28-29のFOMC会合を控え、決算シーズンのクライマックスと金融政策イベントが重なる局面が続く。||プライベート市場では、公開市場とは異なる角度から重要な構造変化が観測された。Evercoreの集計によると、2026年上半期のプライベート市場セカンダリー取引額は$1,210億に達し過去最高を更新。IPO・M&Aを通じた伝統的なEXIT環境が停滞する中、GPが高確信度の『トロフィー資産』を保有し続けるためコンティニュエーション・ビークル(CV)を組成する動きが取引を牽引しており、LP側の分配金需要と資産の質へのプレミアム評価が同時に働く構図が鮮明になっている。一方でPing An(中国平安保険)が昨年来、米国プライベート市場への新規投資を停止していることが判明し、トランプ関税を巡る不透明感が海外機関投資家のリスク許容度に影を落としている可能性が浮上した。KKRは元Manulife CEOのRoy Gori氏をAPAC金融・保険戦略担当シニアアドバイザーに起用したと発表しており、大手運用会社によるアジア展開強化の動きも継続している。easyJetを巡るApollo対Castlelakeの入札合戦は、Castlelake8/3・Apollo8/7の回答期限に向けて最終局面が続いており、続報が注視される。日本では、Blackstoneの日本プライベートクレジット参入、KKR太陽HD非公開化、Kakaku.com争奪戦(EQT vs Bain+LY)といった継続テーマに加え、円安・日銀利上げ観測が今後のクロスボーダーM&A・資金調達コストに与える影響が新たな論点として浮上しつつある。",
+    peTraining: {
+      thirtySecSummary: "本日(7/24・金、EDT寄り前時点)のポイントは3点。①地政学リスクの再燃が継続——イランがイラク首相仲介の停戦案を拒否し対イラン軍事作戦は13夜連続に、原油はブレントが2カ月ぶりに$100超え(週間+13%超)、米10年債利回りは2025年1月以来の高水準(4.71%)へ上昇、一方で金は$4,044近辺まで下落と『インフレ主導の金利上昇』が伝統的な安全資産のロジックを覆している。②東京市場は過熱の巻き戻し——日経平均が午後急落(下げ幅2.9%超)、前日まで物色されたKioxia・Advantest・東京エレクトロンに利益確定売り集中も週間では約1%高を維持、円は¥163台の約40年ぶり安値圏で介入警戒と日銀利上げ観測が綱引き。③プライベート市場で構造変化——セカンダリー取引が上半期$1,210億の過去最高(コンティニュエーション・ビークル活用が牽引)、Ping Anが米国プライベート市場への新規投資を停止、KKRは元Manulife CEOのRoy Gori氏をAPACシニアアドバイザーに起用、easyJetのApollo対Castlelake入札合戦は8月上旬の回答期限に向け最終局面。",
+      interviewQA: [
+        { q: "地政学リスクが高まり株式市場もリスクオフ的な値動きをしているにもかかわらず、なぜ伝統的な『安全資産』とされる金が下落しているのですか", a: "この局面は『地政学的リスクオフ』と『インフレ・金利主導のリスクオフ』という二つの異なる駆動要因が同時に発生し、金の価格形成において後者が優勢になっていることを示しています。通常、地政学リスクが高まると投資家は質への逃避(フライト・トゥ・クオリティ)として金や国債を買う傾向がありますが、今回のケースでは地政学リスクの震源地(中東)が同時に原油供給リスクの震源地でもあるため、インフレ懸念という別のチャネルを通じて名目・実質金利の上昇圧力を生んでいます。金は無利息資産であるため、金利が上昇するとその保有機会コスト(金を保有することで得られなかった債券の利息収入)が増大し、金の魅力が相対的に低下します。投資家としては、①地政学リスクの『種類』によって資産価格への影響経路が異なること(純粋な有事リスクなら金は買われやすいが、供給ショック型インフレを伴う場合は金利上昇が金の重しになりうる)、②金利と金価格は通常逆相関関係にあり、インフレ期待だけでなく実質金利の動向を注視する必要があること、③このような『捻れた』値動きが起きている局面こそ、単純な『リスクオフ=金買い』という思考パターンに頼らず、各資産クラスの価格決定メカニズムを個別に検証すべきタイミングであること、の3点が実務上の示唆となります。" },
+        { q: "『コンティニュエーション・ビークル(CV)』とは何ですか。なぜプライベート市場のセカンダリー取引が過去最高を更新しているのですか", a: "コンティニュエーション・ビークル(CV)とは、既存のプライベートエクイティファンドが保有する特定の資産(通常は業績が特に良好な『トロフィー資産』)を、そのファンドの満期到来前後に新しい投資ビークルへ移管する仕組みです。GP(運用会社)は自ら組成した新ビークルを通じてその資産の運用を継続でき、既存ファンドのLP(出資者)は①現金化して投資を終了するか、②新ビークルに出資を継続して引き続きその資産へのエクスポージャーを保つか、を選択できます。この仕組みが2026年に過去最高の取引額を記録している背景には複数の要因があります。第一に、IPO市場やM&A市場を通じた伝統的なEXIT環境が地政学リスク・金利高止まりの影響で停滞しており、GPは保有資産を売却する代わりに『時間を買う』選択肢としてCVを活用しています。第二に、LP側にも資金分配(ディストリビューション)へのニーズが強く、CVはEXIT市場が停滞する中での流動性創出手段として機能しています。第三に、質の高い『トロフィー資産』であるほど、セカンダリー市場でプレミアム価格がつきやすく、GPにとって有利な条件での資金調達が可能になっています。投資家としては、CVが本質的に『GPが売り手と買い手の双方に関与する』構造であるため、資産価格の妥当性(独立した第三者評価の有無)や利益相反管理の仕組みを確認することが重要な着眼点となります。" },
+        { q: "Ping Anのような大手海外機関投資家が米国プライベート市場への新規投資を停止する動きは、市場全体にとってどのような意味を持ちますか", a: "この動きは個別の投資判断である一方、より広い文脈では『地政学リスク・関税政策の不確実性が国際資本フローに与える影響』という構造的なテーマを象徴しています。Ping Anのような大手保険会社は、規制上の資本要件や長期の負債(保険契約)とのマッチングを重視するため、政策・地政学リスクに対して極めて慎重な投資判断を行う傾向があります。トランプ関税政策を巡る不透明感が『一時的な調整』ではなく『構造的な不確実性』として認識され始めていることを示唆している可能性があります。市場全体への含意としては、①米国プライベート市場のLP基盤における海外投資家(特にアジアの保険会社・年金基金)の比重が大きいため、同様の動きが他のLPに広がった場合、大手GPの次期ファンドの資金調達(ファンドレイズ)ペースに影響が及ぶ可能性があること、②資金の逃避先として欧州・アジア域内のプライベート市場への配分シフトが進む可能性があること、③GP側は既存LPとの関係維持と新規LP(特に国内年金基金やソブリン・ウェルス・ファンド)の開拓により一層注力する必要が生じることの3点が重要な示唆です。単発のニュースとして片付けず、今後数四半期の大手GPのファンドレイズ実績やLP構成の変化を継続的にモニタリングすることが投資家にとって有益です。" }
+      ],
+      keyConceptToday: {
+        term: "コンティニュエーション・ビークル(Continuation Vehicle, CV)とGP主導型セカンダリー取引",
+        definition: "既存のPEファンドが保有する特定資産(多くは『トロフィー資産』と呼ばれる高確信度の優良資産)を、ファンド満期の前後で新しい投資ビークルへ移管する仕組み。GPは新ビークルを通じて資産の運用を継続し、既存LPは現金化するか新ビークルへ出資継続するかを選択できる。",
+        background: "伝統的なPEファンドは通常10年程度の存続期間を持ち、満期が近づくと保有資産の売却(EXIT)が求められる。しかしIPO市場やM&A市場が停滞している局面では、優良資産であっても十分な価格でのEXITが難しくなる。CVはこうした環境下で、GPが優良資産を手放さずに運用を継続しつつ、LPには流動性(現金化の選択肢)を提供する『第三の道』として2020年代以降急速に普及した。",
+        practical: "①資産の独立評価——GPが売り手・買い手双方に関与する構造上、既存LPの利益を守るため独立した第三者機関による資産価格評価(フェアネス・オピニオン)が重要。②新規/継続投資家双方への説明責任——既存LPが継続出資を選ぶ場合の条件(手数料体系、キャリー再設定の有無)と、新規セカンダリー投資家が参加する場合の条件が公平に設計されているかの確認。③市場全体の需給——2026年のようにEXIT環境が停滞する局面ではCVの供給(組成件数)が増える一方、セカンダリー市場の買い手側の資金(ドライパウダー)がそれを吸収できるかが価格形成のカギとなる。④『トロフィー資産』の選定基準——なぜその資産が継続保有に値すると判断されたのか、将来の成長ドライバーの検証。",
+        context2026: "2026年上半期のセカンダリー取引額が$1,210億と過去最高を更新した背景には、地政学リスク・金利高止まりによる伝統的EXIT環境の停滞が続く中で、GPとLPの双方がCVという『流動性創出』の手段に活路を見出している構図がある。同時にPing Anのような海外LPの米国配分見直しの動きも観測されており、セカンダリー市場の拡大とLP基盤の地域的再編が同時進行する2026年のプライベート市場の重要なテーマとなっている。",
+      },
+      dealAnalysis: {
+        title: "プライベート市場セカンダリー取引、上半期$1,210億の過去最高 — トロフィー資産のコンティニュエーション・ビークル活用が牽引",
+        thesis: "Evercoreの集計によると2026年上半期のプライベート市場セカンダリー取引額は$1,210億に達し過去最高を更新した。IPO・M&Aを通じた伝統的EXIT環境が地政学リスク・金利高止まりの影響で停滞する中、GPが高確信度の『トロフィー資産』を保有し続けるためのコンティニュエーション・ビークル(CV)組成が取引の主要な牽引役となっている。LP側の分配金需要と資産の質へのプレミアム評価が同時に働き、セカンダリー市場が『EXIT難』を吸収する構造的な受け皿として機能している。",
+        timing: "2026年は地政学リスク(対イラン軍事作戦の継続、原油高)と金利高止まり(10年債4.71%・2025年1月以来の高水準)が重なり、伝統的なM&A・IPOによるEXITのハードルが高い局面が続いている。こうした環境下でGPは保有資産の『時間を買う』選択肢としてCVを積極活用しており、市場環境が正常化するまでこの傾向が続く可能性が高い。",
+        downside: "①CV組成の増加は、GPが自ら売り手・買い手双方に関与する構造上、資産価格の妥当性・利益相反管理が適切に行われているかという透明性の課題を伴う。②セカンダリー市場の買い手側の資金(ドライパウダー)が供給増に見合うペースで拡大しなければ、価格形成に下押し圧力がかかるリスクがある。③金利高止まりが長期化した場合、CVを通じて継続保有される資産自体の評価額(NAV)が下方修正されるリスクも残る。④Ping Anのような海外LPの米国配分見直しが広がれば、セカンダリー市場の買い手基盤にも影響が及ぶ可能性がある。",
+        valuation: "セカンダリー市場における『トロフィー資産』はNAVに対してプレミアムで取引されるケースが多く、質の低い資産はディスカウントが拡大する『二極化』が2026年の特徴とされる。CVの価格妥当性は、独立した第三者評価と、既存LP・新規セカンダリー投資家双方への公平な条件設計によって裏付けられる必要がある。今後のFOMC会合(7/28-29)の結果と金利動向が、セカンダリー市場全体の価格形成に引き続き影響を与える見込み。"
+      }
+    }
+  },
+  {
+    date: "2026-07-25",
+    dateLabel: "Jul 25(週末アップデート)",
+    tokenEstimate: 17000,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7411.98, change:0,  pct:0,  dir:"flat" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:24975.82,change:0, pct:0,  dir:"flat" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:51947.25,change:0, pct:0,  dir:"flat" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:64568.75,change:0, pct:0,  dir:"flat" }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.71%",   dir:"flat" },
+      "2Y米国債":     { value:"~4.25%",  dir:"flat" },
+      "VIX":          { value:"18.70",   dir:"flat" },
+      "DXY":          { value:"~101.3",  dir:"flat" },
+      "WTI原油":      { value:"~$88.6",  dir:"up"   },
+      "Gold金":       { value:"~$4,030", dir:"down" },
+      "ドル円":       { value:"¥163.1",  dir:"flat" },
+      "日10年国債":   { value:"~2.82%",  dir:"flat" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.7%",  dir:"flat" }
+    },
+    movers: [
+      { ticker:"INTC",  name:"Intel",            pct:-2.33,dir:"down", why:"(金曜引け値/参考) EPS$0.42(市場予想の2倍)・売上$16.1B(前年比+25%)と決算内容は良好も、設備投資計画の上方修正でFCF懸念が優先され$100.23で週を終えた" },
+      { ticker:"AMD",   name:"AMD",              pct:-3.72,dir:"down", why:"(金曜引け値/参考) Intel決算を受けたAI設備投資懸念の波及で$531.80まで下落して週を終えた" },
+      { ticker:"NVDA",  name:"Nvidia",           pct:-1.01,dir:"down", why:"(金曜引け値/参考) 半導体セクター全体の売り圧力の中、$209.92で週を終えた" },
+      { ticker:"6857.T",name:"Advantest",        pct:-3.9, dir:"down", why:"(金曜引け値/参考) AI設備投資懸念とAlphabet決算余波を受け半導体装置株に売りが波及" },
+      { ticker:"285A.T",name:"Kioxia Holdings",  pct:-3.1, dir:"down", why:"(金曜引け値/参考) AI設備投資懸念・中東地政学リスクの再燃を受けメモリ株に利益確定売り" },
+      { ticker:"8035.T",name:"Tokyo Electron",   pct:-2.0, dir:"down", why:"(金曜引け値/参考) 半導体製造装置株全般に売りが波及し週を終えた" }
+    ],
+    events: [
+      { icon:"🛢️", title:"Houthi、サウジアラムコのジザン製油所を弾道ミサイル3発で攻撃 — サウジ国内製油所への攻撃は4年ぶり", detail:"イエメンの親イラン武装組織フーシ(Houthi)は週末、サウジアラビア第5位の規模を持つアラムコのジザン製油所を弾道ミサイル3発で攻撃し、複数の煙が施設から立ち上るのが確認された。フーシによるサウジ国内製油所への直接攻撃は約4年ぶりで、これまでの紅海・バブエルマンデブ海峡でのタンカー攻撃・サウジ石油輸出への海上封鎖宣言に続くエスカレーションとなる。月内の原油価格は中東情勢の激化を受け既に30%超上昇しており、月曜の取引再開後にリスクプレミアムがさらに積み上がる可能性がある。", searchKey:"Houthi missiles strike Saudi Aramco Jazan refinery July 25 2026" },
+      { icon:"⚓", title:"米海軍、オマーン湾でイラン制裁破り目的のタンカーを無力化 — ホルムズ海峡封鎖網の強化続く", detail:"米軍は金曜、オマーン湾で対イラン海上封鎖網を少なくとも4回突破しようとしたタンカーを無力化したと発表。ホルムズ海峡を巡る米国の海上封鎖と、フーシによるサウジ向け海上封鎖宣言が並走し、中東発の原油供給リスクが複層化している。", searchKey:"US Navy disables tanker Gulf of Oman Iran blockade July 2026" },
+      { icon:"🤖", title:"DeepSeek、2回目の資金調達ラウンドを一時停止 — 創業者の対米AI競争発言が『炎上』したことが背景", detail:"Bloombergの報道によると、中国AI企業DeepSeekは出資予定者に対し第2回資金調達(約150億元・$15億規模、プレマネー評価額約4,800億元・$710億)を当面見送ると伝えた。6月に$70億を調達した第1回ラウンドの際、創業者の梁文峰氏がNvidia製チップへの依存と米国に対するAI技術の遅れについて語ったとされる報道が中国メディアで拡散し本人が不快感を示したことが背景とされる。再開の可能性は残るとされる。", searchKey:"DeepSeek suspends fundraising round Liang Wenfeng viral comments July 2026" },
+      { icon:"📊", title:"Yardeni Research、S&P500の年末目標8,250を維持 — 『サマー・ストール』を経て年後半の上昇再開を予想", detail:"Yardeni Researchは中東情勢の不安定化・AI関連の懸念・追加関税観測を注視しつつも、S&P500の年末目標8,250(現水準から約700ポイント上・1株$400の予想EPSに20倍のマルチプルを適用)を維持。5月半ば以降の『サマー・ストール』を経て、来週7/28-29のFOMC会合を挟みつつも年後半にかけボラティリティの高い局面から上昇トレンドへ回帰すると予想している。", searchKey:"Yardeni Research S&P 500 8250 target summer stall FOMC 2026" },
+      { icon:"💾", title:"Blackstone、AirTrunkのシドニー新データセンター向け$30億(A$43億)ローンを組成完了 — AIデータセンター向け負債は年初来$3,345億と過去最大", detail:"BlackstoneはAirTrunkが手掛ける400MW超のハイパースケールデータセンター『SYD3』(豪州)向けの融資団を組成完了。Credit Agricole・DBS・Deutsche Bank・HSBC・ING・三菱UFJ・Morgan Stanley・UOBなどが参加。AI関連データセンター向けの社債・ローン発行額は2026年年初来で$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっており、AIインフラ向け負債の膨張に対する懸念が強まっている。", searchKey:"Blackstone AirTrunk 3 billion loan data center debt record 2026" }
+    ],
+    usCredit: {
+      summary: "週末最大の材料はAIデータセンター向け負債の膨張。BlackstoneがAirTrunkのシドニー新データセンター(SYD3)向け$30億(A$43億)ローンの組成を完了し、AI関連データセンター向け社債・ローンの年初来発行額は$3,345億(2025年通年$1,855億から急増)に達した。プライベートクレジットがAIインフラ投資の主要な資金供給源となっている構図が一段と鮮明になっている。継続テーマとしては上半期セカンダリー取引の過去最高更新($1,210億)、Ping Anの米プライベート市場投資停止、KKRのRoy Gori氏起用、easyJetを巡るApollo対Castlelakeの入札合戦(8/3・8/7回答期限)が引き続き進行中。",
+      deals: [
+        { title:"Blackstone、AirTrunkのSYD3データセンター向け$30億ローンを組成完了", tag:"プロジェクトファイナンス", tagCls:"t-blue", meta:"Blackstone / AirTrunk ｜ $3.0B(A$4.3B) ｜ AIデータセンター・豪州", body:"400MW超のハイパースケールデータセンター建設向け融資団を大手行8行超で組成。AI関連データセンター負債の年初来発行額は$3,345億に達し2025年通年を既に上回るペースで、AIインフラファイナンスの規模拡大が続く。", sig:"プライベートクレジットがAIインフラ投資の主要資金源として存在感を拡大", searchKey:"Blackstone AirTrunk SYD3 3 billion loan 2026" },
+        { title:"プライベート市場セカンダリー取引、上半期$1,210億で過去最高(継続)", tag:"セカンダリー", tagCls:"t-blue", meta:"業界全体 ｜ $121.0B(H1) ｜ コンティニュエーション・ビークル", body:"伝統的EXIT環境の停滞を背景に、GPによる『トロフィー資産』のコンティニュエーション・ビークル活用が引き続き取引を牽引。", sig:"伝統的EXIT難がセカンダリー市場の構造的成長を後押し", searchKey:"private markets secondaries record 121 billion continuation vehicles 2026" },
+        { title:"KKR、元Manulife CEOのRoy Gori氏をAPAC金融・保険戦略シニアアドバイザーに起用(継続)", tag:"人事", tagCls:"t-purple", meta:"KKR ｜ シニアアドバイザー起用 ｜ APAC金融・保険", body:"アジア太平洋・国際市場における金融サービス・保険分野の戦略的機会強化を目的とした人事。大手運用会社によるアジア展開の人材投資が続く。", sig:"APAC金融・保険セクターへの布石を強化", searchKey:"KKR Roy Gori senior advisor APAC financial services 2026" },
+        { title:"easyJet(継続)：Apollo対Castlelakeの入札合戦、8月回答期限が接近", tag:"バイアウト", tagCls:"t-purple", meta:"Apollo / Castlelake ｜ ~£7.3B(~$7.3B) ｜ 航空・対抗入札", body:"Castlelakeは8/3、Apolloは8/7が正式オファー提示の期限とされ、来週にも最終局面を迎える可能性がある。", sig:"クレジット運用会社vs伝統的PEの入札合戦は最終局面へ", searchKey:"easyJet Apollo Castlelake firm offer deadline August 2026" }
+      ],
+      outlook: "💡 AIデータセンター向け負債が年初来$3,345億と過去最大ペースで積み上がる中、Blackstoneのような大手運用会社がプライベートクレジットを通じてAIインフラ投資の資金供給を主導する構図が強まっている。この負債膨張が金利高止まり・AI設備投資懸念(Intel決算後の株安等)と重なった場合の脆弱性は今後の焦点。来週7/28-29のFOMC会合の結果次第でHYスプレッド・データセンター向け融資コストへの波及リスクにも注意。easyJet入札合戦は8月上旬の回答期限が近づき決着が焦点。",
+    },
+    jpCredit: {
+      summary: "週末の日本関連の材料は限定的。円は¥163台の約40年ぶり安値圏が続いており、介入警戒と日銀の利上げペース加速観測が綱引きする神経質な地合いが継続する見込み。日本のプライベートクレジット・M&Aの構造ストーリーに大きな変化はなく、Blackstoneの日本プライベートクレジット参入、KKR太陽HD非公開化、Kakaku.com争奪戦(EQT vs Bain+LY Corp)は継続中。月曜の東京市場は、週末のHouthiによるサウジ製油所攻撃・原油リスクプレミアムの再拡大を受け、半導体装置・メモリ株の値動きが再び注目される見込み。",
+      deals: [
+        { title:"Blackstone(継続)：日本のプライベートクレジット・ブームに照準", tag:"マーケット参入", tagCls:"t-orange", meta:"Blackstone ｜ 日本プライベートクレジット ｜ ダイレクトレンディング", body:"M&A急増を背景に拡大する日本のプライベートクレジット市場へBlackstoneが本格的に照準。円安・国内M&A活況を追い風に、外資大手による日本ノンバンク型クレジット供給の拡大が続く。", sig:"外資大手による日本プライベートクレジット本格参入は継続", searchKey:"Blackstone Japan private credit boom 2026 direct lending" },
+        { title:"日本M&Aは$300B(2025・継続) — 30年で最も忙しい年、クレジット需要を牽引", tag:"マーケット見通し", tagCls:"t-blue", meta:"市場全体 ｜ 案件総額$300B ｜ 前年比倍増", body:"2025年の日本のM&Aは案件総額が約$300Bへ倍増し、過去30年で最も活発な年に。円安基調が続く中、海外バイヤーにとって日本資産の相対的な割安感が強まっている可能性がある。", sig:"円安が海外勢による日本M&A参入をさらに後押しする可能性", searchKey:"Japan M&A 300 billion 2025 busiest year decades yen weakness" },
+        { title:"KKR太陽HD非公開化・Kakaku.com争奪戦が継続(継続) — 競合TOBが常態化", tag:"バイアウト", tagCls:"t-purple", meta:"KKR / EQT / Bain+LY ｜ テイクプライベート/争奪戦 ｜ 化学・ネット", body:"KKRの太陽ホールディングス(化学・電子材料)非公開化、価格比較大手Kakaku.comを巡るEQT対Bain+LY Corp連合の争奪戦が継続。事業会社×PE連合という新形態と競合TOBが日本でも定着している。", sig:"競合TOBと事業会社×PE連合の常態化", searchKey:"KKR Taiyo Holdings Kakaku.com EQT Bain LY Corp Japan take private 2026" }
+      ],
+      outlook: "💡 市場休場の週末につき日本関連の新規材料は限定的。円は¥163台の約40年ぶり安値圏で介入警戒と日銀利上げ観測の綱引きが続く。日本PE/プライベートクレジットの構造ストーリー($300B/年のM&A拡大がクレジット需要を牽引)に変化はなく、月曜は週末の中東リスク再燃(Houthiのサウジ製油所攻撃)を受けた半導体関連株の値動きが焦点となる可能性が高い。"
+    },
+    takeaway: "土曜(7/25・EDT)は米国市場休場のため新規の株価材料は無いが、週末にかけていくつかの重要な地政学・市場材料が浮上し月曜の取引再開に向けたリスクプレミアムが積み上がりつつある。最大の材料はイエメンの親イラン武装組織フーシによるサウジアラムコのジザン製油所への弾道ミサイル攻撃で、サウジ国内製油所への直接攻撃としては約4年ぶり。米海軍もオマーン湾で対イラン海上封鎖網の突破を試みたタンカーを無力化したと発表しており、中東発の供給リスクは複層化している。原油価格は月内既に30%超上昇しており、月曜の取引再開後にさらなる上振れリスクが意識される。AI関連では、中国DeepSeekが創業者の対米AI競争を巡る発言の『炎上』を受け約$15億規模の第2回資金調達を一時停止したと報じられた。プライベートクレジット関連では、BlackstoneがAirTrunkのシドニー新データセンター向け$30億ローンの組成を完了し、AIデータセンター向け負債の年初来発行額は$3,345億(2025年通年を既に上回るペース)に達したことが判明。Yardeni Researchは中東・AI・関税を巡る不透明感を踏まえつつもS&P500の年末目標8,250を維持しており、来週7/28-29のFOMC会合を挟んだボラティリティの高い週明けが見込まれる。",
+    narrative: "週末にかけ、中東情勢は新たなエスカレーションの局面を迎えた。イエメンの親イラン武装組織フーシは、サウジアラビア第5位の規模を持つアラムコのジザン製油所を弾道ミサイル3発で攻撃し、複数の煙が施設から立ち上るのが確認された。フーシによるサウジ国内製油所への直接攻撃は約4年ぶりで、これまで続いていた紅海・バブエルマンデブ海峡でのタンカー攻撃や海上封鎖宣言から、サウジ国内インフラへの直接攻撃という新たな段階へエスカレートした形だ。これと並行して米軍は金曜、オマーン湾で対イラン海上封鎖網を少なくとも4回突破しようとしたタンカーを無力化したと発表しており、ホルムズ海峡・紅海双方で供給リスクが同時に高まる複層的な構図となっている。||この地政学リスクの再燃は、来週のFOMC会合(7/28-29)を控えた金利・原油市場の綱引きを一段と複雑にする。原油価格は月内既に30%超上昇しており、Yardeni Researchは中東情勢の不安定化・AI関連の懸念・追加関税観測を注視しつつも、S&P500の年末目標8,250(現水準から約700ポイント上)を維持している。同社は5月半ば以降の『サマー・ストール』を経て、ボラティリティの高い局面から年後半にかけ上昇トレンドへ回帰すると予想するが、週末の製油所攻撃が原油の一段高・インフレ再燃観測を通じて10年債利回り(現在4.71%・2025年1月以来の高水準)にさらなる上昇圧力をかける可能性があり、FOMCのタカ派再評価リスクは残る。||AI関連では、中国のDeepSeekが第2回資金調達(約$15億規模、プレマネー評価額約$710億)を一時停止したと報じられた。背景には、6月に$70億を調達した第1回ラウンドの際、創業者の梁文峰氏がNvidia製チップへの依存や米国に対するAI技術の遅れについて語ったとされる報道が中国メディアで拡散し、本人が不快感を示したことがあるとされる。米中AI競争を巡るナラティブが資金調達の実務にまで波及した格好で、金曜のIntel決算後の設備投資懸念によるAI関連株売り(AMD-3.72%、Nvidia-1.01%)と合わせ、AI投資サイクルを巡る市場の神経質さが浮き彫りになっている。||プライベートクレジット市場では、AIインフラ向け負債の膨張という構造的なテーマが一段と鮮明になった。BlackstoneはAirTrunkが手掛ける400MW超のハイパースケールデータセンター『SYD3』(豪州シドニー)向けに$30億(A$43億)のローン組成を完了、Credit Agricole・DBS・Deutsche Bank・HSBC・ING・三菱UFJ・Morgan Stanley・UOBなど大手行8行超が参加した。AI関連データセンター向け社債・ローンの年初来発行額は$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっている。上半期のセカンダリー取引過去最高更新($1,210億)、Ping Anの米プライベート市場投資停止、KKRのRoy Gori氏起用、easyJetを巡るApollo対Castlelakeの入札合戦(8/3・8/7回答期限)といった継続テーマと合わせ、プライベートクレジットが金利高止まり環境下でも資金供給機能を拡大し続けている構図が続く。||週明け以降の焦点は、①週末の中東エスカレーション(サウジ製油所攻撃)が月曜の原油・株式市場にどの程度のリスクプレミアムとして織り込まれるか、②来週7/28-29のFOMC会合(据え置き確率97%超が織り込み済みだが原油高によるインフレ再燃観測がタカ派再評価リスクを残す)、③AIデータセンター向け負債の膨張($3,345億)が金利高止まり環境下でのプライベートクレジット市場の脆弱性にどう跳ね返るか、の3点に整理される。日本では円が¥163台の約40年ぶり安値圏で推移する中、月曜の東京市場は週末の中東リスク再燃を受けた半導体関連株(Kioxia・Advantest・東京エレクトロン)の値動きが再び焦点となる可能性が高い。",
+    peTraining: {
+      thirtySecSummary: "週末(7/25・土)のポイントは3点。①中東情勢が新段階へ——フーシがサウジ国内製油所(ジザン)を約4年ぶりに直接攻撃、米海軍もオマーン湾で対イラン封鎖突破船を無力化、原油は月内+30%超の上昇局面が続き月曜の取引再開でリスクプレミアム再拡大の可能性。②AI投資サイクルの神経質さが露呈——中国DeepSeekが創業者発言の『炎上』を受け約$15億の第2回資金調達を一時停止、金曜のIntel決算後のAI関連株安(AMD-3.72%等)と合わせAI設備投資を巡る警戒感が継続。③プライベートクレジットがAIインフラ資金供給を主導——BlackstoneがAirTrunkのSYD3データセンター向け$30億ローンを組成完了、AI関連データセンター負債の年初来発行額は$3,345億と2025年通年を既に上回るペース。来週7/28-29のFOMC会合が次の焦点。",
+      interviewQA: [
+        { q: "フーシがサウジ国内の製油所を直接攻撃したことは、これまでの紅海でのタンカー攻撃と比べてなぜ質的に異なるリスクとされるのですか", a: "タンカー攻撃は『輸送経路』の危険性を高め迂回コストや保険料上昇を通じて間接的に供給コストを引き上げますが、製油所という『生産インフラそのもの』への攻撃は、供給能力自体を物理的に毀損しうる点で質的に異なります。サウジアラムコのジザン製油所はサウジ第5位の規模を持つ主要な製油拠点であり、仮に稼働に実質的な支障が生じれば、迂回では代替できない供給減少に直結します。投資家としては、①攻撃対象が『輸送』か『生産』かでリスクの性質(一時的な価格変動か構造的な供給制約か)が異なること、②サウジのような主要産油国内インフラへの攻撃は、OPEC+の増産余地や戦略備蓄放出といった政策対応の是非を巡る議論を加速させること、③エスカレーションの『初回』事象は市場が最も敏感に反応しやすく、実際の被害規模が判明するまでの数日間はヘッドラインリスクによる価格の振れが大きくなりやすいこと、の3点を踏まえた冷静な状況把握が重要です。", },
+        { q: "DeepSeekが資金調達を一時停止した背景には創業者の発言の『炎上』があるとされていますが、なぜそのような理由で数十億ドル規模の資金調達プロセスが止まるのですか", a: "大型の資金調達、特に高い評価額(今回はプレマネーで約$710億)を伴う調達においては、出資者は投資判断の前提として経営陣の情報発信の正確性・一貫性・地政学的な立ち位置を重視します。創業者がNvidia製チップへの依存や自国のAI技術の遅れについて率直に語ったとされる内容が意図せず拡散したことは、①中国国内でのナラティブ管理(政府・世論に対する自国AI産業の実力に関するメッセージング)との整合性、②米国の対中半導体輸出規制を巡る機微な話題への言及が招く規制上のリスク、③出資者に対して伝えていた見通しと公になった発言との整合性、といった複数の論点を出資者に再考させるきっかけになったと考えられます。投資家としては、AI企業への出資検討において、技術・財務指標だけでなく経営陣の対外的な情報発信リスクや地政学的なポジショニングも重要なデューデリジェンス項目であることを示す事例として捉えるべきです。", },
+        { q: "AI関連データセンター向けの負債発行額が年初来$3,345億と過去最大ペースになっていることは、プライベートクレジット市場にとってどのようなリスクと機会を意味しますか", a: "機会の面では、AIインフラ投資という長期的な成長テーマに対し、銀行融資枠に依存しない多様な資金調達手段(プロジェクトファイナンス型のローン組成等)を提供できることは、プライベートクレジット運用会社にとって高い手数料収入とデプロイメント機会をもたらします。BlackstoneのAirTrunk向け融資のように、複数の大手行と共同で融資団を組成する形態は、単独ではリスクを取りきれない大型案件への参加を可能にする点でも合理的です。一方でリスクの面では、①データセンター需要(AI利用の実需)が投資回収期間中も想定通り持続するかという需要リスク、②金利高止まりが長期化した場合の資金調達コスト上昇とプロジェクト採算性への影響、③2025年通年を既に上回るペースでの発行増加が、個別プロジェクトの審査の甘さや与信集中リスクを招いていないかという質の懸念、の3点が挙げられます。投資家としては、AIインフラ向け貸付のポートフォリオにおいて、単一テナント(ハイパースケーラー)への依存度、契約期間、稼働率保証の有無といった個別案件の質を見極めることが、市場全体の成長ペースに惑わされない実務上のポイントとなります。", }
+      ],
+      keyConceptToday: {
+        term: "AIインフラ向けプロジェクトファイナンス(データセンター向け負債)",
+        definition: "ハイパースケールデータセンターの建設・運営資金を、単一の銀行融資ではなく複数の金融機関(銀行・プライベートクレジット運用会社)が共同で組成するローンやプロジェクトボンドを通じて調達する資金調達手法。資産(データセンター)自体のキャッシュフロー(テナント契約に基づく賃料・使用料収入)を返済原資とすることが多い。",
+        background: "AI需要の急拡大に伴い、ハイパースケーラー(Amazon・Microsoft・Google等)やAirTrunkのようなデータセンター専業運営会社が、従来の自己資金・社債発行に加えプロジェクトファイナンス型の大型ローンを積極活用するようになった。2026年はAI関連データセンター向け社債・ローンの年初来発行額が$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっている。",
+        practical: "①テナント集中リスク——単一のハイパースケーラーへの賃料依存度が高い場合、そのテナントの信用力・契約継続意思が案件全体のリスクを左右する。②稼働率・契約期間——長期契約(プレリース)の有無と稼働率保証の水準が、キャッシュフローの安定性を左右する重要な指標。③金利感応度——変動金利建てローンが多い場合、金利高止まりが長期化するとプロジェクト採算性を圧迫しうる。④与信の質——発行ペースの急拡大局面では審査基準の緩みが生じやすく、個別案件の質を見極める必要がある。",
+        context2026: "2026年はAI設備投資の拡大(Intel・Nvidia等の決算で示された投資計画上方修正)とデータセンター向け負債の急増が並走している。金利高止まり・地政学リスクによる市場のボラティリティが高まる中、プライベートクレジットがAIインフラ投資の主要な資金供給源としての存在感を一段と拡大しており、その持続可能性(需要の実需性・与信の質)が今後の重要な論点となる。"
+      },
+      dealAnalysis: {
+        title: "Blackstone、AirTrunkのSYD3データセンター向け$30億(A$43億)ローンを組成完了 — AIインフラ負債は年初来$3,345億で過去最大ペース",
+        thesis: "BlackstoneはAirTrunkが手掛ける400MW超のハイパースケールデータセンター『SYD3』(豪州シドニー)向けに、Credit Agricole・DBS・Deutsche Bank・HSBC・ING・三菱UFJ・Morgan Stanley・UOBなど大手行8行超による融資団を組成完了した。AI関連データセンター向け社債・ローンの年初来発行額は$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっており、プライベートクレジット・銀行融資がAIインフラ投資の主要な資金供給源となっている構図が一段と鮮明になった。",
+        timing: "AI需要の急拡大を背景に、ハイパースケーラー各社・データセンター専業運営会社が資金調達を積極化する局面が続いている。金利高止まり環境下でも大手行・プライベートクレジット運用会社が大型融資組成に応じており、AIインフラ投資への資金供給意欲は依然として強い。",
+        downside: "①発行ペースの急拡大(2025年通年比で既に上回るペース)が与信審査の甘さや案件集中リスクを招いていないかという質の懸念。②AI需要(データセンター利用の実需)が投資回収期間中も想定通り持続するかという需要リスク。③金利高止まりが長期化した場合の資金調達コスト上昇とプロジェクト採算性への影響。④週末のIntel決算後のAI設備投資懸念(株式市場での売り)のように、AI投資サイクル全体への警戒感が強まった場合、データセンター向け融資の需要・価格形成にも波及するリスク。",
+        valuation: "プロジェクトファイナンス型のローンは、テナント契約に基づく将来キャッシュフローの安定性(稼働率保証・契約期間)によって条件が左右される。AirTrunk案件の融資条件の妥当性は、SYD3の想定稼働率・テナント構成(ハイパースケーラーとの契約内容)と、AIインフラ向け貸付市場全体のスプレッド水準との比較で判断される必要がある。来週のFOMC会合(7/28-29)の結果と金利動向が、AIインフラ向け融資コスト全体に引き続き影響を与える見込み。"
+      }
+    }
   }
 ];
-// ── END_DATA ──  (last sync: 2026-07-15 / rev3)
+// ── END_DATA ──  (last sync: 2026-07-25 14:01 EDT / rev16)
 </script>
 
 <script>
@@ -869,30 +1501,45 @@ function cClass(dir){ return dir==='up'?'c-up':dir==='down'?'c-down':'c-flat'; }
 function macroValClass(dir){ return dir==='up'?'up':dir==='down'?'down':''; }
 function arrow(dir){ return dir==='up'?'▲':dir==='down'?'▼':'‒'; }
 
-function newsLinksEvent(searchKey){
-  if(!searchKey) return '';
-  const q = encodeURIComponent(searchKey);
-  const wsj = 'https://www.wsj.com/search?query=' + q + '&mod=searchresults_viewallresults';
-  const ft = 'https://www.ft.com/search?q=' + q;
-  const jp = 'https://news.google.com/search?q=' + q + '&hl=ja&gl=JP';
-  return '<a class="ev-link ev-link-wsj" href="' + wsj + '" target="_blank" rel="noopener">WSJで見る</a> ' +
-         '<a class="ev-link ev-link-ft" href="' + ft + '" target="_blank" rel="noopener">FTで見る</a> ' +
-         '<a class="ev-link ev-link-jp" href="' + jp + '" target="_blank" rel="noopener">関連ニュース</a>';
-}
-function newsLinksDeal(searchKey){
-  if(!searchKey) return '';
-  const q = encodeURIComponent(searchKey);
-  const wsj = 'https://www.wsj.com/search?query=' + q + '&mod=searchresults_viewallresults';
-  const ft = 'https://www.ft.com/search?q=' + q;
-  const jp = 'https://news.google.com/search?q=' + q + '&hl=ja&gl=JP';
-  return '<div class="deal-links">' +
-    '<a class="deal-link dl-wsj" href="' + wsj + '" target="_blank" rel="noopener">WSJ</a>' +
-    '<a class="deal-link dl-ft" href="' + ft + '" target="_blank" rel="noopener">FT</a>' +
-    '<a class="deal-link dl-jp" href="' + jp + '" target="_blank" rel="noopener">関連ニュース</a>' +
-  '</div>';
+function newsLink(item, isDeal){
+  if(!item) return '';
+  let url = item.sourceUrl;
+  let label = '記事を読む →';
+  if(!url && item.searchKey){
+    url = 'https://news.google.com/search?q=' + encodeURIComponent(item.searchKey) + '&hl=ja&gl=JP';
+    label = '関連ニュースを見る';
+  }
+  if(!url) return '';
+  const a = '<a class="' + (isDeal ? 'deal-link' : 'ev-link') + '" href="' + url + '" target="_blank" rel="noopener">' + label + '</a>';
+  return isDeal ? '<div class="deal-links">' + a + '</div>' : a;
 }
 
-function renderIdxCard(idx){
+function sparkline(key){
+  const end = currentIdx;
+  const start = Math.max(0, end - 4); // last 5 trading days incl. today
+  const pts = [];
+  for(let i = start; i <= end; i++){
+    const idx = MARKET_REPORTS[i] && MARKET_REPORTS[i].indices && MARKET_REPORTS[i].indices[key];
+    if(idx && typeof idx.value === 'number') pts.push(idx.value);
+  }
+  if(pts.length < 2) return '';
+  const w = 88, h = 26, pad = 3;
+  const min = Math.min.apply(null, pts), max = Math.max.apply(null, pts);
+  const range = (max - min) || 1;
+  const stepX = (w - pad * 2) / (pts.length - 1);
+  const coords = pts.map(function(v, i){
+    return [pad + i * stepX, pad + (h - pad * 2) * (1 - (v - min) / range)];
+  });
+  const path = coords.map(function(c, i){ return (i === 0 ? 'M' : 'L') + c[0].toFixed(1) + ',' + c[1].toFixed(1); }).join(' ');
+  const last = coords[coords.length - 1];
+  const dotColor = pts[pts.length - 1] >= pts[0] ? '#10b981' : '#ef4444';
+  return '<svg class="idx-spark" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" aria-hidden="true">' +
+    '<path d="' + path + '" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<circle cx="' + last[0].toFixed(1) + '" cy="' + last[1].toFixed(1) + '" r="3" fill="' + dotColor + '"/>' +
+  '</svg>';
+}
+
+function renderIdxCard(idx, key){
   if(!idx) return '';
   const chg = (typeof idx.change === 'number') ? (idx.change>=0?'+':'') + fmtNum(idx.change) : idx.change;
   const pct = (typeof idx.pct === 'number') ? (idx.pct>=0?'+':'') + idx.pct.toFixed(2) + '%' : idx.pct;
@@ -900,6 +1547,7 @@ function renderIdxCard(idx){
     '<div class="idx-name">' + idx.flag + ' ' + idx.name + '</div>' +
     '<div class="idx-val">' + fmtNum(idx.value) + '</div>' +
     '<div class="idx-chg ' + cClass(idx.dir) + '">' + arrow(idx.dir) + ' ' + chg + ' (' + pct + ')</div>' +
+    sparkline(key) +
   '</div>';
 }
 
@@ -934,7 +1582,7 @@ function renderEvents(events){
   return events.map(function(e){
     return '<div class="ev-item"><div class="ev-title">' + e.icon + ' ' + e.title + '</div>' +
       '<div class="ev-detail">' + e.detail + '</div>' +
-      newsLinksEvent(e.searchKey) + '</div>';
+      newsLink(e, false) + '</div>';
   }).join('');
 }
 
@@ -945,7 +1593,7 @@ function renderDeal(d){
     '<div class="deal-meta">' + d.meta + '</div>' +
     '<div class="deal-body">' + d.body + '</div>' +
     '<div class="deal-sig">' + d.sig + '</div>' +
-    newsLinksDeal(d.searchKey) +
+    newsLink(d, true) +
   '</div>';
 }
 function renderCreditBox(boxCls, flag, name, sub, data){
@@ -995,41 +1643,6 @@ function renderPeTraining(pt){
     '</div>';
 }
 
-let chartInstance = null;
-function renderChart(reports, uptoIdx){
-  const el = document.getElementById('idxChart');
-  if(!el || typeof Chart === 'undefined') return;
-  const start = Math.max(0, uptoIdx - 14);
-  const slice = reports.slice(start, uptoIdx + 1);
-  const labels = slice.map(function(r){ return r.dateLabel; });
-  function mk(key){ return slice.map(function(r){ return (r.indices && r.indices[key]) ? r.indices[key].value : null; }); }
-  if(chartInstance){ chartInstance.destroy(); }
-  chartInstance = new Chart(el, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [
-        { label:'S&P 500', data:mk('sp500'), borderColor:'#3b82f6', backgroundColor:'transparent', tension:.3, yAxisID:'y0' },
-        { label:'Nasdaq', data:mk('nasdaq'), borderColor:'#8b5cf6', backgroundColor:'transparent', tension:.3, yAxisID:'y1' },
-        { label:'Dow', data:mk('dow'), borderColor:'#10b981', backgroundColor:'transparent', tension:.3, yAxisID:'y1' },
-        { label:'Nikkei 225', data:mk('nikkei'), borderColor:'#ef4444', backgroundColor:'transparent', tension:.3, yAxisID:'y2' }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
-      scales: {
-        y0: { display: false },
-        y1: { display: false },
-        y2: { display: false },
-        x: { ticks: { font: { size: 10 } } }
-      }
-    }
-  });
-}
-
 let currentIdx = MARKET_REPORTS.length - 1;
 
 function dowLabel(dateStr){
@@ -1052,13 +1665,10 @@ function renderTabs(){
 }
 
 function renderPanel(r){
-  const idxCards = ['sp500','nasdaq','dow','nikkei'].map(function(k){ return renderIdxCard(r.indices[k]); }).join('');
+  const idxCards = ['sp500','nasdaq','dow','nikkei'].map(function(k){ return renderIdxCard(r.indices[k], k); }).join('');
   return '' +
   '<div class="section"><div class="idx-grid">' + idxCards + '</div></div>' +
-  '<div class="section two-col">' +
-    '<div class="card"><div class="card-title">📈 主要指数推移</div><div class="chart-wrap"><canvas id="idxChart"></canvas></div></div>' +
-    '<div class="card"><div class="card-title">🌐 マクロ指標</div><div class="macro-grid">' + renderMacro(r.macro) + '</div></div>' +
-  '</div>' +
+  '<div class="section"><div class="card"><div class="card-title">🌐 マクロ指標</div><div class="macro-grid">' + renderMacro(r.macro) + '</div></div></div>' +
   '<div class="section"><div class="sec-title">値動き銘柄</div>' +
     '<div class="movers-card"><div class="movers-layout">' + renderMoversLayout(r.movers) + '</div></div>' +
   '</div>' +
@@ -1084,7 +1694,6 @@ function renderAll(){
   const r = MARKET_REPORTS[currentIdx];
   const main = document.getElementById('main-content');
   main.innerHTML = '<div class="report-panel active">' + renderPanel(r) + '</div>';
-  renderChart(MARKET_REPORTS, currentIdx);
   const tokenInfo = document.getElementById('token-info');
   if(tokenInfo){
     const total = MARKET_REPORTS.reduce(function(s, x){ return s + (x.tokenEstimate || 0); }, 0);
