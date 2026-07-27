@@ -87,6 +87,8 @@ a{color:#3b82f6}
 .pc-summary{font-size:13px;color:#475569;line-height:1.75;margin:14px 0;padding:13px 16px;border-left:4px solid;border-radius:0 10px 10px 0}
 .us-box .pc-summary{border-color:#3b82f6;background:#eff6ff}
 .jp-box .pc-summary{border-color:#f59e0b;background:#fffbeb}
+.rw-box .pc-summary{border-color:#8b5cf6;background:#f5f3ff}
+.rw-box .events-list{margin-bottom:14px}
 .deals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:11px;margin-bottom:14px}
 .deal{border-radius:12px;padding:14px;border:1px solid #e8edf5;background:#fafbfd;transition:box-shadow .18s}
 .deal:hover{box-shadow:0 4px 16px rgba(0,0,0,.09)}
@@ -112,11 +114,7 @@ a{color:#3b82f6}
 .pc-outlook{border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.75;border:1px solid}
 .us-box .pc-outlook{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe;color:#1e3a8a}
 .jp-box .pc-outlook{background:linear-gradient(135deg,#fffbeb,#fef3c7);border-color:#fcd34d;color:#78350f}
-
-/* ─── Takeaway ─── */
-.takeaway{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#e2e8f0;border-radius:16px;padding:24px 26px;box-shadow:0 4px 20px rgba(15,23,42,.3)}
-.takeaway-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#60a5fa;margin-bottom:10px}
-.takeaway-txt{font-size:14px;line-height:1.85;color:#cbd5e1}
+.rw-box .pc-outlook{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#ddd6fe;color:#4c1d95}
 
 /* ─── Footer ─── */
 footer{background:#0f172a;color:#475569;text-align:center;padding:18px;font-size:11px;line-height:1.8}
@@ -127,9 +125,6 @@ footer b{color:#60a5fa}
 .narrative-box p{margin-bottom:1.3em}.narrative-box p:last-child{margin-bottom:0}
 
 /* ─── PE Training ─── */
-.pet-summary{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:14px;padding:18px 24px;margin-bottom:16px}
-.pet-summary-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#93c5fd;margin-bottom:8px}
-.pet-summary-txt{font-size:14px;font-weight:600;line-height:1.85;color:#e0f2fe}
 .pet-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:760px){.pet-grid{grid-template-columns:1fr}}
 .pet-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9}
@@ -1442,6 +1437,15 @@ const MARKET_REPORTS = [
       { icon:"📊", title:"Yardeni Research、S&P500の年末目標8,250を維持 — 『サマー・ストール』を経て年後半の上昇再開を予想", detail:"Yardeni Researchは中東情勢の不安定化・AI関連の懸念・追加関税観測を注視しつつも、S&P500の年末目標8,250(現水準から約700ポイント上・1株$400の予想EPSに20倍のマルチプルを適用)を維持。5月半ば以降の『サマー・ストール』を経て、来週7/28-29のFOMC会合を挟みつつも年後半にかけボラティリティの高い局面から上昇トレンドへ回帰すると予想している。", searchKey:"Yardeni Research S&P 500 8250 target summer stall FOMC 2026" },
       { icon:"💾", title:"Blackstone、AirTrunkのシドニー新データセンター向け$30億(A$43億)ローンを組成完了 — AIデータセンター向け負債は年初来$3,345億と過去最大", detail:"BlackstoneはAirTrunkが手掛ける400MW超のハイパースケールデータセンター『SYD3』(豪州)向けの融資団を組成完了。Credit Agricole・DBS・Deutsche Bank・HSBC・ING・三菱UFJ・Morgan Stanley・UOBなどが参加。AI関連データセンター向けの社債・ローン発行額は2026年年初来で$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっており、AIインフラ向け負債の膨張に対する懸念が強まっている。", searchKey:"Blackstone AirTrunk 3 billion loan data center debt record 2026" }
     ],
+    rateWatch: {
+      summary: "来週7/28-29のFOMC、7/30-31の日銀金融政策決定会合を控え、市場は双方とも政策金利据え置き(米3.50-3.75%、日1.00%)が有力との見方でほぼ一致している。6月CPIは前年比+3.5%(市場予想+3.8%を下回る)・コアCPI+2.6%で横ばいと軟化し、FRBの年内1回の利下げシナリオを後押しする一方、ドル円は¥163台後半と約40年ぶりの安値圏が続き、日銀の実質金利マイナスが円安圧力の根本要因との見方が優勢。",
+      items: [
+        { icon:"🇺🇸", title:"6月CPI、前年比+3.5%に軟化——市場予想+3.8%を下回る", detail:"米6月CPIは前年比+3.5%(コアCPIは+2.6%で横ばい)、前月比では2020年4月以来最大の低下。7月FOMC(7/28-29)にハト派的な追い風となり、年内1回の利下げを見込むドットプロット継続を後押しする材料と受け止められている。", sourceUrl:"https://federalnewsnetwork.com/prediction-markets/2026/07/cpi-falls-june-trade-prediction-markets-fed-decision-in-july-2026/" },
+        { icon:"🏛️", title:"FOMC・日銀会合とも来週、政策金利据え置きが市場の大勢見通し", detail:"7/28-29のFOMC(現行3.50-3.75%)、7/30-31の日銀会合(6月会合で1.00%へ利上げ済み)はいずれも据え置きが有力視されている。FRBは6月時点のドットプロットで年内1回の25bp利下げ(年末3.4%目安)を示しており、日銀は実質金利マイナスが続く円安圧力を注視しつつも拙速な追加利上げは見送るとの見方が優勢。", sourceUrl:"https://fx.minkabu.jp/news/374229" },
+        { icon:"💴", title:"ドル円163円台後半、約40年ぶり安値圏——実質金利マイナスが根本要因", detail:"25日朝のドル円は¥163.60台で取引。日銀の政策金利は30年ぶりの高水準(1.00%)にもかかわらず、実質金利がマイナス圏にとどまる限り円安圧力は根強いとの見方が市場で優勢で、介入観測もくすぶる。", sourceUrl:"https://www.nippon.com/ja/news/kd1453447518224483206/" }
+      ],
+      outlook: "💡 来週はFOMC(7/28-29)・日銀会合(7/30-31)がともに『据え置き』を基本シナリオとしつつ、①CPI軟化を受けたFRBのハト派的トーン継続の有無、②日銀が円安・実質金利マイナスにどこまで言及するか、③週末の中東情勢激化による原油高がインフレ再燃観測・タカ派再評価リスクとして両会合の議論にどう影響するか、の3点が焦点。ドル円は介入警戒との綱引きが続きつつも、日米金利差が大きく縮まらない限り高値圏でのもみ合いが続きやすい。"
+    },
     usCredit: {
       summary: "週末最大の材料はAIデータセンター向け負債の膨張。BlackstoneがAirTrunkのシドニー新データセンター(SYD3)向け$30億(A$43億)ローンの組成を完了し、AI関連データセンター向け社債・ローンの年初来発行額は$3,345億(2025年通年$1,855億から急増)に達した。プライベートクレジットがAIインフラ投資の主要な資金供給源となっている構図が一段と鮮明になっている。継続テーマとしては上半期セカンダリー取引の過去最高更新($1,210億)、Ping Anの米プライベート市場投資停止、KKRのRoy Gori氏起用、easyJetを巡るApollo対Castlelakeの入札合戦(8/3・8/7回答期限)が引き続き進行中。",
       deals: [
@@ -1461,10 +1465,8 @@ const MARKET_REPORTS = [
       ],
       outlook: "💡 市場休場の週末につき日本関連の新規材料は限定的。円は¥163台の約40年ぶり安値圏で介入警戒と日銀利上げ観測の綱引きが続く。日本PE/プライベートクレジットの構造ストーリー($300B/年のM&A拡大がクレジット需要を牽引)に変化はなく、月曜は週末の中東リスク再燃(Houthiのサウジ製油所攻撃)を受けた半導体関連株の値動きが焦点となる可能性が高い。"
     },
-    takeaway: "土曜(7/25・EDT)は米国市場休場のため新規の株価材料は無いが、週末にかけていくつかの重要な地政学・市場材料が浮上し月曜の取引再開に向けたリスクプレミアムが積み上がりつつある。最大の材料はイエメンの親イラン武装組織フーシによるサウジアラムコのジザン製油所への弾道ミサイル攻撃で、サウジ国内製油所への直接攻撃としては約4年ぶり。米海軍もオマーン湾で対イラン海上封鎖網の突破を試みたタンカーを無力化したと発表しており、中東発の供給リスクは複層化している。原油価格は月内既に30%超上昇しており、月曜の取引再開後にさらなる上振れリスクが意識される。AI関連では、中国DeepSeekが創業者の対米AI競争を巡る発言の『炎上』を受け約$15億規模の第2回資金調達を一時停止したと報じられた。プライベートクレジット関連では、BlackstoneがAirTrunkのシドニー新データセンター向け$30億ローンの組成を完了し、AIデータセンター向け負債の年初来発行額は$3,345億(2025年通年を既に上回るペース)に達したことが判明。Yardeni Researchは中東・AI・関税を巡る不透明感を踏まえつつもS&P500の年末目標8,250を維持しており、来週7/28-29のFOMC会合を挟んだボラティリティの高い週明けが見込まれる。",
     narrative: "週末にかけ、中東情勢は新たなエスカレーションの局面を迎えた。イエメンの親イラン武装組織フーシは、サウジアラビア第5位の規模を持つアラムコのジザン製油所を弾道ミサイル3発で攻撃し、複数の煙が施設から立ち上るのが確認された。フーシによるサウジ国内製油所への直接攻撃は約4年ぶりで、これまで続いていた紅海・バブエルマンデブ海峡でのタンカー攻撃や海上封鎖宣言から、サウジ国内インフラへの直接攻撃という新たな段階へエスカレートした形だ。これと並行して米軍は金曜、オマーン湾で対イラン海上封鎖網を少なくとも4回突破しようとしたタンカーを無力化したと発表しており、ホルムズ海峡・紅海双方で供給リスクが同時に高まる複層的な構図となっている。||この地政学リスクの再燃は、来週のFOMC会合(7/28-29)を控えた金利・原油市場の綱引きを一段と複雑にする。原油価格は月内既に30%超上昇しており、Yardeni Researchは中東情勢の不安定化・AI関連の懸念・追加関税観測を注視しつつも、S&P500の年末目標8,250(現水準から約700ポイント上)を維持している。同社は5月半ば以降の『サマー・ストール』を経て、ボラティリティの高い局面から年後半にかけ上昇トレンドへ回帰すると予想するが、週末の製油所攻撃が原油の一段高・インフレ再燃観測を通じて10年債利回り(現在4.71%・2025年1月以来の高水準)にさらなる上昇圧力をかける可能性があり、FOMCのタカ派再評価リスクは残る。||AI関連では、中国のDeepSeekが第2回資金調達(約$15億規模、プレマネー評価額約$710億)を一時停止したと報じられた。背景には、6月に$70億を調達した第1回ラウンドの際、創業者の梁文峰氏がNvidia製チップへの依存や米国に対するAI技術の遅れについて語ったとされる報道が中国メディアで拡散し、本人が不快感を示したことがあるとされる。米中AI競争を巡るナラティブが資金調達の実務にまで波及した格好で、金曜のIntel決算後の設備投資懸念によるAI関連株売り(AMD-3.72%、Nvidia-1.01%)と合わせ、AI投資サイクルを巡る市場の神経質さが浮き彫りになっている。||プライベートクレジット市場では、AIインフラ向け負債の膨張という構造的なテーマが一段と鮮明になった。BlackstoneはAirTrunkが手掛ける400MW超のハイパースケールデータセンター『SYD3』(豪州シドニー)向けに$30億(A$43億)のローン組成を完了、Credit Agricole・DBS・Deutsche Bank・HSBC・ING・三菱UFJ・Morgan Stanley・UOBなど大手行8行超が参加した。AI関連データセンター向け社債・ローンの年初来発行額は$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっている。上半期のセカンダリー取引過去最高更新($1,210億)、Ping Anの米プライベート市場投資停止、KKRのRoy Gori氏起用、easyJetを巡るApollo対Castlelakeの入札合戦(8/3・8/7回答期限)といった継続テーマと合わせ、プライベートクレジットが金利高止まり環境下でも資金供給機能を拡大し続けている構図が続く。||週明け以降の焦点は、①週末の中東エスカレーション(サウジ製油所攻撃)が月曜の原油・株式市場にどの程度のリスクプレミアムとして織り込まれるか、②来週7/28-29のFOMC会合(据え置き確率97%超が織り込み済みだが原油高によるインフレ再燃観測がタカ派再評価リスクを残す)、③AIデータセンター向け負債の膨張($3,345億)が金利高止まり環境下でのプライベートクレジット市場の脆弱性にどう跳ね返るか、の3点に整理される。日本では円が¥163台の約40年ぶり安値圏で推移する中、月曜の東京市場は週末の中東リスク再燃を受けた半導体関連株(Kioxia・Advantest・東京エレクトロン)の値動きが再び焦点となる可能性が高い。",
     peTraining: {
-      thirtySecSummary: "週末(7/25・土)のポイントは3点。①中東情勢が新段階へ——フーシがサウジ国内製油所(ジザン)を約4年ぶりに直接攻撃、米海軍もオマーン湾で対イラン封鎖突破船を無力化、原油は月内+30%超の上昇局面が続き月曜の取引再開でリスクプレミアム再拡大の可能性。②AI投資サイクルの神経質さが露呈——中国DeepSeekが創業者発言の『炎上』を受け約$15億の第2回資金調達を一時停止、金曜のIntel決算後のAI関連株安(AMD-3.72%等)と合わせAI設備投資を巡る警戒感が継続。③プライベートクレジットがAIインフラ資金供給を主導——BlackstoneがAirTrunkのSYD3データセンター向け$30億ローンを組成完了、AI関連データセンター負債の年初来発行額は$3,345億と2025年通年を既に上回るペース。来週7/28-29のFOMC会合が次の焦点。",
       interviewQA: [
         { q: "フーシがサウジ国内の製油所を直接攻撃したことは、これまでの紅海でのタンカー攻撃と比べてなぜ質的に異なるリスクとされるのですか", a: "タンカー攻撃は『輸送経路』の危険性を高め迂回コストや保険料上昇を通じて間接的に供給コストを引き上げますが、製油所という『生産インフラそのもの』への攻撃は、供給能力自体を物理的に毀損しうる点で質的に異なります。サウジアラムコのジザン製油所はサウジ第5位の規模を持つ主要な製油拠点であり、仮に稼働に実質的な支障が生じれば、迂回では代替できない供給減少に直結します。投資家としては、①攻撃対象が『輸送』か『生産』かでリスクの性質(一時的な価格変動か構造的な供給制約か)が異なること、②サウジのような主要産油国内インフラへの攻撃は、OPEC+の増産余地や戦略備蓄放出といった政策対応の是非を巡る議論を加速させること、③エスカレーションの『初回』事象は市場が最も敏感に反応しやすく、実際の被害規模が判明するまでの数日間はヘッドラインリスクによる価格の振れが大きくなりやすいこと、の3点を踏まえた冷静な状況把握が重要です。", },
         { q: "DeepSeekが資金調達を一時停止した背景には創業者の発言の『炎上』があるとされていますが、なぜそのような理由で数十億ドル規模の資金調達プロセスが止まるのですか", a: "大型の資金調達、特に高い評価額(今回はプレマネーで約$710億)を伴う調達においては、出資者は投資判断の前提として経営陣の情報発信の正確性・一貫性・地政学的な立ち位置を重視します。創業者がNvidia製チップへの依存や自国のAI技術の遅れについて率直に語ったとされる内容が意図せず拡散したことは、①中国国内でのナラティブ管理(政府・世論に対する自国AI産業の実力に関するメッセージング)との整合性、②米国の対中半導体輸出規制を巡る機微な話題への言及が招く規制上のリスク、③出資者に対して伝えていた見通しと公になった発言との整合性、といった複数の論点を出資者に再考させるきっかけになったと考えられます。投資家としては、AI企業への出資検討において、技術・財務指標だけでなく経営陣の対外的な情報発信リスクや地政学的なポジショニングも重要なデューデリジェンス項目であることを示す事例として捉えるべきです。", },
@@ -1506,7 +1508,7 @@ function newsLink(item, isDeal){
   let url = item.sourceUrl;
   let label = '記事を読む →';
   if(!url && item.searchKey){
-    url = 'https://news.google.com/search?q=' + encodeURIComponent(item.searchKey) + '&hl=ja&gl=JP';
+    url = 'https://www.google.com/search?q=' + encodeURIComponent(item.searchKey);
     label = '関連ニュースを見る';
   }
   if(!url) return '';
@@ -1608,6 +1610,22 @@ function renderCreditBox(boxCls, flag, name, sub, data){
   '</div>';
 }
 
+function renderRateWatch(data){
+  if(!data) return '';
+  const items = data.items || [];
+  const itemsHtml = items.map(function(it){
+    return '<div class="ev-item"><div class="ev-title">' + it.icon + ' ' + it.title + '</div>' +
+      '<div class="ev-detail">' + it.detail + '</div>' + newsLink(it, false) + '</div>';
+  }).join('');
+  return '<div class="pc-box rw-box">' +
+    '<div class="pc-hdr"><span class="pc-flag">🏦</span><span class="pc-name">日米金利動向</span></div>' +
+    '<div class="pc-sub">CPI・FRB・日銀・金利見通し</div>' +
+    '<div class="pc-summary">' + (data.summary || '') + '</div>' +
+    '<div class="events-list">' + itemsHtml + '</div>' +
+    '<div class="pc-outlook">' + (data.outlook || '') + '</div>' +
+  '</div>';
+}
+
 function renderNarrative(str){
   if(!str) return '<p style="color:#94a3b8">本日はナラティブ未生成</p>';
   return str.split('||').map(function(p){ return '<p>' + p.trim() + '</p>'; }).join('');
@@ -1620,8 +1638,7 @@ function renderPeTraining(pt){
   }).join('');
   const kc = pt.keyConceptToday || {};
   const da = pt.dealAnalysis || {};
-  return '<div class="pet-summary"><div class="pet-summary-lbl">30秒サマリー</div>' +
-    '<div class="pet-summary-txt">' + (pt.thirtySecSummary || '') + '</div></div>' +
+  return '' +
     '<div class="pet-grid">' +
       '<div class="pet-card"><div class="pet-card-hdr">面接想定Q&amp;A</div>' + qaHtml + '</div>' +
       '<div class="pet-card"><div class="pet-card-hdr">今日の重要概念：' + (kc.term || '') + '</div>' +
@@ -1675,6 +1692,7 @@ function renderPanel(r){
   '<div class="section"><div class="sec-title">本日の注目イベント</div>' +
     '<div class="events-list">' + renderEvents(r.events) + '</div>' +
   '</div>' +
+  '<div class="section"><div class="sec-title">🏦 日米金利動向</div>' + renderRateWatch(r.rateWatch) + '</div>' +
   '<div class="section"><div class="sec-title">🇺🇸 US Private Credit</div>' +
     renderCreditBox('us-box', '🇺🇸', 'US Private Credit', 'ダイレクトレンディング・プライベートクレジット', r.usCredit) +
   '</div>' +
@@ -1684,9 +1702,7 @@ function renderPanel(r){
   '<div class="section"><div class="sec-title">本日のナラティブ</div>' +
     '<div class="narrative-box">' + renderNarrative(r.narrative) + '</div>' +
   '</div>' +
-  '<div class="section"><div class="sec-title">PEトレーニング</div>' + renderPeTraining(r.peTraining) + '</div>' +
-  '<div class="section"><div class="takeaway"><div class="takeaway-lbl">本日の総括</div>' +
-    '<div class="takeaway-txt">' + (r.takeaway || '') + '</div></div></div>';
+  '<div class="section"><div class="sec-title">PEトレーニング</div>' + renderPeTraining(r.peTraining) + '</div>';
 }
 
 function renderAll(){
