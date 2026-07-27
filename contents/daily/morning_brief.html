@@ -87,6 +87,8 @@ a{color:#3b82f6}
 .pc-summary{font-size:13px;color:#475569;line-height:1.75;margin:14px 0;padding:13px 16px;border-left:4px solid;border-radius:0 10px 10px 0}
 .us-box .pc-summary{border-color:#3b82f6;background:#eff6ff}
 .jp-box .pc-summary{border-color:#f59e0b;background:#fffbeb}
+.rw-box .pc-summary{border-color:#8b5cf6;background:#f5f3ff}
+.rw-box .events-list{margin-bottom:14px}
 .deals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:11px;margin-bottom:14px}
 .deal{border-radius:12px;padding:14px;border:1px solid #e8edf5;background:#fafbfd;transition:box-shadow .18s}
 .deal:hover{box-shadow:0 4px 16px rgba(0,0,0,.09)}
@@ -101,19 +103,10 @@ a{color:#3b82f6}
 .deal-body{font-size:12px;color:#64748b;line-height:1.65}
 .deal-sig{font-size:11px;font-weight:600;color:#6366f1;margin-top:7px}
 .deal-sig::before{content:'⚡ '}
-.deal-link,.ev-link{display:inline-block;font-size:11px;font-weight:700;text-decoration:none;padding:3px 10px;border-radius:20px;transition:opacity .15s}
+.deal-link,.ev-link{display:inline-block;font-size:11px;font-weight:700;text-decoration:none;padding:3px 10px;border-radius:20px;background:#dbeafe;color:#1d4ed8;transition:opacity .15s}
 .deal-link:hover,.ev-link:hover{opacity:.75}
 .deal-links{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
-.dl-reuters{background:#fff1f2;color:#be123c}
-.dl-ft{background:#fef3c7;color:#92400e}
-.dl-dst{background:#ecfdf5;color:#065f46}
-.dl-src{background:#f0fdf4;color:#15803d}
-.dl-wsj{background:#1f2937;color:#f3f4f6}
-.dl-jp{background:#eef2ff;color:#4338ca}
-.ev-link{display:inline-block;margin-top:8px;background:#dbeafe;color:#1d4ed8}
-.ev-link-ft{background:#fef3c7;color:#92400e}
-.ev-link-wsj{background:#1f2937;color:#f3f4f6}
-.ev-link-jp{background:#eef2ff;color:#4338ca}
+.ev-link{display:inline-block;margin-top:8px}
 .pe-news-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;padding-top:12px;border-top:1px solid #e2e8f0;align-items:center}
 .pe-news-links span{font-size:11px;color:#94a3b8;font-weight:600}
 .pe-news-btn{font-size:11px;padding:4px 11px;border-radius:20px;background:#f1f5f9;color:#475569;text-decoration:none;font-weight:600;transition:background .15s}
@@ -121,11 +114,7 @@ a{color:#3b82f6}
 .pc-outlook{border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.75;border:1px solid}
 .us-box .pc-outlook{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#bfdbfe;color:#1e3a8a}
 .jp-box .pc-outlook{background:linear-gradient(135deg,#fffbeb,#fef3c7);border-color:#fcd34d;color:#78350f}
-
-/* ─── Takeaway ─── */
-.takeaway{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#e2e8f0;border-radius:16px;padding:24px 26px;box-shadow:0 4px 20px rgba(15,23,42,.3)}
-.takeaway-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#60a5fa;margin-bottom:10px}
-.takeaway-txt{font-size:14px;line-height:1.85;color:#cbd5e1}
+.rw-box .pc-outlook{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#ddd6fe;color:#4c1d95}
 
 /* ─── Footer ─── */
 footer{background:#0f172a;color:#475569;text-align:center;padding:18px;font-size:11px;line-height:1.8}
@@ -136,9 +125,6 @@ footer b{color:#60a5fa}
 .narrative-box p{margin-bottom:1.3em}.narrative-box p:last-child{margin-bottom:0}
 
 /* ─── PE Training ─── */
-.pet-summary{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:14px;padding:18px 24px;margin-bottom:16px}
-.pet-summary-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#93c5fd;margin-bottom:8px}
-.pet-summary-txt{font-size:14px;font-weight:600;line-height:1.85;color:#e0f2fe}
 .pet-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:760px){.pet-grid{grid-template-columns:1fr}}
 .pet-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.07);border:1px solid #f1f5f9}
@@ -1451,6 +1437,15 @@ const MARKET_REPORTS = [
       { icon:"📊", title:"Yardeni Research、S&P500の年末目標8,250を維持 — 『サマー・ストール』を経て年後半の上昇再開を予想", detail:"Yardeni Researchは中東情勢の不安定化・AI関連の懸念・追加関税観測を注視しつつも、S&P500の年末目標8,250(現水準から約700ポイント上・1株$400の予想EPSに20倍のマルチプルを適用)を維持。5月半ば以降の『サマー・ストール』を経て、来週7/28-29のFOMC会合を挟みつつも年後半にかけボラティリティの高い局面から上昇トレンドへ回帰すると予想している。", searchKey:"Yardeni Research S&P 500 8250 target summer stall FOMC 2026" },
       { icon:"💾", title:"Blackstone、AirTrunkのシドニー新データセンター向け$30億(A$43億)ローンを組成完了 — AIデータセンター向け負債は年初来$3,345億と過去最大", detail:"BlackstoneはAirTrunkが手掛ける400MW超のハイパースケールデータセンター『SYD3』(豪州)向けの融資団を組成完了。Credit Agricole・DBS・Deutsche Bank・HSBC・ING・三菱UFJ・Morgan Stanley・UOBなどが参加。AI関連データセンター向けの社債・ローン発行額は2026年年初来で$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっており、AIインフラ向け負債の膨張に対する懸念が強まっている。", searchKey:"Blackstone AirTrunk 3 billion loan data center debt record 2026" }
     ],
+    rateWatch: {
+      summary: "来週7/28-29のFOMC、7/30-31の日銀金融政策決定会合を控え、市場は双方とも政策金利据え置き(米3.50-3.75%、日1.00%)が有力との見方でほぼ一致している。6月CPIは前年比+3.5%(市場予想+3.8%を下回る)・コアCPI+2.6%で横ばいと軟化し、FRBの年内1回の利下げシナリオを後押しする一方、ドル円は¥163台後半と約40年ぶりの安値圏が続き、日銀の実質金利マイナスが円安圧力の根本要因との見方が優勢。",
+      items: [
+        { icon:"🇺🇸", title:"6月CPI、前年比+3.5%に軟化——市場予想+3.8%を下回る", detail:"米6月CPIは前年比+3.5%(コアCPIは+2.6%で横ばい)、前月比では2020年4月以来最大の低下。7月FOMC(7/28-29)にハト派的な追い風となり、年内1回の利下げを見込むドットプロット継続を後押しする材料と受け止められている。", sourceUrl:"https://federalnewsnetwork.com/prediction-markets/2026/07/cpi-falls-june-trade-prediction-markets-fed-decision-in-july-2026/" },
+        { icon:"🏛️", title:"FOMC・日銀会合とも来週、政策金利据え置きが市場の大勢見通し", detail:"7/28-29のFOMC(現行3.50-3.75%)、7/30-31の日銀会合(6月会合で1.00%へ利上げ済み)はいずれも据え置きが有力視されている。FRBは6月時点のドットプロットで年内1回の25bp利下げ(年末3.4%目安)を示しており、日銀は実質金利マイナスが続く円安圧力を注視しつつも拙速な追加利上げは見送るとの見方が優勢。", sourceUrl:"https://fx.minkabu.jp/news/374229" },
+        { icon:"💴", title:"ドル円163円台後半、約40年ぶり安値圏——実質金利マイナスが根本要因", detail:"25日朝のドル円は¥163.60台で取引。日銀の政策金利は30年ぶりの高水準(1.00%)にもかかわらず、実質金利がマイナス圏にとどまる限り円安圧力は根強いとの見方が市場で優勢で、介入観測もくすぶる。", sourceUrl:"https://www.nippon.com/ja/news/kd1453447518224483206/" }
+      ],
+      outlook: "💡 来週はFOMC(7/28-29)・日銀会合(7/30-31)がともに『据え置き』を基本シナリオとしつつ、①CPI軟化を受けたFRBのハト派的トーン継続の有無、②日銀が円安・実質金利マイナスにどこまで言及するか、③週末の中東情勢激化による原油高がインフレ再燃観測・タカ派再評価リスクとして両会合の議論にどう影響するか、の3点が焦点。ドル円は介入警戒との綱引きが続きつつも、日米金利差が大きく縮まらない限り高値圏でのもみ合いが続きやすい。"
+    },
     usCredit: {
       summary: "週末最大の材料はAIデータセンター向け負債の膨張。BlackstoneがAirTrunkのシドニー新データセンター(SYD3)向け$30億(A$43億)ローンの組成を完了し、AI関連データセンター向け社債・ローンの年初来発行額は$3,345億(2025年通年$1,855億から急増)に達した。プライベートクレジットがAIインフラ投資の主要な資金供給源となっている構図が一段と鮮明になっている。継続テーマとしては上半期セカンダリー取引の過去最高更新($1,210億)、Ping Anの米プライベート市場投資停止、KKRのRoy Gori氏起用、easyJetを巡るApollo対Castlelakeの入札合戦(8/3・8/7回答期限)が引き続き進行中。",
       deals: [
@@ -1470,10 +1465,8 @@ const MARKET_REPORTS = [
       ],
       outlook: "💡 市場休場の週末につき日本関連の新規材料は限定的。円は¥163台の約40年ぶり安値圏で介入警戒と日銀利上げ観測の綱引きが続く。日本PE/プライベートクレジットの構造ストーリー($300B/年のM&A拡大がクレジット需要を牽引)に変化はなく、月曜は週末の中東リスク再燃(Houthiのサウジ製油所攻撃)を受けた半導体関連株の値動きが焦点となる可能性が高い。"
     },
-    takeaway: "土曜(7/25・EDT)は米国市場休場のため新規の株価材料は無いが、週末にかけていくつかの重要な地政学・市場材料が浮上し月曜の取引再開に向けたリスクプレミアムが積み上がりつつある。最大の材料はイエメンの親イラン武装組織フーシによるサウジアラムコのジザン製油所への弾道ミサイル攻撃で、サウジ国内製油所への直接攻撃としては約4年ぶり。米海軍もオマーン湾で対イラン海上封鎖網の突破を試みたタンカーを無力化したと発表しており、中東発の供給リスクは複層化している。原油価格は月内既に30%超上昇しており、月曜の取引再開後にさらなる上振れリスクが意識される。AI関連では、中国DeepSeekが創業者の対米AI競争を巡る発言の『炎上』を受け約$15億規模の第2回資金調達を一時停止したと報じられた。プライベートクレジット関連では、BlackstoneがAirTrunkのシドニー新データセンター向け$30億ローンの組成を完了し、AIデータセンター向け負債の年初来発行額は$3,345億(2025年通年を既に上回るペース)に達したことが判明。Yardeni Researchは中東・AI・関税を巡る不透明感を踏まえつつもS&P500の年末目標8,250を維持しており、来週7/28-29のFOMC会合を挟んだボラティリティの高い週明けが見込まれる。",
     narrative: "週末にかけ、中東情勢は新たなエスカレーションの局面を迎えた。イエメンの親イラン武装組織フーシは、サウジアラビア第5位の規模を持つアラムコのジザン製油所を弾道ミサイル3発で攻撃し、複数の煙が施設から立ち上るのが確認された。フーシによるサウジ国内製油所への直接攻撃は約4年ぶりで、これまで続いていた紅海・バブエルマンデブ海峡でのタンカー攻撃や海上封鎖宣言から、サウジ国内インフラへの直接攻撃という新たな段階へエスカレートした形だ。これと並行して米軍は金曜、オマーン湾で対イラン海上封鎖網を少なくとも4回突破しようとしたタンカーを無力化したと発表しており、ホルムズ海峡・紅海双方で供給リスクが同時に高まる複層的な構図となっている。||この地政学リスクの再燃は、来週のFOMC会合(7/28-29)を控えた金利・原油市場の綱引きを一段と複雑にする。原油価格は月内既に30%超上昇しており、Yardeni Researchは中東情勢の不安定化・AI関連の懸念・追加関税観測を注視しつつも、S&P500の年末目標8,250(現水準から約700ポイント上)を維持している。同社は5月半ば以降の『サマー・ストール』を経て、ボラティリティの高い局面から年後半にかけ上昇トレンドへ回帰すると予想するが、週末の製油所攻撃が原油の一段高・インフレ再燃観測を通じて10年債利回り(現在4.71%・2025年1月以来の高水準)にさらなる上昇圧力をかける可能性があり、FOMCのタカ派再評価リスクは残る。||AI関連では、中国のDeepSeekが第2回資金調達(約$15億規模、プレマネー評価額約$710億)を一時停止したと報じられた。背景には、6月に$70億を調達した第1回ラウンドの際、創業者の梁文峰氏がNvidia製チップへの依存や米国に対するAI技術の遅れについて語ったとされる報道が中国メディアで拡散し、本人が不快感を示したことがあるとされる。米中AI競争を巡るナラティブが資金調達の実務にまで波及した格好で、金曜のIntel決算後の設備投資懸念によるAI関連株売り(AMD-3.72%、Nvidia-1.01%)と合わせ、AI投資サイクルを巡る市場の神経質さが浮き彫りになっている。||プライベートクレジット市場では、AIインフラ向け負債の膨張という構造的なテーマが一段と鮮明になった。BlackstoneはAirTrunkが手掛ける400MW超のハイパースケールデータセンター『SYD3』(豪州シドニー)向けに$30億(A$43億)のローン組成を完了、Credit Agricole・DBS・Deutsche Bank・HSBC・ING・三菱UFJ・Morgan Stanley・UOBなど大手行8行超が参加した。AI関連データセンター向け社債・ローンの年初来発行額は$3,345億に達し、2025年通年の$1,855億を既に大きく上回るペースとなっている。上半期のセカンダリー取引過去最高更新($1,210億)、Ping Anの米プライベート市場投資停止、KKRのRoy Gori氏起用、easyJetを巡るApollo対Castlelakeの入札合戦(8/3・8/7回答期限)といった継続テーマと合わせ、プライベートクレジットが金利高止まり環境下でも資金供給機能を拡大し続けている構図が続く。||週明け以降の焦点は、①週末の中東エスカレーション(サウジ製油所攻撃)が月曜の原油・株式市場にどの程度のリスクプレミアムとして織り込まれるか、②来週7/28-29のFOMC会合(据え置き確率97%超が織り込み済みだが原油高によるインフレ再燃観測がタカ派再評価リスクを残す)、③AIデータセンター向け負債の膨張($3,345億)が金利高止まり環境下でのプライベートクレジット市場の脆弱性にどう跳ね返るか、の3点に整理される。日本では円が¥163台の約40年ぶり安値圏で推移する中、月曜の東京市場は週末の中東リスク再燃を受けた半導体関連株(Kioxia・Advantest・東京エレクトロン)の値動きが再び焦点となる可能性が高い。",
     peTraining: {
-      thirtySecSummary: "週末(7/25・土)のポイントは3点。①中東情勢が新段階へ——フーシがサウジ国内製油所(ジザン)を約4年ぶりに直接攻撃、米海軍もオマーン湾で対イラン封鎖突破船を無力化、原油は月内+30%超の上昇局面が続き月曜の取引再開でリスクプレミアム再拡大の可能性。②AI投資サイクルの神経質さが露呈——中国DeepSeekが創業者発言の『炎上』を受け約$15億の第2回資金調達を一時停止、金曜のIntel決算後のAI関連株安(AMD-3.72%等)と合わせAI設備投資を巡る警戒感が継続。③プライベートクレジットがAIインフラ資金供給を主導——BlackstoneがAirTrunkのSYD3データセンター向け$30億ローンを組成完了、AI関連データセンター負債の年初来発行額は$3,345億と2025年通年を既に上回るペース。来週7/28-29のFOMC会合が次の焦点。",
       interviewQA: [
         { q: "フーシがサウジ国内の製油所を直接攻撃したことは、これまでの紅海でのタンカー攻撃と比べてなぜ質的に異なるリスクとされるのですか", a: "タンカー攻撃は『輸送経路』の危険性を高め迂回コストや保険料上昇を通じて間接的に供給コストを引き上げますが、製油所という『生産インフラそのもの』への攻撃は、供給能力自体を物理的に毀損しうる点で質的に異なります。サウジアラムコのジザン製油所はサウジ第5位の規模を持つ主要な製油拠点であり、仮に稼働に実質的な支障が生じれば、迂回では代替できない供給減少に直結します。投資家としては、①攻撃対象が『輸送』か『生産』かでリスクの性質(一時的な価格変動か構造的な供給制約か)が異なること、②サウジのような主要産油国内インフラへの攻撃は、OPEC+の増産余地や戦略備蓄放出といった政策対応の是非を巡る議論を加速させること、③エスカレーションの『初回』事象は市場が最も敏感に反応しやすく、実際の被害規模が判明するまでの数日間はヘッドラインリスクによる価格の振れが大きくなりやすいこと、の3点を踏まえた冷静な状況把握が重要です。", },
         { q: "DeepSeekが資金調達を一時停止した背景には創業者の発言の『炎上』があるとされていますが、なぜそのような理由で数十億ドル規模の資金調達プロセスが止まるのですか", a: "大型の資金調達、特に高い評価額(今回はプレマネーで約$710億)を伴う調達においては、出資者は投資判断の前提として経営陣の情報発信の正確性・一貫性・地政学的な立ち位置を重視します。創業者がNvidia製チップへの依存や自国のAI技術の遅れについて率直に語ったとされる内容が意図せず拡散したことは、①中国国内でのナラティブ管理(政府・世論に対する自国AI産業の実力に関するメッセージング)との整合性、②米国の対中半導体輸出規制を巡る機微な話題への言及が招く規制上のリスク、③出資者に対して伝えていた見通しと公になった発言との整合性、といった複数の論点を出資者に再考させるきっかけになったと考えられます。投資家としては、AI企業への出資検討において、技術・財務指標だけでなく経営陣の対外的な情報発信リスクや地政学的なポジショニングも重要なデューデリジェンス項目であることを示す事例として捉えるべきです。", },
@@ -1494,9 +1487,99 @@ const MARKET_REPORTS = [
         valuation: "プロジェクトファイナンス型のローンは、テナント契約に基づく将来キャッシュフローの安定性(稼働率保証・契約期間)によって条件が左右される。AirTrunk案件の融資条件の妥当性は、SYD3の想定稼働率・テナント構成(ハイパースケーラーとの契約内容)と、AIインフラ向け貸付市場全体のスプレッド水準との比較で判断される必要がある。来週のFOMC会合(7/28-29)の結果と金利動向が、AIインフラ向け融資コスト全体に引き続き影響を与える見込み。"
       }
     }
+  },
+  {
+    date: "2026-07-27",
+    dateLabel: "Jul 27(日中速報)",
+    tokenEstimate: 17800,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7387.76, change:-24.22,pct:-0.33, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:24906.95,change:-68.87,pct:-0.28, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:52133.05,change:185.80,pct:0.36,  dir:"up" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:64931.19,change:320.04,pct:0.50,  dir:"up" }
+    },
+    macro: {
+      "10Y米国債":    { value:"4.63%",   dir:"down" },
+      "2Y米国債":     { value:"~4.25%",  dir:"flat" },
+      "VIX":          { value:"17.70",   dir:"down" },
+      "DXY":          { value:"~101.2",  dir:"down" },
+      "WTI原油":      { value:"~$83.4",  dir:"down" },
+      "Gold金":       { value:"~$4,090", dir:"up"   },
+      "ドル円":       { value:"¥163.5",  dir:"flat" },
+      "日10年国債":   { value:"~2.77%",  dir:"down" },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.75%", dir:"flat" }
+    },
+    movers: [
+      { ticker:"AMD",   name:"AMD",              pct:-7.0, dir:"down", why:"中国国営系企業が半導体製造装置の量産を開始したとの報道を受け、米中AI半導体競争の優位性への懸念からチップ株全般が急落" },
+      { ticker:"NVDA",  name:"Nvidia",           pct:-4.2, dir:"down", why:"同上の中国製造装置量産報道を受けASML・AMDと共に大幅安。CXMTの記録的IPOも中国半導体産業の技術的キャッチアップを象徴する材料として意識された" },
+      { ticker:"AAPL",  name:"Apple",            pct:3.5,  dir:"up",   why:"ダウ平均を押し上げる主要銘柄として堅調、チップ株安の中で相対的な資金の逃避先として買われた" },
+      { ticker:"FBRX",  name:"Forte Biosciences",pct:39.0, dir:"up",   why:"アルジェニクス(argenx)による$22億(1株$77・全額現金)での買収合意を受け急伸" },
+      { ticker:"4063.T",name:"Shin-Etsu Chemical",pct:-8.06,dir:"down", why:"半導体材料大手。中国の半導体製造装置量産報道を受け東京市場でも同分野に売りが波及し日経平均の下落率トップに" },
+      { ticker:"3697.T",name:"Shift Inc",        pct:9.32, dir:"up",   why:"IT検証・DX関連銘柄。中東情勢の緊張緩和を受けたリスクオン地合いで日経平均の上昇率トップ" }
+    ],
+    events: [
+      { icon:"🕊️", title:"米・イラン、攻撃を2日連続で一時停止 — トランプ氏『イラン側の要請』、ホルムズ海峡通航正常化を巡り協議", detail:"米国とイランは週末からの軍事攻撃を2日連続で停止。トランプ大統領は停止が『イラン側の要請』によるものだと述べつつ、新たな停戦合意に至らなければ攻撃を再開すると警告した。協議はイランがホルムズ海峡でのタンカー通航をより自由に認めるかどうかが焦点とされ、トランプ氏はネタニヤフ首相との会談も予定している。", sourceUrl:"https://www.cnbc.com/2026/07/27/us-iran-war-trump-hormuz.html" },
+      { icon:"🛢️", title:"原油が急落、WTI・ブレントともに週明けで7%超安 — 米・イラン攻撃停止観測でリスクプレミアムが急速に剥落", detail:"週末のホルムズ海峡緊迫化を受けブレントは一時$100超え・年初来+50%まで買われていたが、米・イラン攻撃停止の観測を受け週明けに急反落。WTIは$83台まで下げ、積み上がっていた地政学リスクプレミアムの大半が一日で剥落する乱高下となった。ブレントは年初来ではなお大幅高を維持している。", sourceUrl:"https://www.bloomberg.com/news/articles/2026-07-26/oil-tumbles-as-us-and-iran-pause-military-strikes-markets-wrap" },
+      { icon:"🇨🇳", title:"中国国営系企業が半導体製造装置の量産開始と報道 — Nvidia・AMD・ASMLなどチップ株に急落圧力", detail:"Bloomberg等の報道によると、中国の国家後ろ盾を受けた企業が主要な半導体製造装置の量産を開始したとされ、米国の半導体製造装置における優位性への競争的脅威として市場が受け止めた。Nvidia・ASMLは4%超安、AMDは7%安、Micron・Teradyneにも売りが波及し、ナスダックは寄り付き後の上昇分を帳消しにする展開となった。", sourceUrl:"https://blockonomi.com/semiconductor-stocks-plunge-as-chinas-chipmaking-breakthrough-shakes-markets/" },
+      { icon:"📈", title:"中国CXMT、上海STAR市場に上場初日+466% — 2026年アジア最大のIPO、中国上場企業で時価総額トップに", detail:"中国第4位のDRAMメーカーCXMTが約$86億(98億ドル規模)を調達し2026年アジア最大のIPOとして上海STAR市場に上場、初日に+466%急騰し時価総額約$4,880億で中国の上場企業として最大となった。単日売買代金は約1,410億元でA株史上最大級を記録し、中国半導体産業の資本市場での存在感拡大を象徴する材料となった。", sourceUrl:"https://www.washingtonpost.com/business/2026/07/27/cxmt-china-memory-chips-debut-shares/dc70bf66-8974-11f1-8912-d71e69d679d7_story.html" },
+      { icon:"🗓️", title:"今週は決算・金融政策イベントが集中 — FOMC(7/29)・日銀会合(7/30-31)、Microsoft/Meta/Amazon/Apple決算、Q2GDP速報値", detail:"今週はFOMC(7/29、ウォーシュ議長)・日銀会合(7/30-31)という主要2中銀の政策判断に加え、Q2GDP速報値(市場予想+2.3%・AI設備投資とワールドカップ特需が押し上げ要因)、6月PCE、Microsoft・Meta(水)、Amazon・Apple(木)の決算が集中する重要週。ボラティリティの高い展開が続く見込み。", sourceUrl:"https://www.kiplinger.com/investing/economy/this-weeks-economic-calendar" }
+    ],
+    rateWatch: {
+      summary: "今週はFOMC(7/29、ウォーシュ議長就任後2回目の会合)と日銀会合(7/30-31)が重なる金融政策の重要週。FOMCは据え置き(3.50-3.75%)が有力視される一方、CME FedWatchでは9月会合での利上げ観測が約82%まで上昇するなど『higher for longer』シナリオの織り込みが進行している。日銀も1.00%据え置きが有力ながら、展望レポートでの成長率見通し上方修正が焦点。週末の中東情勢緊迫化とその後の攻撃停止という原油価格の乱高下が、両中銀のインフレ見通し議論に直接影響する状況が続いている。",
+      items: [
+        { icon:"🇺🇸", title:"FOMC、7/29に政策金利発表 — ウォーシュ議長体制で2回目の会合、据え置き優勢も9月利上げ観測が82%に上昇", detail:"現行3.50-3.75%からの据え置きが有力視される中、CME FedWatchでは9月会合での利上げ確率が約82%まで上昇しており、根強いインフレ圧力を背景に『higher for longer』への織り込みが進んでいる。ドット・プロットの更新はない非SEP会合だが、午後2時30分からのウォーシュ議長会見でのトーンが焦点。", sourceUrl:"https://www.cnbc.com/2026/05/13/kevin-warsh-wins-senate-confirmation-as-the-next-federal-reserve-chair.html" },
+        { icon:"🇯🇵", title:"日銀、7/30-31に金融政策決定会合 — 1.00%据え置き有力、展望レポートでの成長率上方修正が焦点", detail:"6月に0.75%から1.00%へ利上げ済みの日銀は、今会合では据え置きが有力視される。AI・半導体関連需要の底堅さを背景に成長率見通しを上方修正するとの観測があり、円安・実質金利マイナスへの言及の有無が次回以降の利上げペースを占う材料として注目される。", sourceUrl:"https://www.japantimes.co.jp/business/2026/07/18/economy/boj-july-meeting-assessment/" },
+        { icon:"🛢️", title:"原油急落が両中銀のインフレ見通しに直接影響 — ブレント、$100超えから一夜で7%超下落", detail:"週末のホルムズ海峡緊迫化でブレントは年初来+50%まで上昇し$100超えとなったが、米・イランの攻撃停止観測を受け週明けに7%超反落。このインフレ見通しの急変動が、今週のFOMC・日銀会合双方の政策判断・声明文のトーンに直接的な影響を与える可能性がある。", sourceUrl:"https://www.washingtonpost.com/business/2026/07/26/oil-prices-crude-iran-shipping/11044586-8948-11f1-8912-d71e69d679d7_story.html" },
+        { icon:"💴", title:"ドルが軟化、米10年債利回りは4.63%へ低下 — 中東情勢緩和と原油安が『タカ派後退』観測を後押し", detail:"米・イラン攻撃停止と原油急落を受け、DXYは~101.2まで軟化、米10年債利回りは4.71%から4.63%へ低下。ドル円は¥163台後半で約40年ぶり安値圏が続く一方、日本10年国債利回りも2.77%へ低下しグローバルな金利低下の流れに追随している。", sourceUrl:"https://www.cnbc.com/2026/07/27/dollar-pulls-back-as-us-iran-attacks-pause-oil-drops.html" }
+      ],
+      outlook: "💡 FOMC(7/29)・日銀会合(7/30-31)がともに据え置きを基本シナリオとしつつ、①原油急落による短期的なインフレ懸念後退とCME FedWatchが示す9月利上げ観測82%という『ねじれ』をどう整理するか、②日銀の成長率見通し上方修正が円安是正への地ならしとなるか、③米・イラン攻撃停止が本格的な停戦につながるか(不透明感が再燃すれば原油・金利の巻き戻しリスク)、の3点が焦点。週半ばのMicrosoft・Meta・Amazon・Apple決算も金利・AI投資サイクル双方の思惑に影響を与える可能性が高い。"
+    },
+    usCredit: {
+      summary: "最大の材料はPIMCOがOracle/Related DigitalのミシガンAIデータセンター向け$160億調達のうち$100億を引き受けたこと — 単一施設向けテック負債案件として過去最大規模。一方でQ2の米ダイレクトレンディング組成額は前期比▲55%の$335.9億(2023年Q2以来の低水準)に急減しており、メガディールと市場全体の停滞が併存する『二極化』が一段と鮮明になっている。上半期セカンダリー取引の過去最高更新($1,210億)は最終集計でマネジャー主導型が54%と4年ぶりにLP主導型を上回ったことが判明、継続テーマとして進行中。",
+      deals: [
+        { title:"PIMCO、Oracle/Related DigitalのミシガンAIデータセンター向け$160億調達のうち$100億を引受", tag:"AIデータセンター", tagCls:"t-blue", meta:"PIMCO / Oracle / Related Digital ｜ $16.0B(うちPIMCO $10.0B) ｜ 単一施設向けテック負債で過去最大", body:"ミシガン州セイラン・タウンシップのOracleキャンパス(OpenAIワークロード向け)を支える$140億の社債発行(クーポン7.5%・98.75で価格決定・2045年満期)のうち約$100億をPIMCO運用ファンドが引受。単一施設向けテック負債パッケージとしては過去最大規模とされる。", sig:"プライベートクレジットがハイパースケールAIインフラ投資の中核資金源として存在感を一段と拡大", sourceUrl:"https://www.bloomberg.com/news/articles/2026-07-27/why-pimco-is-betting-billions-on-ai-data-centers-despite-the-risks" },
+        { title:"米ダイレクトレンディング、Q2組成額が前期比▲55%の$335.9億 — 2023年Q2以来の低水準", tag:"市場動向", tagCls:"t-red", meta:"業界全体 ｜ $33.59B(Q2) ｜ 前期$74.67Bから急減", body:"メガディール(Invited ClubsのKSL Capital PartnersによるApolloからの買収を支える$17億超の融資等)は継続する一方、組成額全体は大きく縮小。複数のノントレーデッドBDCで解約圧力が強まっている兆候も報告されている。", sig:"メガディール集中と裾野の停滞が併存する二極化が一段と鮮明に", sourceUrl:"https://www.crowdfundinsider.com/2026/07/289205-us-private-credit-market-closes-q2-quietly-punctuated-by-mega-deal-and-increasing-redemption-pressures/" },
+        { title:"上半期セカンダリー取引$1,210億(過去最高)、最終集計でマネジャー主導型が54%と4年ぶりにLP主導型を上回る(継続)", tag:"セカンダリー", tagCls:"t-blue", meta:"業界全体 ｜ $121.0B(H1) ｜ シングルアセット継続ファンドが主流", body:"Evercore/Bloombergの最終集計で、GP主導のマネジャー主導型セカンダリーが全体の54%を占め、4年ぶりにLP主導型の売却を上回ったことが判明。資産クラス別ではPEが約2/3、インフラ16%、プライベートクレジット11%。", sig:"GP主導型セカンダリーの主流化が構造的に定着", sourceUrl:"https://www.bloomberg.com/news/articles/2026-07-21/secondary-deals-surge-to-record-121-billion-on-trophy-assets" },
+        { title:"Hercules Capital、2031年満期$3.25億の社債を発行", tag:"資金調達", tagCls:"t-green", meta:"Hercules Capital ｜ $325M ｜ クーポン6.300%・2031年満期", body:"BDC(事業開発会社)大手のHercules Capitalが$3.25億規模の社債を発行。金利高止まり環境下でも大手BDCの資本市場アクセスは引き続き良好であることを示す。", sig:"大手BDCの資金調達環境は良好、中小プレイヤーとの格差拡大が続く可能性", searchKey:"Hercules Capital notes offering 325 million July 2026" }
+      ],
+      outlook: "💡 PIMCOのOracle向け$100億引受は、プライベートクレジットがハイパースケールAI投資の中核的な資金供給源へと役割を拡大している象徴的な事例。一方でQ2のダイレクトレンディング組成額が前期比55%減という急減速は、メガディール集中の裏で中間・小規模案件の停滞が進んでいることを示唆し、二極化リスクへの目配りが必要。今週のFOMC(7/29)の結果次第でHYスプレッド・データセンター向け融資コストへの波及も注視点。",
+    },
+    jpCredit: {
+      summary: "Kakaku.com争奪戦がさらに激化 — EQTが1株¥3,440-3,460(約$21.25)へTOB価格を引き上げ、7/1のBain Capital・LY Corp連合の¥3,384を上回った。Bain・LY連合はさらなる対抗引き上げを検討中と報じられている。KKRによる太陽ホールディングス非公開化は10月上旬のTOB開始に向け順調に進行中(1株¥4,750・約117%プレミアム)。BlackstoneはNippon Lifeと約¥1.5兆(約$94億)規模のプライベートクレジット・パートナーシップを締結、APAC最大級の複数資産クラス提携の一つとなる。",
+      deals: [
+        { title:"Kakaku.com争奪戦、EQTが¥3,440-3,460へTOB価格引き上げ — Bain・LY連合はさらなる対抗を検討中", tag:"バイアウト", tagCls:"t-purple", meta:"EQT vs Bain Capital+LY Corp ｜ ~¥670B(~$4.1B) ｜ 競合TOB・価格引き上げ合戦", body:"EQTが1株¥3,440-3,460(約$21.25)へ価格を引き上げ、7/1のBain・LY連合の¥3,384を上回った。Bain・LY連合はさらに高い対抗提案を検討中と報じられており、日本の競合TOB案件として過去最大級の価格引き上げ合戦に発展している。", sig:"日本での競合TOBにおける価格引き上げ合戦が新たな常態に", sourceUrl:"https://www.bloomberg.com/news/articles/2026-07-24/bain-and-ly-are-said-to-mull-higher-bid-for-kakaku-rivaling-eqt" },
+        { title:"KKR・太陽ホールディングス非公開化、10月上旬のTOB開始に向け順調に進行(継続)", tag:"バイアウト", tagCls:"t-purple", meta:"KKR ｜ ~¥500B(~$3.1-3.2B) ｜ TOB価格¥4,750・約117%プレミアム", body:"KKRの買収ビークルKJ005によるTOBは1株¥4,750(6カ月平均株価に対し約117%プレミアム)で、独禁法・投資規制上の承認待ちを経て10月上旬の開始が見込まれている。", sig:"化学・電子材料セクターでの非公開化トレンドが継続", sourceUrl:"https://www.bloomberg.com/news/articles/2026-04-01/kkr-plans-to-take-japan-s-taiyo-private-in-3-2-billion-deal" },
+        { title:"Blackstone、Nippon Lifeと約¥1.5兆のプライベートクレジット・パートナーシップを締結", tag:"マーケット参入", tagCls:"t-orange", meta:"Blackstone / Nippon Life ｜ ~¥1.5T(~$9.4B) ｜ 5年間・プライベートクレジット/構造化クレジット・不動産", body:"日本生命がBlackstoneとのMOUに基づき、今後5年間でプライベートクレジット・構造化クレジット・不動産へ約¥1.5兆(約$94億)を配分する提携を締結。APAC最大級の複数資産クラス・プライベートクレジット提携の一つ。", sig:"国内機関投資家による海外プライベートクレジット運用会社への大型資金配分が加速", sourceUrl:"https://www.blackstone.com/news/press/nippon-life-insurance-company-enters-into-strategic-partnership-with-blackstone/" },
+        { title:"日本向け外資系PEのM&A、上半期は139件・¥3.83兆(前年比+47.3%)で過去最高", tag:"マーケット見通し", tagCls:"t-blue", meta:"市場全体 ｜ 139件・¥3.83T ｜ 前年比+47.3%", body:"海外PEファンドによる日本企業向けM&Aが上半期として過去最高を更新。Goldman Sachsは日本のバイアウト活動について『まだ序盤』との見方を示しており、円安・ガバナンス改革を背景とした構造的な拡大トレンドが続いている。", sig:"外資系PEの日本市場参入は依然として拡大局面の序盤", sourceUrl:"https://finance.biggo.com/news/b9ba1827-edf0-459f-a461-caa18d5fee43" }
+      ],
+      outlook: "💡 Kakaku.com争奪戦は価格引き上げの応酬が続き、日本の競合TOB市場の成熟度を象徴する事例に発展。KKR太陽HD非公開化は10月のTOB開始に向け着実に進行しており、Blackstone・Nippon Lifeの大型提携と合わせ、海外運用会社による日本プライベートクレジット・PE市場への資金流入が加速している構図が鮮明。今週の日銀会合(7/30-31)での成長率見通し・円安への言及が、この資金流入トレンドの持続性を占う材料となる。"
+    },
+    narrative: "週末にかけて中東情勢は新たな局面を迎えた。ホルムズ海峡を巡る緊張が激化しブレント原油が一時$100を超え年初来+50%まで買われる場面があったが、米国とイランは週末からの軍事攻撃を2日連続で停止。トランプ大統領は停止が『イラン側の要請』によるものだと述べつつ、新たな停戦合意に至らなければ攻撃を再開すると警告しており、協議はイランがホルムズ海峡でのタンカー通航をより自由に認めるかどうかが焦点とされる。この攻撃停止観測を受け、原油は週明けに一日で7%超という急激な反落を見せ、積み上がっていた地政学リスクプレミアムの大半が短期間で剥落する乱高下となった。||この原油急落が株式市場に安心感をもたらす一方、半導体セクターには全く別の材料が重石となった。中国の国家後ろ盾を受けた企業が主要な半導体製造装置の量産を開始したとの報道を受け、米国の製造装置における技術的優位性への競争的脅威が意識され、Nvidia・ASMLは4%超安、AMDは7%安まで売られた。同じタイミングで中国のDRAMメーカーCXMTが上海STAR市場に上場し初日+466%と急騰、約$86億を調達し2026年アジア最大のIPOとして中国上場企業の時価総額トップ(約$4,880億)に躍り出たことも、中国半導体産業の資本市場での存在感拡大を印象づける材料となった。||この結果、米国株式市場は方向感の乱れる展開となった。ダウ平均はApple(+3.5%)などの堅調さと原油安による資金の巻き戻しを支えに+0.36%の52,133.05まで上昇した一方、ナスダックは寄り付き後の上昇分をチップ株安が帳消しにし-0.28%の24,906.95、S&P500も-0.33%の7,387.76と小幅安で推移した。東京市場では日経平均が中東情勢緩和を好感し+0.50%の64,931.19で取引を終え2営業日ぶりに反発したが、Shin-Etsu Chemical(-8.06%)など半導体材料株には中国の製造装置量産報道を受けた売りが波及、上昇率トップのShift Inc(+9.32%)との明暗が分かれた。今週はFOMC(7/29)・日銀会合(7/30-31)に加えQ2GDP速報値・Microsoft/Meta/Amazon/Apple決算が集中する重要週となる。||プライベートクレジット市場では、AIインフラ向け資金供給の規模がさらに一段階拡大した。PIMCOはOracle/Related DigitalのミシガンAIデータセンター(OpenAIワークロード向け)を支える$160億の資金調達のうち$100億を引受、単一施設向けテック負債案件として過去最大規模となった。一方でQ2の米ダイレクトレンディング組成額は前期比▲55%の$335.9億(2023年Q2以来の低水準)に急減しており、メガディールへの資金集中と市場全体の停滞が併存する『二極化』が一段と鮮明になっている。上半期セカンダリー取引の過去最高更新($1,210億)については最終集計でマネジャー主導型が全体の54%を占め4年ぶりにLP主導型を上回ったことが判明、GP主導型セカンダリーの主流化が構造的に定着しつつある様子がうかがえる。||日本では、Kakaku.comを巡る争奪戦がさらに激化した。EQTが1株¥3,440-3,460(約$21.25)へTOB価格を引き上げ、7/1のBain Capital・LY Corp連合の¥3,384を上回り、Bain・LY連合はさらなる対抗引き上げを検討中と報じられている。KKRによる太陽ホールディングス非公開化(1株¥4,750・約117%プレミアム)は10月上旬のTOB開始に向け順調に進行中で、BlackstoneはNippon Lifeと約¥1.5兆(約$94億)規模のプライベートクレジット・パートナーシップを締結、APAC最大級の複数資産クラス提携の一つとなった。海外PEファンドによる日本企業向けM&Aは上半期139件・¥3.83兆(前年比+47.3%)で過去最高を更新しており、Goldman Sachsは『まだ序盤』との見方を示す。今週の日銀会合(7/30-31)での成長率見通し・円安への言及が、この資金流入トレンドの持続性を占う材料として注目される。",
+    peTraining: {
+      interviewQA: [
+        { q: "中国のCXMTが上場初日に+466%も上昇したことは、単なる中国半導体企業の成功物語として片付けてよいものでしょうか、それとも投資家にとってより広い示唆を持つ事象と捉えるべきでしょうか", a: "この事象は二つの異なるレイヤーで解釈する必要があります。第一に、個別銘柄としてのCXMTのIPOポップは、上場初日の需給の歪み(浮動株の少なさ・投機的な資金流入)を反映した側面が大きく、必ずしも企業のファンダメンタルズを正確に織り込んだ株価とは言えません。CXMTのように上場直後に数百パーセント規模で急騰する事例は、その後数週間から数カ月にわたり大きな株価変動(ボラティリティ)を伴うことが多く、短期的な値動きだけで投資判断を下すのは危険です。第二に、より重要なのはマクロ的な示唆です。CXMTが中国上場企業として時価総額トップに躍り出たこと、および同時期に中国の国家後ろ盾企業が半導体製造装置の量産を開始したと報じられたことは、中国の半導体産業(メモリ・製造装置の両面)が技術的キャッチアップを加速させているというシグナルとして市場に受け止められました。投資家としては、①個別企業の株価動向と、②業界構造・地政学的な競争環境の変化、という二つのレイヤーを区別して評価すること、③米中の半導体を巡る技術覇権競争が投資テーマとして一段と重要性を増していること、の3点を意識する必要があります。" },
+        { q: "米ダイレクトレンディング市場でQ2の組成額が前期比55%減少した一方、PIMCOがOracle案件で$100億という過去最大級の引受を行うなど、一見矛盾するような動きが同時に起きているのはなぜですか", a: "この現象は『市場の二極化(バーベル化)』として理解するのが適切です。プライベートクレジット市場全体を見ると、AIインフラ・データセンターのような超大型・高格付け・長期契約に裏付けられた案件には、PIMCOのような大手運用会社の資金が引き続き潤沢に流入しています。これはOracleのようなクレジットの信頼性が高い借り手、かつテナント契約(この場合OpenAIのワークロード)に基づく安定的なキャッシュフローが見込める案件であるためです。一方で、中堅・中小企業向けの伝統的なダイレクトレンディング案件は、金利高止まりが長期化する中で借り手側のM&A・LBO活動自体が停滞しており、新規組成の絶対量が細っています。さらに一部のノントレーデッドBDCでは解約(リデンプション)圧力が強まっているとの報告もあり、資金の出し手側にも選別的な姿勢が広がっています。投資家としては、①『プライベートクレジット市場全体が拡大している』という総論だけでなく、案件の格付け・規模・セクターによって資金の流入状況が大きく異なることを認識すること、②メガディールの増加が必ずしも市場全体の健全性を示すものではなく、むしろ質への逃避(フライト・トゥ・クオリティ)が進んでいる兆候である可能性があること、の2点が重要な着眼点です。" },
+        { q: "原油価格が週末にかけて一時$100超えまで急騰した後、週明けにわずか1日で7%超急落するという乱高下は、FOMC・日銀という主要中銀の政策判断にとってどのような課題を突きつけますか", a: "中央銀行の金融政策は本質的に『先行きの見通し』に基づいて判断が下されるため、このような短期間での急激な原油価格の変動は政策決定に大きな不確実性をもたらします。具体的には、①データの『ノイズ』と『トレンド』の峻別の難しさ——週末の原油高が一時的な地政学リスクプレミアムなのか、それとも構造的な供給制約を反映した持続的な動きなのかを、会合直前という限られた時間内で見極める必要があること、②フォワードガイダンスの信頼性——中央銀行が仮に原油高を理由にタカ派的なメッセージを発した直後に原油が急落した場合、市場からは政策判断の一貫性を疑われるリスクがあること、③複数のシナリオへの備え——CME FedWatchが示す9月利上げ観測82%という『タカ派的な織り込み』と、原油急落による短期的なインフレ懸念後退という『ハト派材料』が同時に存在する『ねじれ』状態にどう対応するか、という3つの課題が挙げられます。投資家としては、中央銀行の声明文・会見での『どのデータ・期間を重視しているか』という言及に注目し、単発の価格変動に過度に反応しない冷静な政策運営が行われているかを見極めることが重要です。" }
+      ],
+      keyConceptToday: {
+        term: "競合TOB(Bidding War)における価格引き上げ合戦と『独立委員会』の役割",
+        definition: "同一の買収対象企業に対して複数の買い手候補(この場合EQTとBain Capital+LY Corp連合)が競合してTOB(株式公開買付け)を提示し、対象企業の取締役会・独立委員会の評価や株主の反応を見ながら段階的に買付価格を引き上げていく状況。Kakaku.comのケースでは、EQTが¥3,384(Bain・LY連合の当初提案)を上回る¥3,440-3,460へ引き上げ、さらにBain・LY連合が対抗を検討していると報じられている。",
+        background: "従来、日本のTOB市場では友好的・単独提案が主流だったが、コーポレートガバナンス改革(取締役会の独立性強化、少数株主保護の徹底)が進んだ結果、対象企業の独立委員会が『より高い株主価値』を追求する義務を負うようになり、複数の買い手候補が競合する『オークション形式』のTOBが増加している。Kakaku.comやKioxia x Bain Capitalのケースなど、2025-2026年にかけて日本で競合TOBが常態化しつつある。",
+        practical: "①独立委員会の役割——対象企業の独立委員会は、単に最初に提示された価格を受け入れるのではなく、市場に情報を開示し他の買い手候補からの提案機会を確保する『マーケット・チェック』のプロセスを経る義務を負う。②価格発見メカニズム——複数の買い手が競合することで、対象企業の『真の企業価値』により近い価格が市場メカニズムを通じて発見される効果がある一方、買収側の資金コスト・IRR(内部収益率)にとってはリターンを圧迫する要因となる。③タイミングとプロセス管理——買収合戦が長期化すると対象企業の経営に不確実性をもたらすため、独立委員会は入札期限を設定し合理的な期間内で決着させる責任を負う。④スクイーズアウト——最終的に過半数を取得した買い手は、残存する少数株主から強制的に株式を取得する手続き(スクイーズアウト)を経て完全子会社化する。",
+        context2026: "2026年の日本市場では、Kakaku.comの争奪戦(EQT vs Bain+LY Corp)、easyJetの争奪戦(Apollo vs Castlelake、こちらは英国案件)など、クレジット運用会社・伝統的PEを問わず複数の買い手候補が競合するTOBが常態化している。海外PEファンドによる日本企業向けM&Aが上半期139件・¥3.83兆(前年比+47.3%)で過去最高を更新する中、資金力のある大手運用会社同士の競合が今後さらに価格水準を押し上げる可能性がある。"
+      },
+      dealAnalysis: {
+        title: "PIMCO、Oracle/Related DigitalのミシガンAIデータセンター向け$160億調達のうち$100億を引受 — 単一施設向けテック負債で過去最大",
+        thesis: "PIMCOはOracleがミシガン州セイラン・タウンシップに建設するAIデータセンター(OpenAIワークロード向け)を支える$140億の社債発行(クーポン7.5%・98.75で価格決定・2045年満期)のうち約$100億をPIMCO運用ファンドが引受した。単一施設向けのテック関連負債パッケージとしては過去最大規模とされ、プライベートクレジット・債券市場がハイパースケールAIインフラ投資の中核的な資金供給源としての役割を一段と拡大していることを象徴する取引となった。",
+        timing: "AI需要の急拡大を背景に、Oracle・OpenAIのようなハイパースケーラー/AI企業が長期のデータセンター容量確保を急いでいる局面が続いている。金利高止まり環境下でも、Oracleのような高格付け企業かつ長期テナント契約に裏付けられた案件には大手機関投資家の資金が潤沢に流入しており、PIMCOのような伝統的債券運用会社もプライベートクレジット領域への関与を積極化させている。",
+        downside: "①テナント集中リスク——OpenAIという単一の大口テナントへの依存度が高い場合、そのテナントの信用力・契約継続意思が案件全体のリスクを大きく左右する。②2045年満期という超長期のローン期間中、AI需要の実需性(computeの実際の利用率)が想定通り持続するかという構造的な不確実性が残る。③金利高止まりが長期化した場合、7.5%というクーポン水準でも将来の借り換え・追加調達コストが上昇するリスク。④Q2の米ダイレクトレンディング市場全体が前期比55%減という急減速を見せる中、メガディールへの資金集中が市場全体の健全性を過大評価させる可能性がある点への注意が必要。",
+        valuation: "クーポン7.5%・価格98.75(2045年満期)という発行条件は、AIデータセンター向け負債市場における『高格付け・長期契約案件』のプレミアム水準を反映していると見られる。今後のFOMC(7/29)の結果次第で長期金利水準が変動すれば、同様のプロジェクトファイナンス型調達のコスト構造にも影響が及ぶ可能性がある。単一テナント依存度・稼働率保証の水準など、案件固有の質を継続的に見極める必要がある。"
+      }
+    }
   }
 ];
-// ── END_DATA ──  (last sync: 2026-07-25 14:01 EDT / rev16)
+// ── END_DATA ──  (last sync: 2026-07-27 13:15 EDT / rev17)
 </script>
 
 <script>
@@ -1510,30 +1593,45 @@ function cClass(dir){ return dir==='up'?'c-up':dir==='down'?'c-down':'c-flat'; }
 function macroValClass(dir){ return dir==='up'?'up':dir==='down'?'down':''; }
 function arrow(dir){ return dir==='up'?'▲':dir==='down'?'▼':'‒'; }
 
-function newsLinksEvent(searchKey){
-  if(!searchKey) return '';
-  const q = encodeURIComponent(searchKey);
-  const wsj = 'https://www.wsj.com/search?query=' + q + '&mod=searchresults_viewallresults';
-  const ft = 'https://www.ft.com/search?q=' + q;
-  const jp = 'https://news.google.com/search?q=' + q + '&hl=ja&gl=JP';
-  return '<a class="ev-link ev-link-wsj" href="' + wsj + '" target="_blank" rel="noopener">WSJで見る</a> ' +
-         '<a class="ev-link ev-link-ft" href="' + ft + '" target="_blank" rel="noopener">FTで見る</a> ' +
-         '<a class="ev-link ev-link-jp" href="' + jp + '" target="_blank" rel="noopener">関連ニュース</a>';
-}
-function newsLinksDeal(searchKey){
-  if(!searchKey) return '';
-  const q = encodeURIComponent(searchKey);
-  const wsj = 'https://www.wsj.com/search?query=' + q + '&mod=searchresults_viewallresults';
-  const ft = 'https://www.ft.com/search?q=' + q;
-  const jp = 'https://news.google.com/search?q=' + q + '&hl=ja&gl=JP';
-  return '<div class="deal-links">' +
-    '<a class="deal-link dl-wsj" href="' + wsj + '" target="_blank" rel="noopener">WSJ</a>' +
-    '<a class="deal-link dl-ft" href="' + ft + '" target="_blank" rel="noopener">FT</a>' +
-    '<a class="deal-link dl-jp" href="' + jp + '" target="_blank" rel="noopener">関連ニュース</a>' +
-  '</div>';
+function newsLink(item, isDeal){
+  if(!item) return '';
+  let url = item.sourceUrl;
+  let label = '記事を読む →';
+  if(!url && item.searchKey){
+    url = 'https://www.google.com/search?q=' + encodeURIComponent(item.searchKey);
+    label = '関連ニュースを見る';
+  }
+  if(!url) return '';
+  const a = '<a class="' + (isDeal ? 'deal-link' : 'ev-link') + '" href="' + url + '" target="_blank" rel="noopener">' + label + '</a>';
+  return isDeal ? '<div class="deal-links">' + a + '</div>' : a;
 }
 
-function renderIdxCard(idx){
+function sparkline(key){
+  const end = currentIdx;
+  const start = Math.max(0, end - 4); // last 5 trading days incl. today
+  const pts = [];
+  for(let i = start; i <= end; i++){
+    const idx = MARKET_REPORTS[i] && MARKET_REPORTS[i].indices && MARKET_REPORTS[i].indices[key];
+    if(idx && typeof idx.value === 'number') pts.push(idx.value);
+  }
+  if(pts.length < 2) return '';
+  const w = 88, h = 26, pad = 3;
+  const min = Math.min.apply(null, pts), max = Math.max.apply(null, pts);
+  const range = (max - min) || 1;
+  const stepX = (w - pad * 2) / (pts.length - 1);
+  const coords = pts.map(function(v, i){
+    return [pad + i * stepX, pad + (h - pad * 2) * (1 - (v - min) / range)];
+  });
+  const path = coords.map(function(c, i){ return (i === 0 ? 'M' : 'L') + c[0].toFixed(1) + ',' + c[1].toFixed(1); }).join(' ');
+  const last = coords[coords.length - 1];
+  const dotColor = pts[pts.length - 1] >= pts[0] ? '#10b981' : '#ef4444';
+  return '<svg class="idx-spark" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" aria-hidden="true">' +
+    '<path d="' + path + '" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<circle cx="' + last[0].toFixed(1) + '" cy="' + last[1].toFixed(1) + '" r="3" fill="' + dotColor + '"/>' +
+  '</svg>';
+}
+
+function renderIdxCard(idx, key){
   if(!idx) return '';
   const chg = (typeof idx.change === 'number') ? (idx.change>=0?'+':'') + fmtNum(idx.change) : idx.change;
   const pct = (typeof idx.pct === 'number') ? (idx.pct>=0?'+':'') + idx.pct.toFixed(2) + '%' : idx.pct;
@@ -1541,6 +1639,7 @@ function renderIdxCard(idx){
     '<div class="idx-name">' + idx.flag + ' ' + idx.name + '</div>' +
     '<div class="idx-val">' + fmtNum(idx.value) + '</div>' +
     '<div class="idx-chg ' + cClass(idx.dir) + '">' + arrow(idx.dir) + ' ' + chg + ' (' + pct + ')</div>' +
+    sparkline(key) +
   '</div>';
 }
 
@@ -1575,7 +1674,7 @@ function renderEvents(events){
   return events.map(function(e){
     return '<div class="ev-item"><div class="ev-title">' + e.icon + ' ' + e.title + '</div>' +
       '<div class="ev-detail">' + e.detail + '</div>' +
-      newsLinksEvent(e.searchKey) + '</div>';
+      newsLink(e, false) + '</div>';
   }).join('');
 }
 
@@ -1586,7 +1685,7 @@ function renderDeal(d){
     '<div class="deal-meta">' + d.meta + '</div>' +
     '<div class="deal-body">' + d.body + '</div>' +
     '<div class="deal-sig">' + d.sig + '</div>' +
-    newsLinksDeal(d.searchKey) +
+    newsLink(d, true) +
   '</div>';
 }
 function renderCreditBox(boxCls, flag, name, sub, data){
@@ -1597,6 +1696,22 @@ function renderCreditBox(boxCls, flag, name, sub, data){
     '<div class="pc-sub">' + sub + '</div>' +
     '<div class="pc-summary">' + (data.summary || '') + '</div>' +
     '<div class="deals-grid">' + deals.map(renderDeal).join('') + '</div>' +
+    '<div class="pc-outlook">' + (data.outlook || '') + '</div>' +
+  '</div>';
+}
+
+function renderRateWatch(data){
+  if(!data) return '';
+  const items = data.items || [];
+  const itemsHtml = items.map(function(it){
+    return '<div class="ev-item"><div class="ev-title">' + it.icon + ' ' + it.title + '</div>' +
+      '<div class="ev-detail">' + it.detail + '</div>' + newsLink(it, false) + '</div>';
+  }).join('');
+  return '<div class="pc-box rw-box">' +
+    '<div class="pc-hdr"><span class="pc-flag">🏦</span><span class="pc-name">日米金利動向</span></div>' +
+    '<div class="pc-sub">CPI・FRB・日銀・金利見通し</div>' +
+    '<div class="pc-summary">' + (data.summary || '') + '</div>' +
+    '<div class="events-list">' + itemsHtml + '</div>' +
     '<div class="pc-outlook">' + (data.outlook || '') + '</div>' +
   '</div>';
 }
@@ -1613,8 +1728,7 @@ function renderPeTraining(pt){
   }).join('');
   const kc = pt.keyConceptToday || {};
   const da = pt.dealAnalysis || {};
-  return '<div class="pet-summary"><div class="pet-summary-lbl">30秒サマリー</div>' +
-    '<div class="pet-summary-txt">' + (pt.thirtySecSummary || '') + '</div></div>' +
+  return '' +
     '<div class="pet-grid">' +
       '<div class="pet-card"><div class="pet-card-hdr">面接想定Q&amp;A</div>' + qaHtml + '</div>' +
       '<div class="pet-card"><div class="pet-card-hdr">今日の重要概念：' + (kc.term || '') + '</div>' +
@@ -1634,41 +1748,6 @@ function renderPeTraining(pt){
         '</div>' +
       '</div>' +
     '</div>';
-}
-
-let chartInstance = null;
-function renderChart(reports, uptoIdx){
-  const el = document.getElementById('idxChart');
-  if(!el || typeof Chart === 'undefined') return;
-  const start = Math.max(0, uptoIdx - 14);
-  const slice = reports.slice(start, uptoIdx + 1);
-  const labels = slice.map(function(r){ return r.dateLabel; });
-  function mk(key){ return slice.map(function(r){ return (r.indices && r.indices[key]) ? r.indices[key].value : null; }); }
-  if(chartInstance){ chartInstance.destroy(); }
-  chartInstance = new Chart(el, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [
-        { label:'S&P 500', data:mk('sp500'), borderColor:'#3b82f6', backgroundColor:'transparent', tension:.3, yAxisID:'y0' },
-        { label:'Nasdaq', data:mk('nasdaq'), borderColor:'#8b5cf6', backgroundColor:'transparent', tension:.3, yAxisID:'y1' },
-        { label:'Dow', data:mk('dow'), borderColor:'#10b981', backgroundColor:'transparent', tension:.3, yAxisID:'y1' },
-        { label:'Nikkei 225', data:mk('nikkei'), borderColor:'#ef4444', backgroundColor:'transparent', tension:.3, yAxisID:'y2' }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
-      scales: {
-        y0: { display: false },
-        y1: { display: false },
-        y2: { display: false },
-        x: { ticks: { font: { size: 10 } } }
-      }
-    }
-  });
 }
 
 let currentIdx = MARKET_REPORTS.length - 1;
@@ -1693,19 +1772,17 @@ function renderTabs(){
 }
 
 function renderPanel(r){
-  const idxCards = ['sp500','nasdaq','dow','nikkei'].map(function(k){ return renderIdxCard(r.indices[k]); }).join('');
+  const idxCards = ['sp500','nasdaq','dow','nikkei'].map(function(k){ return renderIdxCard(r.indices[k], k); }).join('');
   return '' +
   '<div class="section"><div class="idx-grid">' + idxCards + '</div></div>' +
-  '<div class="section two-col">' +
-    '<div class="card"><div class="card-title">📈 主要指数推移</div><div class="chart-wrap"><canvas id="idxChart"></canvas></div></div>' +
-    '<div class="card"><div class="card-title">🌐 マクロ指標</div><div class="macro-grid">' + renderMacro(r.macro) + '</div></div>' +
-  '</div>' +
+  '<div class="section"><div class="card"><div class="card-title">🌐 マクロ指標</div><div class="macro-grid">' + renderMacro(r.macro) + '</div></div></div>' +
   '<div class="section"><div class="sec-title">値動き銘柄</div>' +
     '<div class="movers-card"><div class="movers-layout">' + renderMoversLayout(r.movers) + '</div></div>' +
   '</div>' +
   '<div class="section"><div class="sec-title">本日の注目イベント</div>' +
     '<div class="events-list">' + renderEvents(r.events) + '</div>' +
   '</div>' +
+  '<div class="section"><div class="sec-title">🏦 日米金利動向</div>' + renderRateWatch(r.rateWatch) + '</div>' +
   '<div class="section"><div class="sec-title">🇺🇸 US Private Credit</div>' +
     renderCreditBox('us-box', '🇺🇸', 'US Private Credit', 'ダイレクトレンディング・プライベートクレジット', r.usCredit) +
   '</div>' +
@@ -1715,9 +1792,7 @@ function renderPanel(r){
   '<div class="section"><div class="sec-title">本日のナラティブ</div>' +
     '<div class="narrative-box">' + renderNarrative(r.narrative) + '</div>' +
   '</div>' +
-  '<div class="section"><div class="sec-title">PEトレーニング</div>' + renderPeTraining(r.peTraining) + '</div>' +
-  '<div class="section"><div class="takeaway"><div class="takeaway-lbl">本日の総括</div>' +
-    '<div class="takeaway-txt">' + (r.takeaway || '') + '</div></div></div>';
+  '<div class="section"><div class="sec-title">PEトレーニング</div>' + renderPeTraining(r.peTraining) + '</div>';
 }
 
 function renderAll(){
@@ -1725,7 +1800,6 @@ function renderAll(){
   const r = MARKET_REPORTS[currentIdx];
   const main = document.getElementById('main-content');
   main.innerHTML = '<div class="report-panel active">' + renderPanel(r) + '</div>';
-  renderChart(MARKET_REPORTS, currentIdx);
   const tokenInfo = document.getElementById('token-info');
   if(tokenInfo){
     const total = MARKET_REPORTS.reduce(function(s, x){ return s + (x.tokenEstimate || 0); }, 0);
