@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>すかいらーくHD：野村・CVCのMBOからベインキャピタルへの二次売却、そして再上場までの全貌</title>
+<style>
+:root {
+  --navy: #0f2a43;
+  --navy2: #16395c;
+  --accent: #c9a13b;
+  --bg: #f7f8fa;
+  --text: #26303a;
+  --muted: #6b7683;
+  --line: #dde3e9;
+  --red: #b23a48;
+  --green: #2f7d5b;
+  --blue: #2b6cb0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 15px; line-height: 1.75;
+  background: var(--bg); color: var(--text);
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 28px 80px; }
+header.hero {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  color: #fff; padding: 46px 28px 38px;
+}
+header.hero .inner { max-width: 980px; margin: 0 auto; }
+header.hero .tag {
+  display: inline-block; border: 1px solid var(--accent); color: var(--accent);
+  font-size: 12px; letter-spacing: .08em; padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 14px;
+}
+header.hero h1 { font-size: 26px; margin: 0 0 10px; font-weight: 700; line-height: 1.5; }
+header.hero p.sub { color: #cdd8e3; font-size: 13.5px; margin: 0; }
+nav.toc {
+  position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 4px rgba(15,42,67,.06); z-index: 10; overflow-x: auto; white-space: nowrap;
+}
+nav.toc .inner { max-width: 980px; margin: 0 auto; padding: 10px 28px; }
+nav.toc a {
+  color: var(--navy); text-decoration: none; font-size: 12.5px; margin-right: 16px;
+  font-weight: 600;
+}
+nav.toc a:hover { color: var(--accent); }
+section { padding-top: 46px; border-top: 1px solid var(--line); margin-top: 10px; }
+section:first-of-type { border-top: none; }
+h2 {
+  color: var(--navy); font-size: 20px; margin: 0 0 18px; padding-bottom: 10px;
+  border-bottom: 3px solid var(--accent); display: inline-block;
+}
+h3 { color: var(--navy2); font-size: 16px; margin: 28px 0 10px; }
+p { margin: 10px 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+th, td { padding: 8px 10px; border: 1px solid var(--line); text-align: left; }
+th { background: var(--navy); color: #fff; font-weight: 600; }
+tbody tr:nth-child(even) { background: #fbfcfd; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 20px 0; }
+.kpi { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 6px; padding: 16px 18px; }
+.kpi .v { font-size: 21px; font-weight: 700; color: var(--navy); }
+.kpi .l { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.callout { background: #fff; border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 16px 20px; margin: 18px 0; box-shadow: 0 1px 4px rgba(15,42,67,.06); }
+.callout.insight { border-left-color: var(--green); }
+.callout.risk { border-left-color: var(--red); }
+.callout.learn { border-left-color: var(--blue); }
+.callout b.title { display: block; font-size: 13px; letter-spacing: .08em; margin-bottom: 6px; color: var(--navy); }
+.callout.insight b.title { color: var(--green); }
+.callout.risk b.title { color: var(--red); }
+.callout.learn b.title { color: var(--blue); }
+.est { color: var(--red); font-size: 11px; font-weight: 700; border: 1px solid var(--red); border-radius: 3px; padding: 0 4px; margin-left: 4px; vertical-align: middle; display: inline-block; }
+.timeline { list-style: none; margin: 20px 0; padding-left: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 20px 24px; margin-left: 4px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent); }
+.timeline .d { font-weight: 700; color: var(--navy); font-size: 13px; }
+.timeline .t { color: var(--muted); font-size: 12px; margin-left: 6px; }
+.glossary { background: #fff; border: 1px solid var(--line); border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.glossary .term { background: #f0f4f8; padding: 10px 16px; font-weight: 700; color: var(--navy); font-size: 14px; }
+.glossary .def { padding: 12px 16px; }
+.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; margin-right: 6px; }
+.pill.buy { background: #eaf3ee; color: var(--green); }
+.pill.exit { background: #fdeceb; color: var(--red); }
+.pill.hold { background: #eaf0f8; color: var(--blue); }
+.qa { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+.qa .q { font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.qa .q::before { content: "Q. "; color: var(--accent); }
+.qa .a::before { content: "A. "; font-weight: 700; color: var(--green); }
+footer.foot { background: var(--navy); color: #cdd8e3; padding: 34px 28px; font-size: 12.5px; margin-top: 50px; }
+footer.foot .inner { max-width: 980px; margin: 0 auto; }
+footer.foot a { color: #fff; }
+footer.foot ul { padding-left: 18px; columns: 2; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px 60px; }
+  header.hero { padding: 32px 16px 28px; }
+  header.hero h1 { font-size: 20px; }
+  nav.toc .inner { padding: 8px 16px; }
+  footer.foot ul { columns: 1; }
+}
+@media print {
+  body { background: #fff; }
+  nav.toc { position: static; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <span class="tag">DEAL ANALYSIS CASE STUDY</span>
+    <h1>すかいらーくHD：野村プリンシパル・ファイナンス／CVCによるMBOから、ベインキャピタルへのセカンダリー・バイアウト、そして東証再上場までの全貌</h1>
+    <p class="sub">2006年MBO（国内最大規模）→ 2008年経営危機・創業家退任 → 2011年ベインへの二次売却 → 2014年東証一部再上場 → 2017年ベイン完全エグジット → 2020年コロナ危機 → 現在（東証プライム 3197）</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="inner">
+    <a href="#s1">1.サマリー</a>
+    <a href="#s2">2.ストラクチャー</a>
+    <a href="#s3">3.財務ディープダイブ</a>
+    <a href="#s4">4.投資テーゼ</a>
+    <a href="#s5">5.バリュークリエーション</a>
+    <a href="#s6">6.エグジット分析</a>
+    <a href="#s7">7.リターン構造</a>
+    <a href="#s8">8.リスク・批判的視点</a>
+    <a href="#s9">9.難解ポイント解説</a>
+    <a href="#s10">10.基礎知識</a>
+    <a href="#s11">11.面接インサイト</a>
+    <a href="#s12">12.想定Q&amp;A</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>すかいらーくは、日本のファミリーレストラン業態を1970年に創業した横川四兄弟の会社である。2006年、創業家主導のMBO（国内最大規模）で株式を非公開化したが、直後にコスト高騰とリーマン・ショックで再建計画が頓挫し、2008年に創業家自身がスポンサー（野村プリンシパル・ファイナンス）によって経営から追われるという皮肉な展開をたどった。2011年にベインキャピタルへ持分が譲渡されるセカンダリー・バイアウトが起こり、ベインの下で2014年に東証一部へ再上場。ベインはその後2014〜2017年にかけて4段階に分けて株式を売り切り、完全エグジットした。2020年のコロナ禍で外食業として最大級の危機に直面したが、2023年以降は過去最高益を更新し続けている。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">約2,565億円<span class="est">推定</span></div><div class="l">2006年MBO総額（報道により2,565〜2,720億円の幅）</div></div>
+    <div class="kpi"><div class="v">+5.7%</div><div class="l">2006年TOBプレミアム（前日比+135円、市場水準としては低め）</div></div>
+    <div class="kpi"><div class="v">約1,600億円</div><div class="l">2011年 野村・CVC → ベインキャピタルへの譲渡額</div></div>
+    <div class="kpi"><div class="v">2,219億円</div><div class="l">2014年再上場時の時価総額（2006年MBO評価額を下回る）</div></div>
+    <div class="kpi"><div class="v">約6,000億円台<span class="est">推定</span></div><div class="l">2026年時点の時価総額（株価3,058円・7/27時点、PER予31.6倍）</div></div>
+    <div class="kpi"><div class="v">4段階</div><div class="l">ベインによる株式売却の回数（2014・2015・2017×2）</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">30秒で語るならこう言う</b>
+    「すかいらーくは、創業家によるMBOが自社の再建を急ぐあまり創業家自身の追放という代償を払い、スポンサーが野村・CVCからベインへと二次売却された珍しいディールです。ベインは2014年の再上場後も一気に株を売らず、IPO・2015年follow-on・2017年の2回に分けて4段階でエグジットを完了しています。ただし面白いのは、8年間・二人のスポンサーを経ても再上場時の時価総額が2006年のMBO評価額を下回っていた点で、価値創造はEBITDA成長よりもむしろ危機からの生存とデレバレッジで説明できる部分が大きい、という点を強調します。」
+  </div>
+
+  <p>本レポートは、この「非公開化→経営危機→スポンサー交代（セカンダリー・バイアウト）→再上場→段階的エグジット→上場後の二度目の危機（コロナ）」という一連のサイクルを、公開情報から読み解けるだけの深さで解説する。数値の多くは開示の粒度に限界があるため、推定が必要な箇所には<span class="est">推定</span>バッジを付し、根拠と幅を明示している。</p>
+</section>
+
+<section id="s2">
+  <h2>2. ディール概要とストラクチャー</h2>
+
+  <h3>2-1. 対象会社</h3>
+  <p>株式会社すかいらーくホールディングス（東証プライム：3197）。1970年、横川四兄弟が国立市に「ことぶき食堂」を開業したのが源流とされ、日本におけるファミリーレストラン業態の草分けとして「すかいらーく」ブランドを全国展開した。その後「ガスト」「バーミヤン」「ジョナサン」などマルチブランド展開に転換し、現在は資さんうどん・しんぱち食堂なども傘下に持つ外食大手グループとなっている。</p>
+
+  <h3>2-2. ストラクチャー表</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>フェーズ</th><th>時期</th><th>スキーム</th><th>主体</th><th>金額</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill buy">買収①</span>MBO非公開化</td><td>2006年6〜10月</td><td>TOB＋金銭交付株式交換（スクイーズアウト）</td><td>SNCインベストメント（野村プリンシパル・ファイナンス／CVC／経営陣・従業員の共同出資SPC）</td><td class="num">約2,565億円<span class="est">推定</span></td></tr>
+      <tr><td>統合</td><td>2007年7月</td><td>SPC吸収合併（デットプッシュダウン）</td><td>SNCインベストメントがすかいらーくを吸収合併</td><td class="num">—</td></tr>
+      <tr><td><span class="pill exit">売却①</span>セカンダリー・バイアウト</td><td>2011年10〜11月</td><td>株式譲渡（普通株98.7%＋優先株全部）</td><td>野村PF／NPF-Harmony／中央三井PE第一号 → BCJホールディングス6（ベインキャピタル）</td><td class="num">約1,600億円</td></tr>
+      <tr><td><span class="pill exit">エグジット①</span>IPO（売出のみ）</td><td>2014年10月</td><td>東証一部再上場・グローバルオファリング</td><td>ベイン関連SPC等が売出人</td><td class="num">公開価格1,200円／時価総額2,219億円</td></tr>
+      <tr><td><span class="pill exit">エグジット②〜④</span>段階的売却</td><td>2015年6月／2017年3月／2017年11月</td><td>follow-on公募・ブロックトレード</td><td>ベインキャピタル・スカイラーク香港系SPC</td><td class="num">2017/11分：約650億円規模</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>2-3. タイムライン</h3>
+  <ul class="timeline">
+    <li><span class="d">2006/06/08</span><span class="t">MBOによる非公開化を発表。TOB価格1株2,500円（前日比+5.7%）</span></li>
+    <li><span class="d">2006/06/09〜07/10</span><span class="t">TOB実施（32日間）、応募率94.38%で成立</span></li>
+    <li><span class="d">2006/09/19</span><span class="t">東証上場廃止</span></li>
+    <li><span class="d">2006/10/01</span><span class="t">金銭交付による株式交換で完全子会社化（スクイーズアウト）</span></li>
+    <li><span class="d">2007/07/01</span><span class="t">SNCインベストメントがすかいらーくを吸収合併、新生すかいらーく誕生</span></li>
+    <li><span class="d">2008/08/12</span><span class="t">臨時株主総会で横川竟社長を解任、谷真氏が社長就任。創業家が経営から完全退場</span></li>
+    <li><span class="d">2009/10/29</span><span class="t">最後の「すかいらーく」ブランド店（川口新郷店）が閉店、全店「ガスト」等に転換完了</span></li>
+    <li><span class="d">2011/10/21</span><span class="t">ベインキャピタルへの売却（総額約1,600億円）を発表</span></li>
+    <li><span class="d">2011/11/30</span><span class="t">ベインキャピタル傘下入り完了</span></li>
+    <li><span class="d">2014/10/09</span><span class="t">東証一部に再上場（公開価格1,200円、初値1,200円）</span></li>
+    <li><span class="d">2015/06</span><span class="t">追加売出、ベイン持分70%→44%</span></li>
+    <li><span class="d">2017/03</span><span class="t">一部売却、持分約10%分を追加売出</span></li>
+    <li><span class="d">2017/11/22-28</span><span class="t">ベインが保有全株式（約20%、3,894万株）を売却し完全エグジット（ブロックトレード＠1,602円）</span></li>
+    <li><span class="d">2020年</span><span class="t">コロナ禍で売上高▲23.2%、営業損失230億円の危機</span></li>
+    <li><span class="d">2023〜2025年</span><span class="t">3期連続で過去最高売上を更新、2024年に資さんうどんを完全子会社化</span></li>
+  </ul>
+
+  <div class="callout learn">
+    <b class="title">面接での使い方</b>
+    このディールは「一つのLBOターゲット企業が、二人の異なるPEスポンサーを経由し、しかも創業家の追放・ブランドの消滅・二度の需要ショックを経験した」という点で情報密度が非常に高い。単に「買った→良くした→売った」という単線的な物語ではなく、<b>ガバナンス構造がスポンサー交代でどう変わったか</b>を語れると評価が高い。
+  </div>
+</section>
+
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ</h2>
+
+  <h3>3-1. 過去業績時系列（IFRS、2013年12月期〜）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>決算期</th><th class="num">売上収益（億円）</th><th class="num">営業利益（億円）</th><th class="num">OPM</th><th class="num">当期利益（億円）</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>2013/12</td><td class="num">3,325</td><td class="num">225.6</td><td class="num">6.8%</td><td class="num">70.9</td><td>ベイン保有下、再上場前年</td></tr>
+      <tr><td>2014/12</td><td class="num">3,400</td><td class="num">216.4</td><td class="num">6.4%</td><td class="num">94.7</td><td>再上場年、OPは前年比微減</td></tr>
+      <tr><td>2015/12</td><td class="num">3,511</td><td class="num">278.1</td><td class="num">7.9%</td><td class="num">151.1</td><td>ベイン持分70%→44%へ売出</td></tr>
+      <tr><td>2016/12</td><td class="num">3,545</td><td class="num">312.5</td><td class="num">8.8%</td><td class="num">182.1</td><td>マージンのピーク</td></tr>
+      <tr><td>2017/12</td><td class="num">3,594</td><td class="num">281.0</td><td class="num">7.8%</td><td class="num">169.3</td><td>ベイン完全エグジット完了</td></tr>
+      <tr><td>2018/12</td><td class="num">3,664</td><td class="num">228.6</td><td class="num">6.2%</td><td class="num">114.4</td><td>人件費高騰でマージン圧迫開始</td></tr>
+      <tr><td>2019/12</td><td class="num">3,754</td><td class="num">205.6</td><td class="num">5.5%</td><td class="num">94.9</td><td>コロナ直前、労働需給ひっ迫が継続</td></tr>
+      <tr><td>2020/12</td><td class="num">2,884</td><td class="num">▲230.3</td><td class="num">▲8.0%</td><td class="num">▲172.1</td><td>コロナ危機。外食業で最大級の打撃</td></tr>
+      <tr><td>2021/12</td><td class="num">2,646</td><td class="num">182.1</td><td class="num">6.9%</td><td class="num">87.4</td><td>売上はさらに減少も損益は黒字化</td></tr>
+      <tr><td>2022/12</td><td class="num">3,037</td><td class="num">▲55.8</td><td class="num">▲1.8%</td><td class="num">▲63.7</td><td>原材料・人件費インフレで再び赤字</td></tr>
+      <tr><td>2023/12</td><td class="num">3,548</td><td class="num">116.9</td><td class="num">3.3%</td><td class="num">47.8</td><td>本格回復局面入り</td></tr>
+      <tr><td>2024/12</td><td class="num">4,011</td><td class="num">241.8</td><td class="num">6.0%</td><td class="num">139.7</td><td>過去最高売上（前年比+13.0%）</td></tr>
+      <tr><td>2025/12</td><td class="num">4,578</td><td class="num">299.6</td><td class="num">6.5%</td><td class="num">167.5</td><td>3期連続で最高益更新</td></tr>
+      <tr><td>2026/12（会社予想）</td><td class="num">4,900</td><td class="num">335.0</td><td class="num">6.8%</td><td class="num">195.0</td><td>資さんうどん・海外M&amp;A寄与</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);">出典：IRBANK「すかいらーくHD（3197）会社業績」。円未満は億円単位に丸めているため合計等に若干の誤差が生じうる。</p>
+
+  <h3>3-2. BSの痕跡（レバレッジの履歴を読み解く）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>決算期</th><th class="num">総資産（億円）</th><th class="num">自己資本（億円）</th><th class="num">自己資本比率</th><th class="num">有利子負債（億円）</th><th class="num">利益剰余金（億円）</th></tr></thead>
+    <tbody>
+      <tr><td>2011/12</td><td class="num">947</td><td class="num">—</td><td class="num">99.9%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>2012/12</td><td class="num">3,044</td><td class="num">937</td><td class="num">30.8%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>2013/12</td><td class="num">3,069</td><td class="num">739</td><td class="num">24.1%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>2014/12</td><td class="num">3,122</td><td class="num">937</td><td class="num">30.0%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>2018/12</td><td class="num">3,307</td><td class="num">1,305</td><td class="num">39.5%</td><td class="num">1,331</td><td class="num">713</td></tr>
+      <tr><td>2020/12</td><td class="num">4,417</td><td class="num">1,138</td><td class="num">25.8%</td><td class="num">1,458</td><td class="num">540</td></tr>
+      <tr><td>2023/12</td><td class="num">4,261</td><td class="num">1,623</td><td class="num">38.1%</td><td class="num">993</td><td class="num">759</td></tr>
+      <tr><td>2026/03</td><td class="num">5,212</td><td class="num">1,901</td><td class="num">36.5%</td><td class="num">1,293</td><td class="num">1,121</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：BSが語る「二回のデットプッシュダウン」</b>
+    2011年12月期時点の報告主体は総資産947億円・自己資本比率99.9%とほぼ無借金に見える。これは2006年MBOの負債が2006〜2011年の5年間でかなり圧縮されていたことを示唆する<span class="est">推定</span>。ところが2012年12月期には総資産が3,044億円へ3.2倍に急増し、自己資本比率は30.8%へ69.1ポイントも急落している。これは2011年のベインによる買収時に組成されたLBOローンが、買収目的会社（BCJホールディングス6）とすかいらーく本体との合併を通じて対象会社のバランスシートに「押し込まれた」典型的なデットプッシュダウンの痕跡である。同じパターンは2006年のSNCインベストメント吸収合併（2007年7月）でも起きたはずだが、その時点の単独決算は入手できていない。つまりこの会社のBSは、オーナーが変わるたびに負債が本体に載り替わるサイクルを<b>2回</b>経験している、と読める。
+  </div>
+
+  <h3>3-3. 上場後バリュエーションの推移</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>時点</th><th class="num">株価</th><th class="num">時価総額</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td>2014/10（再上場時）</td><td class="num">1,200円</td><td class="num">2,219億円</td><td>2006年MBO評価額（約2,565〜2,720億円）を下回る</td></tr>
+      <tr><td>2017/11（ベイン完全売却時）</td><td class="num">1,602円</td><td class="num">約2,960億円<span class="est">推定</span></td><td>ブロックトレード基準値</td></tr>
+      <tr><td>2026/07/27（現在、株価）<br>2026/06/01（時価総額）</td><td class="num">3,058円</td><td class="num">6,164億円<span class="est">推定</span></td><td>PER（予）31.6倍、PBR（実）3.24倍、ROE（実）9.28%。時価総額は取得日が株価とややずれるため参考値</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>再上場から現在までの株価は1,200円→3,058円と約2.55倍。ただしベインは2017年に完全エグジットしているため、この上昇の恩恵はベイン以降の株主（機関投資家・個人投資家）が享受している点に注意。</p>
+</section>
+
+<section id="s4">
+  <h2>4. 投資テーゼ（なぜ買ったのか）</h2>
+
+  <h3>4-1. 2006年MBO（創業家＋野村・CVC）のテーゼ</h3>
+  <p>創業家（横川竟氏ら）は、四半期ごとの市場の視線にさらされたまま抜本的なメニュー改定・店舗フォーマット転換を行うことは困難と判断し、非公開化によって「2〜3年は赤字を覚悟した構造改革→4年目黒字化→5年目に再上場」という計画を描いた。野村プリンシパル・ファイナンスとCVCキャピタル・パートナーズは、国内最大の外食チェーンの一つを、創業家の経営継続と引き換えに比較的低いプレミアム（+5.7%）で取得できる好機と見た。</p>
+
+  <h3>4-2. 2011年ベインキャピタルのテーゼ（セカンダリー・バイアウト）</h3>
+  <p>ベインが取得した2011年時点のすかいらーくは、すでに「ガスト」中心のマルチブランド低価格モデルへの転換を終えていたが、2008年の経営危機の傷跡（ブランド消滅、創業家退場、野村との対立）が残る局面だった。ベインのテーゼは、（a）低価格帯フォーマットへの転換という痛みを伴う改革はすでに完了しており、（b）残る課題はオペレーション効率化とポートフォリオの最適化に集約されている、という「痛みは前オーナーが払い終えた後の刈り取り」に近い構図だったと考えられる<span class="est">推定</span>。</p>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：テーゼの本質は「二人目のスポンサー有利」</b>
+    セカンダリー・バイアウトの評価では、しばしば「一次スポンサーがすでに難しい意思決定（レイオフ、ブランド廃止、店舗閉鎖等）を実行済みであるため、二次スポンサーは相対的にクリーンな資産を、低いバリュエーションで、実行リスクを抑えて取得できる」という非対称性が生じる。すかいらーくのケースはこれが教科書的に当てはまる：野村・CVCが「すかいらーく」ブランド消滅という一番痛みの大きい決断を引き受け、ベインはその後の安定成長フェーズを刈り取った可能性が高い。面接では、セカンダリー・バイアウトを評価する際に「前オーナーが何を既にやったか」を確認する視点として語れる。
+  </div>
+</section>
+
+<section id="s5">
+  <h2>5. ホールド期間のバリュークリエーション</h2>
+
+  <h3>5-1. 危機対応①：2008年の経営危機とガバナンス修正</h3>
+  <p>2006年のMBO直後、原材料価格の高騰（穀物・原油高）とリーマン・ショックによる消費不況が重なり、創業家主導の再建計画は行き詰まった。スポンサーの野村プリンシパル・ファイナンスは2008年8月12日の臨時株主総会で横川竟社長を解任するという異例の対応に踏み切り、生え抜きの谷真氏を社長に据えた。同時にブランド戦略も転換し、「すかいらーく」自体を全店「ガスト」等へ転換、2009年10月に最後の店舗が閉店した。</p>
+
+  <div class="callout risk">
+    <b class="title">批判的視点</b>
+    創業家が非公開化してまで守ろうとした自社ブランド「すかいらーく」が、非公開化からわずか3年で消滅している。これは「経営の自由度を確保するための非公開化」という当初の投資テーゼが、皮肉にも創業家自身の経営権喪失とブランドの喪失という形で裏目に出たことを意味する。MBOは常に「創業家に有利な出口」とは限らず、業績が計画未達に陥った場合、スポンサーが契約上のガバナンス権（株主総会での取締役解任権等）を行使して経営陣を交代させるリスクを内包している好例である。
+  </div>
+
+  <h3>5-2. 危機対応②：2020年コロナショック</h3>
+  <p>2020年12月期は売上高が前期比▲23.2%の2,884億円、営業損益は▲230億円の赤字に転落した。外食チェーンの中でも郊外型・ロードサイド型が中心のすかいらーくは、都心型飲食店ほどではないにせよ、緊急事態宣言下の来店客数減少を直接受けた。対応として、2020年1月（コロナ本格化の直前）にはすでに全店24時間営業の廃止・深夜営業の短縮を含む働き方改革を発表しており、人件費構造の見直しに着手していたことが、その後のコスト対応力に寄与したと考えられる<span class="est">推定</span>。さらに2022年末までに約2,000店舗に配膳ロボット「BellaBot」を導入するなど、人手不足下での省人化投資を進めた。</p>
+
+  <h3>5-3. バリューアップ5レバー（統合的整理）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>レバー</th><th>内容</th><th>時期</th></tr></thead>
+    <tbody>
+      <tr><td>①危機対応・ガバナンス修正</td><td>経営陣交代（2008年）、コロナ禍対応（2020〜2022年）</td><td>2008年／2020〜2022年</td></tr>
+      <tr><td>②ブランド・フォーマット最適化</td><td>「すかいらーく」ブランド廃止→ガスト中心のマルチブランド体制（ガスト・バーミヤン・ジョナサン等）へ集約</td><td>2008〜2009年</td></tr>
+      <tr><td>③価格・メニュー戦略（二極化対応）</td><td>コスパ重視層向け低価格メニューの拡充と、値上げへの許容度が高い商品群の値上げを併用する「二極化」戦略</td><td>2022年以降、継続中</td></tr>
+      <tr><td>④省人化・DX投資</td><td>配膳ロボット約2,000店舗導入、店舗IT化投資（2017年時点で「今後2年はコスト先行」と表明）</td><td>2017年〜継続中</td></tr>
+      <tr><td>⑤M&amp;Aによる非有機成長</td><td>資さんうどん完全子会社化（2024年9月）、初の海外M&amp;A（マレーシア、2025年1月）、しんぱち食堂買収予定（2026年4月）</td><td>2024年〜</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>5-4. 財務インパクト総括</h3>
+  <p>2013年（ベイン保有下・再上場前年）の営業利益225.6億円から2025年の299.6億円まで、12年間でCAGR約2.4%の緩やかな伸びにとどまる<span class="est">推定</span>。ただしこの間に2008年型・2020年型という二度の需要ショックを吸収しながらのCAGRである点を踏まえると、単純な成長率の低さだけで評価するのは適切ではない。むしろ着目すべきは、2022年の赤字（▲55.8億円）から2025年の299.6億円まで3年で黒字転換・急回復させた「危機からの復元力」であり、これは店舗ポートフォリオの筋肉質化（ガスト中心の効率フォーマット）が奏功した結果と解釈できる。</p>
+</section>
+
+<section id="s6">
+  <h2>6. エグジット分析（段階的売却設計）</h2>
+
+  <h3>6-1. IPOのプライシング経緯</h3>
+  <p>2014年10月9日、東証一部に再上場。公開価格は1,200円、初値も1,200円と、公開価格を上回らない「冷めた」デビューとなった。上場日の終値は公開価格・初値を4%超下回ったとも報じられている。IPOは完全に「売出」のみで構成され（国内43,147,600株＋海外23,305,000株＋OA7,092,800株、合計約7,354万株）、会社への新規資金流入（公募）はゼロだった。主幹事は野村證券を中心に三菱UFJモルガン・スタンレー証券、メリルリンチ日本証券、みずほ証券。ベインキャピタル・スカイラーク香港II社および経営陣（谷真氏ほか）には180日間のロックアップが設定された。</p>
+
+  <h3>6-2. 段階的売却設計（4段階のステージング）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>段階</th><th>時期</th><th>手法</th><th>ベイン持分の変化</th></tr></thead>
+    <tbody>
+      <tr><td>①</td><td>2014年10月</td><td>IPO（グローバルオファリング、売出のみ）</td><td>ほぼ100%→約70%</td></tr>
+      <tr><td>②</td><td>2015年6月</td><td>follow-on公募・売出</td><td>70%→44%</td></tr>
+      <tr><td>③</td><td>2017年3月</td><td>一部売却（追加売出）</td><td>44%→約34%<span class="est">推定</span></td></tr>
+      <tr><td>④</td><td>2017年11月</td><td>ブロックトレード（ToSTNeT-1、@1,602円）＋機関投資家向け売出</td><td>約20%（3,894万株）→0%（完全エグジット）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：なぜ一括売却ではなく4段階なのか</b>
+    ベインは2014年の再上場時点で保有株の一括売却も可能だったが、実際には3年かけて4回に分けて売却している。この設計には典型的な合理性がある：（1）IPO直後に大量の株式需給が市場に出ることを避け、公開価格の希薄化・株価下落圧力を抑える、（2）業績の安定成長を市場に「証明」してから追加売却することで、後続のトランシェをより高い株価で売り抜ける、（3）ロックアップ解除のタイミングと市場のボラティリティを見ながら機動的に売却できる、という点である。実際、2014年公開価格1,200円に対し2017年の完全エグジット時は1,602円と、+33%の株価上昇を経てからの売却となっており、段階的エグジットが「時間を味方につける」設計として機能した可能性が高い。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">批判的視点：それでも「出口の天井」は低かった</b>
+    2014年の再上場時価総額2,219億円は、2006年のMBO評価額（2,565〜2,720億円）を依然として下回っていた。8年間、2つのスポンサー、1度のブランド消滅、1度の経営陣総入れ替えというフルサイクルを経て、なお「非公開化前より安く再上場した」という事実は、この時点での市場評価が本源的な企業価値の伸びよりも慎重だったことを示す。株価が2006年MBO評価額を実質的に上回ったと言えるのは、2017年のベイン完全エグジット時（時価総額約2,960億円<span class="est">推定</span>）以降と見るのが妥当である。</p>
+  </div>
+</section>
+
+<section id="s7">
+  <h2>7. リターン構造の考察（ここが面接の勝負どころ）</h2>
+
+  <h3>7-1. リターン源泉表</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>スポンサー</th><th>保有期間</th><th>投下資本</th><th>回収額</th><th>MOIC（推定）</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>野村PF・CVC（1st）</td><td>2006〜2011年（約5年）</td><td class="num">約1,600億円<span class="est">推定</span>（エクイティ拠出分）</td><td class="num">約1,600億円<span class="est">推定</span>（ベインへの譲渡対価）</td><td class="num">約1.0〜1.2倍<span class="est">推定</span></td><td>報道は「元本を若干上回る」とする一方、別報道は「年率20%超」とも伝えており、両者は整合しない。額面ベースでは低リターンだが、レバレッジ構造次第で年率換算が変わりうる点に留意</td></tr>
+      <tr><td>ベインキャピタル（2nd）</td><td>2011〜2017年（約6年）</td><td class="num">約1,600億円<span class="est">推定</span></td><td class="num">約2,530億円<span class="est">推定</span>（IPO・2015・2017年×2回の合計）</td><td class="num">約1.5〜1.7倍<span class="est">推定</span></td><td>4段階の売却合計。IRR換算では年率8〜9%程度<span class="est">推定</span>にとどまる可能性</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);">上記は開示情報からの独自推定であり、実際のスポンサーの正味エクイティ拠出額（Sources & Usesにおける実際のエクイティチェック）や、途中の配当・リキャップの有無は非開示のため反映できていない。面接ではこの数値をそのまま暗記して答えるのではなく、「開示情報からの推定レンジである」ことを明示した上で使うこと。</p>
+
+  <h3>7-2. リターン3分解</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>要素</th><th>野村・CVC期（2006-2011）</th><th>ベイン期（2011-2017）</th></tr></thead>
+    <tbody>
+      <tr><td>①EBITDA成長</td><td>ほぼ寄与なし、むしろ危機で毀損<span class="est">推定</span></td><td>限定的（2013年OP225.6億円→2016年OP312.5億円がピーク、その後再上場後の一時的伸び）</td></tr>
+      <tr><td>②マルチプル変化</td><td>非公開のため観測不能</td><td>再上場時点でMBO評価額を下回る水準からのスタート。2017年完全エグジットまでにやや回復<span class="est">推定</span></td></tr>
+      <tr><td>③レバレッジ・デレバレッジ</td><td>2011年時点で自己資本比率99.9%相当まで急速にデレバレッジしており、この期間のリターンの主因はここにある可能性が高い<span class="est">推定</span></td><td>2012年に新規LBOローンを本体に載せ替え（自己資本比率30.8%へ急落）、その後緩やかにデレバレッジ</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">模範解答コールアウト：面接官への一言</b>
+    「このディールの面白さは、リターンの源泉が両スポンサーで質的に異なる点にあります。野村・CVCの5年間は、EBITDA成長というよりも、危機を生き延びて負債を圧縮したことがリターンの主因だったと考えられます。一方ベインの6年間は、緩やかな業績回復に加えて、段階的売却によって時間分散させながら株価上昇局面を捉えたタイミングの巧拙がリターンに寄与しています。つまり同じ会社でも、スポンサーが変わればバリュークリエーションの『型』自体が変わりうる、という点を強調したいです。」
+  </div>
+</section>
+
+<section id="s8">
+  <h2>8. リスクと批判的視点（DD論点）</h2>
+
+  <div class="callout risk">
+    <b class="title">論点1：MBOの低プレミアムとガバナンス上の利益相反</b>
+    2006年TOBのプレミアムはわずか+5.7%（前日比+135円）だった。MBOでは経営陣が買い手側に回るため、意図的に低いTOB価格を設定し、一般株主の利益を犠牲にして自らの取得コストを下げるインセンティブが構造的に存在する（経営陣・支配株主の利益相反問題）。この案件がその典型例だったかどうかは断定できないが、低プレミアムそのものが当時から議論の対象となった点は記録しておく価値がある。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点2：創業家がスポンサーに追われるガバナンスリスク</b>
+    MBOは通常「創業家が経営の自由度を取り戻す」ための手段として語られるが、本件では業績が計画未達になった際、スポンサー（野村プリンシパル・ファイナンス）が株主としての議決権を行使し、わずか2年で創業家を解任している。DD（デューデリジェンス）の観点では、MBOのスキームであっても、優先株や種類株の設計、株主間契約の内容次第で経営陣の実質的なコントロールは限定的になりうる、という教訓が得られる。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点3：需要ショックへの構造的脆弱性</b>
+    外食チェーンは人件費・原材料費・賃料といった固定費比率が高く、来店客数が減少する局所的・世界的ショック（2008年の消費不況、2020年のコロナ禍）に対して営業レバレッジが逆に作用し、赤字転落しやすい産業構造を持つ。2020年（▲230億円）・2022年（▲55.8億円）と、直近10年だけで2度の赤字転落を経験している点は、外食セクターへの投資テーゼを検討する上で必ず織り込むべきリスクである。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点4：「やるべきでなかった」側の論拠</b>
+    仮に2006年の非公開化を行わず、上場を維持したまま漸進的な構造改革を進めていた場合、（a）市場からの短期的な圧力は受けつつも、（b）創業家の経営権喪失というガバナンス上の混乱や、（c）2度のデットプッシュダウンによる財務レバレッジの積み増しは回避できた可能性がある。非公開化のメリット（機動的な意思決定）は、本件では皮肉にも創業家自身にではなく、後続のスポンサー（野村・ベイン）にもたらされた、という評価も成立しうる。
+  </div>
+</section>
+
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説</h2>
+
+  <div class="glossary">
+    <div class="term">公募（Public Offering）と売出（Secondary Offering）の違い</div>
+    <div class="def">公募は会社が新株を発行して市場から新規資金を調達する行為で、調達資金は会社に入る。売出は既存株主（本件ではベイン関連SPC）が保有株式を市場に放出する行為で、代金は会社ではなく売却した株主に入る。2014年のすかいらーく再上場は<b>売出のみ</b>で構成されており、IPOであっても会社自身は一円も新規資金を得ていない点が重要。PEファンドが主導するIPOの多くは、会社の資金調達よりもスポンサーの投下資本回収（エグジット）を主目的とするため、この「売出中心」の構造は典型的である。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">IPOのプライシング・メカニズム（想定価格→仮条件→公開価格→初値）</div>
+    <div class="def">IPOでは、まず主幹事証券が「想定価格」を提示し、機関投資家への需要調査（ブックビルディング）を経て「仮条件」（レンジ）を設定、そのレンジ内での申告状況をもとに「公開価格」が最終決定される。上場日にはこの公開価格を基準に売買が始まり、最初に成立した価格が「初値」となる。すかいらーくは公開価格・初値ともに1,200円で、初値が公開価格を上回らない「冷めた」デビューだった点は、需要が旺盛だったIPOとは対照的な事例として記憶しておくとよい。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">スクイーズアウト（少数株主の締め出し）</div>
+    <div class="def">TOBで100%の株式を取得できなかった場合に、残存する少数株主から強制的に株式を取得し完全子会社化する手続き。本件では2006年10月、「金銭交付による株式交換」（産業活力再生特別措置法に基づく手法）を用いてSNCインベストメントがすかいらーくを完全子会社化した。現在は会社法上の株式併合や特別支配株主の株式等売渡請求といった手法が主流だが、当時はこうした株式交換スキームが用いられていた点は制度の歴史として押さえておきたい。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">デットプッシュダウン（負債の押し込み）とSPC吸収合併</div>
+    <div class="def">LBOでは買収資金の借入は通常、買収目的会社（SPC）に発生する。その後SPCを対象会社に吸収合併させることで、SPCが背負った借入金を対象会社本体のバランスシートに移す。これにより対象会社自身の将来キャッシュフローで借入金を返済していく構造が完成する。本件では2007年（SNC吸収合併）と2012年（ベインのBCJホールディングス6と推定されるSPCとの合併）の少なくとも2回、この操作が行われた痕跡がBS（自己資本比率の急変）に残っている。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">セカンダリー・バイアウト（PE-to-PE）</div>
+    <div class="def">あるPEファンドが保有する投資先を、別のPEファンドが買い取る取引。事業会社（ストラテジック）への売却や新規上場と並ぶ、PEファンドにとっての主要なエグジット手段の一つ。本件の2011年野村・CVC→ベインの譲渡がこれにあたる。セカンダリー・バイアウトでは、前オーナーがすでに実行した構造改革の「上澄み」を、次のスポンサーが刈り取れる場合がある点は本レポート第4章で論じた通り。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">オーバーアロットメント（OA）</div>
+    <div class="def">IPOや大型売出において、需要が想定を上回った場合に備え、主幹事証券が既存株主から追加で株式を借り受けて追加販売する仕組み。本件では通常の売出（国内＋海外）に加えて709万2,800株のOAが設定された。需要超過時の価格安定化に寄与する制度。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">ブロックトレード（ToSTNeT取引）</div>
+    <div class="def">大量の株式を、取引所の通常市場を経由せず、あらかじめ決めた価格で一括して売買する相対的な取引手法。市場への価格インパクトを抑えられるため、PEファンドの大口売却でよく用いられる。ベインの2017年11月の完全エグジットでは、東証のToSTNeT-1（自己株式立会外売買等に用いられる制度）を通じて1,602円で約定した後、機関投資家向けの売出も併用された。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">EV（企業価値）と時価総額の違い</div>
+    <div class="def">時価総額は「株式の時価×発行済株式数」で、株主に帰属する価値のみを表す。企業価値（EV）はそこに純有利子負債（有利子負債－現預金）を加えたもので、事業全体の価値を示す。本件で「2014年再上場時の時価総額2,219億円は2006年MBO評価額を下回る」という比較は一見ショッキングだが、これは時価総額同士の比較にすぎず、両時点の純有利子負債水準が異なる（2006年時点は非開示、2014年時点は推定約130〜150億円<span class="est">推定</span>の有利子負債を抱えていたとみられる）ため、真の企業価値ベースでの増減を厳密に語るには純有利子負債調整が必要である。面接では「時価総額だけを見て価値創造を語らない」姿勢を示すとよい。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">MOIC（投下資本倍率）とIRR（内部収益率）</div>
+    <div class="def">MOICは「回収総額÷投下資本」で計算されるシンプルな倍率で、時間軸を考慮しない。IRRは投下・回収のタイミングを織り込んだ年率換算の収益率で、同じMOICでも保有期間が短いほどIRRは高くなる。本件の野村・CVC期について「元本を若干上回る（MOIC≈1.0〜1.2倍）」という報道と「年率20%超」という報道が併存しているのは、両者が指し示す指標が異なる（全体の対価ベースのMOICか、特定のトランシェ・特定の投資家グループのIRRか）可能性があり、単一の見出しだけで投資成果を判断することの危うさを示す好例である。</div>
+  </div>
+</section>
+
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識</h2>
+
+  <h3>10-1. M&amp;Aプロセスの全体像</h3>
+  <p>一般的なM&amp;Aプロセスは、（1）ソーシング・初期スクリーニング、（2）秘密保持契約（NDA）締結とインフォメーション・メモランダム（IM）の受領、（3）一次入札（意向表明書）、（4）デューデリジェンス（DD）、（5）二次入札・最終条件交渉、（6）SPA（株式譲渡契約）締結、（7）クロージング、という流れで進む。MBO・TOBのように上場企業を非公開化する場合は、これに加えて特別委員会の設置・第三者算定機関によるフェアネス・オピニオンの取得など、少数株主保護のための手続きが必要になる。</p>
+
+  <h3>10-2. バリュエーション3手法＋LBO法</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>手法</th><th>概要</th></tr></thead>
+    <tbody>
+      <tr><td>DCF法</td><td>将来のフリーキャッシュフローをWACCで現在価値に割り引く方法。事業計画の精度に評価結果が大きく左右される</td></tr>
+      <tr><td>マルチプル法（類似会社比較法）</td><td>類似上場企業のEV/EBITDA倍率やPERを対象会社に当てはめて評価する方法。市場のセンチメントを反映しやすい</td></tr>
+      <tr><td>類似取引比較法</td><td>過去の類似M&amp;A取引における買収プレミアムや取引倍率を参照する方法</td></tr>
+      <tr><td>LBO法（逆算法）</td><td>スポンサーが要求するIRR・MOICを達成できる最大の買収価格を、想定レバレッジ・エグジットマルチプルから逆算する方法。PEファンドの入札上限価格の目安として使われる</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>10-3. TOB法制の数字</h3>
+  <ul>
+    <li>議決権比率が3分の2（66.7%）以上に達すると、株主総会の特別決議を単独で可決できる水準になる</li>
+    <li>本件のTOBは応募率94.38%と、3分の2を大きく超えて成立している</li>
+    <li>金融商品取引法上、一定の株式取得割合を超える買付けはTOBによることが義務付けられている（市場内外での買い集めを規制するルール）</li>
+  </ul>
+
+  <h3>10-4. IPO実務の基礎</h3>
+  <p>IPOのプロセスは、上場申請→東証審査→上場承認→ロードショー（機関投資家向け説明会）→ブックビルディング→公開価格決定→上場、という流れで進む。PEファンド保有の企業がIPOする場合、スポンサーの保有株には通常90〜180日程度のロックアップが付され、上場直後の需給悪化を防ぐ。本件では180日ロックアップが設定された。</p>
+
+  <h3>10-5. DDの種類</h3>
+  <ul>
+    <li><b>財務DD</b>：正常収益力（Normalized EBITDA）の把握、運転資本・ネットデットの精査</li>
+    <li><b>事業DD（ビジネスDD）</b>：市場成長性、競合ポジション、顧客基盤の質を評価</li>
+    <li><b>法務DD</b>：契約関係、訴訟リスク、コンプライアンス状況の確認</li>
+    <li><b>税務DD</b>：繰越欠損金の活用可能性、組織再編に伴う税務リスク</li>
+    <li><b>人事・労務DD</b>：外食業では特に、店舗人員の労務コンプライアンス・離職率が重要論点になる</li>
+  </ul>
+
+  <div class="callout learn">
+    <b class="title">学習動線</b>
+    このディールで基礎を掴んだら、次は「敵対的買収防衛」（例：牧野フライス×ニデック案件）や「カーブアウト」（例：キオクシア×ベイン案件）など、本ハブの他のケーススタディで異なるディール類型を横断的に学ぶと理解が立体的になる。
+  </div>
+</section>
+
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト（まとめ）</h2>
+  <ol>
+    <li><b>MBOは「創業家の勝利」を保証しない。</b>本件では非公開化からわずか2年で創業家がスポンサーによって経営から追われており、種類株・株主間契約の設計次第でガバナンスの実権は簡単に移る。</li>
+    <li><b>セカンダリー・バイアウトは「前オーナーの後始末を刈り取る」構造になりやすい。</b>野村・CVCがブランド廃止という痛みを引き受けた後にベインが安定成長フェーズを取得した構図は、PE-to-PE取引を評価する上での一般化可能な視点である。</li>
+    <li><b>時価総額の単純比較は禁物。</b>2014年再上場時の時価総額がMBO評価額を下回っていた事実は衝撃的だが、純有利子負債調整をしないまま「価値が毀損した」と即断するのは早計で、EVベースでの検証が必要。</li>
+    <li><b>段階的エグジットは「時間分散」のリスクマネジメント。</b>ベインが3年・4段階に分けて売却したのは、需給インパクトの抑制と、業績安定を市場に証明してから追加売却するタイミング戦略の両面で合理的である。</li>
+    <li><b>BSの自己資本比率の急変は、デットプッシュダウンの動かぬ証拠になる。</b>本件では2012年に自己資本比率が69.1ポイント急落しており、これは開示情報だけからLBO構造を推理する好例。</li>
+    <li><b>外食セクターは景気循環・パンデミックのような外生ショックに脆弱な高固定費産業。</b>本件は10年強で2度の営業赤字を経験しており、セクター特有のリスクとして必ず投資テーゼに織り込む必要がある。</li>
+    <li><b>単一の見出し数値（IRR・MOIC）を鵜呑みにしない。</b>野村・CVC期のリターンについて報道間で「元本並み」と「年率20%超」という相反する表現が併存する事実自体が、良いディスカッションのきっかけになる。</li>
+  </ol>
+</section>
+
+<section id="s12">
+  <h2>12. 想定Q&amp;A</h2>
+
+  <div class="qa">
+    <div class="q">そもそもMBO（マネジメント・バイアウト）とは何ですか？</div>
+    <div class="a">経営陣が自社の株式を（多くの場合PEファンドなどの資金支援を受けて）買い取り、非公開化する取引です。上場維持コストや四半期業績のプレッシャーから解放され、機動的な経営判断を行いやすくする目的で用いられます。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">なぜ野村・CVCは、自分たちが取得した会社の社長を2年で解任したのですか？</div>
+    <div class="a">2006年のMBO時の再建計画（2〜3年の意図的な赤字を伴う構造改革）が、原材料高騰とリーマン・ショックによる想定外の逆風で計画未達となり、スポンサーとして議決権を有する野村プリンシパル・ファイナンスが、株主としてのガバナンス権限（株主総会での取締役解任決議）を行使したためと考えられます。これはMBOであっても、業績が計画を下回れば創業家経営陣の地位が保証されないことを示す事例です。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">2011年のベインキャピタルへの売却は、なぜ「セカンダリー・バイアウト」と呼ばれるのですか？</div>
+    <div class="a">セカンダリー・バイアウトとは、あるPEファンドが保有する投資先企業を、別のPEファンドが買い取る取引形態を指します。本件では野村プリンシパル・ファイナンス、NPF-Harmony投資事業組合、中央三井プライベートエクイティ第一号投資事業組合という「一次スポンサー」グループから、ベインキャピタルという「二次スポンサー」へ株式が譲渡されており、事業会社への売却（ストラテジック・セール）でも新規上場（IPOエグジット）でもない、PEファンド間の取引にあたるためです。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">2014年の再上場時の時価総額が2006年MBO評価額を下回っていたのは、投資として失敗を意味しますか？</div>
+    <div class="a">一概にそうとは言えません。第一に、これは時価総額同士の比較であり、純有利子負債水準の違いを調整したEVベースの比較ではありません。第二に、ベインは2014年のIPO時点で保有株のごく一部（約30%相当）しか売却しておらず、真の投資成果は2015年・2017年の追加売却を経た2017年の完全エグジット時点（時価総額約2,960億円<span class="est">推定</span>）で評価すべきです。第三に、そもそも2006年から2014年の8年間で会社は2度の需要ショックとブランド消滅という大きな混乱を経験しており、「毀損せずに生き延びたこと自体」に一定の価値があったとも解釈できます。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">ベインはなぜ2014年のIPOで一括売却せず、2017年まで3年かけて4段階で売却したのですか？</div>
+    <div class="a">主な理由は3つ考えられます。（1）上場直後に大量の株式が市場に出ると需給が悪化し株価が下落するため、供給量を分散させる、（2）業績の安定成長を市場に証明してから追加売却することで、後続の売却をより高い株価で実行できる、（3）ロックアップ解除や市場環境を見ながら機動的に売却タイミングを選べる、という点です。実際、2014年の公開価格1,200円から2017年の完全エグジット時の1,602円まで、+33%の株価上昇を経ての売却となっています。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">【基礎確認】TOBにおける「応募率94.38%」とは何を意味し、なぜ100%の取得を意味しないのですか？</div>
+    <div class="a">TOB（株式公開買付け）は、既存株主に対して「この価格で株式を売ってください」と申し出て、任意に応募してもらう制度です。94.38%という応募率は、対象となる株式のうち94.38%分の株主が売却に応じたことを意味し、残り5.62%の株主は応募しなかったことになります。100%の取得（完全子会社化）を実現するには、この残存株主から強制的に株式を取得する「スクイーズアウト」という別の手続き（本件では金銭交付による株式交換）が必要になります。</div>
+  </div>
+</section>
+
+</div>
+
+<footer class="foot">
+  <div class="inner">
+    <p><b>主要ソース</b></p>
+    <ul>
+      <li><a href="https://ja.wikipedia.org/wiki/%E3%81%99%E3%81%8B%E3%81%84%E3%82%89%E3%83%BC%E3%81%8F" target="_blank" rel="noopener">Wikipedia「すかいらーく」沿革</a></li>
+      <li><a href="https://www.bloomberg.co.jp/news/articles/2006-06-08/J0JB5U1A1I4H01" target="_blank" rel="noopener">Bloomberg「すかいらく：株式非公開へ、最大2720億円でＭＢＯ」（2006）</a></li>
+      <li><a href="https://www.j-cast.com/2006/06/08001668.html" target="_blank" rel="noopener">J-CASTニュース「すかいらーくがMBOで株非公開へ」（2006）</a></li>
+      <li><a href="https://reskill.nikkei.com/article/DGXZZO29875490W8A420C1000000/" target="_blank" rel="noopener">日経リスキリング「経営再建巡り野村と対立　MBOから1年で黄信号」</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXNASGC1101X_R11C11A0MM8000/" target="_blank" rel="noopener">日本経済新聞「米ファンド、すかいらーく買収で合意　2600億円」（2011）</a></li>
+      <li><a href="https://www.nikkei.com/article/DGKDASGC21015_R21C11A0EE2000/" target="_blank" rel="noopener">日本経済新聞「野村、すかいらーく売却発表『元本若干上回る』」（2011）</a></li>
+      <li><a href="https://www.marr.jp/genre/study/marr_report/entry/2284" target="_blank" rel="noopener">MARR「すかいらーく　ベインキャピタル傘下で谷真社長が描く成長戦略」（2012）</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXLASGD09H03_Z01C14A0MM0000/" target="_blank" rel="noopener">日本経済新聞「すかいらーく再上場、初値1200円」（2014）</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXLASDZ0903E_Z01C14A0TI0000/" target="_blank" rel="noopener">日本経済新聞「すかいらーく再上場、時価総額2219億円　MBO前には届かず」（2014）</a></li>
+      <li><a href="https://www.kabu-1.jp/tokusyu/ipo1/lockupskylark/" target="_blank" rel="noopener">かぶ1「IPO株のロックアップ期間は必ずチェック～すかいらーく編」</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXLZO17732030V10C17A6DTA000/" target="_blank" rel="noopener">日本経済新聞「すかいらーく株、筆頭株主の米ベインが一部追加売却へ」（2017）</a></li>
+      <li><a href="https://www.bloomberg.com/jp/news/articles/2017-11-22/OZSYUB6S972Q01" target="_blank" rel="noopener">Bloomberg「すかいらーく株、需給懸念で下落－ブロック取引価格1602円にさや寄せ」（2017）</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXMZO23770210R21C17A1TJ2000/" target="_blank" rel="noopener">日本経済新聞「すかいらーく、米ベインが全株売却　内外の機関投資家に」（2017）</a></li>
+      <li><a href="https://www.itmedia.co.jp/business/articles/2502/23/news070.html" target="_blank" rel="noopener">ITmedia「ガスト、値上げしても客離れず　すかいらーくHDの『二極化』戦略とは」（2025）</a></li>
+      <li><a href="https://irbank.net/3197/pl" target="_blank" rel="noopener">IRBANK「すかいらーくHD（3197）会社業績」損益計算書</a></li>
+      <li><a href="https://irbank.net/3197/bs" target="_blank" rel="noopener">IRBANK「すかいらーくHD（3197）会社業績」貸借対照表</a></li>
+    </ul>
+    <p style="margin-top:16px;">推定（<span class="est">推定</span>）タグを付した数値は、公開情報の断片から著者が組み立てた推定であり、一次資料（有価証券届出書・臨時報告書等）による裏付けは取れていない。面接や投資検討の場では、必ず「開示情報からの推定である」旨を明示した上で使用すること。</p>
+    <p>作成日：2026-07-28／このレポートは deal-analysis-report スキルにより生成された。</p>
+  </div>
+</footer>
+
+</body>
+</html>
