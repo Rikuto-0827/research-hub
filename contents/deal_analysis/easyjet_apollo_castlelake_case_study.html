@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>easyJet：キャッスルレイク×アポロ、格安航空会社をめぐるPE争奪戦の全貌（進行中案件）</title>
+<style>
+:root {
+  --navy: #0f2a43;
+  --navy2: #16395c;
+  --accent: #c9a13b;
+  --bg: #f7f8fa;
+  --text: #26303a;
+  --muted: #6b7683;
+  --line: #dde3e9;
+  --red: #b23a48;
+  --green: #2f7d5b;
+  --blue: #2b6cb0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 15px; line-height: 1.75;
+  background: var(--bg); color: var(--text);
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 28px 80px; }
+header.hero {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  color: #fff; padding: 46px 28px 38px;
+}
+header.hero .inner { max-width: 980px; margin: 0 auto; }
+header.hero .tag {
+  display: inline-block; border: 1px solid var(--accent); color: var(--accent);
+  font-size: 12px; letter-spacing: .08em; padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 14px;
+}
+header.hero .tag.live { border-color: var(--red); color: #ff9fac; margin-left: 8px; }
+header.hero h1 { font-size: 26px; margin: 0 0 10px; font-weight: 700; line-height: 1.5; }
+header.hero p.sub { color: #cdd8e3; font-size: 13.5px; margin: 0; }
+nav.toc {
+  position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 4px rgba(15,42,67,.06); z-index: 10; overflow-x: auto; white-space: nowrap;
+}
+nav.toc .inner { max-width: 980px; margin: 0 auto; padding: 10px 28px; }
+nav.toc a {
+  color: var(--navy); text-decoration: none; font-size: 12.5px; margin-right: 16px;
+  font-weight: 600;
+}
+nav.toc a:hover { color: var(--accent); }
+section { padding-top: 46px; border-top: 1px solid var(--line); margin-top: 10px; }
+section:first-of-type { border-top: none; }
+h2 {
+  color: var(--navy); font-size: 20px; margin: 0 0 18px; padding-bottom: 10px;
+  border-bottom: 3px solid var(--accent); display: inline-block;
+}
+h3 { color: var(--navy2); font-size: 16px; margin: 28px 0 10px; }
+p { margin: 10px 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+th, td { padding: 8px 10px; border: 1px solid var(--line); text-align: left; }
+th { background: var(--navy); color: #fff; font-weight: 600; }
+tbody tr:nth-child(even) { background: #fbfcfd; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 20px 0; }
+.kpi { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 6px; padding: 16px 18px; }
+.kpi .v { font-size: 21px; font-weight: 700; color: var(--navy); }
+.kpi .l { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.callout { background: #fff; border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 16px 20px; margin: 18px 0; box-shadow: 0 1px 4px rgba(15,42,67,.06); }
+.callout.insight { border-left-color: var(--green); }
+.callout.risk { border-left-color: var(--red); }
+.callout.learn { border-left-color: var(--blue); }
+.callout b.title { display: block; font-size: 13px; letter-spacing: .08em; margin-bottom: 6px; color: var(--navy); }
+.callout.insight b.title { color: var(--green); }
+.callout.risk b.title { color: var(--red); }
+.callout.learn b.title { color: var(--blue); }
+.est { color: var(--red); font-size: 11px; font-weight: 700; border: 1px solid var(--red); border-radius: 3px; padding: 0 4px; margin-left: 4px; vertical-align: middle; display: inline-block; }
+.live { color: #fff; background: var(--red); font-size: 11px; font-weight: 700; border-radius: 3px; padding: 0 5px; margin-left: 4px; vertical-align: middle; display: inline-block; }
+.timeline { list-style: none; margin: 20px 0; padding-left: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 20px 24px; margin-left: 4px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent); }
+.timeline li.now::before { background: var(--red); box-shadow: 0 0 0 1px var(--red); }
+.timeline .d { font-weight: 700; color: var(--navy); font-size: 13px; }
+.timeline .t { color: var(--muted); font-size: 12px; margin-left: 6px; }
+.glossary { background: #fff; border: 1px solid var(--line); border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.glossary .term { background: #f0f4f8; padding: 10px 16px; font-weight: 700; color: var(--navy); font-size: 14px; }
+.glossary .def { padding: 12px 16px; }
+.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; margin-right: 6px; }
+.pill.buy { background: #eaf3ee; color: var(--green); }
+.pill.exit { background: #fdeceb; color: var(--red); }
+.pill.hold { background: #eaf0f8; color: var(--blue); }
+.qa { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+.qa .q { font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.qa .q::before { content: "Q. "; color: var(--accent); }
+.qa .a::before { content: "A. "; font-weight: 700; color: var(--green); }
+footer.foot { background: var(--navy); color: #cdd8e3; padding: 34px 28px; font-size: 12.5px; margin-top: 50px; }
+footer.foot .inner { max-width: 980px; margin: 0 auto; }
+footer.foot a { color: #fff; }
+footer.foot ul { padding-left: 18px; columns: 2; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px 60px; }
+  header.hero { padding: 32px 16px 28px; }
+  header.hero h1 { font-size: 20px; }
+  nav.toc .inner { padding: 8px 16px; }
+  footer.foot ul { columns: 1; }
+}
+@media print {
+  body { background: #fff; }
+  nav.toc { position: static; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <span class="tag">DEAL ANALYSIS CASE STUDY</span><span class="tag live">進行中案件 LIVE</span>
+    <h1>easyJet：キャッスルレイク×アポロ・グローバル、アセットヘビーな格安航空会社をめぐるPE争奪戦の全貌</h1>
+    <p class="sub">2026年5月末 Castlelakeが取得検討を開示 → 4回の提案拒否 → 7月5日 690ペンスで「推奨の意向」 → 7月8日 Apolloが715ペンスで横入り → 現在、両陣営とも英国テイクオーバー・コード上の期限（8/3・8/7）を控え、EUの航空会社所有規制見直しという不確実性を抱えたまま進行中</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="inner">
+    <a href="#s1">1.サマリー</a>
+    <a href="#s2">2.ストラクチャー</a>
+    <a href="#s3">3.財務ディープダイブ</a>
+    <a href="#s4">4.投資テーゼ</a>
+    <a href="#s5">5.バリュークリエーション</a>
+    <a href="#s6">6.成立への道のり</a>
+    <a href="#s7">7.リターン構造</a>
+    <a href="#s8">8.リスク・批判的視点</a>
+    <a href="#s9">9.難解ポイント解説</a>
+    <a href="#s10">10.基礎知識</a>
+    <a href="#s11">11.面接インサイト</a>
+    <a href="#s12">12.想定Q&amp;A</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>本レポートは、英国の格安航空会社（LCC）大手easyJet plc（ロンドン証券取引所：EZJ）をめぐって2026年に勃発した、2つの米国系PEファンド（航空機リース専業のキャッスルレイクと、メガファンドのアポロ・グローバル・マネジメント）による争奪戦を扱う。<b>本レポート作成時点（2026年7月28日）で、ディールはまだ成立していない進行中案件</b>である点に留意してほしい。したがって本レポートの後半（エグジット・リターン等）は、他のケーススタディのような「実績の検証」ではなく、「開示されている入札条件から何が読み取れるか」を分析する構成になっている。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">£3.94</div><div class="l">攪乱前終値（2026/5/28、Castlelakeの関心開示の前日）</div></div>
+    <div class="kpi"><div class="v">5回</div><div class="l">Castlelakeの提案回数（4回拒否→5回目の690pで「推奨の意向」）</div></div>
+    <div class="kpi"><div class="v">£6.90／株</div><div class="l">Castlelake合意条件（攪乱前比 +73%）</div></div>
+    <div class="kpi"><div class="v">£7.15／株</div><div class="l">Apollo対抗提案（攪乱前比 +81%、株式価値約£5.7bn）</div></div>
+    <div class="kpi"><div class="v">約58%<span class="est">推定</span></div><div class="l">自社保有機材比率（総機材356機中205〜208機を自社保有）</div></div>
+    <div class="kpi"><div class="v">8/3・8/7</div><div class="l">Castlelake／Apolloそれぞれの正式表明期限（PUSU）</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">30秒で語るならこう言う</b>
+    「easyJetの案件は、単なる非公開化ではなく、"航空機リース会社が航空会社そのものを買う"という珍しいディールです。争点の核は、easyJetが保有する自社機材（簿価約48億ポンド、時価では66億ドル規模ともいわれる）を、セール・アンド・リースバックで現金化できるという資産アービトラージにあります。さらに、EUの航空会社所有規制（EU域内資本が過半を握る必要がある）を回避するための名目上のEU国籍株主構造が、まさにEU側の規制見直しでチャレンジされているところが、このディールを『規制リスクが結果を決めるディール』にしている点を強調したいです。」
+  </div>
+
+  <p>数値の多くはまだ確定していない、あるいは報道間で幅がある（提案価格の推移や企業価値の算出根拠など）。推定が必要な箇所には<span class="est">推定</span>バッジを付し、根拠と幅を明示している。また本ディールは執筆時点で毎日のように状況が変化しうるため、本レポートは「2026年7月28日時点のスナップショット」として読んでほしい。</p>
+</section>
+
+<section id="s2">
+  <h2>2. ディール概要とストラクチャー</h2>
+
+  <h3>2-1. 対象会社</h3>
+  <p>easyJet plcは1995年にステリオス・ハジイオアヌ氏（Stelios Haji-Ioannou）が設立した英国の格安航空会社で、ロンドン証取プレミア市場・FTSE100構成銘柄。ルートン空港を拠点に欧州域内で短距離路線網を展開するほか、近年は高収益・高成長のパッケージ旅行事業「easyJet Holidays」を傘下に持つ。創業者一族（easyGroup経由）は現在も株式の約15%を保有し、easyJetブランドのライセンス使用料を収受する関係を維持している。</p>
+
+  <h3>2-2. 入札構造（英国テイクオーバー・コード下の「オークション」）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>提案者</th><th>提案の推移</th><th>プレミアム（対攪乱前£3.94）</th><th>現在のステータス</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2"><span class="pill hold">1st Bidder</span>Castlelake（航空機リース専業のPEファンド）</td><td>560p→600p→625p（6/20提示・6/21拒否）→650p（6/25拒否・期限延長）</td><td>約+42%〜+65%<span class="est">推定</span></td><td rowspan="2">690pで取締役会「推奨の意向」（7/5）も、Apollo登場後は非推奨に転換（7/10）。8/3までに正式表明が必要</td></tr>
+      <tr><td>690p（7/5、joint announcement）</td><td>+75%<span class="est">推定</span></td></tr>
+      <tr><td><span class="pill buy">2nd Bidder</span>Apollo（アポロ・グローバル・マネジメント）</td><td>715p（7/8提示・7/10 board agreement in principle）</td><td>+81%</td><td>「Stub Equity Alternative」付きで交渉継続中。8/7までに正式表明が必要</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);">提案回数・価格の刻みは複数の報道の突き合わせによる再構成であり、細部（プレミアム率の算出基準日等）は報道間で若干の幅がある。</p>
+
+  <h3>2-3. タイムライン</h3>
+  <ul class="timeline">
+    <li><span class="d">2026/05/28</span><span class="t">easyJet株価終値£3.94（攪乱前基準日）</span></li>
+    <li><span class="d">2026/05/29</span><span class="t">Castlelakeが英当局に取得検討を開示、オファー期間開始</span></li>
+    <li><span class="d">2026/06/20-21</span><span class="t">Castlelakeの625p提案を取締役会が受領・翌日拒否</span></li>
+    <li><span class="d">2026/06/25</span><span class="t">Castlelakeの4回目提案650p（時価総額約£5.3bn）を拒否、ただし期限延長し「限定的な情報開示」に応じる</span></li>
+    <li><span class="d">2026/07/05</span><span class="t">easyJet・Castlelake共同発表：690pで取締役会「推奨の意向（minded to recommend）」</span></li>
+    <li><span class="d">2026/07/08</span><span class="t">Apolloが715pの新規提案を提出</span></li>
+    <li><span class="d">2026/07/10</span><span class="t">取締役会がApolloと「原則合意（agreement in principle）」、Castlelake案への推奨を撤回。株価は当日+13%（CNBC報道）</span></li>
+    <li><span class="d">2026/07/22頃</span><span class="t">EUが航空会社の所有・実効支配ルールの見直し着手を表明。両陣営のEU国籍名義株主スキームが規制上の的に</span></li>
+    <li class="now"><span class="d">2026/07/28（本レポート時点）</span><span class="t">両陣営とも正式offer表明前の交渉段階。BALPA等労組・パイロットの間で雇用不安の報道</span></li>
+    <li><span class="d">2026/08/03</span><span class="t">Castlelakeの正式表明期限（Rule 2.6 PUSU）</span></li>
+    <li><span class="d">2026/08/07</span><span class="t">Apolloの正式表明期限（Rule 2.6 PUSU）</span></li>
+  </ul>
+
+  <div class="callout learn">
+    <b class="title">面接での使い方</b>
+    日本のTOB案件と違い、英国のテイクオーバー・コードには「Put Up or Shut Up（PUSU）」という、対象会社が買収検討中の相手に対して一定期限内に正式オファーを出すか撤退するかを迫る制度がある。この案件はまさにその期限（8/3・8/7）に向けて交渉が進んでおり、「なぜ期限がバラバラでなくそろえられたのか」（両陣営に同一の情報開示・判断材料を与え、オークションの公平性を保つため）を説明できると評価が高い。
+  </div>
+</section>
+
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ</h2>
+
+  <h3>3-1. 直近業績</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>決算期（9月期）</th><th class="num">グループ売上高</th><th class="num">うち航空事業</th><th class="num">うちHolidays</th><th class="num">Holidays税前利益</th><th class="num">グループ税前利益</th></tr></thead>
+    <tbody>
+      <tr><td>FY2024</td><td class="num">£9.3bn</td><td class="num">£8,172m</td><td class="num">£1,137m</td><td class="num">£190m</td><td class="num">£610m</td></tr>
+      <tr><td>FY2025</td><td class="num">£10.1bn</td><td class="num">£8,666m</td><td class="num">£1,440m</td><td class="num">£250m</td><td class="num">£665m（+9%）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>3-2. バランスシートと機材構成</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>数値</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>純有利子負債（FY25末）</td><td class="num">約£0.5bn</td><td>FY24末の約£0.9bnから大幅圧縮</td></tr>
+      <tr><td>リース債務</td><td class="num">約£995m<span class="est">推定</span></td><td>IFRS16ベース。純有利子負債に含まれるか別建てかは開示の粒度次第で解釈が分かれる</td></tr>
+      <tr><td>総機材数（2025/9末）</td><td class="num">356機</td><td>A320neo9機の新規受領等で前期347機から増加</td></tr>
+      <tr><td>うち自社保有</td><td class="num">約205〜208機（約58%）<span class="est">推定</span></td><td>競合LCCと比べて自社保有比率が突出して高い</td></tr>
+      <tr><td>自社保有機材の簿価</td><td class="num">約£4.8bn</td><td>市場（時価）ベースでは約66億ドル規模との報道もある<span class="est">推定</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：これは「小売業の自社保有不動産アービトラージ」の航空機版</b>
+    米国小売業のLBOでは、対象会社が保有する店舗不動産を、買収後にセール・アンド・リースバックして現金化し、買収債務の返済原資にするという手法が古典的に使われてきた（Toys "R" Us、シアーズ等）。easyJetの場合、店舗不動産の代わりに「自社保有の航空機（簿価約48億ポンド）」がその役割を果たす。しかもCastlelakeは自ら航空機リース事業を営むプレイヤーであるため、easyJetから切り出した機材を自社のリース・ファンドに組み込めば、売却益とリース料収入の両方を得られる垂直統合的な収益機会がある。これは通常のオペレーション改善型LBOではなく、「資産アービトラージ型LBO」として理解すべきディールである。
+  </div>
+
+  <h3>3-3. easyJet Holidaysという「隠れた優良資産」</h3>
+  <p>easyJet Holidaysは顧客数がFY24の2.6百万人からFY25には3.1百万人へ約20%増加し、税前利益は£190m→£250mへ拡大している。航空事業本体よりも軽資産・高成長・高収益率のセグメントであり、buyout後にこの部門だけを切り出して単独売却・IPOする「サム・オブ・ザ・パーツ」戦略の対象になりうる。</p>
+</section>
+
+<section id="s4">
+  <h2>4. 投資テーゼ（なぜ買おうとしているのか）</h2>
+
+  <h3>4-1. Castlelakeのテーゼ：資産アービトラージ＋垂直統合</h3>
+  <p>Castlelakeは航空機ファイナンス・リース専業のオルタナティブ投資会社であり、一般的な事業会社としてのeasyJet買収というより、「割安に評価された自社保有機材フリートを取得し、セール・アンド・リースバックや自社リース・ポートフォリオへの統合を通じて即座に現金を引き出す」ことが中心的なテーゼだと報じられている。さらに、Gatwick等の希少なスロット資産や、モダンで流動性の高いエアバス製中心のフリートも魅力とされる。欧州の旅客需要が軟化した場合には、受領予定機材をアジアや南米等、リース利回りの高い市場へ機動的に転用できる点も、リース会社ならではの視点である。</p>
+
+  <h3>4-2. Apolloのテーゼ：伝統的メガファンドとしての多面的価値創造</h3>
+  <p>Apolloは資産アービトラージに特化したCastlelakeと異なり、クレジット・プライベートエクイティ・保険関連資産運用まで幅広く手掛けるメガファンドである。「Stub Equity Alternative」（既存株主が対価の一部を新会社株式で受け取れる選択肢）を用意している点から、既存株主・経営陣との関係を維持しながら、easyJet Holidaysの成長投資、コスト構造の最適化、資本構成の見直し（Apolloが得意とするハイブリッド証券・優先株の活用等）を通じた継続的な価値創造を狙っている可能性が高い<span class="est">推定</span>。</p>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：2つの提案の「性格の違い」を見抜く</b>
+    同じ買収額の高低だけで両陣営を比較するのは不十分である。Castlelakeの提案は「今ある資産（機材）を素早く現金化する」短中期の資産回収型、Apolloの提案は「Stub Equityで株主を residual upsideに参加させる」形で長期の事業成長を取り込む型、という質的な違いがある。面接では、単に「Apolloの方が高値だから勝った」ではなく、両者のテーゼの構造的違いを語れると評価される。
+  </div>
+</section>
+
+<section id="s5">
+  <h2>5. バリュークリエーション（想定プラン）</h2>
+  <p>本ディールはクロージング前であるため、以下はすべて報道・業界慣行から推測される「想定される」レバーであり、確定した経営計画ではない<span class="est">推定</span>。</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>レバー</th><th>内容（推定）</th></tr></thead>
+    <tbody>
+      <tr><td>①機材のセール・アンド・リースバック</td><td>自社保有機材（簿価約£4.8bn）の一部を売却し、買収債務の返済原資・配当原資に充当</td></tr>
+      <tr><td>②easyJet Holidaysの成長投資加速</td><td>高成長・高収益率の旅行事業への追加投資（マーケティング・宿泊在庫の拡充等）</td></tr>
+      <tr><td>③ネットワーク・機材配分の最適化</td><td>需要が弱い路線・時間帯の機材を、リース会社の視点でグローバルに再配分</td></tr>
+      <tr><td>④資本構成の再設計</td><td>Apollo流のハイブリッド証券・プリファードエクイティ等を活用した資本コスト最適化</td></tr>
+      <tr><td>⑤コスト構造の見直し</td><td>人員体制・本社機能等の効率化（パイロット組合の反発が予想されるハイリスクなレバー）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout risk">
+    <b class="title">批判的視点：バリューアップとバリュー破壊は紙一重</b>
+    上記①（機材売却）はキャッシュを生む一方、リースバック後は毎年のリース料支払いという固定費に転換されるため、需要が急減する局面（コロナ禍のような）での財務耐性はむしろ低下しうる。「資産を現金化して債務を返す」ことと「長期的な財務健全性を守る」ことは必ずしも両立しない、という視点を持っておくべきである。
+  </div>
+</section>
+
+<section id="s6">
+  <h2>6. 案件成立への道のり（エグジット分析に代えて）</h2>
+  <p>本ディールは未クロージングのため、通常のエグジット分析の代わりに「そもそも成立するか」という論点を扱う。</p>
+
+  <h3>6-1. EU航空会社所有・実効支配ルールという最大の関門</h3>
+  <p>EU（および英国）の航空法制では、EU域内の運航許可（AOC・運航ライセンス）を保有する航空会社は、EUまたは英国国籍の株主・実体によって過半数が所有・実効支配されていなければならない（Regulation (EC) No 1008/2008等）。easyJetは英国のAOCに加え、Brexit後もEU域内飛行権を維持するためオーストリア拠点の子会社「easyJet Europe」を通じてEUのAOCも保持している。Castlelakeはこの要件に対応するため、自らの持分を運航ライセンス保有主体の49.9%以下に抑え、元マレーシア航空CEOのピーター・ベリュー氏とベテラン航空業界エグゼクティブのマーク・ブリーン氏という2名のEU国籍者に残りの持分を持たせる名目的な株主構成を用意したと報じられている。</p>
+
+  <div class="callout risk">
+    <b class="title">批判的視点：規制の「実効支配」テストにどこまで耐えられるか</b>
+    2026年7月下旬、EUは航空会社の所有・実効支配ルールの見直しに着手すると発表した。焦点は、形式的な議決権比率（EU国籍株主が51%を保有）が満たされていても、経済的インセンティブ・取締役会での実権・買収資金の出し手が実質的に米国のPEスポンサーに偏っている場合、規制当局が「実効支配は域外にある」と認定しうるかという点にある。この論点が決着しない限り、たとえ700p台の高値で株主の合意を取り付けても、規制当局の承認が得られずディールが崩壊するリスクが残る。これは、名目上のガバナンス設計だけでは規制リスクを消せないという典型例であり、クロスボーダーM&AのDDにおける重要な教訓である。
+  </div>
+
+  <h3>6-2. その他の成立リスク</h3>
+  <ul>
+    <li><b>競合入札の再燃リスク</b>：Castlelake・Apollo以外の第三者（航空会社、他のPEファンド、ソブリンウェルスファンド等）が土壇場で参入する可能性は排除できない</li>
+    <li><b>株主総会・スキーム承認</b>：英国での非公開化はScheme of Arrangement（会社法上の裁判所認可を要する組織再編スキーム）で行われることが多く、株主の75%以上の賛成と裁判所の認可が必要</li>
+    <li><b>創業者ステリオス氏の動向</b>：約15%を保有する創業者一族の意向は、スキーム承認の可否に一定の影響を持つ。Apolloはブランドライセンス契約の延長を提示し関係維持を図っている</li>
+    <li><b>労働者・労組の反応</b>：パイロット等従業員の間で雇用・経営体制への不安が報じられており（Bloomberg、2026/7/7）、英国テイクオーバー・コード上、買収者は従業員代表に意向を説明する義務を負う</li>
+  </ul>
+
+  <div class="callout learn">
+    <b class="title">学習ガイド：想定される着地シナリオ</b>
+    現時点（2026/7/28）で考えられるシナリオは大きく3つ：（a）Apolloが8/7までに正式offerを表明し、EU規制論点を残したままクロージングに向かう、（b）EU規制見直しの帰趨が見えるまで両陣営が期限延長を求める、（c）規制の壁が高いと判断され両陣営が撤退し、easyJetは独立を維持する。面接では「今の情報で確実にこうなる」と断定せず、複数シナリオを提示する姿勢が評価される。
+  </div>
+</section>
+
+<section id="s7">
+  <h2>7. リターン構造の考察（成立を仮定した順算シナリオ）</h2>
+  <p>本ディールはまだクロージングしていないため、実績としてのMOIC/IRRは存在しない。以下は「Apollo案（715p、株式価値約£5.7bn<span class="est">推定</span>、発行済株式数は攪乱前時価総額等から逆算した約7.97億株<span class="est">推定</span>を前提）」が成立したと仮定した場合の、順算LBO思考のフレームである。</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>推定値</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>株式価値（Apollo案）</td><td class="num">約£5.7bn</td><td>715p×約7.97億株<span class="est">推定</span></td></tr>
+      <tr><td>純有利子負債＋リース債務（FY25末）</td><td class="num">約£1.5bn<span class="est">推定</span></td><td>純有利子負債£0.5bn＋リース債務£1.0bn前後（開示の粒度により幅あり）</td></tr>
+      <tr><td>推定EV</td><td class="num">約£7.2bn<span class="est">推定</span></td><td>株式価値＋ネットデット＋リース債務</td></tr>
+      <tr><td>FY25 グループ税前利益</td><td class="num">£665m</td><td>EV/税前利益 約10.8倍<span class="est">推定</span>（EBITDAベースならさらに低い倍率になる）</td></tr>
+      <tr><td>自社保有機材の売却余地</td><td class="num">簿価£4.8bn（一部）</td><td>買収債務の一部を機材売却代金で早期返済するシナリオが成立すれば、真水のエクイティ回収は加速しうる</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">模範解答コールアウト：面接官への一言</b>
+    「もしこの案件が成立すれば、リターンの源泉は通常のLCCのオペレーション改善（客数増・単価向上）だけでなく、保有機材の資産価値実現（セール・アンド・リースバック）という、事業キャッシュフローとは独立した回収チャネルを持つ点が特徴的です。したがって、通常のEBITDA成長・マルチプル・デレバレッジの3分解に加えて、『バランスシート上に眠る資産の現金化』という第4の軸を考慮する必要がある、という点を強調したいです。」
+  </div>
+</section>
+
+<section id="s8">
+  <h2>8. リスクと批判的視点（DD論点）</h2>
+
+  <div class="callout risk">
+    <b class="title">論点1：EU実効支配ルールという規制の不確実性（最重要）</b>
+    第6章で論じた通り、EUの規制見直しの結論次第では、両陣営が用意した名目的なEU国籍株主スキームが認められない可能性がある。この論点が解消しない限り、株価に織り込まれたプレミアムの一部は「規制承認が得られないリスク」を反映したディスカウントを伴っている可能性が高い。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点2：資産アービトラージ型LBOの財務耐性リスク</b>
+    自社保有機材を売却してリース契約に切り替えることは、平時のキャッシュ創出には有効だが、需要ショック時の固定費（リース料）を増加させ、財務レジリエンスを低下させる可能性がある。LCCという需要変動の大きい産業でこれを行うことは、平時の効率性と有事の耐久性のトレードオフを伴う。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点3：オークション構造による「勝者の呪い」リスク</b>
+    Castlelakeが4回拒否された後、5回目でようやく取締役会の推奨を得たという経緯は、入札プロセスが競争的なオークションと化していたことを示す。Apolloの715pがCastlelakeの690pを上回ったことで決着したように見えるが、競争入札は往々にして「他社に競り勝つこと」自体が目的化し、本源的価値を上回る対価を支払う「勝者の呪い」に陥りやすい。取締役会が「too cheap」と繰り返し拒否した経緯自体は株主保護の観点で健全だが、最終的な対価が事業の本源的価値を上回っていないか、という検証は独立して必要である。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点4：「やるべきでなかった」側の論拠</b>
+    easyJetはFY25に税前利益£665m（+9%）、easyJet Holidaysも高成長という好調な業績を単独で達成している。仮に取締役会が全ての提案を拒否し独立を維持した場合でも、株主は市場での評価向上を通じて同等以上の価値を得られた可能性は排除できない。非公開化には常に、経営の自由度向上というメリットと、上場を維持していれば得られたはずの将来の株価上昇機会を手放すコストとのトレードオフがある。
+  </div>
+</section>
+
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説</h2>
+
+  <div class="glossary">
+    <div class="term">Put Up or Shut Up（PUSU、Rule 2.6）</div>
+    <div class="def">英国テイクオーバー・コードにおいて、買収の可能性を公表した相手（potential offeror）に対し、対象会社側の要請等により、一定期限までに正式な買収オファーを行うか、断念を宣言するかを迫る制度。本件ではCastlelakeが8/3、Apolloが8/7を期限としており、対象会社が両陣営の期限をそろえることで、オークションの公平性を担保している。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">Scheme of Arrangement（スキーム・オブ・アレンジメント）</div>
+    <div class="def">英国会社法に基づく組織再編手法で、対象会社の株主の75%以上（かつ出席株主の過半数）の賛成と裁判所の認可を得ることで、反対株主も含めた全株式を一括して取得できる、英国M&Aで最も一般的な非公開化スキーム。日本のTOB＋スクイーズアウトと機能的には似ているが、株主総会決議と裁判所手続きを組み合わせる点が異なる。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">Minded to Recommend（推奨の意向）</div>
+    <div class="def">正式な買収提案ではなく、対象会社の取締役会が「この条件であれば株主に推奨するつもりがある」と示す、法的拘束力のない中間的な意思表示。本件のCastlelake案（690p）はこの段階にとどまったまま、より高いApollo案の登場で覆された。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">Stub Equity（スタブ・エクイティ）</div>
+    <div class="def">買収対価の一部を現金でなく、買収後の非公開会社（または買収目的会社）の株式で受け取れる仕組み。既存株主が非公開化後もアップサイドの一部に参加し続けられる一方、対象会社としては買収に必要な現金対価の総額を圧縮できる利点がある。Apollo案の「Stub Equity Alternative」はこの一例。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">EU航空会社の所有・実効支配規制</div>
+    <div class="def">Regulation (EC) No 1008/2008等に基づき、EU域内の運航免許を保持する航空会社は、EU加盟国（Brexit後は英国も別枠で類似規制）の国籍を持つ者によって「過半の所有」と「実効支配」の両方を満たす必要がある。単に株式の51%をEU国籍者に割り当てるだけでは不十分で、取締役会構成・資金提供者の実権・重要な商業上の意思決定への関与度合いまで含めて「実効支配」が判断されうる点が、本件のような名目的な株主構成の弱点になりうる。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">セール・アンド・リースバック（Sale-and-Leaseback）</div>
+    <div class="def">保有資産（本件では航空機）をリース会社に売却し、同時にその資産をリース契約で借り戻す取引。売却代金で即座にキャッシュを得られる一方、以降は継続的なリース料支払い義務を負う。資産保有比率の高い企業のLBOでは、買収債務の返済原資として頻繁に用いられる。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">攪乱前価格（Undisturbed Price）とプレミアムの算出基準</div>
+    <div class="def">買収提案の噂や公表によって株価が変動する前の、最後の取引日の終値。買収プレミアムは通常この「攪乱前価格」を基準に算出される。本件では2026年5月28日の終値£3.94が基準とされている。基準日を誤ると、プレミアム率の評価を大きく見誤る点に注意。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">EV（企業価値）と株式価値の違い（航空会社特有の論点）</div>
+    <div class="def">航空会社はリース機材が多いため、IFRS16会計基準の導入以降、リース債務がバランスシート上の負債として計上されるようになった。企業によって「純有利子負債」にこのリース債務を含めて開示するか、別建てで開示するかが異なるため、EVを算出する際は、リース債務の二重計上・計上漏れが起きやすい。本件の分析でも、この開示の粒度の違いにより、EVの推定値には相応の幅が生じている。</div>
+  </div>
+</section>
+
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識</h2>
+
+  <h3>10-1. 英国公開買収プロセスの全体像（日本のTOBとの対比）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>英国（Takeover Code）</th><th>日本（金商法TOB）</th></tr></thead>
+    <tbody>
+      <tr><td>主なスキーム</td><td>Scheme of Arrangement（裁判所認可制）またはContractual Offer</td><td>公開買付け（TOB）＋スクイーズアウト</td></tr>
+      <tr><td>強制取得の閾値</td><td>Scheme: 75%の株主賛成。Offer: 90%取得でスクイーズアウト</td><td>2/3以上の議決権取得で株主総会特別決議が可能、その後スクイーズアウト</td></tr>
+      <tr><td>複数提案者への対応</td><td>PUSU（Rule 2.6）で期限を設定し、公平なオークションを促す</td><td>対抗TOBは制度上可能だが、PUSUのような明示的な期限強制の仕組みはない</td></tr>
+      <tr><td>規制当局</td><td>Takeover Panel（買収監視）＋CMA（競争法）＋業種別規制（本件では航空当局）</td><td>関東財務局・証券取引等監視委員会＋公正取引委員会</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>10-2. バリュエーション3手法＋LBO法</h3>
+  <p>DCF法、類似上場企業比較法（マルチプル法）、類似取引比較法、そしてスポンサーの要求リターンから逆算するLBO法という基本4手法は、業種を問わず共通のフレームワークである。航空会社の場合は特に、EV/EBITDAR（機材リース料を営業費用に戻し入れた指標）という航空業界特有の倍率も併用される点を押さえておきたい。</p>
+
+  <h3>10-3. IPO実務・DDの基礎</h3>
+  <p>本件はIPOではなく非公開化案件だが、DDの種類（財務・事業・法務・税務・人事労務）は共通のフレームワークとして使える。航空会社特有のDD論点としては、機材リース契約の残存期間・条件、スロット資産の権利関係、労働協約の内容、環境規制（航空燃料税・排出権取引）等が加わる。</p>
+
+  <div class="callout learn">
+    <b class="title">学習動線</b>
+    英国の公開買収プロセスに慣れたら、日本のTOB案件（本ハブの三益半導体・太陽HD等のケーススタディ）と比較し、「規制環境が変わると同じ経済的発想の買収でも手続きがどう変わるか」を横断的に整理すると理解が深まる。
+  </div>
+</section>
+
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト（まとめ）</h2>
+  <ol>
+    <li><b>「誰が買うか」がテーゼの性格を決める。</b>航空機リース専業のCastlelakeと、多角的メガファンドのApolloでは、同じ買収額でも狙っているバリュークリエーションの型が根本的に異なる。</li>
+    <li><b>資産アービトラージ型LBOは、業種を問わず同じロジックで理解できる。</b>小売業の不動産と航空会社の機材は、"バランスシートに眠る流動性の高い資産をリースバックで現金化する"という点で同型の手法である。</li>
+    <li><b>クロスボーダーM&Aでは、名目上のガバナンス設計だけでは規制リスクを消せない。</b>EU国籍株主を形式的に配置しても、規制当局は経済的実権・資金提供者の影響力まで見て「実効支配」を判断しうる。</li>
+    <li><b>競争入札における取締役会の複数回拒否は、必ずしも「強欲」ではなく株主保護のガバナンスとして機能しうる。</b>4回の拒否を経て条件が改善した経緯は、対象会社取締役会の交渉力の good practice として語れる。</li>
+    <li><b>資産の現金化と財務レジリエンスはトレードオフになりうる。</b>平時の効率化が、需要ショック時の耐久力を犠牲にする可能性を常に問うべきである。</li>
+    <li><b>進行中の案件を語るときは、断定せずシナリオで語る。</b>まだ結果が出ていないディールについて「こうなる」と言い切るのではなく、複数の分岐（規制承認・競合参入・労組対応）を提示する姿勢が信頼感につながる。</li>
+  </ol>
+</section>
+
+<section id="s12">
+  <h2>12. 想定Q&amp;A</h2>
+
+  <div class="qa">
+    <div class="q">なぜ航空機リース会社であるCastlelakeが、航空会社そのものを買収しようとしているのですか？</div>
+    <div class="a">easyJetは競合LCCと比べて自社保有機材の比率が突出して高く（総機材356機中約58%）、簿価だけで約48億ポンドに相当します。Castlelakeは自ら航空機リース事業を営んでいるため、この機材をセール・アンド・リースバックや自社リース・ポートフォリオへの統合を通じて現金化し、リース料収入も得られるという、通常の事業会社にはない資産アービトラージの機会を見出していると報じられています。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Apolloの提案がCastlelakeより高いのに、なぜまだ決着していないのですか？</div>
+    <div class="a">英国のテイクオーバー・コードでは、取締役会が高い方の提案を「推奨の意向」と示しても、それは法的拘束力のある正式offerではありません。両陣営とも、株主総会・裁判所によるScheme of Arrangementの認可に加え、本件特有の論点であるEUの航空会社所有・実効支配規制のクリアが必要です。特に後者は2026年7月にEU側が規制見直しに着手したことで、両陣営が用意した名目的なEU国籍株主構造が認められるかどうかが不透明になっており、これが決着を遅らせている一因と考えられます。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">EU航空会社所有規制とは何ですか？なぜこのディールにとって重要なのですか？</div>
+    <div class="a">EU（および英国）の航空法制では、域内の運航免許を持つ航空会社は、EUまたは英国国籍の主体によって株式の過半数を所有され、かつ実効的に支配されている必要があります。Castlelakeは自社の持分を49.9%以下に抑え、残りをEU国籍の個人2名に持たせる構造を用意しましたが、これが形式的な株主比率にすぎず、実際の経済的利益・意思決定権が米国のPEスポンサーに偏っているとみなされれば、規制当局に「実効支配はEU域外にある」と判断され、運航免許の維持に支障が出るリスクがあります。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">この案件で「投資テーゼ」を一言でいうと何ですか？</div>
+    <div class="a">見る主体によって異なりますが、Castlelake目線では「割安な自社保有機材フリートを持つ航空会社を取得し、資産の現金化と自社リース事業への垂直統合で価値を引き出す」、Apollo目線では「Stub Equityで株主との関係を維持しつつ、easyJet Holidaysの成長と資本構成の最適化を通じて中長期の企業価値向上を図る」という、質的に異なる2つのテーゼが競合している状態です。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">創業者のステリオス・ハジイオアヌ氏の約15%の株式保有は、このディールにどう影響しますか？</div>
+    <div class="a">英国のScheme of Arrangementでは株主の75%以上の賛成が必要なため、15%という大きな株式を持つ株主の意向は無視できません。過去にステリオス氏は取締役会の経営方針（特に機材投資・拡大戦略）としばしば対立してきた経緯があり、Apolloが同氏のブランドライセンス契約（easyGroupとの使用許諾）の延長を提示したのは、こうした背景を踏まえた関係維持策とみられます。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">【基礎確認】「攪乱前価格に対して+81%のプレミアム」という表現は何を意味しますか？</div>
+    <div class="a">買収提案が公表される前の、最後の取引日の株価終値（本件では2026年5月28日の£3.94）を基準に、提案価格がどれだけ上乗せされているかを示す指標です。Apolloの715p（£7.15）は£3.94の約1.81倍であるため、+81%のプレミアムと表現されます。プレミアムは「対象会社の株主が買収に応じる経済的インセンティブの大きさ」を示す代表的な指標で、業種や市場環境によって適正水準の目安（一般に20〜40%程度が多い）が変わりますが、本件のように競争入札が起きると、この水準を大きく超えることがあります。</div>
+  </div>
+</section>
+
+</div>
+
+<footer class="foot">
+  <div class="inner">
+    <p><b>主要ソース</b></p>
+    <ul>
+      <li><a href="https://www.cbsnews.com/news/easyjet-castlelake-airline-takeover-bid/" target="_blank" rel="noopener">CBS News「EasyJet accepts takeover offer from Castlelake」</a></li>
+      <li><a href="https://www.cbsnews.com/news/easyjet-takeover-offer-apollo-bidding-war-castlerock/" target="_blank" rel="noopener">CBS News「EasyJet accepts takeover offer from Apollo amid bidding war」</a></li>
+      <li><a href="https://www.cnbc.com/2026/07/06/easyjet-ezj-stock-castlelake-takeover-bid.html" target="_blank" rel="noopener">CNBC「EasyJet shares soar 10% as airline agrees to Castlelake takeover」</a></li>
+      <li><a href="https://www.cnbc.com/2026/07/10/easyjet-apollo-takeover-bid-castlelake-share-price.html" target="_blank" rel="noopener">CNBC「EasyJet pops 13% as airline weighs Apollo rival takeover bid」</a></li>
+      <li><a href="https://www.traveltourister.com/news/easyjet-castlelake-takeover-update-june-27-2026-fourth-bid-650p-493bn-rejected-july-5-deadline-book-access-brookfield-bellew-breen-what-changed/" target="_blank" rel="noopener">TravelTourister「easyJet rejects £4.93bn fourth takeover bid」</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2026-07-10/easyjet-gets-rival-offer-from-apollo-that-beats-castlelake-bid" target="_blank" rel="noopener">Bloomberg「EasyJet Receives Higher Apollo Offer, Drops Support for Castlelake Bid」</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2026-07-07/easyjet-pilots-nervous-about-jobs-leadership-under-castlelake" target="_blank" rel="noopener">Bloomberg「EasyJet Pilots Nervous About Jobs, Leadership Under Castlelake」</a></li>
+      <li><a href="https://www.privateequitywire.co.uk/eu-review-of-airline-ownership-rules-could-complicate-apollos-easyjet-takeover-bid/" target="_blank" rel="noopener">Private Equity Wire「EU review of airline ownership rules could complicate Apollo's easyJet bid」</a></li>
+      <li><a href="https://www.burges-salmon.com/articles/102nc9e/easy-does-it-us-bids-for-easyjet-face-ownership-rules/" target="_blank" rel="noopener">Burges Salmon「Easy does it? US bids for easyJet face ownership rules」</a></li>
+      <li><a href="https://www.ajot.com/news/easyjets-us6.6bn-owned-fleet-value-highlights-asset-backed-rationale-behind-takeover" target="_blank" rel="noopener">AJOT「easyJet's US$6.6bn owned fleet value highlights asset-backed rationale」</a></li>
+      <li><a href="https://www.investing.com/news/stock-market-news/easyjet-aligns-apollo-and-castlelake-deadlines-as-bidding-war-nears-climax-4829872" target="_blank" rel="noopener">Reuters（via Investing.com）「easyJet aligns Apollo and Castlelake deadlines」</a></li>
+      <li><a href="https://s203.q4cdn.com/522538739/files/doc_financials/2025/q4/FY25-RNS.pdf" target="_blank" rel="noopener">easyJet plc FY25 Final Results RNS</a></li>
+      <li><a href="https://www.euronews.com/business/2026/07/10/apollo-hijacks-easyjet-takeover-with-57bn-bid-trumping-castlelake" target="_blank" rel="noopener">Euronews「Apollo hijacks easyJet takeover with £5.7bn bid」</a></li>
+    </ul>
+    <p style="margin-top:16px;">推定（<span class="est">推定</span>）タグを付した数値は、公開情報の断片から著者が組み立てた推定であり、一次資料（Rule 2.4/2.6開示・スキーム文書等）による裏付けは取れていない。本ディールは執筆時点（2026年7月28日）で未クロージングの進行中案件であり、その後の状況変化（正式offer表明・撤退・規制当局の判断等）によって本レポートの前提が変わりうる点に留意すること。面接や投資検討の場では、必ず「本レポート作成時点のスナップショットである」旨を明示した上で使用すること。</p>
+    <p>作成日：2026-07-28／このレポートは deal-analysis-report スキルにより生成された。</p>
+  </div>
+</footer>
+
+</body>
+</html>
