@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エレクトロニック・アーツ：史上最大550億ドルLBO——サウジPIF×シルバーレイク×クシュナーによる非公開化の全貌</title>
+<style>
+:root {
+  --navy: #0f2a43;
+  --navy2: #16395c;
+  --accent: #c9a13b;
+  --bg: #f7f8fa;
+  --text: #26303a;
+  --muted: #6b7683;
+  --line: #dde3e9;
+  --red: #b23a48;
+  --green: #2f7d5b;
+  --blue: #2b6cb0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 15px; line-height: 1.75;
+  background: var(--bg); color: var(--text);
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 28px 80px; }
+header.hero {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  color: #fff; padding: 46px 28px 38px;
+}
+header.hero .inner { max-width: 980px; margin: 0 auto; }
+header.hero .tag {
+  display: inline-block; border: 1px solid var(--accent); color: var(--accent);
+  font-size: 12px; letter-spacing: .08em; padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 14px;
+}
+header.hero .tag.closed { border-color: var(--green); color: #9be3c2; margin-left: 8px; }
+header.hero h1 { font-size: 26px; margin: 0 0 10px; font-weight: 700; line-height: 1.5; }
+header.hero p.sub { color: #cdd8e3; font-size: 13.5px; margin: 0; }
+nav.toc {
+  position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 4px rgba(15,42,67,.06); z-index: 10; overflow-x: auto; white-space: nowrap;
+}
+nav.toc .inner { max-width: 980px; margin: 0 auto; padding: 10px 28px; }
+nav.toc a {
+  color: var(--navy); text-decoration: none; font-size: 12.5px; margin-right: 16px;
+  font-weight: 600;
+}
+nav.toc a:hover { color: var(--accent); }
+section { padding-top: 46px; border-top: 1px solid var(--line); margin-top: 10px; }
+section:first-of-type { border-top: none; }
+h2 {
+  color: var(--navy); font-size: 20px; margin: 0 0 18px; padding-bottom: 10px;
+  border-bottom: 3px solid var(--accent); display: inline-block;
+}
+h3 { color: var(--navy2); font-size: 16px; margin: 28px 0 10px; }
+p { margin: 10px 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+th, td { padding: 8px 10px; border: 1px solid var(--line); text-align: left; }
+th { background: var(--navy); color: #fff; font-weight: 600; }
+tbody tr:nth-child(even) { background: #fbfcfd; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 20px 0; }
+.kpi { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 6px; padding: 16px 18px; }
+.kpi .v { font-size: 21px; font-weight: 700; color: var(--navy); }
+.kpi .l { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.callout { background: #fff; border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 16px 20px; margin: 18px 0; box-shadow: 0 1px 4px rgba(15,42,67,.06); }
+.callout.insight { border-left-color: var(--green); }
+.callout.risk { border-left-color: var(--red); }
+.callout.learn { border-left-color: var(--blue); }
+.callout b.title { display: block; font-size: 13px; letter-spacing: .08em; margin-bottom: 6px; color: var(--navy); }
+.callout.insight b.title { color: var(--green); }
+.callout.risk b.title { color: var(--red); }
+.callout.learn b.title { color: var(--blue); }
+.est { color: var(--red); font-size: 11px; font-weight: 700; border: 1px solid var(--red); border-radius: 3px; padding: 0 4px; margin-left: 4px; vertical-align: middle; display: inline-block; }
+.timeline { list-style: none; margin: 20px 0; padding-left: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 20px 24px; margin-left: 4px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent); }
+.timeline li.now::before { background: var(--green); box-shadow: 0 0 0 1px var(--green); }
+.timeline .d { font-weight: 700; color: var(--navy); font-size: 13px; }
+.timeline .t { color: var(--muted); font-size: 12px; margin-left: 6px; }
+.glossary { background: #fff; border: 1px solid var(--line); border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.glossary .term { background: #f0f4f8; padding: 10px 16px; font-weight: 700; color: var(--navy); font-size: 14px; }
+.glossary .def { padding: 12px 16px; }
+.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; margin-right: 6px; }
+.pill.buy { background: #eaf3ee; color: var(--green); }
+.pill.exit { background: #fdeceb; color: var(--red); }
+.pill.hold { background: #eaf0f8; color: var(--blue); }
+.qa { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+.qa .q { font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.qa .q::before { content: "Q. "; color: var(--accent); }
+.qa .a::before { content: "A. "; font-weight: 700; color: var(--green); }
+footer.foot { background: var(--navy); color: #cdd8e3; padding: 34px 28px; font-size: 12.5px; margin-top: 50px; }
+footer.foot .inner { max-width: 980px; margin: 0 auto; }
+footer.foot a { color: #fff; }
+footer.foot ul { padding-left: 18px; columns: 2; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px 60px; }
+  header.hero { padding: 32px 16px 28px; }
+  header.hero h1 { font-size: 20px; }
+  nav.toc .inner { padding: 8px 16px; }
+  footer.foot ul { columns: 1; }
+}
+@media print {
+  body { background: #fff; }
+  nav.toc { position: static; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <span class="tag">DEAL ANALYSIS CASE STUDY</span><span class="tag closed">2026/8/4 クローズ済み</span>
+    <h1>エレクトロニック・アーツ：史上最大550億ドルLBO——サウジPIF×シルバーレイク×クシュナーによる非公開化の全貌</h1>
+    <p class="sub">2025年9月29日 買収合意発表 → 米議会からの国家安全保障懸念表明 → S&amp;P・Moody'sが投資適格からの格下げ方針を表明 → 2026年7月30日 CFIUS（対米外国投資委員会）審査クリア → 2026年8月4日 クロージング・ナスダック上場廃止。PEファンド単独出資として史上最大のバイアウト案件</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="inner">
+    <a href="#s1">1.サマリー</a>
+    <a href="#s2">2.ストラクチャー</a>
+    <a href="#s3">3.財務ディープダイブ</a>
+    <a href="#s4">4.投資テーゼ</a>
+    <a href="#s5">5.バリュークリエーション</a>
+    <a href="#s6">6.成立への道のり</a>
+    <a href="#s7">7.リターン構造</a>
+    <a href="#s8">8.リスク・批判的視点</a>
+    <a href="#s9">9.難解ポイント解説</a>
+    <a href="#s10">10.基礎知識</a>
+    <a href="#s11">11.面接インサイト</a>
+    <a href="#s12">12.想定Q&amp;A</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>本レポートは、米ゲーム大手エレクトロニック・アーツ（EA、旧NASDAQ：EA）が、サウジアラビア政府系ファンドのPIF（Public Investment Fund）、テック分野に強いPEファンドのシルバーレイク、そしてトランプ米大統領の娘婿ジャレッド・クシュナー氏が率いるアフィニティ・パートナーズの3社連合によって非公開化された案件を扱う。総額550億ドルは、PEファンドが関与した買収案件として史上最大規模であり、2007年のTXUエナジー案件（450億ドル）を上回る。<b>本レポート作成時点（2026年8月）で、ディールは既にクロージング済み（2026年8月4日）だが、非公開化直後であり、バリュークリエーションの成果はまだ現れていない</b>。そのため本レポートは、エントリー時点のストラクチャー・財務・規制プロセスの分析に重点を置き、その後の展開は「注目すべき論点」として整理する構成にしている。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">550億ドル</div><div class="l">総買収額（PEファンド関与案件として史上最大）</div></div>
+    <div class="kpi"><div class="v">$210／株</div><div class="l">買収価格（攪乱前終値比 約+25%）</div></div>
+    <div class="kpi"><div class="v">約360億ドル</div><div class="l">エクイティ出資額（PIF既存保有株のロールオーバー含む）</div></div>
+    <div class="kpi"><div class="v">200億ドル</div><div class="l">デット調達額（JPモルガン単独コミット）</div></div>
+    <div class="kpi"><div class="v">93.4%</div><div class="l">買収コンソーシアム内のPIF出資比率</div></div>
+    <div class="kpi"><div class="v">約10ヶ月</div><div class="l">発表からクロージングまでの所要期間（2025/9/29〜2026/8/4）</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">30秒で語るならこう言う</b>
+    「EAの案件は、規模の大きさそのものよりも、出資構成の特殊性が本質だと考えています。買収コンソーシアムの9割超をサウジの政府系ファンドPIFが占め、シルバーレイクは運営面のパートナーとして少数株主にとどまり、クシュナー氏のアフィニティ・パートナーズはわずか1.1%の出資ながら、対米外国投資委員会（CFIUS）の審査を有利に進めるための"政治的な触媒"として機能したのではないかという疑念が米議会から呈されました。つまりこの案件は、財務的なリターンだけでなく、地政学的なリスクとガバナンスの利益相反という論点が、通常のLBO分析の枠を超えて評価に組み込まれるべき事例だという点を強調したいです。」
+  </div>
+
+  <p>数値の多くは開示済みの一次情報に基づくが、EBITDA・レバレッジ倍率などの分析指標は著者による独自算出であり、<span class="est">推定</span>バッジを付して明示している。</p>
+</section>
+
+<section id="s2">
+  <h2>2. ディール概要とストラクチャー</h2>
+
+  <h3>2-1. 対象会社</h3>
+  <p>エレクトロニック・アーツ（EA）は、1982年創業の米国大手ゲームパブリッシャー。「EA SPORTS FC」（旧FIFA）、「マッデンNFL」、「EA SPORTS カレッジフットボール」、「エーペックスレジェンズ」、「バトルフィールド」、「The Sims」など、スポーツ・シューター・シミュレーションの各ジャンルで強力なフランチャイズ群を持つ。特に定期的な追加課金（ライブサービス）モデルにより高い利益率を維持してきた点が、買収対象としての魅力の核となっている。</p>
+
+  <h3>2-2. 買収コンソーシアムの構成</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>出資者</th><th>コンソーシアム内比率</th><th>性格</th></tr></thead>
+    <tbody>
+      <tr><td>PIF（サウジアラビア公共投資基金）</td><td class="num">93.4%</td><td>既存保有株（9.9%）のロールオーバー＋追加現金出資。事実上の支配株主</td></tr>
+      <tr><td>シルバーレイク</td><td class="num">5.5%</td><td>テック・ソフトウェア領域のバイアウト専業PEファンド。運営面のパートナーと位置付けられる</td></tr>
+      <tr><td>アフィニティ・パートナーズ（ジャレッド・クシュナー氏）</td><td class="num">1.1%</td><td>出資額は小さいが、政治的な結びつきの強さで注目された</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>2-3. ストラクチャー表</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td>買収額</td><td class="num">550億ドル（$210／株、全額現金）</td></tr>
+      <tr><td>攪乱前プレミアム</td><td class="num">約+25%（2025/9/25終値基準）</td></tr>
+      <tr><td>エクイティ出資</td><td class="num">約360億ドル（PIF現金＋既存株ロールオーバー、シルバーレイク現金、アフィニティ現金）</td></tr>
+      <tr><td>デット調達</td><td class="num">200億ドル（JPモルガン・チェースが単独フルコミット、うちクロージング時点で180億ドルを実行）</td></tr>
+      <tr><td>エクイティ／デット比率</td><td class="num">約65%／約35%</td></tr>
+      <tr><td>取引形態</td><td>全額現金による非公開化（Take-Private）、ナスダック上場廃止</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>2-4. タイムライン</h3>
+  <ul class="timeline">
+    <li><span class="d">2025/09/25</span><span class="t">攪乱前終値。買収報道前の最終取引日</span></li>
+    <li><span class="d">2025/09/29</span><span class="t">PIF・シルバーレイク・アフィニティ・パートナーズによる550億ドルの買収合意を発表</span></li>
+    <li><span class="d">2025/09/30</span><span class="t">S&amp;Pが投資適格からの格下げ方針を表明、翌日Moody's（当時Baa1）も追随する見通しを表明</span></li>
+    <li><span class="d">2025/10/14</span><span class="t">上院議員ブルーメンソール氏・ウォーレン氏がベッセント財務長官宛に書簡、CFIUSでの精査を要請</span></li>
+    <li><span class="d">2026/02/23</span><span class="t">既存社債の「支配権変動プット条項」の発動を巡り、社債権者と会社側が対立（債務買戻し交渉が難航）</span></li>
+    <li><span class="d">2026/07/17頃</span><span class="t">EUが補助金・独禁法上の審査をクリア</span></li>
+    <li><span class="d">2026/07/30</span><span class="t">CFIUS（国家安全保障審査）を含む全ての必要な承認が完了</span></li>
+    <li class="now"><span class="d">2026/08/04</span><span class="t">クロージング。EAはナスダックを上場廃止し非公開企業に</span></li>
+  </ul>
+
+  <div class="callout learn">
+    <b class="title">面接での使い方</b>
+    発表からクロージングまで約10ヶ月を要した点は、単なる独禁法審査の長さではなく、「サウジの政府系ファンドが米国の大手ゲーム会社（ユーザーデータ・AI開発を含む）を実質支配する」という国家安全保障上の論点が絡んだためである、という構造を理解しておくと良い。日本のTOB案件では登場しない、CFIUSという米国特有の規制プロセスを説明できると評価が高い。
+  </div>
+</section>
+
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ</h2>
+
+  <h3>3-1. FY2025業績（2025年3月期）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th class="num">FY2025実績</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>純売上高</td><td class="num">74.6億ドル</td><td>前年比▲1%</td></tr>
+      <tr><td>ネット・ブッキング</td><td class="num">73.6億ドル</td><td>会計上の売上高とは別に、実際の販売実績を示す経営指標</td></tr>
+      <tr><td>営業利益</td><td class="num">15.2億ドル</td><td>営業利益率 約20.4%</td></tr>
+      <tr><td>純利益</td><td class="num">11.2億ドル</td><td>希薄化後EPS 4.25ドル</td></tr>
+      <tr><td>売上総利益率</td><td class="num">79.3%</td><td>前年比+2ポイント。ライブサービス比率の高さを反映</td></tr>
+      <tr><td>営業キャッシュフロー／フリーキャッシュフロー</td><td class="num">21.0億ドル</td><td>共に21.0億ドルとほぼ一致、運転資本負担が軽い事業モデル</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>3-2. フランチャイズ・ポートフォリオ</h3>
+  <p>「EA SPORTS FC」（旧FIFAライセンス）と、新規参入の「EA SPORTS カレッジフットボール」がFY25のEA SPORTS部門を牽引し、カレッジフットボールは単独でネット・ブッキング10億ドルを突破した。このほか「エーペックスレジェンズ」（バトルロイヤル）、「バトルフィールド」（シューター）、「The Sims」（シミュレーション）が主要フランチャイズとして安定収益を支える。</p>
+
+  <h3>3-3. バリュエーションとレバレッジの検算</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>指標</th><th class="num">推定値</th><th>算出根拠</th></tr></thead>
+    <tbody>
+      <tr><td>EV／営業利益</td><td class="num">約36.2倍<span class="est">推定</span></td><td>550億ドル ÷ 15.2億ドル</td></tr>
+      <tr><td>デット／営業利益</td><td class="num">約13.2倍<span class="est">推定</span></td><td>200億ドル ÷ 15.2億ドル</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：「保守的な財務構成」という報道の見出しに潜む罠</b>
+    多くの報道は「エクイティ比率65%は伝統的なLBOの60〜70%デット比率と比べて保守的」と評している。この見方自体は正しいが、比率だけで安全性を語るのはミスリーディングである。買収価格そのものがEA本体の営業利益の36倍という高マルチプルであるため、デット比率が相対的に低くても、デット絶対額（200億ドル）は営業利益の13倍超に達する。実際、S&amp;PとMoody'sはこの絶対的な負債水準を理由に、投資適格（Moody'sでBaa1）だったEAの格付けをジャンク級へ引き下げる方針を示した。「％で見た保守性」と「絶対額で見たレバレッジの重さ」は別物であるという視点は、あらゆるLBO案件の評価で応用できる。
+  </div>
+</section>
+
+<section id="s4">
+  <h2>4. 投資テーゼ（なぜ買ったのか）</h2>
+
+  <h3>4-1. PIFのテーゼ：「ビジョン2030」ゲーミング戦略の総仕上げ</h3>
+  <p>PIFは、傘下のゲーミング統括会社サビー・ゲームズ・グループ（Savvy Games Group）を通じて、eスポーツ興行会社ESL FACEIT Group、モバイルゲーム大手Scopelyなど、すでに複数のゲーム関連資産を保有している。サウジアラビアの脱石油依存・産業多角化戦略「ビジョン2030」の一環として、エンターテインメント・eスポーツ産業への投資を国家戦略として推進しており、EAはこのポートフォリオの中核を担う「本丸」の買収と位置付けられる。単なる財務リターン狙いではなく、国家的な産業政策の一部として理解する必要がある。</p>
+
+  <h3>4-2. シルバーレイクのテーゼ：テック企業バイアウトの実績を活かした運営最適化</h3>
+  <p>シルバーレイクは2013年のDell非公開化など、大型テック企業のバイアウト実績を持つ。出資比率は5.5%と小さいものの、Co-CEOのエゴン・ダーバン氏が経営陣支援に関与する姿勢を示しており、実質的な運営面のパートナーとしての役割を担うとみられる<span class="est">推定</span>。</p>
+
+  <h3>4-3. アフィニティ・パートナーズの位置付け</h3>
+  <p>アフィニティ・パートナーズの出資比率は1.1%とごく小さいが、トランプ大統領の娘婿ジャレッド・クシュナー氏が率いるファンドであるという政治的な結びつきが、案件の性格を大きく変えている。米上院議員から「クシュナー氏が連邦政府の承認を取り付けられることに10億ドルを賭けている」と評されたように、出資額の小ささに見合わない影響力を持つ可能性が指摘されている。</p>
+
+  <div class="callout risk">
+    <b class="title">批判的視点：出資比率と影響力は一致しないことがある</b>
+    通常のLBO分析では出資比率がそのまま経済的利害の大きさを表すが、本件のアフィニティ・パートナーズのように、出資額は小さくても「規制承認を取り付ける政治的アクセス」という非財務的価値を提供する participant が存在しうる。これは通常のリターン分析の枠組みでは捕捉できないインセンティブ構造であり、ガバナンス上の利益相反リスクとして別途評価する必要がある。
+  </div>
+</section>
+
+<section id="s5">
+  <h2>5. バリュークリエーション（想定プラン）</h2>
+  <p>クロージング直後であるため、実績としてのバリューアップ成果はまだ確認できない。以下は、報道・経営陣の発言・業界の一般的なプレイブックから推測される「想定される」レバーである<span class="est">推定</span>。</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>レバー</th><th>内容（推定）</th></tr></thead>
+    <tbody>
+      <tr><td>①ライブサービス・追加課金モデルの深化</td><td>EA SPORTS FC・エーペックスレジェンズ等の継続収益をさらに強化</td></tr>
+      <tr><td>②新規フランチャイズの育成</td><td>カレッジフットボールのような新規ヒット作を横展開</td></tr>
+      <tr><td>③コスト構造の見直し・人員体制の最適化</td><td>非公開化を機にした開発体制の再編（レイオフ観測が既に報じられている）</td></tr>
+      <tr><td>④サウジ・中東市場でのゲーミング・eスポーツ拠点化</td><td>PIF傘下のSavvy Games Group、ESL FACEIT Group等とのシナジー追求</td></tr>
+      <tr><td>⑤非公開化による開発サイクルの長期化</td><td>四半期業績のプレッシャーから解放され、大型タイトルの開発期間を確保</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout risk">
+    <b class="title">批判的視点：レイオフとエグゼクティブ報酬の非対称性</b>
+    非公開化発表前後で、EAはバトルフィールド開発チームを含む人員削減を実施したと報じられている一方、ウィルソンCEOは2025年に3,860万ドルの報酬を得ており、買収後に退任させられた場合には最大1億2,500万ドルの退職金を受け取る可能性があると報じられている。労働者側の負担と経営陣の金銭的インセンティブの非対称性は、非公開化案件で繰り返し指摘される典型的な論点である。
+  </div>
+</section>
+
+<section id="s6">
+  <h2>6. 案件成立への道のり（規制プロセスの分析）</h2>
+
+  <h3>6-1. CFIUS（対米外国投資委員会）審査という最大の関門</h3>
+  <p>CFIUSは、外国投資家による米国企業の買収が国家安全保障に与える影響を審査する省庁横断委員会。本件では、（a）サウジの政府系ファンドによる米大手ゲーム会社の実質支配、（b）ユーザーデータへのアクセス、（c）AI開発技術の海外移転、という3点が主な懸念として指摘された。全米通信労働組合（CWA）はFTCとCFIUSの双方に対し、EAのAI開発を国家安全保障上の懸念として明示的に指摘する書簡を提出した。</p>
+
+  <h3>6-2. 政治的な対立構造</h3>
+  <p>上院議員のブルーメンソール氏とウォーレン氏は2025年10月14日付でベッセント財務長官（CFIUS議長を兼任）宛に書簡を送り、本件買収が「サウジの資金的支配のための安全な抜け道として機能しうる」と警告した。トランプ大統領の娘婿が率いるファンドが買収コンソーシアムに参加している中で、そのトランプ政権下の財務省が議長を務めるCFIUSが審査を行うという構図自体が、独立性への疑義を招いた。</p>
+
+  <div class="callout risk">
+    <b class="title">批判的視点：規制審査の独立性という構造的な利益相反</b>
+    CFIUSは大統領直属の省庁横断委員会であり、財務長官が議長を務める。本件では、買収コンソーシアムのメンバーであるクシュナー氏が現職大統領の親族であるため、審査当局と被審査案件の間に明白な人的関係が存在する。最終的にCFIUSは2026年7月30日に承認したが、このプロセスが「実質的な安全保障判断」として機能したのか、「政治的な追認」に近いものだったのかは、独立した検証が困難な論点として残る。面接では、この論点自体を「良い悪い」で断定せず、構造的なリスクとして指摘できることが重要である。</p>
+  </div>
+
+  <h3>6-3. 既存社債権者との対立</h3>
+  <p>EAの既存社債には、支配権変動（Change of Control）が生じた場合に社債権者が償還を請求できる「プット条項」が付されていた。買収により支配権が変動するため、この条項の発動を巡って会社側（買収後の資本構成を維持したい）と社債権者側（額面での早期償還を求める）の間で交渉が難航し、2026年2月には社債の条項変更を巡る攻防が報じられた。</p>
+</section>
+
+<section id="s7">
+  <h2>7. リターン構造の考察（クロージング直後のため順算シナリオ）</h2>
+  <p>本ディールはクロージング後間もないため、実績としてのMOIC・IRRはまだ存在しない。以下は、開示済みの取得条件をもとにした順算フレームである。</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>数値</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>総取得額</td><td class="num">550億ドル</td><td>$210／株</td></tr>
+      <tr><td>エクイティ出資</td><td class="num">約360億ドル</td><td>PIF・シルバーレイク・アフィニティの合計</td></tr>
+      <tr><td>デット</td><td class="num">200億ドル</td><td>JPモルガン単独コミット</td></tr>
+      <tr><td>EV／営業利益</td><td class="num">約36.2倍<span class="est">推定</span></td><td>相応の成長を前提にした高マルチプルでのエントリー</td></tr>
+      <tr><td>想定エグジット手段</td><td>非開示</td><td>再IPO、戦略的売却、他ファンドへのセカンダリー等の選択肢が理論上ありうるが、現時点で公表情報なし</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">模範解答コールアウト：面接官への一言</b>
+    「このディールでリターンを生み出すシナリオを考えるなら、通常のオペレーション改善だけでなく、非公開化によって四半期業績のプレッシャーから解放された分、大型タイトルの開発サイクルを長期化させ、ヒット作創出の確度を上げるという"時間を買う"投資テーゼが中心になると考えます。ただし、36倍という高いエントリーマルチプルを考えると、マルチプル収縮のリスクをEBITDA成長で上回れるかが最大の論点になります。」
+  </div>
+</section>
+
+<section id="s8">
+  <h2>8. リスクと批判的視点（DD論点）</h2>
+
+  <div class="callout risk">
+    <b class="title">論点1：地政学リスクとレピュテーションリスク</b>
+    サウジアラビア政府系ファンドによる米国の主要文化的コンテンツ企業の実質支配は、人権問題等を理由とする批判（いわゆる「スポーツウォッシング」批判と同種の議論）を招きやすい。ゲームコンテンツの検閲・表現の自由に関する懸念も、国家安全保障とは別の軸で指摘されている。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点2：信用格付け低下による資金調達コストの上昇</b>
+    S&amp;P・Moody'sともに投資適格からジャンク級への格下げ方針を示しており、既存および将来の負債調達コストが上昇する可能性が高い。ゲーム業界は開発費の変動が大きく、資金調達コストの上昇は新規タイトル開発の投資判断にも影響しうる。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点3：ガバナンスの利益相反（CFIUS審査プロセス）</b>
+    第6章で論じた通り、審査当局と買収コンソーシアムのメンバーの間に人的関係が存在する構図は、規制プロセスの独立性に対する疑義を招く。これは本件固有の特殊要因であり、通常のLBO案件のDDチェックリストには含まれない論点だが、クロスボーダー買収における「規制リスク」を評価する際に汎用的に応用できる視点である。</p>
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点4：「やるべきでなかった」側の論拠</b>
+    EAはFY25時点で売上総利益率79.3%、営業利益率20%超という健全な収益性を単独で維持しており、非公開化しなくても独立した成長投資は可能だったという評価もありうる。36倍という高いエントリーマルチプルは、将来の成長期待をかなり織り込んだ価格であり、想定した成長シナリオが実現しなければ、PEオーナー側の投下資本回収は困難になるリスクがある。
+  </div>
+</section>
+
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説</h2>
+
+  <div class="glossary">
+    <div class="term">CFIUS（対米外国投資委員会）</div>
+    <div class="def">外国投資家による米国企業への投資・買収が国家安全保障に与える影響を審査する、財務省を中心とした省庁横断の委員会。審査の結果、取引の禁止・条件付き承認・無条件承認のいずれかが決定される。テクノロジー・データ・重要インフラに関わる案件では特に厳格な審査が行われる傾向がある。本件では、ゲーム会社が保有する大量のユーザーデータとAI開発技術が、外国政府系ファンドの実質支配下に置かれることの是非が争点となった。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">ソブリン・ウェルス・ファンド（政府系ファンド）としてのPIF</div>
+    <div class="def">PIF（Public Investment Fund）はサウジアラビア政府が管理する政府系ファンドで、同国の「ビジョン2030」政策の投資実行主体。通常の財務投資家と異なり、国家の産業政策・外交戦略と一体になった投資判断を行う点が特徴。エンターテインメント・スポーツ・ゲーミング分野への大型投資（本件のほか、サッカークラブ、ゴルフ興行LIV Golf等）はその代表例。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">ロールオーバー・エクイティ</div>
+    <div class="def">買収前から対象会社の株式を保有していた株主が、買収対価を現金で受け取る代わりに、買収後の非公開会社の株式に転換して保有を継続する仕組み。本件ではPIFが買収前保有の9.9%株式をロールオーバーし、追加の現金出資と合わせて買収コンソーシアムの93.4%を占める大株主となった。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">支配権変動プット条項（Change of Control Put）</div>
+    <div class="def">発行体企業の支配権が変動した場合に、社債権者が額面（またはあらかじめ定めた価格）での早期償還を発行体に請求できる権利を定めた社債の条項。LBOによる非公開化はこの条項の典型的な発動事由となるため、買収者は既存社債の扱い（早期償還に応じるか、条項変更の同意を取り付けるか）を買収ストラクチャーの設計段階で検討する必要がある。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">投資適格級とジャンク級（信用格付け）</div>
+    <div class="def">S&amp;P・Moody's等の格付け会社は、発行体の債務履行能力に応じてBBB-／Baa3以上を「投資適格級」、それ未満を「ジャンク級（投機的格付け）」に分類する。LBOによる大型デット調達は、既存の投資適格企業をジャンク級に転落させることが多く、これにより既存債権者の要求利回りが上昇し、将来の資金調達コストが構造的に高くなる。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">EV／EBITDA（またはEV／営業利益）とレバレッジ倍率の違い</div>
+    <div class="def">EV／EBITDA（またはEV／営業利益）は「企業価値が収益力の何倍か」を示すバリュエーション指標であるのに対し、デット／EBITDAは「調達した負債が収益力の何倍か」を示すレバレッジ（財務リスク）指標である。両者は似た形の分数だが意味が異なり、「エクイティ比率が高い＝保守的」という短絡的な理解では、本件のように高いバリュエーションゆえに絶対的な負債水準が重い、というケースを見落とす。</div>
+  </div>
+</section>
+
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識</h2>
+
+  <h3>10-1. 米国公開買収プロセスの基礎</h3>
+  <p>米国の上場企業の非公開化（Take-Private）は、通常、買収者と対象会社取締役会が合意した上でMerger Agreement（合併契約）を締結し、株主総会での過半数以上の承認、および該当する規制当局（独禁法当局のFTC／DOJ、外国投資関連ならCFIUS等）の承認を経て完了する。日本のTOBのような公開買付制度とは異なり、米国では合併（Merger）スキームが主流である点が特徴。</p>
+
+  <h3>10-2. バリュエーション3手法＋LBO法（ゲーム業界特有の視点）</h3>
+  <p>DCF法・類似企業比較法・類似取引比較法・LBO逆算法という基本フレームワークに加え、ゲーム業界では「ネット・ブッキング」（会計上の売上とは別の実質販売実績）や、ライブサービス比率（継続的な追加課金収益の割合）が、収益の質・持続可能性を評価する上で重視される。</p>
+
+  <h3>10-3. CFIUSプロセスの基礎</h3>
+  <ul>
+    <li>買収当事者は任意でCFIUSに事前届出を行い、審査を受ける（一部の取引類型では届出が義務化されている）</li>
+    <li>審査は原則45日間、詳細調査が必要な場合はさらに45日間延長される</li>
+    <li>大統領は最終的に取引の差し止め・修正命令を発する権限を持つ</li>
+    <li>データ・AI・重要インフラに関わる取引は、審査が長期化・厳格化する傾向がある</li>
+  </ul>
+
+  <div class="callout learn">
+    <b class="title">学習動線</b>
+    本ハブのeasyJetケーススタディ（英国のテイクオーバー・コード）と本件（米国のCFIUS）を比較すると、「クロスボーダーM&Aにおける規制当局の役割が国・業種によってどう変わるか」を横断的に整理できる。日本のTOB案件（三益半導体・太陽HD等）と合わせて読むと、規制環境の違いが取引ストラクチャーの設計にどう影響するかが立体的に理解できる。
+  </div>
+</section>
+
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト（まとめ）</h2>
+  <ol>
+    <li><b>「％で見た保守性」と「絶対額で見たレバレッジの重さ」は別物である。</b>エクイティ比率65%という数字だけで財務リスクを判断せず、デット絶対額と営業利益の倍率を必ず併読すべきである。</li>
+    <li><b>出資比率と実際の影響力は一致しないことがある。</b>1.1%という小さな出資比率のプレイヤーが、規制承認プロセスにおいて出資額に見合わない影響力を持ちうる構造は、通常のリターン分析の枠組みでは捕捉できない。</li>
+    <li><b>ソブリン・ウェルス・ファンドの投資は、純粋な財務リターン論理だけで語れない。</b>PIFの投資は国家の産業政策（ビジョン2030）と一体であり、通常のPEファンドとは異なる時間軸・目的関数を持つ可能性がある。</li>
+    <li><b>規制プロセスの独立性は、案件そのものの経済合理性とは別に評価すべきリスクである。</b>審査当局と買収当事者の間に人的関係がある構図は、たとえ最終的に承認されても、プロセスの透明性への疑義を残す。</li>
+    <li><b>非公開化のメリット（開発サイクルの長期化）は、業界特性によって価値が変わる。</b>四半期業績のプレッシャーからの解放は、大型タイトル開発が中心のゲーム業界では特に意味を持つ論点として語れる。</li>
+    <li><b>クロージング直後の案件は、実績データがない前提で分析の構成自体を変える必要がある。</b>「まだ結果が出ていない」ことを正直に示しつつ、開示された取得条件から論理的に推論できる範囲を明確に線引きする姿勢が信頼感につながる。</li>
+  </ol>
+</section>
+
+<section id="s12">
+  <h2>12. 想定Q&amp;A</h2>
+
+  <div class="qa">
+    <div class="q">なぜPIF（サウジの政府系ファンド）がEAの買収コンソーシアムの9割超を占めているのですか？</div>
+    <div class="a">PIFは既にEA株式の9.9%を市場で保有していたため、これを現金化せずに買収後の非公開会社の株式にロールオーバーし、さらに追加の現金出資を行うことで、コンソーシアム内で圧倒的な出資比率（93.4%）を持つに至りました。これは、サウジアラビアの「ビジョン2030」政策に基づくゲーミング・エンターテインメント産業への国家戦略的投資の一環であり、PIF傘下のSavvy Games GroupがすでにESL FACEIT Group・Scopely等を保有していることとも整合的です。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">なぜこの案件はCFIUSの審査に時間がかかったのですか？</div>
+    <div class="a">主な理由は3つあります。（1）サウジという外国政府系ファンドが米国の大手ゲーム会社を実質支配することへの国家安全保障上の懸念、（2）ユーザーデータへのアクセスとAI開発技術の海外移転リスク、（3）買収コンソーシアムのメンバーであるジャレッド・クシュナー氏が現職大統領の親族であり、審査当局である財務省（CFIUS議長）との間に構造的な近さがあるとして、上院議員から独立性への疑義が呈されたことです。これらの論点が絡み合い、発表からクロージングまで約10ヶ月を要しました。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">「エクイティ比率65%は保守的な財務構成」という評価は正しいですか？</div>
+    <div class="a">部分的には正しいですが、注意が必要です。伝統的なLBOのデット比率（60〜70%）と比べれば、本件のデット比率（約35%）は確かに低く、％ベースでは保守的です。しかし、買収価格自体がEAの営業利益の36倍という高いマルチプルであるため、デット絶対額（200億ドル）は営業利益の13倍を超えます。この絶対的な負債水準の重さが、S&amp;P・Moody'sによる格下げ方針の根拠になっています。比率と絶対額の両方を見る必要があります。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">シルバーレイクの出資比率はわずか5.5%なのに、なぜ「運営面のパートナー」とされているのですか？</div>
+    <div class="a">PIFはソブリン・ウェルス・ファンドとしての性格上、投資先の日常的な経営には直接関与しないことが一般的です。一方シルバーレイクは、Dell社の非公開化（2013年）をはじめとする大型テック企業バイアウトの実績を持つ専業PEファンドであり、Co-CEOのエゴン・ダーバン氏が経営陣支援に関与する姿勢を表明していることから、出資比率以上に経営面での影響力を持つ「運営パートナー」としての役割を担うとみられています。出資比率と経営関与度が必ずしも比例しない好例です。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">この案件のエグジット戦略はどう考えられますか？</div>
+    <div class="a">クロージング直後の現時点では、具体的なエグジット計画は公表されていません。理論的には、（a）業績回復後の再IPO、（b）他の戦略的investor・PEファンドへのセカンダリー売却、（c）PIFが恒久保有に近い形で長期保有を続ける、という複数の選択肢が考えられます。特にPIFは通常のPEファンドと異なりファンドの償還期限に縛られない性質を持つため、従来のLBOに典型的な5〜7年での売却サイクルとは異なる、より長期の保有になる可能性がある点は指摘しておく価値があります<span class="est">推定</span>。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">【基礎確認】「攪乱前終値に対して+25%のプレミアム」とは何を意味しますか？</div>
+    <div class="a">買収の噂や発表によって株価が変動する前の、最後の取引日（本件では2025年9月25日）の終値を基準に、買収価格がどれだけ上乗せされているかを示す指標です。買収価格210ドルが、この基準となる株価より約25%高いことを意味します。プレミアムは、既存株主が買収に応じる経済的インセンティブの大きさを示す代表的な指標で、業種・市場環境によって適正水準の目安は変わりますが、一般的な非公開化案件では20〜40%程度が多いとされます。</div>
+  </div>
+</section>
+
+</div>
+
+<footer class="foot">
+  <div class="inner">
+    <p><b>主要ソース</b></p>
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Leveraged_buyout_of_Electronic_Arts" target="_blank" rel="noopener">Wikipedia「Leveraged buyout of Electronic Arts」</a></li>
+      <li><a href="https://www.cnbc.com/2026/08/05/saudi-wealth-fund-jared-kushner-ea-sports-deal.html" target="_blank" rel="noopener">CNBC「Saudi PIF and Kushner's Affinity finalize $55 billion EA Sports deal」</a></li>
+      <li><a href="https://variety.com/2025/gaming/global/electronic-arts-goes-private-55-billion-deal-1236533827/" target="_blank" rel="noopener">Variety「Electronic Arts to Go Private in $55 Billion Deal」</a></li>
+      <li><a href="https://www.silverlake.com/ea-announces-completion-of-acquisition-by-pif-silver-lake-and-affinity-partners/" target="_blank" rel="noopener">Silver Lake公式「EA Announces Completion of Acquisition」</a></li>
+      <li><a href="https://www.blumenthal.senate.gov/newsroom/press/release/blumenthal-and-warren-sound-alarm-on-acquisition-of-american-video-game-producer-by-saudi-arabias-sovereign-wealth-fund_jared-kushners-investment-firm" target="_blank" rel="noopener">Blumenthal上院議員 公式声明</a></li>
+      <li><a href="https://www.hsgac.senate.gov/wp-content/uploads/2025-10-14-Letter-from-Blumenthal-and-Warren-to-Secretary-Bessent-re-Electronic-Arts.pdf" target="_blank" rel="noopener">Blumenthal・Warren両上院議員からベッセント財務長官宛書簡（2025/10/14）</a></li>
+      <li><a href="https://www.gamedeveloper.com/business/cwa-president-implores-u-s-regulators-to-scrutinise-ea-buyout-to-address-national-security-and-labor-concerns" target="_blank" rel="noopener">Game Developer「CWA president wants regulators to scrutinize EA buyout」</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2025-09-30/moody-s-says-it-s-likely-to-cut-electronic-arts-following-s-p" target="_blank" rel="noopener">Bloomberg「Moody's Says It's Likely to Cut Electronic Arts, Following S&amp;P」</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2026-02-23/ea-bondholders-fight-debt-buyback-as-s-p-casts-ratings-doubt" target="_blank" rel="noopener">Bloomberg「EA Bondholders Fight Debt Buyback as S&amp;P Casts Ratings Doubt」</a></li>
+      <li><a href="https://startupfortune.com/the-eu-cleared-the-saudi-kushner-buyout-of-electronic-arts-and-now-only-washington-stands-in-the-way/" target="_blank" rel="noopener">Startup Fortune「The EU cleared the Saudi-Kushner buyout of Electronic Arts」</a></li>
+      <li><a href="https://www.gamespot.com/articles/ea-has-officially-been-sold-and-what-comes-next-could-be-painful/" target="_blank" rel="noopener">GameSpot「EA Has Officially Been Sold, With Trump's Son-In-Law Taking A Stake And Mass Layoffs Expected」</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/ea-ceo-earned-38-6m-193000334.html" target="_blank" rel="noopener">Yahoo Finance「EA CEO earned $38.6M the same year he cut the devs」</a></li>
+      <li><a href="https://news.ea.com/press-releases/press-releases-details/2025/Electronic-Arts-Reports-Q4-and-FY25-Results/default.aspx" target="_blank" rel="noopener">EA公式「Electronic Arts Reports Q4 and FY25 Results」</a></li>
+    </ul>
+    <p style="margin-top:16px;">推定（<span class="est">推定</span>）タグを付した数値は、公開情報から著者が独自に算出した分析指標であり、会社側が公式に開示した数値ではない。本ディールは2026年8月4日にクロージング済みだが、非公開化直後であり、バリュークリエーションの実績はまだ確認できない。今後の展開（人員体制、新規タイトルの成果、資本構成の変更等）によって評価が更新されうる点に留意すること。</p>
+    <p>作成日：2026年8月／このレポートは deal-analysis-report スキルにより生成された。</p>
+  </div>
+</footer>
+
+</body>
+</html>
