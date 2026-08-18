@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サツドラホールディングス：創業家×丸の内キャピタルの防衛的MBO——競合の"忍び寄る買い増し"にどう対抗したか</title>
+<style>
+:root {
+  --navy: #0f2a43;
+  --navy2: #16395c;
+  --accent: #c9a13b;
+  --bg: #f7f8fa;
+  --text: #26303a;
+  --muted: #6b7683;
+  --line: #dde3e9;
+  --red: #b23a48;
+  --green: #2f7d5b;
+  --blue: #2b6cb0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 15px; line-height: 1.75;
+  background: var(--bg); color: var(--text);
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 28px 80px; }
+header.hero {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  color: #fff; padding: 46px 28px 38px;
+}
+header.hero .inner { max-width: 980px; margin: 0 auto; }
+header.hero .tag {
+  display: inline-block; border: 1px solid var(--accent); color: var(--accent);
+  font-size: 12px; letter-spacing: .08em; padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 14px;
+}
+header.hero .tag.live { border-color: var(--red); color: #ff9fac; margin-left: 8px; }
+header.hero h1 { font-size: 26px; margin: 0 0 10px; font-weight: 700; line-height: 1.5; }
+header.hero p.sub { color: #cdd8e3; font-size: 13.5px; margin: 0; }
+nav.toc {
+  position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 4px rgba(15,42,67,.06); z-index: 10; overflow-x: auto; white-space: nowrap;
+}
+nav.toc .inner { max-width: 980px; margin: 0 auto; padding: 10px 28px; }
+nav.toc a {
+  color: var(--navy); text-decoration: none; font-size: 12.5px; margin-right: 16px;
+  font-weight: 600;
+}
+nav.toc a:hover { color: var(--accent); }
+section { padding-top: 46px; border-top: 1px solid var(--line); margin-top: 10px; }
+section:first-of-type { border-top: none; }
+h2 {
+  color: var(--navy); font-size: 20px; margin: 0 0 18px; padding-bottom: 10px;
+  border-bottom: 3px solid var(--accent); display: inline-block;
+}
+h3 { color: var(--navy2); font-size: 16px; margin: 28px 0 10px; }
+p { margin: 10px 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+th, td { padding: 8px 10px; border: 1px solid var(--line); text-align: left; }
+th { background: var(--navy); color: #fff; font-weight: 600; }
+tbody tr:nth-child(even) { background: #fbfcfd; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 20px 0; }
+.kpi { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 6px; padding: 16px 18px; }
+.kpi .v { font-size: 21px; font-weight: 700; color: var(--navy); }
+.kpi .l { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.callout { background: #fff; border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 16px 20px; margin: 18px 0; box-shadow: 0 1px 4px rgba(15,42,67,.06); }
+.callout.insight { border-left-color: var(--green); }
+.callout.risk { border-left-color: var(--red); }
+.callout.learn { border-left-color: var(--blue); }
+.callout b.title { display: block; font-size: 13px; letter-spacing: .08em; margin-bottom: 6px; color: var(--navy); }
+.callout.insight b.title { color: var(--green); }
+.callout.risk b.title { color: var(--red); }
+.callout.learn b.title { color: var(--blue); }
+.est { color: var(--red); font-size: 11px; font-weight: 700; border: 1px solid var(--red); border-radius: 3px; padding: 0 4px; margin-left: 4px; vertical-align: middle; display: inline-block; }
+.timeline { list-style: none; margin: 20px 0; padding-left: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 20px 24px; margin-left: 4px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent); }
+.timeline li.now::before { background: var(--green); box-shadow: 0 0 0 1px var(--green); }
+.timeline .d { font-weight: 700; color: var(--navy); font-size: 13px; }
+.timeline .t { color: var(--muted); font-size: 12px; margin-left: 6px; }
+.glossary { background: #fff; border: 1px solid var(--line); border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.glossary .term { background: #f0f4f8; padding: 10px 16px; font-weight: 700; color: var(--navy); font-size: 14px; }
+.glossary .def { padding: 12px 16px; }
+.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; margin-right: 6px; }
+.pill.buy { background: #eaf3ee; color: var(--green); }
+.pill.exit { background: #fdeceb; color: var(--red); }
+.pill.hold { background: #eaf0f8; color: var(--blue); }
+.qa { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+.qa .q { font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.qa .q::before { content: "Q. "; color: var(--accent); }
+.qa .a::before { content: "A. "; font-weight: 700; color: var(--green); }
+footer.foot { background: var(--navy); color: #cdd8e3; padding: 34px 28px; font-size: 12.5px; margin-top: 50px; }
+footer.foot .inner { max-width: 980px; margin: 0 auto; }
+footer.foot a { color: #fff; }
+footer.foot ul { padding-left: 18px; columns: 2; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px 60px; }
+  header.hero { padding: 32px 16px 28px; }
+  header.hero h1 { font-size: 20px; }
+  nav.toc .inner { padding: 8px 16px; }
+  footer.foot ul { columns: 1; }
+}
+@media print {
+  body { background: #fff; }
+  nav.toc { position: static; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <span class="tag">DEAL ANALYSIS CASE STUDY</span><span class="tag live">TOB成立・完全子会社化はこれから</span>
+    <h1>サツドラホールディングス：創業家×丸の内キャピタルの防衛的MBO——競合の「忍び寄る買い増し」にどう対抗したか</h1>
+    <p class="sub">北海道地盤のドラッグストア・地域データマーケティング企業が、2年越しで買い増しを続けた和歌山の同業グループへの対抗策として、三菱商事系PEファンド「丸の内キャピタル」と組んで非公開化。TOB価格は途中で1株1,220円→1,260円へ引き上げられ、2026年8月に成立。完全子会社化・上場廃止は2026年内を予定</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="inner">
+    <a href="#s1">1.サマリー</a>
+    <a href="#s2">2.ストラクチャー</a>
+    <a href="#s3">3.財務ディープダイブ</a>
+    <a href="#s4">4.投資テーゼ</a>
+    <a href="#s5">5.バリュークリエーション</a>
+    <a href="#s6">6.成立への道のり</a>
+    <a href="#s7">7.リターン構造</a>
+    <a href="#s8">8.リスク・批判的視点</a>
+    <a href="#s9">9.難解ポイント解説</a>
+    <a href="#s10">10.基礎知識</a>
+    <a href="#s11">11.面接インサイト</a>
+    <a href="#s12">12.想定Q&amp;A</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2>1. エグゼクティブサマリー</h2>
+  <p>本レポートは、北海道地盤のドラッグストアチェーン、サツドラホールディングス（旧札幌証券取引所・東証上場：3544）が、創業家出身の富山浩樹社長CEOと三菱商事系の投資ファンド「丸の内キャピタル」が連携して実施したMBO（マネジメント・バイアウト）を扱う。本件は、他の大型グローバル案件（本ハブのeasyJet・EA案件）とは対照的に、買収総額は100億円規模の中小型案件だが、「和歌山の食品スーパー×ドラッグストア複合グループが2年越しで株式を買い増し、株主提案まで行った末に、対象会社がMBOという防衛策で応じた」という、日本の中堅上場企業に典型的なガバナンス・ドラマが凝縮されている。TOBは2026年8月3日に成立したが、創業家の資産管理会社が保有する株式を除く完全子会社化・上場廃止は2026年内を予定しており、<b>本レポート作成時点で手続きは完了していない</b>。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="v">約107.4億円</div><div class="l">TOB総額（上限ベース）</div></div>
+    <div class="kpi"><div class="v">¥837→¥1,260</div><div class="l">攪乱前終値からTOB最終価格へのプレミアム 約+50.5%</div></div>
+    <div class="kpi"><div class="v">+3%</div><div class="l">TOB価格の引き上げ幅（¥1,220→¥1,260、2026/7/17）</div></div>
+    <div class="kpi"><div class="v">24.91%</div><div class="l">対抗的に買い増しを続けた和歌山・廣岡グループ系の最終保有比率</div></div>
+    <div class="kpi"><div class="v">52.90%</div><div class="l">TOB応募比率（729万251株）</div></div>
+    <div class="kpi"><div class="v">36.10%</div><div class="l">創業家資産管理会社「トミーコーポレーション」の非応募・ロールオーバー比率</div></div>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">30秒で語るならこう言う</b>
+    「サツドラの案件は、規模ではなく構造が面白いディールです。和歌山の食品×ドラッグストア複合グループが2年かけて株式を買い増し、2024年には取締役選任の株主提案まで行いました。サツドラはこれに単純に抵抗するのではなく、三菱商事系のPEファンドと組んで自らを非公開化するという"守りのMBO"で対応しています。さらに興味深いのは、TOB価格を土壇場で3%引き上げていることです。これは、買い増しを続けていた対抗株主グループがTOBに応募してくれなければMBO自体が成立しないため、実質的な交渉のテコとして機能したと解釈できます。友好的MBOであっても、大口の外部株主がいれば価格交渉力を持つ、という好例です。」
+  </div>
+
+  <p>本件は札幌証券取引所と東証の重複上場企業であり、公開情報の粒度は大型グローバル案件と比べて限られる。推定が必要な箇所には<span class="est">推定</span>バッジを付している。</p>
+</section>
+
+<section id="s2">
+  <h2>2. ディール概要とストラクチャー</h2>
+
+  <h3>2-1. 対象会社</h3>
+  <p>サツドラホールディングスは、北海道を地盤とするドラッグストアチェーン「サッポロドラッグストアー」を中核に、共通ポイントカード「EZOCA」・電子マネー「EZOマネー」・WeChat Pay決済代行等を展開する地域マーケティング事業を併営する持株会社。2025年5月期末時点でグループ総店舗数199店（ドラッグストア180店、インバウンド向けフォーマット10店、調剤薬局9店）。創業家出身の富山浩樹氏が代表取締役社長CEOを務める。</p>
+
+  <h3>2-2. ストラクチャー表</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td>買付者</td><td>テラ株式会社（丸の内キャピタルのグループ会社が設立したSPC）</td></tr>
+      <tr><td>実質的なスポンサー</td><td>丸の内キャピタル（三菱商事系の投資ファンド）</td></tr>
+      <tr><td>継続経営陣</td><td>富山浩樹 代表取締役社長CEO（MBO後も経営を継続）</td></tr>
+      <tr><td>当初TOB価格</td><td class="num">1株1,220円（2026/6/18終値837円に対し+46%）</td></tr>
+      <tr><td>最終TOB価格</td><td class="num">1株1,260円（当初比+3%引き上げ、2026/7/17発表）</td></tr>
+      <tr><td>TOB総額（上限）</td><td class="num">約107.4億円</td></tr>
+      <tr><td>TOB期間</td><td>2026年6月22日〜8月3日</td></tr>
+      <tr><td>応募実績</td><td class="num">729万251株（発行済株式総数（自己株除く）の52.90%）</td></tr>
+      <tr><td>非応募の大株主</td><td>トミーコーポレーション（創業家資産管理会社、保有比率36.10%）——ロールオーバーで経営継続に参加</td></tr>
+      <tr><td>今後の予定</td><td>2026年12月上旬を目処に、トミーコーポレーション保有分を除く全株式を取得し完全子会社化、年内にも上場廃止の見通し</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>2-3. タイムライン</h3>
+  <ul class="timeline">
+    <li><span class="d">2024年前半</span><span class="t">和歌山の食品×ドラッグストア複合グループ「廣岡グループ」（中核はエバグリーン廣甚）が、サツドラ株の買い増しを開始</span></li>
+    <li><span class="d">2024年5月</span><span class="t">廣岡グループ関連の保有比率が12%超に</span></li>
+    <li><span class="d">2024年7月</span><span class="t">廣岡グループ経営陣がサツドラに取締役選任を求める株主提案を実施、サツドラ取締役会は反対を表明</span></li>
+    <li><span class="d">2026年6月中旬</span><span class="t">廣岡グループ関連の保有比率が15.55%→17.67%まで上昇</span></li>
+    <li><span class="d">2026/06/19</span><span class="t">サツドラ、丸の内キャピタルと連携したMBOによる非公開化を発表。TOB価格1,220円（前日比+46%）。同日、JPXがサツドラを監理銘柄（確認中）に指定</span></li>
+    <li><span class="d">2026年7月</span><span class="t">TOB期間中にも廣岡グループ関連が買い増しを継続し、保有比率が23.87%→24.91%まで上昇</span></li>
+    <li><span class="d">2026/07/17</span><span class="t">TOB価格を1,220円→1,260円に引き上げ。廣岡グループ側・丸の内キャピタル側の双方が新価格での応募に合意</span></li>
+    <li class="now"><span class="d">2026/08/03</span><span class="t">TOB成立。応募株数729万251株（52.90%）</span></li>
+    <li><span class="d">2026年12月上旬（予定）</span><span class="t">トミーコーポレーション保有分を除く全株式取得（スクイーズアウト）</span></li>
+    <li><span class="d">2026年内（予定）</span><span class="t">上場廃止</span></li>
+  </ul>
+
+  <div class="callout learn">
+    <b class="title">面接での使い方</b>
+    この案件のポイントは「MBO発表がゴールではなく、その後もTOB期間中に対抗株主が買い増しを続け、最終的に価格交渉に発展した」という点である。日本のMBOは「経営陣と大株主が最初から握っていて粛々と進む」というイメージを持たれがちだが、本件は外部の大口株主が最後まで交渉力を持ち続けた実例として語れる。
+  </div>
+</section>
+
+<section id="s3">
+  <h2>3. 事業・財務ディープダイブ</h2>
+
+  <h3>3-1. 業績推移（5月期）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>決算期</th><th class="num">売上高</th><th class="num">営業利益</th><th class="num">経常利益</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>2019/5期</td><td class="num">846.5億円</td><td class="num">4.3億円</td><td class="num">4.5億円</td><td>前期比 営業利益▲44.0%</td></tr>
+      <tr><td>2022/5期</td><td class="num">829.1億円</td><td class="num">7.5億円</td><td class="num">7.9億円</td><td>前期比 営業利益+16.7%</td></tr>
+      <tr><td>2025/5期</td><td class="num">1,001.7億円</td><td class="num">16.8億円</td><td class="num">16.5億円</td><td>初の売上高1,000億円超え、営業利益+21.0%・経常利益+23.4%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>2019年5月期から2025年5月期にかけて、売上高は約18%増加した一方、営業利益は約4倍近くに拡大しており、増収以上に収益性の改善が進んでいることが分かる。ドラッグストア業界の大手集約が進む中でも、地域マーケティング事業（EZOCA等）を含む複合的な収益構造が奏功したとみられる<span class="est">推定</span>。</p>
+
+  <h3>3-2. 「EZOCA」という隠れた戦略資産</h3>
+  <p>サツドラの特徴は、単なるドラッグストアチェーンではなく、北海道共通ポイントカード「EZOCA」を軸にした地域データマーケティング事業を併営している点にある。EZOCAは提携店を含む北海道全域の購買データを集約し、電子マネー「EZOマネー」やWeChat Pay決済代行とも連携する、いわば「地域版の会員基盤インフラ」としての性格を持つ。全国チェーンとの価格競争に晒されやすい店舗小売事業と異なり、データ・決済インフラ事業は差別化された収益源になりうる。</p>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：買収攻防の「本当の標的」はどちらか</b>
+    廣岡グループが2年越しでサツドラ株を買い増した動機は公表されていないが、食品スーパーとドラッグストアを複合展開する同グループにとって、サツドラの店舗網そのものよりも、EZOCAが持つ北海道内の購買データ基盤・決済インフラの方が戦略的価値が高い可能性がある。もしそうだとすれば、本件は単なる「同業による経営権争い」ではなく、店舗小売業とその裏側にあるデータ・決済インフラ事業を、買い手がどちらの価値として評価しているかによって、適正な買収価格の考え方が大きく変わる、という論点を含んでいる。
+  </div>
+</section>
+
+<section id="s4">
+  <h2>4. 投資テーゼ（なぜMBOに至ったのか）</h2>
+
+  <h3>4-1. 経営陣・丸の内キャピタル側のテーゼ：防衛と中長期改革の両立</h3>
+  <p>サツドラは、国内ドラッグストア業界の大手集約が加速する中、北海道での競争力強化と事業構造改革を進めるためには、四半期ごとの株価変動や市場評価に左右されない経営体制への移行が必要と判断したと説明している。丸の内キャピタルは三菱商事グループの一員として、店舗運営・調達・物流等の面でグループのノウハウを注入する狙いがあるとみられる<span class="est">推定</span>。同時に、2年越しで買い増しを続ける廣岡グループへの対抗という側面も、公式説明の背後にある実質的な動機として無視できない。</p>
+
+  <h3>4-2. 廣岡グループ側の動機（推定）</h3>
+  <p>廣岡グループ（エバグリーン廣甚を中核とする和歌山の食品×ドラッグストア複合グループ）は、2024年に取締役選任の株主提案を行うなど、単なる純投資ではなく経営への関与を志向する姿勢を示していた。同グループが目指していたのが、サツドラとの経営統合・提携によるドラッグストア業界での規模拡大だったのか、あるいはEZOCAのデータ・決済基盤の取得だったのかは公表されていないが、株主提案・継続的な買い増しという行動パターンから、単純な株価値上がり益狙いの投資ではなかったことがうかがえる<span class="est">推定</span>。</p>
+
+  <div class="callout insight">
+    <b class="title">独自インサイト：「防衛的MBO」というディール類型</b>
+    本ハブの牧野フライス案件（ニデックによる同意なきTOBへの買収防衛）は、対象会社が上場を維持したまま防衛策を講じた事例だった。これに対しサツドラは、外部株主の影響力そのものを株式市場から切り離す「非公開化」という、より根本的な防衛策を選んだ。どちらも「望まない支配権の移転を防ぐ」という目的は共通するが、防衛の手段としてMBO（非公開化）を選ぶか、上場を維持したまま対抗するかは、経営陣が中長期的にどのような資本政策を志向するかによって分かれる、という比較の視点を持てるとよい。
+  </div>
+</section>
+
+<section id="s5">
+  <h2>5. バリュークリエーション（想定プラン）</h2>
+  <p>完全子会社化はまだ完了していないため、以下は開示情報・業界動向から推測される想定レバーである<span class="est">推定</span>。</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>レバー</th><th>内容（推定）</th></tr></thead>
+    <tbody>
+      <tr><td>①三菱商事グループのノウハウ注入</td><td>調達・物流・店舗運営における大手商社グループの知見活用</td></tr>
+      <tr><td>②EZOCAデータ事業の成長投資加速</td><td>店舗小売とは異なる時間軸での、データ・決済インフラ事業への先行投資</td></tr>
+      <tr><td>③北海道内での店舗網再編</td><td>不採算店舗の統廃合、業態転換（インバウンド対応フォーマットの拡充等）</td></tr>
+      <tr><td>④非公開化による意思決定の迅速化</td><td>外部株主からの短期的な圧力を排除した中長期投資の実行</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout risk">
+    <b class="title">批判的視点：「防衛」が真の目的なら、株主価値向上策として語れるか</b>
+    本件の非公開化提案の背景には、外部株主グループへの対抗という側面が色濃く存在する。仮にそうだとすれば、非公開化の主目的は「株主価値の最大化」ではなく「現経営陣の経営権維持」だった可能性があり、少数株主にとって本当に最善の選択だったかは独立した検証が必要である。もっとも、TOB価格が攪乱前終値に対して最終的に約+50.5%という高いプレミアムであった点は、少なくとも短期的な株主価値の観点では一定の評価に値する。
+  </div>
+</section>
+
+<section id="s6">
+  <h2>6. 案件成立への道のり（規制・ガバナンスプロセス）</h2>
+
+  <h3>6-1. 公正性担保措置</h3>
+  <p>サツドラはMBOにあたり、第三者算定機関（プルータス・コンサルティング）による株式価値算定と、TOB価格の公正性に関する意見（フェアネス・オピニオン）の取得という、日本のMBO実務における標準的な公正性担保措置を講じている。支配株主・経営陣が関与する非公開化案件（狭義のMBO）では、少数株主保護の観点から、独立した第三者算定機関の関与が経済産業省のガイドライン等で推奨されている。</p>
+
+  <h3>6-2. 「監理銘柄」指定</h3>
+  <p>MBO発表と同日の2026年6月19日、日本取引所グループ（JPX）はサツドラを「監理銘柄（確認中）」に指定した。これは、TOB成立後に上場廃止基準に抵触する可能性がある銘柄について、取引所が投資家に注意喚起するための手続き的な指定であり、MBO・TOBに伴う非公開化案件では定型的に行われる。</p>
+
+  <h3>6-3. 対抗株主グループとの価格交渉という実質的な関門</h3>
+  <p>本件最大の実務上のハードルは、規制当局の承認ではなく、廣岡グループという大口の外部株主がTOBに応募するかどうかであった。MBOの実施には一定水準以上の応募（下限）が必要であり、廣岡グループが最終的に24.91%まで買い増していた状況では、同グループが応募を拒否すればTOB自体が不成立になるリスクがあった。最終的に価格を3%引き上げることで、廣岡グループ・丸の内キャピタル双方が合意に至り、TOBが成立した。</p>
+
+  <div class="callout learn">
+    <b class="title">学習ガイド：残された論点</b>
+    2026年12月上旬に予定される完全子会社化（トミーコーポレーション保有分を除く全株式取得）が実際にどのようなスキーム（株式併合等）で行われるか、また上場廃止後にサツドラの経営がどう変化するかは、本レポート作成時点ではまだ明らかになっていない。
+  </div>
+</section>
+
+<section id="s7">
+  <h2>7. リターン構造の考察</h2>
+  <p>本件は非上場化されたばかりであり、MBOスポンサー（丸の内キャピタル）にとっての実績リターンはまだ存在しない。以下は開示情報からの順算フレームである。</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>数値</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>TOB総額（上限）</td><td class="num">約107.4億円</td><td>非公開化に要する総資金の目安</td></tr>
+      <tr><td>攪乱前時価総額</td><td class="num">約115億円<span class="est">推定</span></td><td>発行済株式数約1,378万株×攪乱前終値837円で算出</td></tr>
+      <tr><td>TOB完了後の推定時価総額（最終価格ベース）</td><td class="num">約174億円<span class="est">推定</span></td><td>発行済株式数約1,378万株×最終TOB価格1,260円</td></tr>
+      <tr><td>2025年5月期 経常利益</td><td class="num">16.5億円</td><td>参考指標</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout insight">
+    <b class="title">模範解答コールアウト：面接官への一言</b>
+    「このディールを大型グローバル案件と並べて語る価値は、リターンの規模ではなく、"友好的MBOであっても、外部の大口株主がいれば価格交渉力を持つ"という、より一般化可能な教訓にあると考えています。丸の内キャピタルは、廣岡グループの存在によって当初想定より高い価格での買収を強いられた可能性がありますが、逆にいえば、この価格でなければTOBが不成立に終わり、防衛目的そのものが達成できなかったリスクとのトレードオフだったとも言えます。」
+  </div>
+</section>
+
+<section id="s8">
+  <h2>8. リスクと批判的視点（DD論点）</h2>
+
+  <div class="callout risk">
+    <b class="title">論点1：少数株主保護と経営陣の利益相反</b>
+    MBOは経営陣自身が買い手側に回る取引であるため、構造的に経営陣・支配株主とその他の株主との利益相反が生じやすい。本件では第三者算定機関の関与という標準的な手続きは踏まれているが、価格引き上げが「少数株主全体の利益のため」だったのか「対抗株主グループとの取引を成立させるため」だったのかは、突き詰めると同じ結果でも動機の解釈が分かれうる。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点2：対抗株主グループの真の意図が不透明</b>
+    廣岡グループの株式買い増しの目的（純投資か、経営統合志向か、データ事業目当てか）は公表されておらず、本レポートの分析は状況証拠に基づく推測の域を出ない。実際のディール評価では、こうした「意図が読めない大口株主」の存在自体が、対象会社の資本政策における重大な不確実性要因になる。
+  </div>
+
+  <div class="callout risk">
+    <b class="title">論点3：「やるべきでなかった」側の論拠</b>
+    2019年5月期から2025年5月期にかけて、サツドラは営業利益を約4倍に伸ばすなど、上場を維持したまま業績改善を実現していた。非公開化しなくても、この成長トレンドを市場に評価させながら独立した経営を続けるという選択肢もありえた。非公開化は、外部株主の圧力からの解放というメリットと引き換えに、資本市場からの評価・資金調達手段を手放すコストを伴う。</p>
+  </div>
+</section>
+
+<section id="s9">
+  <h2>9. 難解ポイント徹底解説</h2>
+
+  <div class="glossary">
+    <div class="term">MBO（マネジメント・バイアウト）と一般的な買収防衛策の違い</div>
+    <div class="def">一般的な買収防衛策（ポイズンピル、事前警告型防衛策等）は、上場を維持したまま特定の買収者の議決権割合を抑制する手法であるのに対し、MBOによる非公開化は、経営陣が自ら株式を買い取ることで、そもそも会社を株式市場から切り離してしまう、より根本的な手法である。本件のように、外部株主の継続的な買い増しに対して非公開化で応じるケースは「防衛的MBO」と呼びうる類型である。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">TOB価格の引き上げと「価格交渉」の実務</div>
+    <div class="def">TOBは本来、買付者が一方的に条件を提示する手続きだが、実務上は主要株主との事前の意見交換や、TOB期間中の株価動向・応募状況を踏まえて、買付者が価格を引き上げることがある。本件では、下限応募株数を満たすために、大口株主グループの応募合意を取り付ける必要があり、これが価格引き上げの実質的な交渉材料になったとみられる。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">監理銘柄（確認中）</div>
+    <div class="def">取引所が、上場廃止基準に抵触する可能性のある銘柄について、実際に基準に抵触するかどうかを確認する期間中に指定する区分。MBO・TOBによる非公開化が公表されると、少数株主の持株比率が上場維持基準を下回る可能性が生じるため、定型的に監理銘柄に指定される。上場廃止が確定すると「整理銘柄」に区分が変わる。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">第三者算定機関とフェアネス・オピニオン</div>
+    <div class="def">経営陣や支配株主が買い手となるMBO等の取引では、対象会社の取締役会が、経営陣や買収者から独立した専門機関（本件ではプルータス・コンサルティング）に株式価値の算定を依頼し、提示された買収価格が財務的見地から妥当（フェア）であるという意見書を取得することが一般的である。少数株主保護のための公正性担保措置の一つ。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">ロールオーバー（創業家の非応募）</div>
+    <div class="def">MBOにおいて、継続経営に関わる創業家・経営陣が自身の保有株式をTOBに応募せず、非公開化後の会社に株式を保有したまま参加し続けること。本件ではトミーコーポレーション（創業家資産管理会社）が保有する36.10%がこれにあたる。TOB総額を圧縮できるほか、経営の継続性を示すシグナルにもなる。</div>
+  </div>
+
+  <div class="glossary">
+    <div class="term">攪乱前価格とプレミアムの算出基準</div>
+    <div class="def">買収提案の公表前の最終取引日の終値を基準に、TOB価格がどれだけ上乗せされているかを示す指標。本件では2026年6月18日終値837円が基準となり、当初TOB価格1,220円で+46%、最終価格1,260円では約+50.5%のプレミアムとなる。プレミアムが引き上げ後さらに拡大した点は、本件の価格交渉の実態を数値で裏付けている。</div>
+  </div>
+</section>
+
+<section id="s10">
+  <h2>10. FA未経験者のための基礎知識</h2>
+
+  <h3>10-1. 日本のMBOプロセスの全体像</h3>
+  <p>MBOは、経営陣がスポンサー（本件では丸の内キャピタル）と共同でSPC（本件ではテラ株式会社）を設立し、SPCが対象会社の株式をTOBで取得した後、対象会社と合併・株式併合等の手法で少数株主を締め出し完全子会社化する、というのが一般的な流れである。本件は現時点でTOB成立の段階にあり、完全子会社化はこれから実施される。</p>
+
+  <h3>10-2. 大株主の応募動向がTOB成否を左右する構造</h3>
+  <p>TOBには「下限応募株数」が設定されることが多く、これを満たさなければTOB自体が不成立となる。大株主が多数の株式を保有している場合、その株主が応募するかどうかがTOBの成否を事実上左右するため、買収者は事前に主要株主との対話・合意形成を図ることが多い。本件はこの力学が価格改定という形で表面化した実例である。</p>
+
+  <h3>10-3. 地域トップ企業の非公開化トレンド</h3>
+  <p>2026年は、上場維持コストの負担、東証によるPBR改善要請、親子上場解消の流れ等を背景に、地方の中堅上場企業が非公開化・完全子会社化を選ぶ動きが目立った年とされる。サツドラのような地域トップ企業の非公開化は、単独の特殊事例ではなく、より広いトレンドの中に位置付けて理解する必要がある。</p>
+
+  <div class="callout learn">
+    <b class="title">学習動線</b>
+    本ハブの牧野フライス案件（上場維持のまま買収防衛策で対抗）、三益半導体案件（親子上場解消型の完全子会社化）と併せて読むと、「望まない支配権の移転や過度な外部株主の影響力にどう対応するか」という共通テーマに対する、複数の異なる打ち手のバリエーションを比較できる。
+  </div>
+</section>
+
+<section id="s11">
+  <h2>11. 面接で差がつくインサイト（まとめ）</h2>
+  <ol>
+    <li><b>友好的MBOであっても、大口の外部株主がいれば価格交渉力を持つ。</b>本件は、買収者側が一方的に価格を決められるわけではないことを示す好例である。</li>
+    <li><b>「防衛的MBO」は、上場維持型の買収防衛策とは根本的に異なる打ち手である。</b>市場からの支配権移転リスクそのものを断つという点で、より根本的だが後戻りしにくい選択でもある。</li>
+    <li><b>店舗小売業の買収攻防でも、裏側にあるデータ・決済インフラ事業の価値が争点になりうる。</b>EZOCAのような地域データ基盤は、単純な店舗網の評価では捉えきれない戦略的価値を持つ可能性がある。</li>
+    <li><b>TOB価格の引き上げは、必ずしも「株主への譲歩」だけでなく、「取引を成立させるための実務上の必要条件」である場合がある。</b>両方の側面を併せて評価する視点が重要。</li>
+    <li><b>中小型のMBO案件でも、大型グローバル案件と同じ分析フレームワーク（公正性担保措置、ロールオーバー構造、プレミアム分析）が適用できる。</b>規模の大小にかかわらず、フレームワークの汎用性を示せると評価が高い。</li>
+  </ol>
+</section>
+
+<section id="s12">
+  <h2>12. 想定Q&amp;A</h2>
+
+  <div class="qa">
+    <div class="q">なぜサツドラは、上場を維持したまま買収防衛策を講じるのではなく、MBOによる非公開化を選んだのですか？</div>
+    <div class="a">公表されている理由は、ドラッグストア業界の大手集約が進む中で、短期的な株価変動や市場評価に左右されない中長期的な経営判断を可能にするためというものです。ただし、2024年から続く廣岡グループの株式買い増しと株主提案という経緯を踏まえると、外部株主の影響力そのものを株式市場から切り離すという、より根本的な防衛効果も実質的な動機として働いていたと考えられます。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">TOB価格が1,220円から1,260円に引き上げられたのはなぜですか？</div>
+    <div class="a">TOB期間中も、対抗的に株式を買い増していた廣岡グループ関連の保有比率が23.87%から24.91%まで上昇していました。MBOの実施には一定の応募株数（下限）が必要であり、この大口株主グループが応募しなければTOB自体が不成立になるリスクがありました。最終的に価格を3%引き上げることで、廣岡グループ側と丸の内キャピタル側の双方が新価格での応募に合意し、TOBが成立しています。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">創業家の資産管理会社「トミーコーポレーション」がTOBに応募しなかったのはなぜですか？</div>
+    <div class="a">トミーコーポレーションは、MBO後も経営を継続する富山浩樹社長CEOの資産管理会社であり、非公開化後の会社に株式を保有したまま経営に参加し続ける「ロールオーバー」の一形態です。TOBに応募して現金化するのではなく株式を保有し続けることで、経営の継続性を示すと同時に、TOBに必要な資金総額を抑える効果もあります。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">廣岡グループはなぜサツドラ株を買い増したのですか？</div>
+    <div class="a">廣岡グループ自身の目的は公表されていませんが、同グループが食品スーパーとドラッグストアを複合展開していること、2024年に取締役選任の株主提案を行っていること、TOB発表後も買い増しを継続したことから、単純な株価値上がり益狙いの純投資ではなく、経営への関与や将来的な事業提携・統合を視野に入れていた可能性があります。サツドラが持つ「EZOCA」の地域データ・決済インフラとしての戦略的価値に着目していた可能性も考えられますが、これは開示情報からの推測の域を出ません。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">この案件は完了していますか？</div>
+    <div class="a">いいえ。2026年8月3日にTOBは成立しましたが、これは発行済株式の52.90%を取得した段階です。トミーコーポレーション保有分（36.10%）を除く残りの株式を取得する完全子会社化（スクイーズアウト）は2026年12月上旬を目処に実施予定で、上場廃止も2026年内の見通しとされています。したがって本レポート作成時点では、非公開化の全プロセスはまだ完了していません。</div>
+  </div>
+
+  <div class="qa">
+    <div class="q">【基礎確認】「TOBの下限応募株数」とは何ですか？</div>
+    <div class="a">TOBを実施する際、買付者があらかじめ「これだけの株式が集まらなければ買付けを行わない」という最低限の応募株数を設定することができる制度です。目的が完全子会社化・非公開化である場合、買収者は通常、その後のスクイーズアウトが可能な水準（会社法上は議決権の3分の2以上等）を見据えて下限を設定します。下限に届かない場合、TOBは不成立となり、応募した株主にも株式が返還されます。大株主の動向が読めない場合、この下限の設定と、実際に集まるかどうかの見通しが、ディール全体の成否を左右する重要な論点になります。</div>
+  </div>
+</section>
+
+</div>
+
+<footer class="foot">
+  <div class="inner">
+    <p><b>主要ソース</b></p>
+    <ul>
+      <li><a href="https://www.nikkei.com/article/DGXZQOFC1995H0Z10C26A6000000/" target="_blank" rel="noopener">日本経済新聞「サツドラHD、MBOで上場廃止へ　三菱商事系と連携」</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXZQOFC1774Y0X10C26A7000000/" target="_blank" rel="noopener">日本経済新聞「サツドラHDのMBO、TOB価格1260円に上げ　大株主も合意」</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXZQOFC042ED0U6A800C2000000/" target="_blank" rel="noopener">日本経済新聞「サツドラHDのMBO成立　上場廃止へ」</a></li>
+      <li><a href="https://www.nihon-ma.co.jp/news/20260619_1-3699/" target="_blank" rel="noopener">M&amp;Aニュース「サツドラホールディングス、MBOで非公開化へ」</a></li>
+      <li><a href="https://gekiryu-online.jp/2024/07/169851" target="_blank" rel="noopener">激流オンライン「エバグリーン経営陣がサツドラHDに株主提案、サツドラは反対」</a></li>
+      <li><a href="https://gekiryu-online.jp/2026/07/246407" target="_blank" rel="noopener">激流オンライン「和歌山の廣岡経営陣、TOB中のサツドラHD株を買い増し　23％超保有に」</a></li>
+      <li><a href="https://www.hokkaido-np.co.jp/article/1330458/" target="_blank" rel="noopener">北海道新聞「公開買い付け中のサツドラHD株　和歌山の企業が買い増しで影響は」</a></li>
+      <li><a href="https://www.hokkaido-np.co.jp/article/1161517/" target="_blank" rel="noopener">北海道新聞「サツドラHD株　和歌山の企業の保有比率、15.55％に上昇」</a></li>
+      <li><a href="https://hre-net.com/keizai/ryutu/93645/" target="_blank" rel="noopener">リアルエコノミー「サツドラHDのMBO成立、"創業家イズム"は残るか」</a></li>
+      <li><a href="https://www.jpx.co.jp/news/1023/20260619-11.html" target="_blank" rel="noopener">日本取引所グループ「監理銘柄（確認中）の指定：サツドラホールディングス（株）」</a></li>
+      <li><a href="https://www.plutuscon.jp/caseleads/85027" target="_blank" rel="noopener">プルータス・コンサルティング「サツドラホールディングス株式会社のMBOにおける助言の提供、株式価値算定及び意見表明」</a></li>
+      <li><a href="https://www.ryutsuu.biz/accounts/r062383.html" target="_blank" rel="noopener">流通ニュース「サツドラHD 決算／5月期営業利益21.0％増」</a></li>
+      <li><a href="https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%84%E3%83%89%E3%83%A9%E3%83%9B%E3%83%BC%E3%83%AB%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%B9" target="_blank" rel="noopener">Wikipedia「サツドラホールディングス」</a></li>
+    </ul>
+    <p style="margin-top:16px;">推定（<span class="est">推定</span>）タグを付した数値は、公開情報の断片から著者が組み立てた推定であり、一次資料（公開買付届出書・意見表明報告書等）による裏付けは取れていない。本ディールは2026年8月時点でTOBが成立した段階であり、完全子会社化・上場廃止は完了していない。今後の展開によって本レポートの前提が変わりうる点に留意すること。</p>
+    <p>作成日：2026年8月／このレポートは deal-analysis-report スキルにより生成された。</p>
+  </div>
+</footer>
+
+</body>
+</html>
