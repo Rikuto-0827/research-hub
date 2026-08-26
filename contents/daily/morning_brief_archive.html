@@ -3134,8 +3134,97 @@ const MARKET_REPORTS = [
       }
     }
   }
+,
+  {
+    date: "2026-08-18",
+    dateLabel: "Aug 18",
+    tokenEstimate: 17500,
+    indices: {
+      sp500:  { name:"S&P 500",    flag:"🇺🇸", value:7747.00, change:-38.74, pct:-0.50, dir:"down" },
+      nasdaq: { name:"Nasdaq",     flag:"🇺🇸", value:26647.00,change:-82.61, pct:-0.31, dir:"down" },
+      dow:    { name:"Dow Jones",  flag:"🇺🇸", value:53460.00,change:-272.65,pct:-0.51, dir:"down" },
+      nikkei: { name:"Nikkei 225", flag:"🇯🇵", value:67460.73,change:-1713.50,pct:-2.54,dir:"down" }
+    },
+    macro: {
+      "10Y米国債":    { value:"~4.68%",  dir:"up"   },
+      "2Y米国債":     { value:"~4.19%",  dir:"up"   },
+      "VIX":          { value:"~15.8",   dir:"up"   },
+      "DXY":          { value:"~99.5",   dir:"down" },
+      "WTI原油":      { value:"~$82.3",  dir:"up"   },
+      "Gold金":       { value:"~$4,473", dir:"up"   },
+      "ドル円":       { value:"¥159.2",  dir:"down" },
+      "日10年国債":   { value:"~2.93%",  dir:"up"   },
+      "日銀政策金利": { value:"1.00%",   dir:"flat" },
+      "米HYスプレッド":{ value:"~2.68%", dir:"flat" }
+    },
+    movers: [
+      { ticker:"HD",   name:"Home Depot", pct:1.5,  dir:"up",   why:"2Q調整後EPSが$4.92と予想$4.73を上回り、売上高も$478.6億と予想を超過。リフォーム需要の底堅さを好感し寄り付き前に買われた" },
+      { ticker:"FN",   name:"Fabrinet",   pct:-9.2, dir:"down", why:"直近四半期の決算・売上高自体は予想を上回ったが、来期(FY27 1Q)の粗利益率が季節的な費用要因で一時的に悪化するとのガイダンスが嫌気された" },
+      { ticker:"DUOL", name:"Duolingo",   pct:3.0,  dir:"up",   why:"D.A. Davidsonが投資判断を『中立』から『買い』へ格上げし目標株価を$130→$160に引き上げたことを好感" },
+      { ticker:"MU",   name:"Micron",     pct:-4.1, dir:"down", why:"KioxiaやSamsungなどアジア勢のAI・メモリー株急落に連動し、AIメモリー需要の持続性を巡る利益確定売りが波及" },
+      { ticker:"285A.T",name:"Kioxia",    pct:-7.6, dir:"down", why:"東京市場でAI・メモリー関連株への利益確定売りが加速、6月高値から2カ月で半値以上に下落する急落となった" },
+      { ticker:"TSLA", name:"Tesla",      pct:-1.2, dir:"down", why:"The Informationが8月中のハンドルなし型ロボタクシー『Cybercab』投入準備を報じたが、実現時期・規制対応への不透明感から材料出尽くし気味の売りが優勢" }
+    ],
+    events: [
+      { icon:"🛒", title:"Home Depot、2Q決算で市場予想を上回る — 小売決算ウィークの幕開け", detail:"寄り付き前発表の2Q調整後EPSは$4.92(予想$4.73)、売上高は$478.6億(予想$472.7億)といずれも予想超過。新築住宅需要の弱さがリフォーム需要へのシフトを後押ししているとの見方が改めて意識された。今週はTarget・Lowe's(水)、Walmart(木)の決算が続く。", sourceUrl:"https://www.cnbc.com/2026/08/18/stocks-making-the-biggest-moves-premarket-hd-tsla-fn-duol.html" },
+      { icon:"🛢️", title:"米・イラン間のホルムズ海峡合意(MOU)が期限切れ、緊張再燃で原油に上昇圧力", detail:"月曜に失効した米・イラン間の覚書(MOU)を受け、両国間の交渉停滞・ホルムズ海峡の緊張再燃への懸念が強まった。UAEはイラン革命防衛隊(IRGC)による関連船舶への攻撃を『海賊行為』と非難する声明を発表しており、Brent原油は$89台に接近している。", sourceUrl:"https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-17-2026" },
+      { icon:"🏠", title:"米7月住宅着工件数・許可件数が8:30ET発表 — 高金利下の住宅市場動向に注目", detail:"市場予想は住宅着工件数が約135万件(前月142万件)、許可件数が約137万件。高い住宅ローン金利とFRBの金融政策スタンスが住宅市場をどの程度抑制しているかを見極める材料として注目される。", sourceUrl:"https://www.xtb.com/en/market-analysis/macro-calendar-us-housing-market-in-the-spotlight-of-investors-18-08-2026" },
+      { icon:"📉", title:"AI・メモリー関連株の利益確定売りがアジア市場に波及、日経平均は2.54%安", detail:"東京市場ではKioxiaが7.6%安、Samsungも2.2%安となる一方SK Hynixは逆行高となるなど明暗が分かれた。急ピッチで進んだAIメモリー関連株の上昇に対する持続性への疑念が強まり、日経平均は67,460.73円まで下落した。", sourceUrl:"https://www.tradingkey.com/analysis/stocks/more/262114218-japan-south-korea-stocks-kospi-nikkei-softbank-sk-hynix-samsung-kioxia-tradingkey" },
+      { icon:"🤖", title:"Nvidia主導の$5,000億AI基盤資金調達枠組み、市場の消化続く", detail:"Apollo・Blackstone・BlackRock・Brookfield・ゴールドマン・KKRとのMOU締結から1週間超が経過し、具体的な個別案件・資金拠出額はまだ明らかになっていないが、AI関連インフラ投資の資金調達構造を巡るテーマとして引き続き市場の関心を集めている。", sourceUrl:"https://nvidianews.nvidia.com/news/nvidia-partners-with-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr-to-establish-ai-compute-infrastructure-financing-platforms-to-mobilize-over-500-billion-of-third-party-capital" }
+    ],
+    rateWatch: {
+      summary: "月曜の米・イラン間MOU失効を受けた地政学リスクの再燃、7月小売売上高の予想外の落ち込み(‑0.6%)、30年債利回りの2007年以来の高水準到達が交錯し、ウォーシュ議長下のFRBの次の一手を巡る不透明感は解消されていない。日本では新発10年国債利回りが2.93%と1996年以来の高水準を維持する一方、2Q GDPが予想の半分程度に鈍化したことで、9月会合での利上げペースを巡る日銀の判断はより難しくなっている。",
+      items: [
+        { icon:"🏔️", title:"ウォーシュ議長、8/28のジャクソンホール基調講演が9月FOMCの最大の手がかりに", detail:"ウォーシュ議長は会合前のガイダンスを極力示さない方針を取っており、8/27-29開催のジャクソンホール会議での初の基調講演(8/28)が、7月FOMCでの3名反対(利上げ主張)を受けた金融政策の方向性を見極める数少ない機会として異例に高い注目を集めている。", sourceUrl:"https://investinglive.com/central-banks/jackson-hole-hype-outruns-warsh-playbook-of-saying-as-little-as-possible/" },
+        { icon:"🇯🇵", title:"日銀、9月17-18日会合での利上げ観測が約77〜80%に上昇", detail:"複数の関係者情報として、日銀が9月会合での追加利上げと、その後の利上げペース加速(年2回超)を検討していると報じられた。現行の政策金利1.00%からの引き上げが市場でほぼ既定路線として織り込まれつつある。", sourceUrl:"https://kfgo.com/2026/08/14/boj-eyeing-september-rate-hike-faster-pace-of-tightening-sources-say/" },
+        { icon:"📊", title:"日本の新発10年国債利回りが1996年以来の高水準を維持、2Q GDPは予想の半分程度に鈍化", detail:"新発10年国債利回りは月曜に一時2.93%まで上昇し30年ぶりの高水準となった一方、2Q GDP速報値は年率+1.1%と市場予想のほぼ半分にとどまった。インフレ抑制と成長下支えの板挟みが、日銀の9月判断をより複雑にしている。", sourceUrl:"https://www.bloomberg.com/news/articles/2026-08-17/japan-s-bond-yields-climb-on-boj-hike-bets-fiscal-concerns" },
+        { icon:"🛍️", title:"米7月小売売上高が前月比‑0.6%と予想外の落ち込み、近い将来のFRB利上げ観測をやや後退させる", detail:"市場予想(+0.1%)に反し6月の+0.2%から一転して減少した。ウォーシュ体制下のFRBは基本的にインフレ抑制優先の引き締め姿勢だが、この軟調な個人消費指標は9月FOMCでの拙速な利上げに対する慎重論を後押しする材料となっている。", searchKey:"US retail sales July 2026 -0.6% miss" }
+      ],
+      outlook: "💡 FRBは強い30年債利回り上昇・弱い小売売上高という相反するシグナルの中でウォーシュ議長のジャクソンホール講演(8/28)を待つ展開が続く。日銀は利上げ路線を維持しつつも弱いGDPとの板挟みにあり、日米双方の中央銀行が『データ次第』の姿勢を強めるほど、ドル円・金利のボラティリティは今後数週間で高まりやすい局面にある。"
+    },
+    usCredit: {
+      summary: "Ares Managementが医療特化型PBM MedImpactによるMedical Card System買収向けに$22億のダイレクトレンディング案件を主導し、償還圧力に揺れた2026年の業界にとって年内最大級の取引の一つとなった。BlackstoneとBlue Owlの両BDCも投資適格級の社債市場で起債を再開するなど、業界の資金調達チャネルの多様化が進む一方、PGIMによるDeerpath Capitalの完全子会社化などマネージャー間の統合(コンソリデーション)も加速している。",
+      deals: [
+        { title:"Ares、MedImpactのMedical Card System買収向けに$22億のダイレクトローンを主導", tag:"ダイレクトレンディング", tagCls:"t-blue", meta:"Ares Management / MedImpact ｜ $2.2B ｜ ヘルスケアPBM", body:"創業者のFrederick Howe氏が支配するPBM大手MedImpactによる、プエルトリコの医療サービス会社Medical Card System買収を支援する第二順位担保付ローン。金利は基準金利+800bps以上とされ、2026年の業界における最大級のダイレクトレンディング案件の一つ。", sig:"償還圧力の続く『不調な年』でも大型案件組成力は健在", sourceUrl:"https://www.bloomberg.com/news/articles/2026-08-05/ares-eyes-2-billion-loan-deal-in-slow-year-for-private-credit" },
+        { title:"Blackstone・Blue OwlのBDC2社が投資適格級社債を起債、Q3の起債の停滞に終止符", tag:"資金調達", tagCls:"t-green", meta:"Blackstone Private Credit Fund / Blue Owl ｜ 5年債 ｜ Treasuries+230bps前後", body:"Blackstone Private Credit Fundは約$5億規模の5年債を、当初利回りは米国債+230bps前後で市場に提示。BDC(未上場・上場型ビジネス開発会社)による投資適格級起債は、業界の資金調達手段の多様化・機関投資家層への浸透を示す動き。", sig:"BDCの起債市場アクセスが業界の資金調達安定性を下支え", sourceUrl:"https://www.bloomberg.com/news/articles/2026-08-17/blackstone-blue-owl-private-credit-funds-offer-high-grade-bonds" },
+        { title:"PGIM、Deerpath Capitalの完全子会社化を完了 — 業界のマネージャー間統合が加速", tag:"マーケット動向", tagCls:"t-purple", meta:"PGIM / Deerpath Capital ｜ 残り25%取得 ｜ ロワーミドルマーケット", body:"PGIMは2023年に取得した75%出資に続き、米ロワーミドルマーケット向けダイレクトレンダーDeerpath Capitalの残り25%株式を取得し完全子会社化。運用会社の大型化・規模の経済を追求する業界内統合の一例。", sig:"業界の成熟に伴いマネージャー間のM&Aが活発化", sourceUrl:"https://alternativecreditinvestor.com/2026/08/17/private-credit-consolidation-gathers-pace-in-2026/" }
+      ],
+      outlook: "💡 償還圧力・スプレッドのタイト化に揺れる『不調な年』とされる2026年でも、Aresのような大手はヘルスケア等の底堅いセクターで大型案件を組成し続けており、業界の選別が『量から質へ』一段と進んでいることを示す。BDCによる起債チャネルの多様化とマネージャー間統合の加速は、業界が成熟フェーズに入りつつあることの表れでもある。"
+    },
+    jpCredit: {
+      summary: "Kakaku.com争奪戦はEQTの¥3,570・LINEヤフー-ベイン連合の¥3,520(条件付き最大¥3,640)という構図のままTOB期限8/27を控え膠着が続く。一方、中小型では筆頭株主が自社株をディスカウント価格でTOBするCAPITA(7462)の異例な非公開化提案や、Digital Hearts HDの創業家主導MBOが並行して進行しており、日本のテイクプライベート市場は規模・スキームともに多様化が進んでいる。",
+      deals: [
+        { title:"Kakaku.com争奪戦、TOB期限8/27を前に膠着状態が継続(継続)", tag:"バイアウト", tagCls:"t-purple", meta:"EQT vs LINEヤフー+Bain Capital ｜ 争奪戦継続 ｜ ネット", body:"EQTの¥3,570に対しLINEヤフー・ベイン連合はKDDIの協力を条件に最大¥3,640まで引き上げる構えとされるが、正式な対抗提案は9月中旬をめどとされ、当面は膠着状態が続く見通し。", sig:"競合TOBの長期化が日本のM&A実務の新たな先例に", sourceUrl:"https://www.bloomberg.com/news/articles/2026-08-13/eqt-raises-offer-for-kakaku-com-in-bidding-war-against-bain-ly" },
+        { title:"CAPITA(7462)、筆頭株主『桃の木』がディスカウントTOBを実施 — 買付価格は前日比37.81%安の¥250", tag:"非公開化", tagCls:"t-orange", meta:"CAPITA / 桃の木 ｜ ¥250/株 ｜ 8/14〜9/10", body:"飲食事業を営む筆頭株主の桃の木が、市場価格を大きく下回るディスカウント価格でのTOBを発表。プレミアムなしの非公開化提案という異例のスキームで、少数株主の応募動向・価格の妥当性を巡る議論を呼びそうな案件。", sig:"プレミアムなしの『ディスカウントTOB』という異例スキームが登場", sourceUrl:"https://topics.smt.docomo.ne.jp/article/maonline/business/maonline-20260813d" },
+        { title:"Digital Hearts HD、創業家主導MBOのTOBが進行中(継続)", tag:"MBO", tagCls:"t-green", meta:"Digital Hearts HD ｜ ¥1,060/株 ｜ Sandbox K.K.(創業家)", body:"宮澤英一会長が支配するSandbox K.K.によるTOB(8/7〜9/24)が進行中。上場維持コストを避けAI関連の事業転換を機動的に進める狙いとされる。", sig:"上場維持コストを嫌う創業家主導MBOが中堅企業で継続", sourceUrl:"https://www.tipranks.com/news/company-announcements/digital-hearts-chairman-launches-mbo-tender-offer-via-sandbox-k-k" }
+      ],
+      outlook: "💡 Kakaku.com争奪戦は8/27の期限に向けて膠着状態が続くが、水面下ではLINEヤフー連合の対抗提案準備が進んでいるとみられ、9月中旬にかけて動きが活発化する可能性が高い。CAPITAのようなディスカウントTOBの登場は、非公開化スキームの多様化と同時に、少数株主保護を巡るガバナンス論議の新たな火種となりうる。"
+    },
+    narrative: "8/18(火)朝の米国市場は、前日8/17(月)の下落を受けたスタートとなる。月曜の取引ではS&P500が‑0.50%、Nasdaqが‑0.31%、Dowが‑0.51%とそろって下落し、S&P500は7,747で取引を終えた。米・イラン間のホルムズ海峡合意(MOU)が失効し緊張再燃への懸念が強まったことに加え、30年債利回りが2007年以来の高水準となる5.3%まで上昇したことが重荷となった。||寄り付き前の焦点は小売決算ウィークの幕開けとなるHome Depotの2Q決算。調整後EPS$4.92・売上高$478.6億はいずれも市場予想を上回り、株価は寄り付き前に上昇している。今週はTarget・Lowe's(水)、Walmart(木)の決算も控え、個人消費の実態を見極める重要な材料が続く。8:30ETには7月住宅着工件数・許可件数の発表も予定されている。||個別株では、半導体検査・光学部品大手のFabrinetが決算自体は堅調ながら来期の粗利益率悪化ガイダンスを嫌気され9%超下落。語学学習アプリのDuolingoはアナリスト格上げを受け上昇した一方、Teslaはロボタクシー『Cybercab』の投入準備報道にもかかわらず材料出尽くし気味の売りとなった。アジア市場ではAI・メモリー関連株への急速な利益確定売りが波及し、東京市場でKioxiaが7.6%安、日経平均も67,460.73円まで2.54%下落。この流れを受け米国のMicronも寄り付き前に下落している。||金利市場では、ウォーシュ議長下のFRBが会合前のガイダンスを極力示さない方針を貫く中、8/27-29のジャクソンホール会議での初の基調講演(8/28)が9月FOMCを占う最大の手がかりとして意識されている。7月小売売上高が予想外に‑0.6%と落ち込んだことは近い将来の利上げ観測をやや後退させる一方、30年債利回りの高止まりはインフレ・財政リスクへの警戒感の根強さを示している。日本では新発10年国債利回りが1996年以来の高水準(2.93%)を維持し、日銀の9月利上げ観測は約77〜80%まで織り込まれているが、2Q GDPが市場予想の半分程度(年率+1.1%)にとどまったことで日銀の判断はより難しくなっている。||プライベートクレジット市場では、Ares Managementがヘルスケア大手MedImpactの買収案件向けに$22億のダイレクトローンを主導し、償還圧力に揺れる2026年の業界にとって年内最大級の取引の一つとなった。BlackstoneとBlue OwlのBDCも投資適格級社債の起債を再開し資金調達チャネルの多様化を進める一方、PGIMによるDeerpath Capitalの完全子会社化のようなマネージャー間統合も加速している。||日本市場では、Kakaku.com争奪戦がTOB期限8/27を前に膠着状態を維持する一方、CAPITAの筆頭株主によるディスカウントTOBという異例のスキームや、Digital Hearts HDの創業家主導MBOが並行して進行しており、日本のテイクプライベート市場は規模・スキームともに多様化が続いている。本日の焦点は、①ホルムズ海峡MOU失効を受けた地政学リスクの再燃度合い、②Home Depotに続く小売決算が示す個人消費の実態、③AI・メモリー関連株の調整が米国市場に波及するか、の3点に整理される。",
+    peTraining: {
+      interviewQA: [
+        { q: "決算内容自体は市場予想を上回ったFabrinetの株価が、ガイダンス内容を理由に9%超下落したのはなぜですか。投資家が『実績』より『ガイダンス』を重視する理由を説明してください", a: "株価は将来のキャッシュフローの現在価値を反映するものであり、市場は『過去の実績』よりも『将来の収益力』を重視して価格形成を行います。Fabrinetのケースでは直近四半期の決算自体は予想を上回ったものの、来期(FY27 1Q)の粗利益率が季節的な費用要因で一時的に悪化するというガイダンスが示されたことで、投資家は当面の収益性悪化を織り込み株価を再評価しました。決算発表時に市場が『実績よりガイダンスに反応する』のは、実績はすでに過去の情報として株価に織り込み済みである一方、ガイダンスは今後のコンセンサス予想の起点となり、アナリストによる目標株価・業績予想の改定に直結するためです。投資家としては、ガイダンスの内容が『一時的要因』なのか『構造的な悪化』なのかを見極めることが、株価反応の妥当性を判断する上で重要です。" },
+        { q: "AI・メモリー関連株の急落が『Kioxiaが6月高値から2カ月で半値以上に下落』のような急激な形で起きる背景には、どのような市場構造上の要因がありますか", a: "AI・メモリー関連株のように短期間で急騰した銘柄は、多くの場合、①需給の逼迫を材料とした将来の収益期待の急激な織り込み、②モメンタム投資家・ヘッジファンドによる短期的な資金流入、という二つの要因が重なって株価が形成されています。こうした銘柄は本質的にボラティリティが高く、需要見通しへのわずかな懐疑論(今回のケースではAIメモリー需要の持続性への疑念)が浮上しただけで、レバレッジをかけたポジションの巻き戻し(unwind)が連鎖し、急落につながりやすい特性があります。投資家としては、急騰した銘柄への投資判断において、①ファンダメンタルズの改善ペースと株価の上昇ペースが見合っているか、②ポジションの集中度(モメンタムマネー主導かどうか)を見極めることが、こうした急落リスクを事前に評価する上で重要です。" },
+        { q: "『ディスカウントTOB』(CAPITAの事例のように、市場価格を下回る価格での公開買付け)が成立しうる背景と、少数株主が留意すべき点は何ですか", a: "通常のTOBは市場価格に一定のプレミアム(上乗せ)を付けて買収意欲を示すのが一般的ですが、『ディスカウントTOB』が提案される背景には、①対象企業の業績・財務内容が市場価格に見合っておらず、支配株主が『市場価格自体が過大評価されている』と判断しているケース、②既に高い持株比率を持つ支配株主が、少数株主の応募インセンティブを重視せず、むしろ非公開化そのものを優先しているケース、などが考えられます。少数株主にとっては、①TOB価格の算定根拠(第三者評価機関の意見の有無、算定プロセスの独立性)、②応募しない場合の株式の流動性低下リスク(非公開化後は売却機会が限られる)、③スクイーズアウト(強制的な株式取得)条項の有無、を精査することが極めて重要です。プレミアムがない、あるいはディスカウントである提案は、通常のTOBよりも一層厳格なガバナンス上の精査が求められる論点です。" }
+      ],
+      keyConceptToday: {
+        term: "ガイダンス・リスク(Guidance Risk)と株価反応の非対称性",
+        definition: "企業が決算発表時に示す将来業績見通し(ガイダンス)の内容が、直近実績の良し悪しにかかわらず株価に大きな影響を与える現象。市場は『過去の実績』よりも『将来の収益力』を織り込んで価格形成を行うため生じる。",
+        background: "Fabrinetの決算では直近四半期の実績が予想を上回ったにもかかわらず、来期の粗利益率悪化ガイダンスを理由に株価が9%超下落する事例が発生した。",
+        practical: "①決算発表の評価では実績とガイダンスを分けて分析する必要がある。②ガイダンス悪化が『一時的要因』か『構造的要因』かを見極めることが株価反応の妥当性判断に重要。③ガイダンスは翌四半期以降のアナリスト予想改定の起点となるため、株価インパクトが実績より大きくなりやすい。",
+        context2026: "2026年は決算シーズンごとにAI関連需要・関税・金利環境などの外部要因がガイダンスの不確実性を高めており、投資家は個別企業のガイダンス内容をこれまで以上に注意深く読み解く必要がある局面が続いている。"
+      },
+      dealAnalysis: {
+        title: "Ares Management、MedImpactのMedical Card System買収向けに$22億のダイレクトローンを主導",
+        thesis: "Ares Managementは、PBM(調剤給付管理)大手MedImpactによるプエルトリコの医療サービス会社Medical Card System買収を支援するため、$22億規模の第二順位担保付ダイレクトローンを主導した。償還圧力・スプレッドのタイト化に揺れる2026年のプライベートクレジット市場にあって、年内最大級の取引の一つとなった。",
+        timing: "業界全体が『不調な年』とされる中でも、ヘルスケアという景気循環の影響を受けにくいディフェンシブなセクターでの大型案件組成であり、Ares等の大手運用会社が引き続き選別的に資金供給力を発揮できることを示すタイミングでの取引。",
+        downside: "①第二順位担保という構造上、第一順位債権者に対する劣後性があり、ストレス時の回収順位が低いリスク。②基準金利+800bps以上という高い金利水準は借り手の返済負担を重くし、医療政策・薬価制度の変更などセクター特有の規制リスクが業績を圧迫した場合に債務不履行リスクが高まる可能性。③プエルトリコ市場特有の経済・財政環境への依存度も無視できない。",
+        valuation: "基準金利+800bps以上という金利水準は、ヘルスケアセクターの第二順位担保付ローンとして高水準の部類に入り、業界全体の『質への逃避』の中でも相応のリスクプレミアムが要求されていることを示す。この案件の価格形成は、今後の同種ヘルスケア関連ダイレクトレンディング案件の相場観の参照点となる。"
+      }
+    }
+  }
 ];
-// ── END_DATA ──  (last sync: 2026-08-25 EDT / automated refresh, rotated 2026-08-25)
+// ── END_DATA ──  (last sync: 2026-08-26 EDT / automated refresh, rotated 2026-08-26)
 </script>
 
 <script>
